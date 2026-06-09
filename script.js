@@ -10,7 +10,7 @@ let playerReady = false;
 function createPlayer() {
   if (playerHost.children.length) return;
   const iframe = document.createElement("iframe");
-  iframe.src = ;
+  iframe.src = "https://www.youtube.com/embed/" + VIDEO_ID + "?autoplay=1&mute=1&controls=0";
   iframe.setAttribute("allow", "autoplay; encrypted-media");
   iframe.setAttribute("allowfullscreen", "");
   iframe.style.position = "absolute";
