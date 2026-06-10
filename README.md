@@ -1,1 +1,1 @@
-# Fixin2flyin
+This version swaps the old image references for the newly uploaded local images in /assets and keeps the no-logo, soundtrack, centered hero, and safer image framing structure.
