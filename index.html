@@ -1,249 +1,100 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Fixin' 2 Flyin' | Mobile Bike Repair + Bike Coaching</title>
-  <meta name="description" content="Fixin' 2 Flyin' is Dom's mobile bicycle repair, trail prep, and bike coaching service for riders who want their bikes dialed and their skills progressing." />
-  <meta name="theme-color" content="#08070d" />
-  <meta property="og:title" content="Fixin' 2 Flyin' | Mobile Bike Repair + Bike Coaching" />
-  <meta property="og:description" content="Mobile bicycle repair, trail prep, ride support, and one-on-one bike coaching." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/blue-bike.jpg" />
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixin' 2 Flyin' | Mobile Bike Repair & Coaching</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header" id="top">
-    <nav class="nav-shell" aria-label="Primary navigation">
-      <a class="brand-mark" href="#top" aria-label="Fixin' 2 Flyin' home">
-        <span>
-          <strong>Fixin' 2 Flyin'</strong>
-          <small>Mobile repair + coaching</small>
-        </span>
-      </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">Menu</button>
-      <div class="nav-menu" id="nav-menu">
-        <a href="#soundtrack">Soundtrack</a>
-        <a href="#services">Services</a>
-        <a href="#tribute">Tribute</a>
-        <a href="#story">Story</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#contact" class="nav-cta">Book</a>
-      </div>
-    </nav>
-  </header>
+    <!-- Header -->
+    <header>
+        <img src="assets/header-logo-full.png" alt="Fixin' 2 Flyin' Logo">
+        <nav>
+            <ul>
+                <li><a href="#soundtrack">Soundtrack</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#tribute">Tribute</a></li>
+                <li><a href="#story">Story</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#book">Book</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <main id="main">
-
-    <section class="soundtrack-strip" id="soundtrack" aria-labelledby="soundtrack-title">
-      <div class="container soundtrack-panel reveal">
-        <div class="soundtrack-graphic" aria-hidden="true">
-          <span></span><span></span><span></span><span></span><span></span>
-        </div>
-        <div class="soundtrack-copy">
-          <p class="eyebrow">Ride Soundtrack</p>
-          <h2 id="soundtrack-title">Music for the motion, energy, and freedom behind Fixin' 2 Flyin'.</h2>
-          <p class="fine-print">UK club / hip-hop inspired beat. Add a licensed audio file later to use a real track.</p>
-        </div>
-        <button class="soundtrack-button" id="soundtrack-toggle" type="button" aria-pressed="false">
-          <span class="soundtrack-icon" aria-hidden="true">▶</span>
-          <span class="soundtrack-label">Play</span>
-        </button>
-      </div>
+    <!-- Soundtrack -->
+    <section id="soundtrack">
+        <button id="play-pause">Play/Pause</button>
+        <p>Ride Soundtrack</p>
     </section>
 
-    <section class="hero hero-centered section-pad" aria-labelledby="hero-title">
-      <div class="container hero-shell reveal">
-        <p class="eyebrow">Fixin' 2 Flyin'</p>
-        <h1 id="hero-title">From fixing to flying.</h1>
-        <p class="hero-lede">Ride safer. Ride stronger. Ride smarter. Fixin' 2 Flyin' brings bicycle repairs, tune-ups, trail prep, and real-world riding guidance directly to you — from first-ride jitters to advanced trail skills.</p>
-        <div class="button-row center-row">
-          <a class="button primary" href="#contact">Book a repair</a>
-          <a class="button secondary" href="#gallery">View gallery</a>
-          <a class="button ghost" href="#tribute">Mama tribute</a>
+    <!-- Hero -->
+    <section id="hero">
+        <h1>From fixing to flying.</h1>
+        <p>Ride safer. Ride stronger. Ride smarter. Fixin' 2 Flyin' brings bicycle repairs, tune-ups, trail prep, and real-world riding guidance directly to you - from first lessons to riders ready to step up their game.</p>
+        <div class="hero-buttons">
+            <button>Book a repair</button>
+            <button>View gallery</button>
+            <button>Mama tribute</button>
         </div>
-        <div class="quick-stats center-row" aria-label="Fixin' 2 Flyin' highlights">
-          <span><strong>Repair</strong> tune-ups + checks</span>
-          <span><strong>Prep</strong> trail-ready bikes</span>
-          <span><strong>Coaching</strong> control + confidence</span>
-        </div>
-      </div>
     </section>
 
-    <section class="section-pad services-merged" id="services" aria-labelledby="services-title">
-      <div class="container split-grid">
-        <div class="media-frame service-photo reveal">
-          <img src="assets/blue-bike.jpg" alt="Blue mountain bike with purple components" loading="lazy" decoding="async" />
-        </div>
-        <div class="content-stack reveal">
-          <p class="eyebrow">Services</p>
-          <h2 id="services-title">Dialed bikes. Stronger riders.</h2>
-          <p class="section-lede">Dom combines practical bike service with hands-on riding guidance. Whether the job is a tune-up, a tire issue, a trail check, or skill progression, the goal is simple: bikes that work, riders who grow.</p>
-          <div class="service-list service-list-wide">
-            <article>
-              <h3>Mobile Bike Repair</h3>
-              <p>On-site tune-ups, adjustments, basic maintenance, and ride-readiness checks.</p>
-            </article>
-            <article>
-              <h3>Trail Prep</h3>
-              <p>Pre-ride inspections for mountain routes, trail days, longer rides, and first rides back.</p>
-            </article>
-            <article>
-              <h3>Flat Repair</h3>
-              <p>Tube and tire support, pressure checks, and simple troubleshooting before the next ride.</p>
-            </article>
-            <article>
-              <h3>Brake + Gear Adjustments</h3>
-              <p>Brake feel, shifting performance, cable tension, and control-point checks.</p>
-            </article>
-            <article>
-              <h3>Bike Coaching</h3>
-              <p>One-on-one riding help focused on confidence, body position, braking, climbing, handling, and control.</p>
-            </article>
-            <article>
-              <h3>Ride Support</h3>
-              <p>Support for ride planning, gear checks, route prep, and personal progression goals.</p>
-            </article>
-          </div>
-        </div>
-      </div>
-      <div class="container support-block">
-        <div class="section-heading compact reveal">
-          <p class="eyebrow">Built around riding</p>
-          <h2>Built around motion.</h2>
-        </div>
-        <div class="card-row support-row">
-          <article class="mini-card reveal">
-            <h3>Epic Rides</h3>
-            <p>Long climbs, fast descents, open views, and rides that test the body while clearing the mind.</p>
-          </article>
-          <article class="mini-card reveal">
-            <h3>Bike Prep</h3>
-            <p>Clean setups, tire checks, component checks, and the confidence that comes from knowing the bike is ready.</p>
-          </article>
-          <article class="mini-card reveal">
-            <h3>Coaching</h3>
-            <p>Practical coaching for control, line choice, trail decisions, jumping, and steady progression.</p>
-          </article>
-        </div>
-      </div>
+    <!-- Services -->
+    <section id="services">
+        <h2>Services</h2>
+        <ul>
+            <li>Mobile Bike Repair</li>
+            <li>Trail Prep</li>
+            <li>Flat Repair</li>
+            <li>Brake + Gear Adjustments</li>
+            <li>Bike Coaching</li>
+            <li>Ride Support</li>
+        </ul>
+        <p>Dom combines practical bike service with hands-on riding guidance. The goal is to make the bike feel better, help the rider feel stronger, and keep the next ride moving forward.</p>
     </section>
 
-    <section class="tribute section-pad" id="tribute" aria-labelledby="tribute-title">
-      <div class="container tribute-card reveal">
-        <div class="tribute-image">
-          <img src="assets/dom-mama.jpg" alt="Dom smiling with his mama" loading="lazy" decoding="async" />
-        </div>
-        <div class="tribute-copy">
-          <p class="eyebrow">For Dom's Mama</p>
-          <h2 id="tribute-title">Love. Laughter. Strength.</h2>
-          <p>A tribute to a beautiful woman whose fun-loving spirit, caring heart, and steady love helped shape the man Dom is today.</p>
-          <p>May she live through his courage, his drive, the freedom he chases, and every mile he rides.</p>
-        </div>
-      </div>
+    <!-- Built Around Riding -->
+    <section id="lifestyle">
+        <h2>Built Around Riding</h2>
+        <p>Epic rides. Bike prep. Coaching. Long climbs. Fast descents. Open views. Better control. Stronger riders. More confidence.</p>
     </section>
 
-    <section class="lumi-section section-pad" id="story" aria-labelledby="story-title">
-      <div class="container split-grid reverse">
-        <div class="content-stack reveal">
-          <p class="eyebrow">Dom + Lumi</p>
-          <h2 id="story-title">Built for the ride, the road, and the reset.</h2>
-          <p>Fixin' 2 Flyin' carries Dom's world into one place: bikes, mountain air, hard rides, van-life basecamps, and Lumi riding alongside the journey.</p>
-          <p class="small-note">Lumi gets her own space here as the loyal co-pilot behind the motion.</p>
-        </div>
-        <div class="media-frame lumi-photo reveal">
-          <img src="assets/lumi-stick.jpg" alt="Lumi carrying a big stick outside near bikes" loading="lazy" decoding="async" />
-        </div>
-      </div>
+    <!-- Mama Tribute -->
+    <section id="tribute">
+        <h2>For Dom's Mama</h2>
+        <p>Love. Laughter. Strength.</p>
+        <p>A tribute to a beautiful woman whose fun-loving spirit, caring heart, and steady love helped shape the man Dom is today. May she live through his courage, his drive, the freedom he chases, and every mile he rides.</p>
     </section>
 
-    <section class="gallery section-pad" id="gallery" aria-labelledby="gallery-title">
-      <div class="container">
-        <div class="section-heading reveal">
-          <p class="eyebrow">Gallery</p>
-          <h2 id="gallery-title">Bikes, coaching, trails, basecamps, views, and Lumi.</h2>
-          <p>A clean visual archive of the ride life behind Fixin' 2 Flyin'.</p>
-        </div>
-        <div class="gallery-grid">
-          <figure class="gallery-large reveal">
-            <img class="pos-top" src="assets/trail-action.jpg" alt="Mountain biker riding a jump on a forest trail" loading="lazy" decoding="async" />
-            <figcaption>Trail Action</figcaption>
-          </figure>
-          <figure class="reveal">
-            <img class="pos-center" src="assets/tire-closeup.jpg" alt="Close view of a bike tire and rim" loading="lazy" decoding="async" />
-            <figcaption>Ride Ready</figcaption>
-          </figure>
-          <figure class="reveal">
-            <img class="pos-center" src="assets/air-jump.jpg" alt="Rider performing a big air jump" loading="lazy" decoding="async" />
-            <figcaption>Air</figcaption>
-          </figure>
-          <figure class="reveal">
-            <img class="pos-center" src="assets/bike-detail-rocks.jpg" alt="Close detail of a blue bike near rocks" loading="lazy" decoding="async" />
-            <figcaption>Bike Detail</figcaption>
-          </figure>
-          <figure class="reveal">
-            <img class="pos-center" src="assets/blue-bike.jpg" alt="Blue mountain bike build with purple components" loading="lazy" decoding="async" />
-            <figcaption>Bike Build</figcaption>
-          </figure>
-          <figure class="reveal">
-            <img class="pos-center" src="assets/lumi-stick.jpg" alt="Lumi holding a stick outside a bike shop" loading="lazy" decoding="async" />
-            <figcaption>Lumi</figcaption>
-          </figure>
-        </div>
-      </div>
+    <!-- Dom + Lumi -->
+    <section id="dom-lumi">
+        <h2>Dom + Lumi</h2>
+        <p>Fixin' 2 Flyin' carries Dom's world into one place: bikes, mountain air, hard rides, van-life basecamps, and Lumi riding alongside the journey.</p>
     </section>
 
-    <section class="booking section-pad" id="contact" aria-labelledby="contact-title">
-      <div class="container booking-grid reveal">
-        <div>
-          <p class="eyebrow">Ready to ride?</p>
-          <h2 id="contact-title">Book repair, coaching, or ride support.</h2>
-          <p>Send the bike type, repair issue or coaching goal, location, and preferred day or time. Dom can use that information to plan the right tools, parts, or riding session.</p>
-        </div>
-        <div class="contact-card">
-          <h3>Contact Dom</h3>
-          <p class="contact-status" id="contact-status">Contact details coming soon.</p>
-          <div class="contact-buttons">
-            <a class="button primary" id="email-link" href="#contact">Email Dom</a>
-            <a class="button secondary" id="phone-link" href="#contact">Call / text</a>
-            <a class="button secondary" id="instagram-link" href="#contact">Instagram</a>
-          </div>
-          <p class="fine-print">Suggested message: bike type, issue, location, preferred day/time, and whether the request is repair, coaching, or trail prep.</p>
-        </div>
-      </div>
+    <!-- Gallery -->
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <!-- Visuals populated here -->
     </section>
-  </main>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <strong>Fixin' 2 Flyin'</strong>
+    <!-- Pre-Footer Banner -->
+    <section id="pre-footer">
+        <h2>Ride hard. Live free.</h2>
+        <p>Dialed bikes. Stronger riders. Purple grit, gold energy, and a ride style built for the ones who go big. Fixin' 2 Flyin' is for riders who push harder, ride smarter, and show up ready for the next line.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Fixin' 2 Flyin'</p>
         <p>We fix it. You fly.</p>
-      </div>
-      <div class="footer-links">
-        <a href="#soundtrack">Soundtrack</a>
-        <a href="#services">Services</a>
-        <a href="#tribute">Tribute</a>
-        <a href="#story">Story</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </div>
-  </footer>
+        <div id="contact">
+            <h3>Contact</h3>
+            <p>Contact details coming soon.</p>
+        </div>
+    </footer>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Fixin' 2 Flyin'",
-    "description": "Mobile bicycle repair, trail prep, ride support, and bike coaching.",
-    "image": "assets/blue-bike.jpg",
-    "areaServed": "Northern New Mexico",
-    "url": "https://domproject.kayamc418.workers.dev/"
-  }
-  </script>
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
