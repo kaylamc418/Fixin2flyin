@@ -1,15 +1,20 @@
 :root {
-  --black: #020104;
+  --black: #030306;
+  --black-soft: #090812;
+  --deep-plum: #170024;
+  --purple: #7d2bff;
+  --neon-purple: #d12cff;
+  --magenta-glow: #ff3df2;
+  --gold: #d4a74c;
+  --gold-soft: #f0d58b;
+  --cream: #fff8ea;
+  --muted: #c9bdd6;
   --ink: #07050c;
   --ink-soft: #12091b;
   --plum: #24083d;
-  --purple: #7d2bff;
   --purple-hot: #a855ff;
   --purple-soft: #c7a6ff;
-  --gold: #d4a74c;
-  --gold-soft: #f6dd91;
   --blue: #1397d4;
-  --cream: #fff8ea;
   --line: rgba(240, 213, 139, 0.22);
   --shadow: 0 34px 120px rgba(0, 0, 0, 0.58);
   --radius-lg: 34px;
