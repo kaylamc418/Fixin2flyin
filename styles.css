@@ -77,12 +77,12 @@ h3 { font-size: 1.3rem; letter-spacing: -0.02em; }
 .eyebrow { color: var(--gold-soft); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.30em; font-weight: 950; margin-bottom: 1rem; }
 .section-lede { margin-top: 1rem; max-width: 680px; font-size: 1.05rem; }
 
-.site-header { position: relative; top: auto; z-index: 10; backdrop-filter: blur(22px); background: rgba(0,0,0,0.82); border-bottom: 1px solid var(--line); }
+.site-header { position: relative; top: auto; z-index: 10; backdrop-filter: blur(22px); background: rgba(0,0,0,0.82); border-bottom: 1px solid var(--line); margin-bottom: 1rem; }
 .site-header::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: linear-gradient(90deg, transparent, var(--purple), var(--gold-soft), var(--purple), transparent); opacity: 0.75; }
 .nav-shell { width: min(calc(100% - 2rem), 1280px); min-height: 72px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
 .brand-mark { display: inline-flex; align-items: center; gap: 0.7rem; }
 .brand-logo-full { width: clamp(140px, 18vw, 220px); height: auto; filter: drop-shadow(0 12px 28px rgba(125,43,255,0.32)); }
-.nav-menu { display: flex; align-items: center; gap: 0.9rem; color: rgba(255,248,234,0.8); font-size: 0.88rem; }
+.nav-menu { display: flex; align-items: center; gap: 0.9rem; color: rgba(255,248,234,0.8); font-size: 1rem; }
 .nav-menu a { transition: color 180ms ease, transform 180ms ease; }
 .nav-menu a:hover { color: var(--gold-soft); transform: translateY(-1px); }
 .nav-cta { padding: 0.62rem 1rem; border-radius: 999px; border: 1px solid var(--gold); color: var(--gold-soft) !important; background: rgba(212,167,76,0.08); }
