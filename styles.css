@@ -1,1 +1,203 @@
-<existing styles.css content replaced with appended hero CSS>
+:root{
+  --purple: #7d2bff;
+  --hot-purple: #a855ff;
+  --soft-purple: #c7a6ff;
+  --lux-gold: #d4a74c;
+  --soft-gold: #f6dd91;
+  --cream: #fff8ea;
+  --black: #020104;
+  --line-color: rgba(240,213,139,0.22);
+
+  /* derived variables used in header/soundtrack */
+  --bg-black: #050408;
+  --lux-gold-soft: rgba(212,167,76,0.28);
+  --lux-purple: rgba(125,43,255,1);
+  --panel-bg: rgba(8,7,9,0.72);
+  --panel-border: rgba(212,167,76,0.18);
+}
+
+/* ----------------- Header (tightened) ----------------- */
+.site-header {
+  background: var(--bg-black);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0 20px;
+  min-height: 64px; /* tighter header */
+  position: relative;
+  z-index: 20;
+}
+
+/* thin gold / purple divider under header */
+.site-header::after{
+  content: "";
+  display: block;
+  height: 3px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  background: linear-gradient(90deg, var(--lux-gold) 0%, rgba(212,167,76,0.6) 30%, rgba(150,90,255,0.15) 70%, rgba(125,43,255,0.85) 100%);
+  box-shadow: 0 8px 28px rgba(125,43,255,0.08);
+  pointer-events: none;
+  border-radius: 2px;
+}
+
+/* nav shell alignment
+   keep the existing .nav-shell markup but tighten spacing */
+.nav-shell{
+  display:flex;
+  align-items:center;
+  gap: 1rem;
+  width:100%;
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  padding: 6px;                       /* small badge padding */
+  background: rgba(5,4,8,0.6);        /* dark badge if needed */
+  border: 1px solid var(--lux-gold-soft);
+  box-shadow: 0 6px 32px rgba(125,43,255,0.12);
+  min-height: 40px;
+}
+
+.brand-logo-full {
+  width: clamp(90px, 10vw, 150px);    /* desktop target 120-150, mobile 90-110 */
+  height: auto;
+  display: block;
+  object-fit: contain;
+  background: transparent;            /* if transparent image is used */
+  border-radius: 8px;
+}
+
+/* Fallback wrapper for white-bg logo */
+.brand-logo-fallback {
+  max-width: clamp(70px, 9vw, 120px);
+  background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.35));
+  padding: 6px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* NAV */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-left: auto;
+}
+
+.nav-menu a {
+  color: #ddd;
+  text-decoration: none;
+  letter-spacing: 0.2px;
+  font-weight: 500;
+  padding: 8px 10px;
+}
+
+/* Book button — outlined gold */
+.nav-cta, .btn-book {
+  color: var(--lux-gold);
+  border: 1px solid var(--lux-gold-soft);
+  background: transparent;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  box-shadow: 0 6px 20px rgba(125,43,255,0.05);
+}
+
+/* ----------------- Ride Soundtrack (slim cinematic panel) ----------------- */
+.ride-soundtrack{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 0 16px;
+  margin-top: 18px;
+}
+
+.ride-soundtrack-inner{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  background: linear-gradient(180deg, rgba(11,10,12,0.9), rgba(8,7,9,0.85));
+  border-radius:14px;
+  padding:10px 14px;
+  border:1px solid var(--panel-border);
+  box-shadow: 0 10px 40px rgba(125,43,255,0.08), inset 0 1px 0 rgba(255,255,255,0.02);
+  max-width:840px;
+  width:100%;
+  color:#eee;
+  transform: translateY(-6px); /* visual connection to hero below */
+}
+
+.ride-soundtrack .meta{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  flex:1 1 auto;
+}
+
+.ride-soundtrack h3{
+  margin:0;
+  font-size:1rem;
+  letter-spacing:0.6px;
+  color:#fff;
+}
+
+.ride-soundtrack p{
+  margin:0;
+  font-size:0.88rem;
+  color:#cfc9c6;
+  opacity:0.95;
+}
+
+.play-btn{
+  background:transparent;
+  border:1px solid var(--lux-gold-soft);
+  color:var(--lux-gold);
+  padding:8px 12px;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
+  min-width:86px;
+  text-align:center;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  transition: transform .12s ease, box-shadow .12s ease;
+  box-shadow: 0 6px 20px rgba(125,43,255,0.04);
+}
+
+.play-btn[aria-pressed="true"]{
+  transform: translateY(1px) scale(.995);
+  box-shadow: none;
+  background: rgba(212,167,76,0.03);
+}
+
+/* small Egyptian line detail (left) */
+.ride-soundtrack-inner::before{
+  content: "";
+  width: 36px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(212,167,76,0.9), rgba(125,43,255,0.6));
+  margin-right: 6px;
+  border-radius: 2px;
+  opacity: 0.9;
+}
+
+/* responsive tweaks */
+@media (max-width:720px){
+  .site-header{ padding:0 12px; min-height:56px; }
+  .brand-logo-full{ width: clamp(82px, 20vw, 110px); }
+  .nav-menu{ gap:12px; }
+  .ride-soundtrack-inner{ margin:14px 6px; padding:8px 10px; gap:10px; }
+  .play-btn{ min-width:70px; padding:7px 10px; }
+}
