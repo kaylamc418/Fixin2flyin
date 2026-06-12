@@ -241,6 +241,6 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   .service-photo, .lumi-photo, .tribute-image { aspect-ratio: 1 / 1; }
   .gallery-grid figure, .gallery-grid img { min-height: 330px; }
   .final-banner { min-height: 360px; }
-  .final-banner-panel::before, .final-banner-panel::after, .hero-shell::before, .hero-shell::after { width: 30px; height: 30px; }
+  .final-banner-panel::before, .final-banner-panel::after { width: 30px; height: 30px; }
   .floating-spec-card { position: relative; right: auto; bottom: auto; margin: -1.3rem 1rem 0; }
 }
