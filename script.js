@@ -18,8 +18,8 @@ function disableLink(link, label) {
 }
 
 if (DOM_CONTACT.email) {
-  const subject = encodeURIComponent("Fixin’ 2 Flyin’ booking request");
-  const body = encodeURIComponent("Hi Dom,\n\nI’m interested in:\n\nBike type:\nIssue / coaching goal:\nPreferred day/time:\nLocation:\n\nThanks,");
+  const subject = encodeURIComponent("Fixin 2 Flyin booking request");
+  const body = encodeURIComponent("Hi Dom,\n\nI'm interested in:\n\nBike type:\nIssue / coaching goal:\nPreferred day/time:\nLocation:\n\nThanks,");
   emailLink.href = `mailto:${DOM_CONTACT.email}?subject=${subject}&body=${body}`;
   emailLink.textContent = "Email Dom";
   statusEl.textContent = "Send Dom a quick note with your bike type, repair need, location, and preferred time.";
@@ -98,7 +98,7 @@ function setSoundtrackUi(isPlaying) {
   document.body.classList.toggle("soundtrack-playing", isPlaying);
   if (soundtrackToggle) soundtrackToggle.setAttribute("aria-pressed", String(isPlaying));
   if (soundtrackLabel) soundtrackLabel.textContent = isPlaying ? "Pause" : "Play";
-  if (soundtrackIcon) soundtrackIcon.textContent = isPlaying ? "Ⅱ" : "▶";
+  if (soundtrackIcon) soundtrackIcon.textContent = isPlaying ? "||" : ">";
 }
 
 function playSynthHit(time, frequency, duration, type, gainValue) {
@@ -186,3 +186,4 @@ window.addEventListener("load", async () => {
   } catch (error) {
     setSoundtrackUi(false);
   }
+});
