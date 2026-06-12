@@ -106,7 +106,7 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
 .hero { min-height: calc(100vh - 72px); display: grid; align-items: center; position: relative; overflow: hidden; padding: clamp(5rem, 9vw, 7.6rem) 0 3.6rem; }
 .hero-background { background-image: url("assets/hero-home-bg.jpg"); background-position: center center; background-size: cover; background-repeat: no-repeat; }
 .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.42), rgba(0,0,0,0.52) 45%, rgba(0,0,0,0.96)), radial-gradient(circle at 22% 24%, rgba(125,43,255,0.3), transparent 25rem), radial-gradient(circle at 82% 16%, rgba(212,167,76,0.2), transparent 22rem); }
-.hero-split { position: relative; z-index: 2; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(4rem, 8vw, 8rem); align-items: center; }
+.hero-split { position: relative; z-index: 2; display: grid; grid-template-columns: 1.35fr 0.65fr; gap: clamp(4rem, 8vw, 8rem); align-items: center; }
 .hero-copy { max-width: 760px; text-align: left; }
 .hero-lede { color: rgba(255,255,255,0.95); font-weight: 600; text-shadow: 0 1px 0 rgba(0,0,0,0.55); }
 .quick-stats span strong { color: var(--gold-soft); }
@@ -135,7 +135,7 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
 .hero-rune-grid::after { inset: 2rem; border-color: rgba(246,221,145,0.11); }
 .hero-bottom-strip { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; min-height: 46px; display: flex; align-items: center; gap: 2rem; overflow: hidden; border-top: 1px solid rgba(246,221,145,0.18); border-bottom: 1px solid rgba(246,221,145,0.12); background: rgba(0,0,0,0.72); color: rgba(246,221,145,0.82); text-transform: uppercase; letter-spacing: 0.22em; font-size: 0.75rem; font-weight: 900; }
 .hero-bottom-strip span { min-width: max-content; animation: marquee 14s linear infinite; }
-@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-220px); } }
+@keyframes marquee { from { transform: translateX(-220px); } to { transform: translateX(0); } }
 
 .dom-code { background: linear-gradient(180deg, rgba(0,0,0,0.3), rgba(125,43,255,0.08), rgba(0,0,0,0.2)); border-block: 1px solid rgba(240,213,139,0.12); }
 .section-heading { max-width: 880px; margin-bottom: 2rem; }
