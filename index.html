@@ -19,10 +19,12 @@
   <header class="site-header" id="top">
     <nav class="nav-shell" aria-label="Primary navigation">
       <a class="brand-mark" href="#top" aria-label="Fixin 2 Flyin home">
-        <img class="brand-logo-full" src="assets/header-logo-full.png" alt="Fixin 2 Flyin logo showing Dom, Lumi, and the brand name" />
-        <span class="sr-only">Fixin 2 Flyin - Mobile repair and coaching</span>
+        <img class="brand-logo-full" src="assets/header-logo-full.png" alt="Fixin 2 Flyin logo" />
       </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+        <span class="sr-only">Toggle menu</span>
+        Menu
+      </button>
       <div class="nav-menu" id="nav-menu">
         <a href="#soundtrack">Soundtrack</a>
         <a href="#dom-code">Dom Code</a>
@@ -36,22 +38,6 @@
   </header>
 
   <main id="main">
-    <section class="soundtrack-strip" id="soundtrack" aria-labelledby="soundtrack-title">
-      <div class="container soundtrack-panel reveal">
-        <div class="soundtrack-graphic" aria-hidden="true">
-          <span></span><span></span><span></span><span></span><span></span>
-        </div>
-        <div class="soundtrack-copy">
-          <p class="eyebrow">Ride Soundtrack</p>
-          <h2 id="soundtrack-title">A dark pulse for the rider who turns repair into flight.</h2>
-          <p class="fine-print">Original UK club / hip-hop inspired beat. Add a licensed audio file later to use a real track.</p>
-        </div>
-        <button class="soundtrack-button" id="soundtrack-toggle" type="button" aria-pressed="false">
-          <span class="soundtrack-label">Play</span>
-        </button>
-      </div>
-    </section>
-
     <section class="hero hero-background" aria-labelledby="hero-title">
       <div class="hero-overlay"></div>
       <div class="hero-rune-grid" aria-hidden="true"></div>
@@ -91,6 +77,22 @@
           <span>Rad Trails</span>
           <span>Train the Rider</span>
         </div>
+      </div>
+    </section>
+
+    <section class="soundtrack-strip" id="soundtrack" aria-labelledby="soundtrack-title">
+      <div class="container soundtrack-panel reveal">
+        <div class="soundtrack-graphic" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="soundtrack-copy">
+          <p class="eyebrow">Ride Soundtrack</p>
+          <h2 id="soundtrack-title">A dark pulse for the rider who turns repair into flight.</h2>
+          <p class="fine-print">Original UK club / hip-hop inspired beat. Add a licensed audio file later to use a real track.</p>
+        </div>
+        <button class="soundtrack-button" id="soundtrack-toggle" type="button" aria-pressed="false">
+          <span class="soundtrack-label">Play</span>
+        </button>
       </div>
     </section>
 

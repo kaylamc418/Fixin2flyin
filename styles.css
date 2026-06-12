@@ -77,13 +77,14 @@ h3 { font-size: 1.3rem; letter-spacing: -0.02em; }
 .eyebrow { color: var(--gold-soft); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.30em; font-weight: 950; margin-bottom: 1rem; }
 .section-lede { margin-top: 1rem; max-width: 680px; font-size: 1.05rem; }
 
-.site-header { position: relative; top: auto; z-index: 20; backdrop-filter: blur(22px); background: rgba(0,0,0,0.78); border-bottom: 1px solid var(--line); }
-.site-header { position: relative; top: auto; z-index: 20; backdrop-filter: blur(18px); background: rgba(0,0,0,0.78); border-bottom: 1px solid var(--line); }
-.nav-shell { width: min(calc(100% - 2rem), 1280px); min-height: 64px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.4rem 0; }
-.brand-mark { display: inline-flex; align-items: center; gap: 0.7rem; padding: clamp(0.22rem, 0.45vw, 0.4rem); border-radius: 14px; background: rgba(0,0,0,0.92); border: 1px solid rgba(212, 167, 76, 0.24); box-shadow: 0 0 16px rgba(125, 43, 255, 0.14); }
-.brand-logo-full { width: clamp(110px, 12vw, 136px); height: auto; object-fit: contain; }
-.nav-menu a { transition: color 180ms ease, transform 180ms ease; }
-.nav-menu a:hover { color: var(--gold-soft); transform: translateY(-1px); }
+.site-header { position: relative; top: auto; z-index: 20; backdrop-filter: blur(18px); background: rgba(0,0,0,0.82); border-bottom: 1px solid var(--line); }
+.nav-shell { width: min(calc(100% - 2rem), 1280px); min-height: 52px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.35rem 0; }
+.brand-mark { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.28rem 0.54rem; border-radius: 12px; background: rgba(0,0,0,0.94); border: 1px solid rgba(212, 167, 76, 0.28); box-shadow: 0 0 14px rgba(125, 43, 255, 0.12); }
+.brand-logo-full { width: clamp(84px, 9vw, 112px); height: auto; object-fit: contain; }
+.brand-name { color: var(--gold-soft); font-weight: 900; letter-spacing: 0.08em; font-size: clamp(0.85rem, 1.2vw, 1rem); }
+.nav-menu { display: flex; align-items: center; gap: 0.6rem; }
+.nav-menu a { color: rgba(255,248,234,0.78); font-size: 0.92rem; transition: color 180ms ease; }
+.nav-menu a:hover { color: var(--gold-soft); }
 .nav-menu a:focus-visible { outline: 3px solid var(--gold-soft); outline-offset: 3px; border-radius: 999px; }
 .nav-cta { padding: 0.62rem 1rem; border-radius: 999px; border: 1px solid var(--gold); color: var(--gold-soft) !important; background: rgba(212,167,76,0.08); }
 .nav-toggle { display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,0.04); color: var(--cream); padding: 0.6rem 0.82rem; font: inherit; }
