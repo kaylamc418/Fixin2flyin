@@ -88,19 +88,19 @@ h3 { font-size: 1.3rem; letter-spacing: -0.02em; }
 .nav-cta { padding: 0.62rem 1rem; border-radius: 999px; border: 1px solid var(--gold); color: var(--gold-soft) !important; background: rgba(212,167,76,0.08); }
 .nav-toggle { display: none; }
 
-.soundtrack-strip { position: relative; z-index: 4; padding: 0.9rem 0; border-bottom: 1px solid var(--line); background: linear-gradient(90deg, rgba(0,0,0,0.98), rgba(25,6,42,0.95), rgba(0,0,0,0.98)); }
-.soundtrack-panel { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1rem; padding: 0.85rem 1rem; border: 1px solid rgba(240,213,139,0.24); border-radius: 20px; background: rgba(0,0,0,0.55); box-shadow: 0 18px 60px rgba(0,0,0,0.34); }
-.soundtrack-graphic { width: 84px; height: 54px; display: inline-flex; align-items: center; justify-content: center; gap: 0.28rem; border-radius: 16px; border: 1px solid rgba(240,213,139,0.24); background: radial-gradient(circle at top, rgba(240,213,139,0.18), transparent 55%), linear-gradient(145deg, rgba(125,43,255,0.22), rgba(0,0,0,0.5)); }
-.soundtrack-graphic span { display: block; width: 0.38rem; height: 1rem; border-radius: 999px; background: linear-gradient(180deg, var(--gold-soft), var(--purple-hot), var(--purple)); opacity: 0.82; transform-origin: bottom; animation: soundtrackBars 980ms ease-in-out infinite; animation-play-state: paused; }
+.soundtrack-strip { position: relative; z-index: 4; padding: 0.5rem 0; border-bottom: 1px solid var(--line); background: linear-gradient(90deg, rgba(0,0,0,0.98), rgba(25,6,42,0.95), rgba(0,0,0,0.98)); }
+.soundtrack-panel { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 0.6rem; padding: 0.5rem 0.6rem; border: 1px solid rgba(240,213,139,0.24); border-radius: 12px; background: rgba(0,0,0,0.55); box-shadow: 0 10px 36px rgba(0,0,0,0.34); }
+.soundtrack-graphic { width: 50px; height: 32px; display: inline-flex; align-items: center; justify-content: center; gap: 0.17rem; border-radius: 10px; border: 1px solid rgba(240,213,139,0.24); background: radial-gradient(circle at top, rgba(240,213,139,0.18), transparent 55%), linear-gradient(145deg, rgba(125,43,255,0.22), rgba(0,0,0,0.5)); }
+.soundtrack-graphic span { display: block; width: 0.22rem; height: 0.6rem; border-radius: 999px; background: linear-gradient(180deg, var(--gold-soft), var(--purple-hot), var(--purple)); opacity: 0.82; transform-origin: bottom; animation: soundtrackBars 980ms ease-in-out infinite; animation-play-state: paused; }
 .soundtrack-graphic span:nth-child(2) { animation-delay: 130ms; }
 .soundtrack-graphic span:nth-child(3) { animation-delay: 260ms; }
 .soundtrack-graphic span:nth-child(4) { animation-delay: 390ms; }
 .soundtrack-graphic span:nth-child(5) { animation-delay: 520ms; }
 body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running; }
 @keyframes soundtrackBars { 0%, 100% { transform: scaleY(0.55); } 45% { transform: scaleY(2.25); } }
-.soundtrack-copy h2 { font-size: clamp(1rem, 2vw, 1.45rem); line-height: 1.12; margin-top: 0.25rem; }
-.soundtrack-copy .fine-print { margin-top: 0.3rem; }
-.soundtrack-button { min-width: 104px; min-height: 48px; border: 1px solid rgba(240,213,139,0.42); border-radius: 999px; background: linear-gradient(135deg, rgba(240,213,139,0.20), rgba(125,43,255,0.18)); color: var(--cream); font: inherit; font-weight: 900; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem; transition: transform 180ms ease, border-color 180ms ease; }
+.soundtrack-copy h2 { font-size: clamp(0.88rem, 1.5vw, 1.2rem); line-height: 1.12; margin-top: 0.25rem; }
+.soundtrack-copy .fine-print { margin-top: 0.3rem; font-size: 0.8rem; }
+.soundtrack-button { min-width: 72px; min-height: 36px; border: 1px solid rgba(240,213,139,0.42); border-radius: 999px; background: linear-gradient(135deg, rgba(240,213,139,0.20), rgba(125,43,255,0.18)); color: var(--cream); font: inherit; font-weight: 900; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem; transition: transform 180ms ease, border-color 180ms ease; }
 .soundtrack-button:hover { transform: translateY(-1px); border-color: var(--gold-soft); }
 .soundtrack-button:focus-visible { outline: 3px solid var(--gold-soft); outline-offset: 3px; }
 
