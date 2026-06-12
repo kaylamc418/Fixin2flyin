@@ -106,7 +106,7 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
 .hero { min-height: calc(100vh - 72px); display: grid; align-items: center; position: relative; overflow: hidden; padding: clamp(5rem, 9vw, 7.6rem) 0 3.6rem; }
 .hero-background { background-image: url("assets/hero-home-bg.jpg"); background-position: center center; background-size: cover; background-repeat: no-repeat; }
 .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.42), rgba(0,0,0,0.52) 45%, rgba(0,0,0,0.96)), radial-gradient(circle at 22% 24%, rgba(125,43,255,0.3), transparent 25rem), radial-gradient(circle at 82% 16%, rgba(212,167,76,0.2), transparent 22rem); }
-.hero-split { position: relative; z-index: 2; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+.hero-split { position: relative; z-index: 2; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(4rem, 8vw, 8rem); align-items: center; }
 .hero-copy { max-width: 760px; text-align: left; }
 .hero-lede { color: rgba(255,255,255,0.95); font-weight: 600; text-shadow: 0 1px 0 rgba(0,0,0,0.55); }
 .quick-stats span strong { color: var(--gold-soft); }
