@@ -117,7 +117,7 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
 .hero-rune-grid { position: absolute; inset: 10% 7%; border: 1px solid rgba(246,221,145,0.13); transform: skewY(-3deg); opacity: 0.72; }
 .hero-rune-grid::before, .hero-rune-grid::after { content: ""; position: absolute; inset: 1rem; border: 1px solid rgba(125,43,255,0.18); }
 .hero-rune-grid::after { inset: 2rem; border-color: rgba(246,221,145,0.11); }
-.hero-shell { position: relative; z-index: 2; max-width: 1160px; text-align: left; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; backdrop-filter: none; display: grid; grid-template-columns: 1.35fr 0.65fr; align-items: center; gap: clamp(1.5rem, 2.6vw, 3rem); }
+.hero-shell { position: relative; z-index: 2; max-width: 1160px; text-align: left; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; backdrop-filter: none; display: grid; grid-template-columns: 1.15fr 0.85fr; align-items: center; gap: clamp(1.2rem, 2.2vw, 2.4rem); }
 .hero-card { border: 1px solid rgba(212,167,76,0.45); border-radius: 24px; background: linear-gradient(180deg, rgba(3,3,6,0.82), rgba(23,0,36,0.54)); box-shadow: 0 28px 90px rgba(125,43,255,0.18); backdrop-filter: blur(10px); padding: clamp(1rem, 1.6vw, 1.4rem); color: rgba(255,248,234,0.92); }
 .hero-card p { color: inherit; }
 .quick-stats { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.8rem; }
