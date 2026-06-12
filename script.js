@@ -186,4 +186,3 @@ window.addEventListener("load", async () => {
   } catch (error) {
     setSoundtrackUi(false);
   }
-});
