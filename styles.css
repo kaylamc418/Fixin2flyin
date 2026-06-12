@@ -1,1 +1,90 @@
+/* Blackout Luxury Theme - Fixin' 2 Flyin' */
 
+:root {
+    --bg-black: #000000;
+    --text-cream: #F5F5DC;
+    --strong-purple: #4B0082; /* Deep Plum */
+    --soft-gold: #D4AF37;     /* Luxury Gold */
+    --accent-blue: #0077BE;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-black);
+    color: var(--text-cream);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Header & Nav */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.9);
+    position: sticky;
+    top: 0;
+    border-bottom: 2px solid var(--soft-gold);
+}
+
+header img {
+    max-height: 50px;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+header nav a {
+    color: var(--text-cream);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* Section Styling */
+section {
+    padding: 4rem 2rem;
+    min-height: 80vh;
+    border-bottom: 1px solid #222;
+}
+
+h2 {
+    color: var(--soft-gold);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
+/* Buttons */
+button {
+    background: transparent;
+    color: var(--text-cream);
+    border: 1px solid var(--soft-gold);
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: var(--soft-gold);
+    color: var(--bg-black);
+}
+
+/* Footer */
+footer {
+    padding: 3rem;
+    text-align: center;
+    background: var(--strong-purple);
+    color: var(--text-cream);
+}
