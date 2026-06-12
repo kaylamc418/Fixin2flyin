@@ -112,8 +112,8 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
 .soundtrack-button:focus-visible { outline: 3px solid var(--gold-soft); outline-offset: 3px; }
 
 .hero { min-height: calc(100vh - 78px); display: grid; align-items: center; position: relative; overflow: hidden; padding: clamp(5rem, 9vw, 8rem) 0 4.6rem; }
-.hero-background { background-image: url("assets/hero-home-bg.jpg"); background-position: center top; background-size: cover; background-repeat: no-repeat; }
-.hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.22) 0%, rgba(3,3,6,0.52) 45%, rgba(3,3,6,0.92) 100%), radial-gradient(circle at 46% 18%, rgba(125,43,255,0.22), transparent 34rem), radial-gradient(circle at 88% 60%, rgba(255,61,242,0.16), transparent 26rem); }
+.hero-background { background-image: url("assets/hero-home-bg.jpg"); background-position: center center; background-size: cover; background-repeat: no-repeat; }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(3,3,6,0.0) 0%, rgba(3,3,6,0.22) 38%, rgba(3,3,6,0.78) 72%, rgba(3,3,6,0.96) 100%), radial-gradient(circle at 46% 18%, rgba(125,43,255,0.24), transparent 34rem), radial-gradient(circle at 88% 60%, rgba(255,61,242,0.16), transparent 26rem); }
 .hero-rune-grid { position: absolute; inset: 10% 7%; border: 1px solid rgba(246,221,145,0.13); transform: skewY(-3deg); opacity: 0.72; }
 .hero-rune-grid::before, .hero-rune-grid::after { content: ""; position: absolute; inset: 1rem; border: 1px solid rgba(125,43,255,0.18); }
 .hero-rune-grid::after { inset: 2rem; border-color: rgba(246,221,145,0.11); }
