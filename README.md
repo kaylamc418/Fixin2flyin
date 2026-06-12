@@ -1,4 +1,4 @@
-# Fixin’ 2 Flyin’
+Fixin’ 2 Flyin’
 
 **Fixin’ 2 Flyin’** is a mobile bike repair and bike coaching website for Dom. The site is built around mobile bicycle repair, tune-ups, trail prep, ride support, coaching, Lumi, and a visible tribute to Dom’s mama.
 
