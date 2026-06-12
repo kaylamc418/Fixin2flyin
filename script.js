@@ -85,7 +85,7 @@ if ("IntersectionObserver" in window) {
 const RIDE_AUDIO_SRC = "";
 const soundtrackToggle = document.getElementById("soundtrack-toggle");
 const soundtrackLabel = soundtrackToggle?.querySelector(".soundtrack-label");
-const soundtrackIcon = soundtrackToggle?.querySelector(".soundtrack-icon");
+const soundtrackIcon = null;
 
 let soundtrackAudio = null;
 let soundtrackContext = null;
