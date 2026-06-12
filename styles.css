@@ -1,1 +1,22 @@
-<existing styles.css content replaced with appended hero CSS>
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  margin: 2rem;
+  background: #f7f7f7;
+  color: #333;
+}
+
+header h1 {
+  color: #007acc;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: 1px solid #007acc;
+  background: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #e6f2ff;
+}
