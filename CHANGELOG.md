@@ -1,7 +1,7 @@
 2026-06-11
-- Created Midnight Pharaoh / more interesting build
+- Created refined build with stronger branding
 - Added Dom Code section
 - Added Choose the Mission cards
 - Added cinematic hero overlays and moving bottom strip
-- Strengthened blackout luxury, purple, gold, Egyptian-inspired styling
+- Strengthened refined styling with purple and gold accents
 - Kept contact placeholders and existing assets

@@ -1,6 +1,6 @@
-# Fixin 2 Flyin - Midnight Pharaoh Build
+# Fixin 2 Flyin
 
-This is the more interesting luxury blackout version of Dom's Fixin 2 Flyin website.
+This is Dom's Fixin 2 Flyin website — mobile bike repair, trail prep, and coaching.
 
 ## Direction
 
