@@ -851,6 +851,15 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
 .footer-brand-col strong { display: block; font-size: clamp(1.25rem, 2vw, 1.6rem); letter-spacing: 0.12em; margin-bottom: 0.25rem; color: var(--cream); font-weight: 700; }
 .footer-tagline { font-family: Georgia, serif; font-size: clamp(1rem, 1.5vw, 1.25rem); color: var(--gold-soft); margin: 0 0 1rem; font-weight: 700; line-height: 1.2; }
 .footer-desc { color: rgba(255,248,234,0.6); font-size: 0.95rem; line-height: 1.5; }
+.footer-wordplay {
+  margin-top: 0.95rem;
+  color: rgba(240, 213, 139, 0.72);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1.6;
+  max-width: 30ch;
+}
 .footer-nav-cols { display: flex; gap: clamp(1.5rem, 3vw, 3rem); }
 .footer-nav-cols nav h4 { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.3em; color: var(--gold-soft); margin: 0 0 1rem; font-weight: 900; }
 .footer-nav-cols nav ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.7rem; }
