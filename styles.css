@@ -410,7 +410,7 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   align-self: start;
   gap: 1.15rem;
   min-height: 0;
-  margin-top: clamp(2rem, 4vw, 4rem);
+  margin-top: clamp(3rem, 6vw, 5.5rem);
   text-align: center;
 }
 .hero-headline {
