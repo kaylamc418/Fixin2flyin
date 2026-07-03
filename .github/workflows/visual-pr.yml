@@ -1,0 +1,35 @@
+name: Visual Overlap Audit
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  visual-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Playwright
+        run: npm install
+
+      - name: Install browser dependencies
+        run: npx playwright install --with-deps chromium
+
+      - name: Serve site locally
+        run: nohup python3 -m http.server 4173 --directory . >/tmp/fixin2flyin-http.log 2>&1 &
+
+      - name: Run visual overlap audit
+        env:
+          BASE_URL: http://127.0.0.1:4173
+        run: sleep 2 && npm run test:visual

@@ -1148,6 +1148,15 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   .container { width: min(calc(100% - 1rem), var(--max)); }
   .section-pad { padding: 3.6rem 0; }
   .section-pad-sm { padding: 2.5rem 0; }
+  .missions-grid { gap: 18px; margin-top: 2rem; }
+  .mission-card {
+    min-height: 320px;
+    border-radius: 14px;
+  }
+  .mission-overlay { padding: 24px; }
+  .mission-badge { font-size: 0.68rem; }
+  .mission-card h3 { font-size: 1.25rem; }
+  .mission-card p { font-size: 0.9rem; }
   .service-list, .gallery-grid { grid-template-columns: 1fr; }
   .gallery-large,
   .gallery-grid figure:nth-child(2),
@@ -1243,6 +1252,15 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
     min-height: 44px;
     padding-inline: 0.95rem;
   }
+  .missions-grid { gap: 16px; margin-top: 1.5rem; }
+  .mission-card {
+    min-height: 290px;
+    border-radius: 12px;
+  }
+  .mission-overlay { padding: 20px; }
+  .mission-badge { font-size: 0.64rem; }
+  .mission-card h3 { font-size: 1.15rem; }
+  .mission-card p { font-size: 0.85rem; }
   .steps-grid {
     gap: 0.8rem;
   }
