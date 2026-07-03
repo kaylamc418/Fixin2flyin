@@ -334,11 +334,11 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
 .hero-bg {
   position: absolute;
   inset: 0;
-  background-image: url("assets/hero-home-bg.jpg");
-  background-position: center 6%;
+  background-image: url("assets/hero-home-bg-raised.jpg");
+  background-position: center top;
   background-size: cover;
   background-repeat: no-repeat;
-  transform: translateY(-3%) scale(1.04);
+  transform: translateY(-2%) scale(1.03);
   transform-origin: center top;
   will-change: transform;
   animation: heroZoom 16s ease-in-out infinite alternate;
@@ -352,8 +352,8 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   mix-blend-mode: screen;
 }
 @keyframes heroZoom {
-  from { transform: translateY(-3%) scale(1.04); }
-  to { transform: translateY(-7%) scale(1.07); }
+  from { transform: translateY(-2%) scale(1.03); }
+  to { transform: translateY(-5%) scale(1.055); }
 }
 .hero-overlay {
   position: absolute;
@@ -895,7 +895,7 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   .reveal { opacity: 1; transform: none; transition: none; }
   .button, .media-frame img, .tribute-image img, .gallery-item img, .gallery-grid img, .mission-card img { transition: none; }
   .hero-bg, .hero-line-gold, .hero-line-fly { animation: none; }
-  .hero-bg { transform: translateY(-3%) scale(1.04); }
+  .hero-bg { transform: translateY(-2%) scale(1.03); }
   .ticker-track { animation: none; }
   .soundtrack-graphic span { animation: none; }
   .hero-rune-grid { opacity: 0.25; }
