@@ -563,9 +563,11 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
 .code-accent-gold { color: var(--gold-soft); }
 .steps-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1rem;
-  align-items: stretch;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 32px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   position: relative;
   margin-top: 2.25rem;
 }
@@ -575,11 +577,12 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   left: 1rem;
   right: 1rem;
   top: 50%;
-  height: 2px;
+  height: 1px;
   transform: translateY(-50%) scaleX(0);
   transform-origin: left;
-  background: linear-gradient(90deg, transparent, rgba(19,151,212,0.95), rgba(240,213,139,0.98), rgba(125,43,255,0.95), transparent);
-  box-shadow: 0 0 26px rgba(125,43,255,0.24), 0 0 20px rgba(19,151,212,0.24);
+  background: linear-gradient(90deg, transparent, rgba(19,151,212,0.96), rgba(240,213,139,0.96), rgba(125,43,255,0.96), transparent);
+  box-shadow: 0 0 26px rgba(19,151,212,0.18), 0 0 22px rgba(125,43,255,0.18);
+  pointer-events: none;
 }
 .dom-code.is-visible .steps-grid::before {
   animation: codeTimelineDraw 920ms ease forwards;
@@ -589,25 +592,37 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   to { transform: translateY(-50%) scaleX(1); }
 }
 @keyframes codeTimelineDrawVertical {
-  from { transform: scaleY(0); }
-  to { transform: scaleY(1); }
+  from { transform: translateY(-50%) scaleY(0); }
+  to { transform: translateY(-50%) scaleY(1); }
 }
 .step-card {
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  min-height: clamp(260px, 24vw, 390px);
-  padding: 1.4rem 1.3rem 3rem;
-  border: 1px solid rgba(255,248,234,0.12);
-  border-radius: 28px;
-  background:
-    linear-gradient(145deg, rgba(0,0,0,0.74), rgba(0,0,0,0.42)),
-    radial-gradient(circle at 18% 14%, rgba(255,255,255,0.03), transparent 26%);
+  justify-content: space-between;
+  min-height: 320px;
+  padding: 32px;
+  --step-rgb: 240,213,139;
+  --step-glow: rgba(240,213,139,0.30);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
   box-shadow: 0 18px 54px rgba(0,0,0,0.24);
-  backdrop-filter: blur(14px);
   transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
+}
+.step-card:nth-child(odd) { transform: translateY(-14px); }
+.step-card:nth-child(even) { transform: translateY(14px); }
+.step-card-dial { --step-rgb: 19,151,212; --step-glow: rgba(19,151,212,0.34); }
+.step-card-read { --step-rgb: 125,43,255; --step-glow: rgba(125,43,255,0.34); }
+.step-card-commit { --step-rgb: 240,213,139; --step-glow: rgba(240,213,139,0.30); }
+.step-card-fly {
+  --step-rgb: 125,43,255;
+  --step-glow: rgba(125,43,255,0.34);
+  background:
+    linear-gradient(135deg, rgba(19,151,212,0.10), rgba(125,43,255,0.10)),
+    rgba(255, 255, 255, 0.03);
 }
 .step-card::before {
   content: "";
@@ -616,7 +631,7 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   top: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold-soft), transparent);
+  background: linear-gradient(90deg, transparent, rgba(var(--step-rgb), 0.94), transparent);
   opacity: 0.7;
 }
 .step-card::after {
@@ -665,58 +680,32 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   color: rgba(255,248,234,0.8);
 }
 .step-indicator {
-  position: absolute;
-  right: 1rem;
-  bottom: 0.9rem;
-  z-index: 1;
-  width: 3.35rem;
-  height: 3.35rem;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  border: 1px solid rgba(var(--step-rgb),0.4);
-  background:
-    radial-gradient(circle at 30% 28%, rgba(255,255,255,0.18), transparent 36%),
-    linear-gradient(145deg, rgba(0,0,0,0.86), rgba(0,0,0,0.5));
-  box-shadow: 0 0 0 1px rgba(255,255,255,0.03) inset, 0 0 20px var(--step-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  margin-top: 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(var(--step-rgb), 0.55);
+  background: linear-gradient(135deg, rgba(var(--step-rgb), 0.28), rgba(var(--step-rgb), 0.78));
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.04) inset, 0 0 24px var(--step-glow);
   color: var(--cream);
-  font-weight: 950;
-  letter-spacing: 0.24em;
-  font-size: 0.7rem;
-  text-indent: 0.22em;
+  font-weight: bold;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
 }
-.step-card-dial {
-  --step-rgb: 19, 151, 212;
-  --step-glow: rgba(19, 151, 212, 0.32);
-  transform: translateY(0);
+.step-card-fly .step-indicator {
+  background: linear-gradient(135deg, rgba(19,151,212,0.82), rgba(125,43,255,0.82));
+  border-color: rgba(240,213,139,0.5);
 }
-.step-card-read {
-  --step-rgb: 125, 43, 255;
-  --step-glow: rgba(125, 43, 255, 0.3);
-  transform: translateY(2rem);
-}
-.step-card-commit {
-  --step-rgb: 240, 213, 139;
-  --step-glow: rgba(240, 213, 139, 0.32);
-  transform: translateY(-2rem);
-}
-.step-card-fly {
-  --step-rgb: 147, 110, 255;
-  --step-glow: rgba(147, 110, 255, 0.32);
-  transform: translateY(3rem);
-}
-.step-card-dial .step-badge { box-shadow: 0 0 0 1px rgba(19,151,212,0.08) inset, 0 0 18px rgba(19,151,212,0.12); }
-.step-card-read .step-badge { box-shadow: 0 0 0 1px rgba(125,43,255,0.08) inset, 0 0 18px rgba(125,43,255,0.12); }
-.step-card-commit .step-badge { box-shadow: 0 0 0 1px rgba(240,213,139,0.08) inset, 0 0 18px rgba(240,213,139,0.12); }
-.step-card-fly {
-  background:
-    linear-gradient(145deg, rgba(19,151,212,0.12), rgba(125,43,255,0.12)),
-    radial-gradient(circle at 86% 16%, rgba(240,213,139,0.08), transparent 22%),
-    linear-gradient(145deg, rgba(0,0,0,0.72), rgba(0,0,0,0.4));
-  border-color: rgba(240,213,139,0.18);
-}
-.step-card-fly .step-badge {
-  box-shadow: 0 0 0 1px rgba(147,110,255,0.1) inset, 0 0 18px rgba(147,110,255,0.14);
+.step-card:nth-child(odd) .step-indicator { align-self: flex-start; }
+.step-card:nth-child(even) .step-indicator { align-self: flex-end; }
+.step-card h3,
+.step-card p,
+.step-badge {
+  position: relative;
+  z-index: 1;
 }
 
 .split-grid { display: grid; grid-template-columns: 0.92fr 1.08fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
@@ -1054,51 +1043,10 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   .media-frame:hover img,
   .tribute-image:hover img,
   .mission-card:hover img { transform: none; }
-  .dom-code.is-visible .code-timeline::before { animation: none; transform: none; }
+  .dom-code.is-visible .steps-grid::before { animation: none; transform: translateY(-50%) scaleX(1); }
 }
 
 @media (max-width: 1060px) {
-  .code-timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .code-timeline::before {
-    left: 1.4rem;
-    right: auto;
-    top: 1.35rem;
-    bottom: 1.35rem;
-    width: 1px;
-    height: auto;
-    transform: scaleY(0);
-    transform-origin: top;
-  }
-  .dom-code.is-visible .code-timeline::before { animation: codeTimelineDrawVertical 920ms ease forwards; }
-  .code-step {
-    min-height: auto;
-    grid-template-rows: auto;
-    grid-template-columns: 2.2rem minmax(0, 1fr);
-    gap: 0;
-    padding: 0.15rem 0;
-  }
-  .code-step:nth-child(odd) .code-card,
-  .code-step:nth-child(even) .code-card {
-    grid-row: 1;
-    grid-column: 2;
-    align-self: start;
-    transform: none;
-  }
-  .code-node {
-    grid-row: 1;
-    grid-column: 1;
-    width: 3.6rem;
-    height: 3.6rem;
-    justify-self: center;
-    align-self: start;
-    margin-top: 0.45rem;
-  }
-  .code-node::before { inset: 0.16rem; }
-  .code-node::after { inset: 0.72rem; }
-  .code-icon { top: 0.5rem; width: 0.95rem; height: 0.95rem; }
-  .code-number { font-size: 0.62rem; }
-  .code-step:nth-child(odd) .code-card { margin-left: 0.1rem; }
-  .code-step:nth-child(even) .code-card { margin-left: 0.45rem; }
   .mission-grid { grid-template-columns: 1fr; }
   .mission-card { min-height: 360px; }
 }
@@ -1171,13 +1119,14 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   .steps-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
+    padding-left: 2.15rem;
   }
   .steps-grid::before {
-    left: 1.1rem;
+    left: 1.18rem;
     right: auto;
-    top: 1.2rem;
-    bottom: 1.2rem;
-    width: 2px;
+    top: 0.9rem;
+    bottom: 0.9rem;
+    width: 1px;
     height: auto;
     transform: scaleY(0);
     transform-origin: top;
@@ -1185,62 +1134,24 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   .dom-code.is-visible .steps-grid::before { animation: codeTimelineDrawVertical 920ms ease forwards; }
   .step-card {
     min-height: auto;
-    padding-bottom: 2.8rem;
+    padding: 1.15rem 1.05rem 1.15rem 2.85rem;
+    border-radius: 24px;
     transform: none;
-  }
-  .step-card-read,
-  .step-card-fly {
-    margin-top: 1.1rem;
   }
   .step-indicator {
-    width: 2.95rem;
-    height: 2.95rem;
-    right: 0.85rem;
-    bottom: 0.75rem;
+    position: absolute;
+    left: -1.05rem;
+    top: 1.15rem;
+    width: 3rem;
+    height: 3rem;
+    margin-top: 0;
     font-size: 0.62rem;
   }
-  .code-timeline {
-    grid-template-columns: 1fr;
-    gap: 0.74rem;
-  }
-  .code-timeline::before {
-    left: 1.15rem;
-    right: auto;
-    top: 1.2rem;
-    bottom: 1.2rem;
-    width: 1px;
-    height: auto;
-    transform: scaleY(0);
-    transform-origin: top;
-  }
-  .dom-code.is-visible .code-timeline::before { animation: codeTimelineDrawVertical 920ms ease forwards; }
-  .code-step {
-    min-height: auto;
-    grid-template-rows: auto;
-    grid-template-columns: 1.8rem minmax(0, 1fr);
-    gap: 0;
-    padding: 0.08rem 0;
-  }
-  .code-step:nth-child(odd) .code-card,
-  .code-step:nth-child(even) .code-card {
-    grid-row: 1;
-    grid-column: 2;
-    align-self: start;
-    transform: none;
-  }
-  .code-node {
-    grid-row: 1;
-    grid-column: 1;
-    width: 3.15rem;
-    height: 3.15rem;
-    margin-top: 0.18rem;
-  }
-  .code-node::before { inset: 0.12rem; }
-  .code-node::after { inset: 0.54rem; }
-  .code-icon { top: 0.38rem; width: 0.82rem; height: 0.82rem; }
-  .code-number { font-size: 0.55rem; }
-  .code-step:nth-child(odd) .code-card { margin-left: 0.12rem; }
-  .code-step:nth-child(even) .code-card { margin-left: 0.5rem; }
+  .step-card:nth-child(odd) { transform: none; }
+  .step-card:nth-child(even) { transform: none; }
+  .step-card:nth-child(even) { margin-left: 0.4rem; }
+  .step-card:nth-child(odd) .step-indicator,
+  .step-card:nth-child(even) .step-indicator { align-self: auto; }
   .split-grid, .split-grid.reverse, .tribute-card, .tribute-grid, .booking-grid { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .gallery-large,
@@ -1299,54 +1210,28 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   .steps-grid {
     grid-template-columns: 1fr;
     gap: 0.9rem;
+    padding-left: 2rem;
   }
   .steps-grid::before {
-    left: 1rem;
-    top: 1rem;
-    bottom: 1rem;
+    left: 1.08rem;
+    top: 0.9rem;
+    bottom: 0.9rem;
   }
   .step-card {
     min-height: auto;
-    padding: 1.15rem 1.05rem 2.55rem;
-    border-radius: 24px;
+    padding: 1.05rem 0.95rem 1.05rem 2.65rem;
+    border-radius: 22px;
   }
   .step-indicator {
-    width: 2.75rem;
-    height: 2.75rem;
-    right: 0.78rem;
-    bottom: 0.7rem;
+    width: 2.7rem;
+    height: 2.7rem;
+    left: -0.95rem;
+    top: 1.02rem;
     font-size: 0.58rem;
   }
   .step-badge { font-size: 0.64rem; letter-spacing: 0.2em; }
   .step-card h3 { font-size: 1rem; }
   .step-card p { font-size: 0.92rem; max-width: none; }
-  .code-timeline {
-    gap: 0.68rem;
-  }
-  .code-timeline::before {
-    left: 1.06rem;
-    top: 0.98rem;
-    bottom: 0.98rem;
-  }
-  .code-step {
-    grid-template-columns: 1.8rem minmax(0, 1fr);
-  }
-  .code-node {
-    width: 3.05rem;
-    height: 3.05rem;
-    margin-top: 0.16rem;
-  }
-  .code-node::before { inset: 0.12rem; }
-  .code-node::after { inset: 0.52rem; }
-  .code-icon { top: 0.36rem; width: 0.78rem; height: 0.78rem; }
-  .code-number { font-size: 0.54rem; }
-  .code-card {
-    padding: 0.94rem 0.88rem 0.88rem;
-    border-radius: 20px;
-  }
-  .code-kicker { font-size: 0.6rem; letter-spacing: 0.22em; }
-  .code-card h3 { font-size: 0.98rem; }
-  .code-card p { font-size: 0.92rem; }
   .soundtrack-panel { padding: 0.85rem 0.8rem; }
   .soundtrack-microline { letter-spacing: 0.12em; }
   .gallery-item { min-height: 300px; }
@@ -1394,50 +1279,27 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   }
   .steps-grid {
     gap: 0.8rem;
+    padding-left: 1.85rem;
   }
   .steps-grid::before {
-    left: 0.92rem;
-    top: 0.92rem;
-    bottom: 0.92rem;
+    left: 1rem;
+    top: 0.82rem;
+    bottom: 0.82rem;
   }
   .step-card {
-    padding: 1rem 0.95rem 2.35rem;
-    border-radius: 22px;
+    padding: 0.95rem 0.9rem 0.95rem 2.45rem;
+    border-radius: 20px;
   }
   .step-indicator {
-    width: 2.55rem;
-    height: 2.55rem;
-    right: 0.7rem;
-    bottom: 0.66rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    left: -0.88rem;
+    top: 0.95rem;
     font-size: 0.54rem;
   }
   .step-badge { font-size: 0.6rem; }
   .step-card h3 { font-size: 0.96rem; }
   .step-card p { font-size: 0.88rem; }
-  .code-timeline {
-    gap: 0.55rem;
-  }
-  .code-timeline::before {
-    left: 0.96rem;
-    top: 0.9rem;
-    bottom: 0.9rem;
-  }
-  .code-step {
-    grid-template-columns: 1.6rem minmax(0, 1fr);
-  }
-  .code-node {
-    width: 2.86rem;
-    height: 2.86rem;
-  }
-  .code-node::before { inset: 0.1rem; }
-  .code-node::after { inset: 0.46rem; }
-  .code-icon { top: 0.32rem; width: 0.72rem; height: 0.72rem; }
-  .code-number { font-size: 0.5rem; }
-  .code-card {
-    padding: 0.88rem 0.84rem 0.82rem;
-  }
-  .code-card h3 { font-size: 0.94rem; }
-  .code-card p { font-size: 0.89rem; }
   .nav-cta {
     padding-inline: 0.88rem;
   }
