@@ -1,6 +1,6 @@
 // Add Dom's real contact details here before publishing.
 const DOM_CONTACT = {
-  email: "",
+  email: "kayamc418@gmail.com",
   phone: "",
   instagram: ""
 };
@@ -46,6 +46,7 @@ if (DOM_CONTACT.instagram) {
 
 const navToggle = document.querySelector(".nav-toggle");
 const navMenu = document.querySelector(".nav-menu");
+const siteHeader = document.querySelector(".site-header");
 
 if (navToggle && navMenu) {
   navToggle.addEventListener("click", () => {
@@ -60,6 +61,14 @@ if (navToggle && navMenu) {
     });
   });
 }
+
+function updateHeaderState() {
+  if (!siteHeader) return;
+  siteHeader.classList.toggle("is-scrolled", window.scrollY > 18);
+}
+
+updateHeaderState();
+window.addEventListener("scroll", updateHeaderState, { passive: true });
 
 const revealItems = document.querySelectorAll(".reveal");
 if ("IntersectionObserver" in window) {
@@ -98,8 +107,11 @@ function setSoundtrackUi(isPlaying) {
   document.body.classList.toggle("soundtrack-playing", isPlaying);
   if (soundtrackToggle) soundtrackToggle.setAttribute("aria-pressed", String(isPlaying));
   if (soundtrackLabel) soundtrackLabel.textContent = isPlaying ? "Pause" : "Play";
+  if (soundtrackToggle) soundtrackToggle.setAttribute("aria-label", isPlaying ? "Pause ride soundtrack" : "Play ride soundtrack");
   if (soundtrackIcon) soundtrackIcon.textContent = isPlaying ? "||" : ">";
 }
+
+setSoundtrackUi(false);
 
 function playSynthHit(time, frequency, duration, type, gainValue) {
   const oscillator = soundtrackContext.createOscillator();
@@ -172,15 +184,6 @@ soundtrackToggle?.addEventListener("click", async () => {
     return;
   }
 
-  try {
-    await startSoundtrack();
-  } catch (error) {
-    setSoundtrackUi(false);
-  }
-});
-
-// Try to start gently, but browsers usually require a click before sound can play.
-window.addEventListener("load", async () => {
   try {
     await startSoundtrack();
   } catch (error) {
