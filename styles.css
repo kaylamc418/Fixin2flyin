@@ -500,7 +500,28 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
 .quick-stats span { padding: 0.66rem 0.88rem; border: 1px solid rgba(255,255,255,0.12); border-radius: 999px; background: rgba(0,0,0,0.48); }
 .quick-stats strong { color: var(--gold-soft); }
 
-.hero-ticker { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; min-height: 46px; display: flex; align-items: center; overflow: hidden; border-top: 1px solid var(--line); border-bottom: 1px solid rgba(240,213,139,0.12); background: rgba(0,0,0,0.72); color: var(--cream); text-transform: uppercase; letter-spacing: 0.22em; font-size: 0.75rem; font-weight: 900; padding: 0 1rem; }
+.marquee-container,
+.hero-ticker {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid rgba(240,213,139,0.12);
+  background: #000;
+  color: var(--cream);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.75rem;
+  font-weight: 900;
+  padding-inline: 1rem;
+}
 .ticker-track { display: inline-flex; align-items: center; gap: 2rem; animation: marquee 14s linear infinite; will-change: transform; white-space: nowrap; }
 .ticker-track { animation-duration: 24s; }
 .ticker-sep { color: var(--gold-soft); opacity: 0.6; }
@@ -530,6 +551,12 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   line-height: 1.2;
   margin-bottom: 16px;
   text-transform: uppercase;
+}
+#dom-code {
+  position: relative;
+  padding-top: 100px;
+  padding-bottom: 80px;
+  overflow: visible;
 }
 .dom-code::before,
 .dom-code::after {
@@ -563,149 +590,77 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
 .code-accent-gold { color: var(--gold-soft); }
 .steps-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
-  margin-top: 2.25rem;
+  margin-top: 1.5rem;
 }
-.steps-grid::before {
-  content: "";
-  position: absolute;
-  left: 1rem;
-  right: 1rem;
-  top: 50%;
-  height: 1px;
-  transform: translateY(-50%) scaleX(0);
-  transform-origin: left;
-  background: linear-gradient(90deg, transparent, rgba(19,151,212,0.96), rgba(240,213,139,0.96), rgba(125,43,255,0.96), transparent);
-  box-shadow: 0 0 26px rgba(19,151,212,0.18), 0 0 22px rgba(125,43,255,0.18);
-  pointer-events: none;
-}
-.dom-code.is-visible .steps-grid::before {
-  animation: codeTimelineDraw 920ms ease forwards;
-}
-@keyframes codeTimelineDraw {
-  from { transform: translateY(-50%) scaleX(0); }
-  to { transform: translateY(-50%) scaleX(1); }
-}
-@keyframes codeTimelineDrawVertical {
-  from { transform: translateY(-50%) scaleY(0); }
-  to { transform: translateY(-50%) scaleY(1); }
-}
-.step-card {
-  position: relative;
-  overflow: hidden;
+.dom-code-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 32px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: 320px;
-  padding: 32px;
-  --step-rgb: 240,213,139;
-  --step-glow: rgba(240,213,139,0.30);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(12px);
+  gap: 0;
   box-shadow: 0 18px 54px rgba(0,0,0,0.24);
+  backdrop-filter: blur(12px);
   transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
 }
-.step-card:nth-child(odd) { transform: translateY(-14px); }
-.step-card:nth-child(even) { transform: translateY(14px); }
-.step-card-dial { --step-rgb: 19,151,212; --step-glow: rgba(19,151,212,0.34); }
-.step-card-read { --step-rgb: 125,43,255; --step-glow: rgba(125,43,255,0.34); }
-.step-card-commit { --step-rgb: 240,213,139; --step-glow: rgba(240,213,139,0.30); }
-.step-card-fly {
-  --step-rgb: 125,43,255;
-  --step-glow: rgba(125,43,255,0.34);
-  background:
-    linear-gradient(135deg, rgba(19,151,212,0.10), rgba(125,43,255,0.10)),
-    rgba(255, 255, 255, 0.03);
+.dom-code-card:nth-child(odd) { transform: translateY(-8px); }
+.dom-code-card:nth-child(even) { transform: translateY(8px); }
+.dom-code-card:hover,
+.dom-code-card:focus-within {
+  transform: translateY(-12px);
+  border-color: rgba(121,40,202,0.45);
+  box-shadow: 0 24px 72px rgba(0,0,0,0.34), 0 0 28px rgba(121,40,202,0.16);
 }
-.step-card::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(var(--step-rgb), 0.94), transparent);
-  opacity: 0.7;
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 20px;
 }
-.step-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(180deg, rgba(var(--step-rgb),0.16), transparent 28%),
-    radial-gradient(circle at 18% 16%, rgba(255,255,255,0.05), transparent 32%);
-  opacity: 0.78;
-}
-.step-card:hover,
-.step-card:focus-within {
-  transform: translateY(-4px);
-  border-color: rgba(var(--step-rgb),0.42);
-  box-shadow: 0 24px 72px rgba(0,0,0,0.34), 0 0 34px var(--step-glow);
-}
-.step-badge {
+.step-tag {
   display: inline-flex;
   align-items: center;
   width: fit-content;
-  margin-bottom: 1rem;
   padding: 0.56rem 0.82rem;
   border-radius: 999px;
-  border: 1px solid rgba(var(--step-rgb), 0.38);
+  border: 1px solid rgba(121,40,202,0.28);
   background: rgba(0,0,0,0.44);
   color: var(--cream);
   font-size: 0.72rem;
   font-weight: 900;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  position: relative;
-  z-index: 1;
 }
-.step-card h3 {
-  position: relative;
-  z-index: 1;
+.step-num-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.6rem;
+  height: 2.6rem;
+  padding: 0 0.8rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #7928ca, #b06cff);
+  color: var(--cream);
+  font-weight: 900;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.05) inset, 0 0 20px rgba(121,40,202,0.18);
+}
+.dom-code-card h3 {
   font-size: clamp(1.15rem, 2.2vw, 1.6rem);
   margin: 0 0 0.65rem;
 }
-.step-card p {
-  position: relative;
-  z-index: 1;
+.dom-code-card p {
   max-width: 32ch;
   color: rgba(255,248,234,0.8);
-}
-.step-indicator {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  margin-top: 1rem;
-  border-radius: 999px;
-  border: 1px solid rgba(var(--step-rgb), 0.55);
-  background: linear-gradient(135deg, rgba(var(--step-rgb), 0.28), rgba(var(--step-rgb), 0.78));
-  box-shadow: 0 0 0 1px rgba(255,255,255,0.04) inset, 0 0 24px var(--step-glow);
-  color: var(--cream);
-  font-weight: bold;
-  font-size: 0.9rem;
-  letter-spacing: 0.08em;
-}
-.step-card-fly .step-indicator {
-  background: linear-gradient(135deg, rgba(19,151,212,0.82), rgba(125,43,255,0.82));
-  border-color: rgba(240,213,139,0.5);
-}
-.step-card:nth-child(odd) .step-indicator { align-self: flex-start; }
-.step-card:nth-child(even) .step-indicator { align-self: flex-end; }
-.step-card h3,
-.step-card p,
-.step-badge {
-  position: relative;
-  z-index: 1;
 }
 
 .split-grid { display: grid; grid-template-columns: 0.92fr 1.08fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
@@ -1043,7 +998,6 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   .media-frame:hover img,
   .tribute-image:hover img,
   .mission-card:hover img { transform: none; }
-  .dom-code.is-visible .steps-grid::before { animation: none; transform: translateY(-50%) scaleX(1); }
 }
 
 @media (max-width: 1060px) {
@@ -1119,39 +1073,13 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   .steps-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
-    padding-left: 2.15rem;
   }
-  .steps-grid::before {
-    left: 1.18rem;
-    right: auto;
-    top: 0.9rem;
-    bottom: 0.9rem;
-    width: 1px;
-    height: auto;
-    transform: scaleY(0);
-    transform-origin: top;
+  .dom-code-card {
+    padding: 1.15rem 1.05rem;
   }
-  .dom-code.is-visible .steps-grid::before { animation: codeTimelineDrawVertical 920ms ease forwards; }
-  .step-card {
-    min-height: auto;
-    padding: 1.15rem 1.05rem 1.15rem 2.85rem;
-    border-radius: 24px;
-    transform: none;
+  .card-header {
+    margin-bottom: 16px;
   }
-  .step-indicator {
-    position: absolute;
-    left: -1.05rem;
-    top: 1.15rem;
-    width: 3rem;
-    height: 3rem;
-    margin-top: 0;
-    font-size: 0.62rem;
-  }
-  .step-card:nth-child(odd) { transform: none; }
-  .step-card:nth-child(even) { transform: none; }
-  .step-card:nth-child(even) { margin-left: 0.4rem; }
-  .step-card:nth-child(odd) .step-indicator,
-  .step-card:nth-child(even) .step-indicator { align-self: auto; }
   .split-grid, .split-grid.reverse, .tribute-card, .tribute-grid, .booking-grid { grid-template-columns: 1fr; }
   .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .gallery-large,
@@ -1210,28 +1138,17 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   .steps-grid {
     grid-template-columns: 1fr;
     gap: 0.9rem;
-    padding-left: 2rem;
   }
-  .steps-grid::before {
-    left: 1.08rem;
-    top: 0.9rem;
-    bottom: 0.9rem;
+  .dom-code-card {
+    padding: 1rem 0.95rem;
   }
-  .step-card {
-    min-height: auto;
-    padding: 1.05rem 0.95rem 1.05rem 2.65rem;
-    border-radius: 22px;
+  .card-header {
+    margin-bottom: 14px;
   }
-  .step-indicator {
-    width: 2.7rem;
-    height: 2.7rem;
-    left: -0.95rem;
-    top: 1.02rem;
-    font-size: 0.58rem;
-  }
-  .step-badge { font-size: 0.64rem; letter-spacing: 0.2em; }
-  .step-card h3 { font-size: 1rem; }
-  .step-card p { font-size: 0.92rem; max-width: none; }
+  .step-tag { font-size: 0.64rem; letter-spacing: 0.2em; }
+  .step-num-badge { min-width: 2.4rem; height: 2.4rem; font-size: 0.8rem; }
+  .dom-code-card h3 { font-size: 1rem; }
+  .dom-code-card p { font-size: 0.92rem; max-width: none; }
   .soundtrack-panel { padding: 0.85rem 0.8rem; }
   .soundtrack-microline { letter-spacing: 0.12em; }
   .gallery-item { min-height: 300px; }
@@ -1279,27 +1196,17 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   }
   .steps-grid {
     gap: 0.8rem;
-    padding-left: 1.85rem;
   }
-  .steps-grid::before {
-    left: 1rem;
-    top: 0.82rem;
-    bottom: 0.82rem;
+  .dom-code-card {
+    padding: 0.95rem 0.9rem;
   }
-  .step-card {
-    padding: 0.95rem 0.9rem 0.95rem 2.45rem;
-    border-radius: 20px;
+  .card-header {
+    margin-bottom: 12px;
   }
-  .step-indicator {
-    width: 2.5rem;
-    height: 2.5rem;
-    left: -0.88rem;
-    top: 0.95rem;
-    font-size: 0.54rem;
-  }
-  .step-badge { font-size: 0.6rem; }
-  .step-card h3 { font-size: 0.96rem; }
-  .step-card p { font-size: 0.88rem; }
+  .step-tag { font-size: 0.6rem; }
+  .step-num-badge { min-width: 2.25rem; height: 2.25rem; font-size: 0.75rem; }
+  .dom-code-card h3 { font-size: 0.96rem; }
+  .dom-code-card p { font-size: 0.88rem; }
   .nav-cta {
     padding-inline: 0.88rem;
   }
