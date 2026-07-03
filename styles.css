@@ -142,6 +142,16 @@ h3 { font-size: 1.3rem; letter-spacing: -0.02em; }
     0 0 24px rgba(212, 167, 76, 0.08),
     0 0 36px rgba(125, 43, 255, 0.10);
 }
+.brand-triangle {
+  width: 0;
+  height: 0;
+  flex: 0 0 auto;
+  border-left: 0.48rem solid transparent;
+  border-right: 0.48rem solid transparent;
+  border-bottom: 0.78rem solid rgba(212, 167, 76, 0.95);
+  filter: drop-shadow(0 0 10px rgba(212, 167, 76, 0.18));
+  opacity: 0.92;
+}
 .brand-logo-full {
   width: clamp(46px, 5vw, 62px);
   height: clamp(46px, 5vw, 62px);
@@ -204,6 +214,8 @@ h3 { font-size: 1.3rem; letter-spacing: -0.02em; }
   gap: 0.6rem;
 }
 .nav-cta {
+  position: relative;
+  overflow: hidden;
   padding: 0.62rem 1rem;
   border-radius: 999px;
   border: 1px solid rgba(240, 213, 139, 0.95);
@@ -213,6 +225,18 @@ h3 { font-size: 1.3rem; letter-spacing: -0.02em; }
   text-decoration: none;
   box-shadow: 0 0 0 1px rgba(19, 151, 212, 0.08) inset, 0 16px 34px rgba(212, 167, 76, 0.18);
 }
+.nav-cta::before {
+  content: "";
+  position: absolute;
+  inset: -30% -12%;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 239, 180, 0.72), rgba(255, 239, 180, 0.28) 32%, transparent 58%),
+    radial-gradient(circle at 50% 50%, rgba(19, 151, 212, 0.12), transparent 64%);
+  opacity: 0.55;
+  pointer-events: none;
+}
+.nav-cta > * { position: relative; z-index: 1; }
 .nav-toggle {
   display: none;
   align-items: center;
@@ -279,6 +303,13 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
 @keyframes soundtrackBars { 0%, 100% { transform: scaleY(0.55); } 45% { transform: scaleY(2.25); } }
 .soundtrack-copy h2 { font-size: clamp(0.9rem, 1.6vw, 1.22rem); line-height: 1.15; margin-top: 0.25rem; }
 .soundtrack-copy .fine-print { margin-top: 0.34rem; font-size: 0.8rem; max-width: 56ch; }
+.soundtrack-microline {
+  margin-top: 0.38rem;
+  color: rgba(240, 213, 139, 0.78);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
 .soundtrack-button {
   min-width: 76px;
   min-height: 38px;
@@ -974,6 +1005,7 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   .hero-line { font-size: clamp(2.55rem, 16vw, 4.5rem); }
   .hero-lede { font-size: 1rem; }
   .soundtrack-panel { padding: 0.85rem 0.8rem; }
+  .soundtrack-microline { letter-spacing: 0.12em; }
   .gallery-item { min-height: 300px; }
   .gallery-item img { min-height: 300px; }
   .form-grid { grid-template-columns: 1fr; }
