@@ -343,6 +343,7 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   z-index: 2;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(20rem, 0.82fr) minmax(0, 1fr);
+  grid-template-rows: auto auto;
   align-items: start;
   gap: clamp(1rem, 2vw, 2rem);
   min-height: clamp(590px, 72vh, 860px);
@@ -354,27 +355,31 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   min-width: 0;
 }
 .hero-column-left {
-  grid-area: left;
+  grid-column: 1;
+  grid-row: 1;
   justify-self: start;
   align-self: start;
   padding-top: clamp(0.35rem, 0.9vw, 0.9rem);
   max-width: min(34rem, 94%);
 }
 .hero-column-right {
-  grid-area: right;
+  grid-column: 3;
+  grid-row: 1;
   justify-self: end;
   align-self: start;
   padding-top: clamp(0.35rem, 0.9vw, 0.9rem);
   max-width: min(27rem, 88%);
 }
 .hero-center {
-  grid-area: center;
+  grid-column: 1 / -1;
+  grid-row: 2;
   display: grid;
   justify-items: center;
-  align-content: center;
-  align-self: center;
+  align-content: start;
+  align-self: start;
   gap: 1.15rem;
-  min-height: clamp(18rem, 34vw, 34rem);
+  min-height: 0;
+  margin-top: clamp(1rem, 2.2vw, 2.1rem);
   text-align: center;
 }
 .hero-headline {
@@ -394,7 +399,7 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   display: grid;
   gap: 0.04em;
   margin: 0;
-  text-align: left;
+  text-align: right;
   max-width: none;
   margin-inline: 0;
 }
@@ -900,10 +905,7 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   .hero { min-height: auto; padding-top: 5.4rem; }
   .hero-layout {
     grid-template-columns: 1fr;
-    grid-template-areas:
-      "left"
-      "right"
-      "center";
+    grid-template-rows: auto auto auto;
     min-height: auto;
     padding: 1rem 0.75rem 5rem;
   }
@@ -911,6 +913,16 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   .hero-column-right {
     max-width: 42rem;
     justify-self: start;
+    grid-column: 1;
+  }
+  .hero-column-left { grid-row: 1; }
+  .hero-column-right { grid-row: 2; }
+  .hero-center {
+    grid-column: 1;
+    grid-row: 3;
+    margin-top: 0.75rem;
+    justify-items: start;
+    text-align: left;
   }
   .hero-headline-right { text-align: left; margin-top: 0.5rem; }
   .hero-line { font-size: clamp(2.8rem, 14vw, 6rem); }
@@ -955,11 +967,7 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   .hero-column-right {
     max-width: none;
   }
-  .hero-center {
-    min-height: auto;
-    justify-items: start;
-    text-align: left;
-  }
+  .hero-center { min-height: auto; justify-items: start; text-align: left; }
   .hero-buttons {
     justify-content: flex-start;
   }
