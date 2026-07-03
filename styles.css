@@ -377,8 +377,8 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   grid-template-rows: auto auto;
   align-items: start;
   gap: clamp(1rem, 2vw, 2rem);
-  min-height: clamp(590px, 72vh, 860px);
-  padding: clamp(1rem, 2.3vw, 2.2rem) 1.25rem 0;
+  min-height: clamp(760px, 92vh, 1060px);
+  padding: clamp(1rem, 2.3vw, 2.2rem) 1.25rem 2.5rem;
 }
 .hero-column {
   position: relative;
@@ -410,7 +410,7 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   align-self: start;
   gap: 1.15rem;
   min-height: 0;
-  margin-top: clamp(3rem, 6vw, 5.5rem);
+  margin-top: clamp(9rem, 16vw, 13rem);
   text-align: center;
 }
 .hero-headline {
