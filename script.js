@@ -72,7 +72,7 @@ servicePresetButtons.forEach((button) => {
   });
 });
 
-const revealItems = document.querySelectorAll(".reveal");
+const revealItems = document.querySelectorAll(".reveal, .dom-code");
 if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
