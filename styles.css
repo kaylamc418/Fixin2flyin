@@ -347,7 +347,7 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   align-items: start;
   gap: clamp(1rem, 2vw, 2rem);
   min-height: clamp(590px, 72vh, 860px);
-  padding: 0 1.25rem;
+  padding: clamp(1rem, 2.3vw, 2.2rem) 1.25rem 0;
 }
 .hero-column {
   position: relative;
@@ -359,7 +359,7 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   grid-row: 1;
   justify-self: start;
   align-self: start;
-  padding-top: clamp(0.35rem, 0.9vw, 0.9rem);
+  padding-top: clamp(0.9rem, 1.8vw, 1.75rem);
   max-width: min(34rem, 94%);
 }
 .hero-column-right {
@@ -367,7 +367,7 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   grid-row: 1;
   justify-self: end;
   align-self: start;
-  padding-top: clamp(0.35rem, 0.9vw, 0.9rem);
+  padding-top: clamp(0.9rem, 1.8vw, 1.75rem);
   max-width: min(27rem, 88%);
 }
 .hero-center {
@@ -391,7 +391,7 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
 .hero-headline-left {
   display: grid;
   gap: 0.04em;
-  margin: 0.1rem 0 0.5rem;
+  margin: 0;
   max-width: none;
   margin-inline: 0;
 }
@@ -907,7 +907,7 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto;
     min-height: auto;
-    padding: 1rem 0.75rem 5rem;
+    padding: 1.15rem 0.75rem 5rem;
   }
   .hero-column-left,
   .hero-column-right {
