@@ -1,6 +1,6 @@
 // Add Dom's real contact details here before publishing.
 const DOM_CONTACT = {
-  email: "kayamc418@gmail.com",
+  email: "fixin2flyin@dom.com",
   phone: "",
   instagram: ""
 };
@@ -8,8 +8,7 @@ const LUMI_INSTAGRAM_URL = "";
 
 const statusEl = document.getElementById("contact-status");
 const emailLink = document.getElementById("email-link");
-const phoneLink = document.getElementById("phone-link");
-const instagramLink = document.getElementById("instagram-link");
+const domInstagramLink = document.getElementById("dom-instagram-link");
 const lumiInstagramLink = document.getElementById("lumi-instagram-link");
 const lumiFooterLink = document.getElementById("lumi-footer-link");
 const bookingForm = document.getElementById("booking-form");
@@ -17,36 +16,10 @@ const bookingSubmit = document.getElementById("booking-submit");
 const bookingService = document.getElementById("field-service");
 const servicePresetButtons = document.querySelectorAll("[data-service-preset]");
 
-function disableLink(link, label) {
-  if (!link) return;
-  link.href = "#contact";
-  link.setAttribute("aria-disabled", "true");
-  link.textContent = label;
-}
-
 if (emailLink && DOM_CONTACT.email) {
   const subject = encodeURIComponent("Fixin 2 Flyin booking request");
   const body = encodeURIComponent("Hi Dom,\n\nI'm interested in:\n\nBike type:\nIssue / coaching goal:\nPreferred day/time:\nLocation:\n\nThanks,");
   emailLink.href = `mailto:${DOM_CONTACT.email}?subject=${subject}&body=${body}`;
-} else if (emailLink) {
-  disableLink(emailLink, "Email coming soon");
-}
-
-if (phoneLink && DOM_CONTACT.phone) {
-  const cleanPhone = DOM_CONTACT.phone.replace(/[^+\d]/g, "");
-  phoneLink.href = `tel:${cleanPhone}`;
-  phoneLink.textContent = DOM_CONTACT.phone;
-} else if (phoneLink) {
-  disableLink(phoneLink, "Phone coming soon");
-}
-
-if (instagramLink && DOM_CONTACT.instagram) {
-  instagramLink.href = DOM_CONTACT.instagram;
-  instagramLink.target = "_blank";
-  instagramLink.rel = "noopener noreferrer";
-  instagramLink.textContent = "Open Instagram";
-} else if (instagramLink) {
-  disableLink(instagramLink, "Instagram coming soon");
 }
 
 function syncLumiLink(link) {
@@ -61,6 +34,7 @@ function syncLumiLink(link) {
   }
 }
 
+syncLumiLink(domInstagramLink);
 syncLumiLink(lumiInstagramLink);
 syncLumiLink(lumiFooterLink);
 

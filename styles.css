@@ -804,14 +804,25 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
 .footer-nav-cols nav a:hover { color: var(--gold-soft); }
 .footer-contact h4 { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.3em; color: var(--gold-soft); margin: 0 0 1rem; font-weight: 900; }
 .contact-methods { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.7rem; }
-.contact-methods li { display: flex; align-items: center; gap: 0.7rem; color: rgba(255,248,234,0.72); font-size: 0.9rem; }
+.contact-methods li { display: flex; align-items: center; gap: 0.7rem; color: rgba(255,248,234,0.72); font-size: 0.9rem; overflow-wrap: anywhere; }
 .contact-methods .contact-icon { font-size: 1rem; opacity: 0.8; }
 .contact-methods a { color: inherit; transition: color 180ms ease; }
 .contact-methods a:hover { color: var(--gold-soft); }
+.footer-social-label {
+  margin-top: 1.2rem;
+  color: var(--gold-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.72rem;
+  font-weight: 900;
+}
 .footer-social { margin-top: 1rem; }
 .footer-instagram-link { padding: 0.74rem 0.94rem; }
 .footer-bottom { border-top: 1px solid rgba(240,213,139,0.12); padding: 1.5rem 0; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.footer-bottom-copy { display: grid; gap: 0.35rem; }
 .copyright { color: rgba(255,248,234,0.5); font-size: 0.82rem; margin: 0; }
+.footer-hashtag { color: rgba(255,248,234,0.52); font-size: 0.78rem; margin: 0; letter-spacing: 0.12em; }
+.footer-closing { margin: 0; color: var(--gold-soft); font-weight: 900; letter-spacing: 0.08em; text-transform: uppercase; text-align: right; }
 .scroll-top { display: inline-flex; align-items: center; gap: 0.15rem; color: var(--gold-soft); opacity: 0.6; font-size: 0.9rem; line-height: 1; }
 
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity 560ms ease, transform 560ms ease; }
@@ -932,6 +943,8 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   .field-wide { grid-column: auto; }
   .service-preset-row { flex-direction: column; }
   .service-preset-row .button { width: 100%; }
+  .footer-instagram-link { width: 100%; justify-content: center; }
+  .footer-closing { text-align: left; width: 100%; }
 }
 
 :focus-visible { outline: 3px solid var(--gold-soft); outline-offset: 3px; }
