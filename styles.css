@@ -678,14 +678,64 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
 .service-list { margin-top: 2rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.9rem; }
 .service-list article p { margin-top: 0.45rem; font-size: 0.95rem; }
 
-.ride-path { position: relative; background: radial-gradient(circle at 50% 20%, rgba(125,43,255,0.14), transparent 30rem); }
-.mission-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-.mission-card { min-height: 420px; position: relative; overflow: hidden; border-radius: 28px; border: 1px solid var(--line); box-shadow: var(--shadow); display: grid; align-content: end; }
-.mission-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 900ms ease; }
-.mission-card::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.34) 35%, rgba(0,0,0,0.92) 100%), radial-gradient(circle at 50% 30%, rgba(125,43,255,0.16), transparent 18rem); }
-.mission-card div { position: relative; z-index: 2; padding: 1.25rem; }
-.mission-card:hover img { transform: scale(1.06); }
-.mission-card .eyebrow { margin-bottom: 0.6rem; }
+.missions-section { position: relative; background: radial-gradient(circle at 50% 20%, rgba(125,43,255,0.14), transparent 30rem); }
+.missions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 3rem auto 0;
+}
+.mission-card {
+  position: relative;
+  min-height: 420px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  background-size: cover;
+  background-position: center;
+}
+.card-bg-tire { background-image: url("assets/tire-closeup.jpg"); }
+.card-bg-trail { background-image: url("assets/trail-action.jpg"); }
+.card-bg-jump { background-image: url("assets/air-jump.jpg"); }
+.mission-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.1) 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 32px;
+  transition: background 0.3s ease;
+}
+.mission-card:hover .mission-overlay,
+.mission-card:focus-within .mission-overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.98) 30%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0.2) 100%);
+}
+.mission-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.mission-badge {
+  color: var(--blue);
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.mission-card h3 {
+  color: #fff;
+  font-size: 1.6rem;
+  margin: 0;
+}
+.mission-card p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
 
 .tribute { background: radial-gradient(circle at 70% 25%, rgba(212,167,76,0.14), transparent 28rem), linear-gradient(180deg, transparent, rgba(0,0,0,0.34), transparent); }
 .tribute-card { display: grid; grid-template-columns: 0.86fr 1.14fr; align-items: center; gap: clamp(1.5rem, 4vw, 4rem); padding: clamp(1rem, 3vw, 2rem); border: 1px solid rgba(240,213,139,0.34); border-radius: var(--radius-lg); background: radial-gradient(circle at 10% 10%, rgba(212,167,76,0.16), transparent 20rem), linear-gradient(145deg, rgba(255,255,255,0.08), rgba(0,0,0,0.52)); box-shadow: var(--shadow); }
@@ -987,7 +1037,7 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
-  .button, .media-frame img, .tribute-image img, .gallery-item img, .gallery-grid img, .mission-card img { transition: none; }
+  .button, .media-frame img, .tribute-image img, .gallery-item img, .gallery-grid img { transition: none; }
   .hero-bg, .hero-line-gold, .hero-line-fly { animation: none; }
   .hero-bg { transform: translateY(-2%) scale(1.03); }
   .ticker-track { animation: none; }
@@ -996,12 +1046,11 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   .final-banner-panel::before, .final-banner-panel::after { animation: none; }
   .gallery-item:hover img,
   .media-frame:hover img,
-  .tribute-image:hover img,
-  .mission-card:hover img { transform: none; }
+  .tribute-image:hover img { transform: none; }
 }
 
 @media (max-width: 1060px) {
-  .mission-grid { grid-template-columns: 1fr; }
+  .missions-grid { grid-template-columns: 1fr; }
   .mission-card { min-height: 360px; }
 }
 @media (max-width: 920px) {
