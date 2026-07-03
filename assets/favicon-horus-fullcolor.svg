@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-label="Fixin 2 Flyin favicon">
+  <circle cx="90" cy="90" r="82" fill="#070910" />
+  <path d="M28 90C43 66 64 54 90 54C116 54 137 66 152 90C137 114 116 126 90 126C64 126 43 114 28 90Z" fill="none" stroke="#d6b15a" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M54 111C43 114 33 121 24 133" fill="none" stroke="#d6b15a" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M24 133L24 147" fill="none" stroke="#d6b15a" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="90" cy="90" r="19" fill="none" stroke="#68dff8" stroke-width="7"/>
+  <circle cx="90" cy="90" r="5.5" fill="#68dff8"/>
+  <path d="M90 71L90 79M106 79L101 85M106 101L101 95M90 109L90 101M74 101L79 95M74 79L79 85" fill="none" stroke="#68dff8" stroke-width="3" stroke-linecap="round"/>
+  <path d="M112 66L124 58" fill="none" stroke="#8f67ff" stroke-width="5" stroke-linecap="round"/>
+</svg>

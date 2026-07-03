@@ -13,6 +13,12 @@ Current site references:
 - tire-closeup.jpg
 - lumi-stick.jpg
 - dom-mama.jpg
+- favicon-horus-fullcolor.svg
+- favicon-horus-transparent.svg
+- favicon-horus-gold.svg
+- favicon-horus-white.svg
+- favicon-horus-16.svg
+- apple-touch-icon.png
 
 All files included:
 - 19555F85-891D-47B6-92AF-B78D0A3C0B81.jpeg
