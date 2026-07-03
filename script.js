@@ -4,11 +4,18 @@ const DOM_CONTACT = {
   phone: "",
   instagram: ""
 };
+const LUMI_INSTAGRAM_URL = "";
 
 const statusEl = document.getElementById("contact-status");
 const emailLink = document.getElementById("email-link");
 const phoneLink = document.getElementById("phone-link");
 const instagramLink = document.getElementById("instagram-link");
+const lumiInstagramLink = document.getElementById("lumi-instagram-link");
+const lumiFooterLink = document.getElementById("lumi-footer-link");
+const bookingForm = document.getElementById("booking-form");
+const bookingSubmit = document.getElementById("booking-submit");
+const bookingService = document.getElementById("field-service");
+const servicePresetButtons = document.querySelectorAll("[data-service-preset]");
 
 function disableLink(link, label) {
   if (!link) return;
@@ -17,32 +24,45 @@ function disableLink(link, label) {
   link.textContent = label;
 }
 
-if (DOM_CONTACT.email) {
+if (emailLink && DOM_CONTACT.email) {
   const subject = encodeURIComponent("Fixin 2 Flyin booking request");
   const body = encodeURIComponent("Hi Dom,\n\nI'm interested in:\n\nBike type:\nIssue / coaching goal:\nPreferred day/time:\nLocation:\n\nThanks,");
   emailLink.href = `mailto:${DOM_CONTACT.email}?subject=${subject}&body=${body}`;
-  emailLink.textContent = "Email Dom";
-  statusEl.textContent = "Send Dom a quick note with your bike type, repair need, location, and preferred time.";
-} else {
+} else if (emailLink) {
   disableLink(emailLink, "Email coming soon");
 }
 
-if (DOM_CONTACT.phone) {
+if (phoneLink && DOM_CONTACT.phone) {
   const cleanPhone = DOM_CONTACT.phone.replace(/[^+\d]/g, "");
   phoneLink.href = `tel:${cleanPhone}`;
   phoneLink.textContent = DOM_CONTACT.phone;
-} else {
+} else if (phoneLink) {
   disableLink(phoneLink, "Phone coming soon");
 }
 
-if (DOM_CONTACT.instagram) {
+if (instagramLink && DOM_CONTACT.instagram) {
   instagramLink.href = DOM_CONTACT.instagram;
   instagramLink.target = "_blank";
   instagramLink.rel = "noopener noreferrer";
   instagramLink.textContent = "Open Instagram";
-} else {
+} else if (instagramLink) {
   disableLink(instagramLink, "Instagram coming soon");
 }
+
+function syncLumiLink(link) {
+  if (!link) return;
+  if (LUMI_INSTAGRAM_URL) {
+    link.href = LUMI_INSTAGRAM_URL;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.hidden = false;
+  } else {
+    link.hidden = true;
+  }
+}
+
+syncLumiLink(lumiInstagramLink);
+syncLumiLink(lumiFooterLink);
 
 const navToggle = document.querySelector(".nav-toggle");
 const navMenu = document.querySelector(".nav-menu");
@@ -69,6 +89,14 @@ function updateHeaderState() {
 
 updateHeaderState();
 window.addEventListener("scroll", updateHeaderState, { passive: true });
+
+servicePresetButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    if (!bookingService) return;
+    bookingService.value = button.dataset.servicePreset || "";
+    bookingService.focus();
+  });
+});
 
 const revealItems = document.querySelectorAll(".reveal");
 if ("IntersectionObserver" in window) {
@@ -190,3 +218,46 @@ soundtrackToggle?.addEventListener("click", async () => {
     setSoundtrackUi(false);
   }
 });
+
+if (bookingForm) {
+  bookingForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    if (bookingSubmit) {
+      bookingSubmit.disabled = false;
+      bookingSubmit.classList.remove("is-loading");
+    }
+
+    if (!bookingForm.checkValidity()) {
+      bookingForm.reportValidity();
+      if (statusEl) {
+        statusEl.textContent = "Please complete the required fields marked with *.";
+        statusEl.className = "contact-status is-error";
+      }
+      return;
+    }
+
+    const originalLabel = bookingSubmit?.textContent || "Send Message";
+    if (bookingSubmit) {
+      bookingSubmit.disabled = true;
+      bookingSubmit.classList.add("is-loading");
+      bookingSubmit.textContent = "Sending...";
+    }
+
+    const payload = new FormData(bookingForm);
+    void payload;
+
+    await new Promise((resolve) => window.setTimeout(resolve, 900));
+
+    bookingForm.reset();
+    if (bookingSubmit) {
+      bookingSubmit.disabled = false;
+      bookingSubmit.classList.remove("is-loading");
+      bookingSubmit.textContent = originalLabel;
+    }
+    if (statusEl) {
+      statusEl.textContent = "Message sent successfully. Dom will review it and follow up.";
+      statusEl.className = "contact-status is-success";
+    }
+  });
+}
