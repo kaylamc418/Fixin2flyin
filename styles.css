@@ -335,7 +335,7 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   position: absolute;
   inset: 0;
   background-image: url("assets/hero-home-bg.jpg");
-  background-position: center 42%;
+  background-position: center 30%;
   background-size: cover;
   background-repeat: no-repeat;
   transform: scale(1);
