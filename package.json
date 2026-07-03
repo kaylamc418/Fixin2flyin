@@ -1,0 +1,11 @@
+{
+  "name": "fixin2flyin",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:visual": "playwright test tests/visual.spec.js"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0"
+  }
+}

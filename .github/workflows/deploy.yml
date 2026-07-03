@@ -25,3 +25,28 @@ jobs:
           projectName: fixin2flyin
           directory: .
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+  visual-test:
+    runs-on: ubuntu-latest
+    name: Visual Overlap Audit
+    needs: deploy
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Playwright
+        run: npm install
+
+      - name: Install browser dependencies
+        run: npx playwright install --with-deps chromium
+
+      - name: Run visual overlap audit
+        env:
+          BASE_URL: https://fixin2flyin.kayamc418.workers.dev
+        run: npm run test:visual
