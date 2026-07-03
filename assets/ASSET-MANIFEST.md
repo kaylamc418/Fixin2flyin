@@ -12,6 +12,10 @@ Current site references:
 - bike-detail-rocks.jpg
 - tire-closeup.jpg
 - lumi-stick.jpg
+- dom-lumi-gallery.jpeg
+- 19555F85-891D-47B6-92AF-B78D0A3C0B81.jpeg
+- 3459AFD0-8CD1-425B-A128-8EAB2D44D3CF.jpeg
+- F2E58607-C997-412B-99BA-CE1413BBE943.jpeg
 - dom-mama.jpg
 - favicon-horus-fullcolor.svg
 - favicon-horus-transparent.svg
@@ -31,6 +35,7 @@ All files included:
 - DA084D0D-A887-475D-9ADA-B6050014167A.jpeg
 - F2E58607-C997-412B-99BA-CE1413BBE943.jpeg
 - F6C6A21F-6367-4D27-B131-7E51470134BE.jpeg
+- dom-lumi-gallery.jpeg
 - air-jump.jpg
 - bike-detail-rocks.jpg
 - blue-bike.jpg
