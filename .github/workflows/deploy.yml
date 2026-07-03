@@ -17,25 +17,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '24'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-        working-directory: ./Fixin2flyin
-
-      - name: Build
-        run: npm run build
-        working-directory: ./Fixin2flyin
-
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: fixin2flyin
-          directory: ./Fixin2flyin
+          directory: .
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
