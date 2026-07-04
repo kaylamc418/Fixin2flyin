@@ -89,9 +89,10 @@ if ("IntersectionObserver" in window) {
 
 
 /* Ride Soundtrack
-   This uses a generated beat so the site does not ship copyrighted music.
-   To use a licensed audio file later, add it to assets/ and set RIDE_AUDIO_SRC below,
-   for example: const RIDE_AUDIO_SRC = "assets/ride-soundtrack.mp3";
+   This uses a generated synth loop so the site can actually play music without
+   shipping a copyrighted track. To use a licensed file later, add it to assets/
+   and set RIDE_AUDIO_SRC below, for example:
+   const RIDE_AUDIO_SRC = "assets/ride-soundtrack.mp3";
 */
 const RIDE_AUDIO_SRC = "";
 const soundtrackToggle = document.getElementById("soundtrack-toggle");
@@ -100,9 +101,17 @@ const soundtrackIcon = null;
 
 let soundtrackAudio = null;
 let soundtrackContext = null;
-let soundtrackTimer = null;
+let soundtrackMasterGain = null;
+let soundtrackMusicTimer = null;
 let soundtrackPlaying = false;
-let soundtrackStep = 0;
+let soundtrackSectionIndex = 0;
+let soundtrackNextSectionStartTime = 0;
+
+const MUSIC_BPM = 96;
+const BEAT_SECONDS = 60 / MUSIC_BPM;
+const BAR_SECONDS = BEAT_SECONDS * 4;
+const SECTION_BARS = 4;
+const SECTION_SECONDS = BAR_SECONDS * SECTION_BARS;
 
 function setSoundtrackUi(isPlaying) {
   soundtrackPlaying = isPlaying;
@@ -115,37 +124,241 @@ function setSoundtrackUi(isPlaying) {
 
 setSoundtrackUi(false);
 
-function playSynthHit(time, frequency, duration, type, gainValue) {
+function midiToFrequency(midi) {
+  return 440 * Math.pow(2, (midi - 69) / 12);
+}
+
+function createNoiseBuffer() {
+  const buffer = soundtrackContext.createBuffer(1, soundtrackContext.sampleRate * 0.18, soundtrackContext.sampleRate);
+  const data = buffer.getChannelData(0);
+
+  for (let i = 0; i < data.length; i += 1) {
+    data[i] = Math.random() * 2 - 1;
+  }
+
+  return buffer;
+}
+
+function connectToMaster(node) {
+  if (soundtrackMasterGain) node.connect(soundtrackMasterGain);
+}
+
+function playTone({ time, frequency, duration, type = "sine", gain = 0.2, detune = 0, filterFrequency = null }) {
   const oscillator = soundtrackContext.createOscillator();
-  const gain = soundtrackContext.createGain();
+  const amp = soundtrackContext.createGain();
+  const filter = filterFrequency ? soundtrackContext.createBiquadFilter() : null;
 
   oscillator.type = type;
   oscillator.frequency.setValueAtTime(frequency, time);
+  if (detune) oscillator.detune.setValueAtTime(detune, time);
 
-  gain.gain.setValueAtTime(0.0001, time);
-  gain.gain.exponentialRampToValueAtTime(gainValue, time + 0.01);
-  gain.gain.exponentialRampToValueAtTime(0.0001, time + duration);
+  amp.gain.setValueAtTime(0.0001, time);
+  amp.gain.exponentialRampToValueAtTime(gain, time + 0.012);
+  amp.gain.exponentialRampToValueAtTime(0.0001, time + duration);
 
-  oscillator.connect(gain);
-  gain.connect(soundtrackContext.destination);
+  if (filter) {
+    filter.type = "lowpass";
+    filter.frequency.setValueAtTime(filterFrequency, time);
+    oscillator.connect(filter);
+    filter.connect(amp);
+  } else {
+    oscillator.connect(amp);
+  }
+
+  connectToMaster(amp);
   oscillator.start(time);
-  oscillator.stop(time + duration + 0.02);
+  oscillator.stop(time + duration + 0.03);
 }
 
-function runGeneratedBeat() {
-  if (!soundtrackContext) return;
+function playKick(time) {
+  const oscillator = soundtrackContext.createOscillator();
+  const amp = soundtrackContext.createGain();
+  const filter = soundtrackContext.createBiquadFilter();
 
-  const now = soundtrackContext.currentTime + 0.02;
-  const pattern = soundtrackStep % 8;
+  oscillator.type = "sine";
+  oscillator.frequency.setValueAtTime(140, time);
+  oscillator.frequency.exponentialRampToValueAtTime(44, time + 0.16);
+  amp.gain.setValueAtTime(0.0001, time);
+  amp.gain.exponentialRampToValueAtTime(0.95, time + 0.008);
+  amp.gain.exponentialRampToValueAtTime(0.0001, time + 0.24);
+  filter.type = "lowpass";
+  filter.frequency.setValueAtTime(160, time);
 
-  // "Boots and cats" style pulse: kick / hat / snare / hat, UK club-inspired but original.
-  if (pattern === 0 || pattern === 4) playSynthHit(now, 72, 0.16, "sine", 0.32);
-  if (pattern === 2 || pattern === 6) playSynthHit(now, 178, 0.09, "triangle", 0.18);
-  playSynthHit(now, pattern % 2 === 0 ? 7600 : 5400, 0.035, "square", 0.035);
+  oscillator.connect(filter);
+  filter.connect(amp);
+  connectToMaster(amp);
+  oscillator.start(time);
+  oscillator.stop(time + 0.28);
+}
 
-  if (pattern === 3 || pattern === 7) playSynthHit(now, 118, 0.08, "sawtooth", 0.055);
+function playSnare(time) {
+  const noise = soundtrackContext.createBufferSource();
+  const noiseFilter = soundtrackContext.createBiquadFilter();
+  const amp = soundtrackContext.createGain();
+  const body = soundtrackContext.createOscillator();
+  const bodyGain = soundtrackContext.createGain();
 
-  soundtrackStep += 1;
+  noise.buffer = createNoiseBuffer();
+  noiseFilter.type = "highpass";
+  noiseFilter.frequency.setValueAtTime(1500, time);
+  amp.gain.setValueAtTime(0.0001, time);
+  amp.gain.exponentialRampToValueAtTime(0.28, time + 0.01);
+  amp.gain.exponentialRampToValueAtTime(0.0001, time + 0.18);
+
+  body.type = "triangle";
+  body.frequency.setValueAtTime(190, time);
+  body.frequency.exponentialRampToValueAtTime(110, time + 0.08);
+  bodyGain.gain.setValueAtTime(0.0001, time);
+  bodyGain.gain.exponentialRampToValueAtTime(0.12, time + 0.01);
+  bodyGain.gain.exponentialRampToValueAtTime(0.0001, time + 0.12);
+
+  noise.connect(noiseFilter);
+  noiseFilter.connect(amp);
+  body.connect(bodyGain);
+  bodyGain.connect(amp);
+  connectToMaster(amp);
+  noise.start(time);
+  noise.stop(time + 0.22);
+  body.start(time);
+  body.stop(time + 0.14);
+}
+
+function playHat(time, open = false) {
+  const noise = soundtrackContext.createBufferSource();
+  const noiseFilter = soundtrackContext.createBiquadFilter();
+  const amp = soundtrackContext.createGain();
+
+  noise.buffer = createNoiseBuffer();
+  noiseFilter.type = "highpass";
+  noiseFilter.frequency.setValueAtTime(open ? 6200 : 7600, time);
+  amp.gain.setValueAtTime(0.0001, time);
+  amp.gain.exponentialRampToValueAtTime(open ? 0.09 : 0.045, time + 0.004);
+  amp.gain.exponentialRampToValueAtTime(0.0001, time + (open ? 0.22 : 0.06));
+
+  noise.connect(noiseFilter);
+  noiseFilter.connect(amp);
+  connectToMaster(amp);
+  noise.start(time);
+  noise.stop(time + (open ? 0.24 : 0.08));
+}
+
+function playBass(time, frequency, duration, gain = 0.16) {
+  playTone({
+    time,
+    frequency,
+    duration,
+    type: "sawtooth",
+    gain,
+    detune: -9,
+    filterFrequency: 280,
+  });
+  playTone({
+    time,
+    frequency,
+    duration,
+    type: "triangle",
+    gain: gain * 0.55,
+    detune: 7,
+    filterFrequency: 180,
+  });
+}
+
+function playChord(time, frequencies, duration, gain = 0.08) {
+  frequencies.forEach((frequency, index) => {
+    playTone({
+      time,
+      frequency,
+      duration,
+      type: "sawtooth",
+      gain: gain / (index === 0 ? 1 : 1.35),
+      detune: index === 1 ? 6 : -4,
+      filterFrequency: 1400,
+    });
+    playTone({
+      time,
+      frequency: frequency * (index === 0 ? 2 : 1),
+      duration,
+      type: "triangle",
+      gain: gain * 0.42,
+      detune: index === 2 ? 4 : 0,
+      filterFrequency: 1800,
+    });
+  });
+}
+
+function playLead(time, frequency, duration, gain = 0.045) {
+  playTone({
+    time,
+    frequency,
+    duration,
+    type: "square",
+    gain,
+    detune: 2,
+    filterFrequency: 2600,
+  });
+}
+
+function scheduleMusicSection(startTime, sectionIndex) {
+  if (!soundtrackContext || !soundtrackMasterGain) return;
+
+  const bars = [
+    {
+      chord: [midiToFrequency(50), midiToFrequency(53), midiToFrequency(57)],
+      bass: midiToFrequency(38),
+      lead: [midiToFrequency(69), midiToFrequency(72), midiToFrequency(74), midiToFrequency(72)],
+    },
+    {
+      chord: [midiToFrequency(46), midiToFrequency(50), midiToFrequency(53)],
+      bass: midiToFrequency(34),
+      lead: [midiToFrequency(69), midiToFrequency(74), midiToFrequency(77), midiToFrequency(74)],
+    },
+    {
+      chord: [midiToFrequency(43), midiToFrequency(48), midiToFrequency(52)],
+      bass: midiToFrequency(31),
+      lead: [midiToFrequency(67), midiToFrequency(69), midiToFrequency(72), midiToFrequency(69)],
+    },
+    {
+      chord: [midiToFrequency(48), midiToFrequency(52), midiToFrequency(55)],
+      bass: midiToFrequency(36),
+      lead: [midiToFrequency(65), midiToFrequency(67), midiToFrequency(69), midiToFrequency(67)],
+    },
+  ];
+
+  for (let bar = 0; bar < SECTION_BARS; bar += 1) {
+    const barStart = startTime + bar * BAR_SECONDS;
+    const phrase = bars[(sectionIndex + bar) % bars.length];
+
+    playChord(barStart + 0.02, phrase.chord, BAR_SECONDS * 0.96, 0.08);
+    playBass(barStart + 0.02, phrase.bass, BAR_SECONDS * 0.48, 0.16);
+    playBass(barStart + BEAT_SECONDS * 2, phrase.bass * 1.5, BAR_SECONDS * 0.24, 0.11);
+
+    playKick(barStart);
+    playKick(barStart + BEAT_SECONDS * 2);
+    playSnare(barStart + BEAT_SECONDS);
+    playSnare(barStart + BEAT_SECONDS * 3);
+
+    playHat(barStart + 0.02);
+    playHat(barStart + BEAT_SECONDS * 0.5);
+    playHat(barStart + BEAT_SECONDS);
+    playHat(barStart + BEAT_SECONDS * 1.5);
+    playHat(barStart + BEAT_SECONDS * 2);
+    playHat(barStart + BEAT_SECONDS * 2.5);
+    playHat(barStart + BEAT_SECONDS * 3);
+    playHat(barStart + BEAT_SECONDS * 3.5, true);
+
+    const leadPattern = phrase.lead;
+    for (let i = 0; i < leadPattern.length; i += 1) {
+      playLead(barStart + (i * BEAT_SECONDS) / 2 + BEAT_SECONDS * 0.25, leadPattern[i], 0.18);
+    }
+  }
+}
+
+function scheduleMusicLoop() {
+  if (!soundtrackContext || !soundtrackMasterGain) return;
+
+  scheduleMusicSection(soundtrackNextSectionStartTime, soundtrackSectionIndex);
+  soundtrackSectionIndex = (soundtrackSectionIndex + SECTION_BARS) % 4;
+  soundtrackNextSectionStartTime += SECTION_SECONDS;
 }
 
 async function startSoundtrack() {
@@ -167,16 +380,24 @@ async function startSoundtrack() {
   if (!soundtrackContext) soundtrackContext = new AudioContextClass();
   if (soundtrackContext.state === "suspended") await soundtrackContext.resume();
 
-  runGeneratedBeat();
-  clearInterval(soundtrackTimer);
-  soundtrackTimer = setInterval(runGeneratedBeat, 150);
+  if (!soundtrackMasterGain) {
+    soundtrackMasterGain = soundtrackContext.createGain();
+    soundtrackMasterGain.gain.setValueAtTime(0.58, soundtrackContext.currentTime);
+    soundtrackMasterGain.connect(soundtrackContext.destination);
+  }
+
+  clearInterval(soundtrackMusicTimer);
+  soundtrackSectionIndex = 0;
+  soundtrackNextSectionStartTime = soundtrackContext.currentTime + 0.12;
+  scheduleMusicLoop();
+  soundtrackMusicTimer = setInterval(scheduleMusicLoop, Math.max(1000, SECTION_SECONDS * 1000 - 150));
   setSoundtrackUi(true);
 }
 
 function pauseSoundtrack() {
   if (soundtrackAudio) soundtrackAudio.pause();
-  clearInterval(soundtrackTimer);
-  soundtrackTimer = null;
+  clearInterval(soundtrackMusicTimer);
+  soundtrackMusicTimer = null;
   setSoundtrackUi(false);
 }
 
