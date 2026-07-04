@@ -1065,6 +1065,7 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   }
   .brand-mark { grid-area: brand; }
   .nav-actions { grid-area: actions; }
+  .nav-cta { display: none; }
   .nav-menu {
     grid-area: menu;
     position: absolute;
