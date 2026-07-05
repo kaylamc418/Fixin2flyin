@@ -81,7 +81,6 @@ h3 { font-size: 1.3rem; letter-spacing: -0.02em; }
 .section-pad-sm { padding: clamp(3rem, 6vw, 5rem) 0; }
 .eyebrow { color: var(--gold-soft); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.30em; font-weight: 950; margin-bottom: 1rem; }
 .section-lede { margin-top: 1rem; max-width: 680px; font-size: 1.05rem; }
-
 .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 20; backdrop-filter: blur(12px); background: linear-gradient(180deg, rgba(3,3,6,0.88), rgba(3,3,6,0.72)); border-bottom: 1px solid rgba(125,43,255,0.35); }
 .site-header::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: linear-gradient(90deg, rgba(125,43,255,0.55), rgba(240,213,139,0.52), rgba(19,151,212,0.5)); }
 .nav-shell { width: min(calc(100% - 2rem), 1280px); min-height: 68px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.45rem 0; }
@@ -476,6 +475,8 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
     object-fit: cover;
     object-position: center center;
   }
+  .lumi-follow-label { margin-top: 0.95rem; }
+  .lumi-follow-button { width: 100%; margin-top: 0.55rem; }
   .lumi-copy > p:not(.eyebrow) {
     margin-top: 0.65rem;
     font-size: 1rem;
@@ -489,8 +490,6 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   .lumi-ending {
     margin-top: 0.35rem;
   }
-  .lumi-follow-label { margin-top: 0.95rem; }
-  .lumi-follow-button { width: 100%; margin-top: 0.55rem; }
 }
 
 @media (max-width: 1280px) {
