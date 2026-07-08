@@ -201,6 +201,11 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
 }
 .hero-line-gold { color: var(--gold); }
 .hero-line-fly { color: var(--purple-soft); }
+.f2f-arm-aligned-card.right-side .f2f-hero-to-shift {
+  display: block;
+  width: fit-content;
+  margin-left: clamp(2.5ch, 4vw, 4.2ch);
+}
 .f2f-hero-center {
   position: absolute;
   left: 50%;
@@ -463,6 +468,9 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   .f2f-arm-aligned-card.right-side {
     right: 4%;
   }
+  .f2f-arm-aligned-card.right-side .f2f-hero-to-shift {
+    margin-left: clamp(1.8ch, 3.2vw, 3.2ch);
+  }
   .f2f-hero-text-main {
     font-size: clamp(2.75rem, 7.8vw, 5.1rem);
   }
@@ -513,6 +521,9 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   }
   .f2f-arm-aligned-card.right-side {
     right: 3%;
+  }
+  .f2f-arm-aligned-card.right-side .f2f-hero-to-shift {
+    margin-left: clamp(1.5ch, 3vw, 2.8ch);
   }
   .f2f-hero-text-main {
     font-size: clamp(1.75rem, 9vw, 3.45rem);
@@ -586,6 +597,9 @@ body.soundtrack-playing .soundtrack-graphic span { animation-play-state: running
   .f2f-hero-viewport { min-height: 680px; }
   .f2f-arm-aligned-card {
     top: 8.4rem;
+  }
+  .f2f-arm-aligned-card.right-side .f2f-hero-to-shift {
+    margin-left: clamp(1.2ch, 2.6vw, 2.2ch);
   }
   .f2f-hero-text-main {
     font-size: clamp(1.42rem, 8.6vw, 2.8rem);
