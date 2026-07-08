@@ -9,25 +9,61 @@ const viewports = [
 ];
 
 for (const vp of viewports) {
-  test(`Audit visual overlaps on ${vp.name} viewport`, async ({ page }) => {
+  test(`Hero layout matches requirements on ${vp.name} viewport`, async ({ page }) => {
     await page.setViewportSize({ width: vp.width, height: vp.height });
     await page.goto(BASE_URL);
-    await page.waitForTimeout(1000);
+    await page.waitForLoadState('networkidle');
 
-    const marquee = await page.locator('.marquee-container').boundingBox();
-    const domCode = await page.locator('#dom-code').boundingBox();
+    const hero = page.locator('.f2f-hero-viewport');
+    const left = page.locator('.f2f-hero-wordmark.left-side');
+    const right = page.locator('.f2f-hero-wordmark.right-side');
 
-    if (marquee && domCode) {
-      expect(domCode.y).toBeGreaterThanOrEqual(marquee.y + marquee.height);
-    }
+    await expect(hero).toBeVisible();
+    await expect(left).toBeVisible();
+    await expect(right).toBeVisible();
 
-    const cards = page.locator('.dom-code-card');
-    const cardCount = await cards.count();
+    const heroStyles = await hero.evaluate((el) => {
+      const styles = getComputedStyle(el);
+      return {
+        backgroundImage: styles.backgroundImage,
+        backgroundPosition: styles.backgroundPosition,
+        backgroundRepeat: styles.backgroundRepeat,
+        backgroundSize: styles.backgroundSize,
+        display: styles.display,
+        flexDirection: styles.flexDirection,
+        justifyContent: styles.justifyContent,
+        alignItems: styles.alignItems,
+      };
+    });
 
-    for (let i = 0; i < cardCount; i++) {
-      const box = await cards.nth(i).boundingBox();
-      expect(box).not.toBeNull();
-      expect(box.height).toBeGreaterThan(150);
+    expect(heroStyles.backgroundImage).toContain('DOMPROJ.jpg');
+    expect(heroStyles.backgroundSize).toBe('cover');
+    expect(heroStyles.backgroundPosition).toContain('50% calc(100% +');
+    expect(heroStyles.backgroundRepeat).toBe('no-repeat');
+    expect(heroStyles.display).toBe('flex');
+
+    const fixColor = await page.locator('.hero-line-fix').evaluate((el) => getComputedStyle(el).color);
+    const flyColor = await page.locator('.hero-line-fly').evaluate((el) => getComputedStyle(el).color);
+
+    expect(fixColor).toBe('rgb(252, 243, 202)');
+    expect(flyColor).toBe('rgb(189, 92, 255)');
+
+    const heroBox = await hero.boundingBox();
+    const leftBox = await left.boundingBox();
+    const rightBox = await right.boundingBox();
+
+    expect(heroBox).not.toBeNull();
+    expect(leftBox).not.toBeNull();
+    expect(rightBox).not.toBeNull();
+
+    if (vp.width < 768) {
+      expect(heroStyles.flexDirection).toBe('column');
+      expect(rightBox.y).toBeGreaterThan(leftBox.y + leftBox.height);
+    } else {
+      expect(heroStyles.justifyContent).toBe('space-between');
+      expect(heroStyles.alignItems).toBe('center');
+      expect(leftBox.x).toBeLessThanOrEqual(heroBox.x + heroBox.width * 0.08);
+      expect(rightBox.x + rightBox.width).toBeGreaterThanOrEqual(heroBox.x + heroBox.width * 0.92);
     }
   });
 }

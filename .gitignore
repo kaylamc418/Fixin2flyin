@@ -4,3 +4,7 @@
 !.dev.vars.example
 .env*
 !.env.example
+
+# node/test output
+node_modules/
+test-results/
