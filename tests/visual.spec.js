@@ -17,10 +17,14 @@ for (const vp of viewports) {
     const hero = page.locator('.f2f-hero-viewport');
     const left = page.locator('.f2f-hero-wordmark.left-side');
     const right = page.locator('.f2f-hero-wordmark.right-side');
+    const mission = page.locator('.f2f-hero-mission');
 
     await expect(hero).toBeVisible();
     await expect(left).toBeVisible();
     await expect(right).toBeVisible();
+    await expect(mission).toContainText('Mobile bike repair');
+    await expect(mission.getByRole('link', { name: 'Book Dom' })).toBeVisible();
+    await expect(mission.getByRole('link', { name: 'View Services' })).toBeVisible();
 
     const heroStyles = await hero.evaluate((el) => {
       const styles = getComputedStyle(el);
