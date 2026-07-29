@@ -94,8 +94,14 @@
     }
 
     .nav-menu a {
+      display: inline-flex !important;
+      order: initial !important;
       font-size: .82rem !important;
       letter-spacing: .145em !important;
+    }
+
+    .nav-menu a::before {
+      content: none !important;
     }
 
     .nav-cta {
