@@ -18,73 +18,115 @@
   <link rel="preload" as="image" href="assets/dom-mama.jpg" />
   <link rel="stylesheet" href="styles.css" />
   <style>
-    /* Cohesive gold/purple navigation wordmark. Navigation only. */
+    /* Final compact navigation lockup. Navigation only. */
     .brand-mark::before,
     .brand-mark::after { content: none !important; }
-
     .brand-logo-full { display: none !important; }
+
+    .nav-shell {
+      min-height: 76px !important;
+      width: min(calc(100% - 2.25rem), 1640px) !important;
+      grid-template-columns: auto 1fr auto !important;
+      gap: clamp(1rem, 2.4vw, 2.6rem) !important;
+    }
+
+    .brand-mark {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: .6rem !important;
+      width: fit-content !important;
+      min-width: 0 !important;
+      overflow: visible !important;
+      text-decoration: none !important;
+    }
+
+    .brand-mountain {
+      width: 31px;
+      height: 31px;
+      flex: 0 0 auto;
+      color: #d4a74c;
+      filter: drop-shadow(0 0 7px rgba(212,167,76,.22));
+    }
 
     .brand-wordmark {
       display: inline-flex;
       align-items: baseline;
-      gap: .18em;
+      gap: .08em;
       white-space: nowrap;
       font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-      font-size: clamp(1.7rem, 2.6vw, 3rem);
-      font-style: normal;
+      font-size: clamp(1.55rem, 2.25vw, 2.55rem);
+      font-style: italic;
       font-weight: 900;
       line-height: .9;
-      letter-spacing: -.035em;
-      text-transform: uppercase;
-      filter: drop-shadow(0 5px 12px rgba(0,0,0,.55));
+      letter-spacing: -.045em;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,.6));
     }
 
-    .brand-wordmark__gold {
+    .brand-wordmark__white {
       color: transparent;
-      background: linear-gradient(180deg, #f5df9a 0%, #d4a74c 46%, #9c7028 100%);
+      background: linear-gradient(180deg, #fff 0%, #f1efe9 55%, #bdb9b0 100%);
       -webkit-background-clip: text;
       background-clip: text;
-      text-shadow: 0 1px 0 rgba(255,255,255,.12);
     }
 
     .brand-wordmark__two {
-      position: relative;
       display: inline-block;
-      margin-inline: .02em;
-      font-size: 1.22em;
+      margin-inline: .01em;
+      font-size: 1.08em;
       color: transparent;
-      background: linear-gradient(180deg, #a96cff 0%, #6f32b8 52%, #39145e 100%);
+      background: linear-gradient(180deg, #a96cff 0%, #7030ba 52%, #3b175e 100%);
       -webkit-background-clip: text;
       background-clip: text;
-      -webkit-text-stroke: 1px rgba(220,174,86,.68);
-      text-shadow: 0 0 16px rgba(125,43,255,.42);
+      -webkit-text-stroke: .45px rgba(212,167,76,.5);
+      text-shadow: 0 0 10px rgba(125,43,255,.34);
       transition: filter 280ms ease, transform 280ms ease;
     }
 
     .brand-mark:hover .brand-wordmark__two,
     .brand-mark:focus-visible .brand-wordmark__two {
       transform: translateY(-1px) scale(1.035);
-      filter: brightness(1.15) drop-shadow(0 0 10px rgba(125,43,255,.72));
+      filter: brightness(1.12) drop-shadow(0 0 8px rgba(125,43,255,.6));
     }
 
-    .nav-menu a:nth-child(2),
-    .nav-menu a:nth-child(6),
-    .nav-menu a:nth-child(7) { display: none !important; }
+    .nav-menu {
+      justify-self: center;
+      gap: clamp(1.35rem, 2.5vw, 2.8rem) !important;
+    }
 
-    .nav-menu a:nth-child(1) { order: 1; }
-    .nav-menu a:nth-child(5) { order: 2; }
-    .nav-menu a:nth-child(4) { order: 3; font-size: 0; }
-    .nav-menu a:nth-child(4)::before { content: "About"; font-size: .9rem; }
-    .nav-menu a:nth-child(3) { order: 4; }
+    .nav-menu a {
+      font-size: .82rem !important;
+      letter-spacing: .145em !important;
+    }
+
+    .nav-cta {
+      min-width: 132px !important;
+      min-height: 46px !important;
+    }
+
+    .header-divider {
+      display: block !important;
+      height: 1px !important;
+      background: linear-gradient(90deg, transparent, rgba(212,167,76,.52) 12%, rgba(212,167,76,.52) 88%, transparent) !important;
+    }
 
     @media (max-width: 980px) {
-      .brand-wordmark { font-size: clamp(1.3rem, 5.6vw, 2rem); }
-      .nav-menu a:nth-child(4)::before { font-size: .82rem; }
+      .nav-shell {
+        min-height: 68px !important;
+        width: min(calc(100% - 1rem), 960px) !important;
+        grid-template-columns: minmax(0,1fr) auto auto !important;
+        gap: .55rem !important;
+      }
+      .brand-mountain { width: 25px; height: 25px; }
+      .brand-wordmark { font-size: clamp(1.18rem, 5vw, 1.75rem); }
+      .nav-menu { justify-self: stretch; }
+      .nav-menu a { font-size: .8rem !important; }
     }
 
     @media (max-width: 520px) {
-      .brand-wordmark { font-size: 1.08rem; }
-      .brand-wordmark__two { font-size: 1.2em; }
+      .brand-mark { gap: .38rem !important; }
+      .brand-mountain { width: 21px; height: 21px; }
+      .brand-wordmark { font-size: 1rem; }
+      .nav-cta { min-width: 82px !important; padding-inline: .5rem !important; font-size: .62rem !important; }
     }
   </style>
 </head>
@@ -94,21 +136,22 @@
   <header class="site-header" id="top">
     <nav class="nav-shell" aria-label="Primary navigation">
       <a class="brand-mark" href="#top" aria-label="Fixin 2 Flyin home">
-        <img class="brand-logo-full" src="assets/header-logo-full.png" alt="" aria-hidden="true" />
+        <svg class="brand-mountain" viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M4 36 18 12l7 11 5-8 14 21H4Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+          <path d="m12 36 10-16 8 12 5-7 9 11" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
         <span class="brand-wordmark" aria-hidden="true">
-          <span class="brand-wordmark__gold">Fixin’</span>
+          <span class="brand-wordmark__white">Fixin’</span>
           <span class="brand-wordmark__two">2</span>
-          <span class="brand-wordmark__gold">Flyin’</span>
+          <span class="brand-wordmark__white">Flyin’</span>
         </span>
       </a>
       <div class="nav-menu" id="nav-menu">
+        <a href="#top">Home</a>
         <a href="#services">Services</a>
-        <a href="#why-doms">Why Choose Dom</a>
+        <a href="#story">About</a>
         <a href="#tribute">Tribute</a>
-        <a href="#story">Story</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#soundtrack" hidden>Soundtrack</a>
-        <a href="#contact">Contact</a>
+        <a href="#gallery">Adventures</a>
       </div>
       <a href="#contact" class="nav-cta">Book Now</a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">Menu</button>
