@@ -1,219 +1,315 @@
 @import url("https://cdn.jsdelivr.net/gh/kaylamc418/Fixin2flyin@384e0be9b740f7af768ae466cbcd2e1f9da63113/styles.css");
 
-/* Hero proportion correction — July 28, 2026 */
-@media (min-width: 921px) {
-  .hero {
-    min-height: clamp(540px, 68svh, 660px);
-    align-items: stretch;
-    background-size: cover;
-    background-position: 68% 48%;
-  }
+/* Final split hero layout — July 28, 2026 */
+.hero {
+  min-height: clamp(650px, 82svh, 760px);
+  padding: 90px 0 0;
+  align-items: stretch;
+  background-image: none;
+  background-color: #020104;
+}
 
-  .hero::before {
-    background:
-      linear-gradient(90deg,
-        rgba(3, 0, 8, 0.98) 0%,
-        rgba(9, 1, 18, 0.94) 31%,
-        rgba(12, 2, 24, 0.72) 43%,
-        rgba(0, 0, 0, 0.10) 61%,
-        rgba(0, 0, 0, 0.04) 100%);
-  }
+.hero::before {
+  display: none;
+}
 
-  .f2f-hero-viewport {
-    width: min(calc(100% - 3rem), 1440px);
-    min-height: inherit;
-    grid-template-columns: minmax(320px, 42%) minmax(0, 58%);
-    grid-template-rows: 1fr auto;
-    align-items: center;
-    column-gap: clamp(2rem, 5vw, 6rem);
-    padding: clamp(7rem, 9vw, 8.5rem) clamp(1rem, 2.5vw, 2.5rem) clamp(3.25rem, 5vw, 4.5rem);
-  }
+.f2f-hero-viewport {
+  width: min(100%, 1440px);
+  min-height: clamp(560px, calc(82svh - 90px), 670px);
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: minmax(330px, 42%) minmax(0, 58%);
+  grid-template-rows: minmax(420px, 1fr) auto auto;
+  gap: 0;
+  align-items: stretch;
+}
 
-  .f2f-hero-title-block {
-    grid-column: 1;
-    grid-row: 1;
-    justify-self: start;
-    align-self: center;
-    width: min(100%, 430px);
-    margin: 0;
-    padding: clamp(1.6rem, 2.6vw, 2.4rem);
-    text-align: left;
-    border: 1px solid rgba(240, 213, 139, 0.32);
-    border-radius: 22px;
-    background:
-      radial-gradient(circle at 80% 15%, rgba(125, 43, 255, 0.18), transparent 55%),
-      linear-gradient(145deg, rgba(10, 2, 18, 0.96), rgba(2, 1, 7, 0.88));
-    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.52), 0 0 34px rgba(125, 43, 255, 0.12);
-    backdrop-filter: blur(8px);
-  }
+.f2f-hero-viewport::after {
+  content: "";
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  min-height: 420px;
+  background-image:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.12)),
+    url("assets/DOMPROJ.jpg");
+  background-size: cover;
+  background-position: 62% 48%;
+  background-repeat: no-repeat;
+  border-left: 1px solid rgba(240, 213, 139, 0.22);
+  border-bottom: 1px solid rgba(240, 213, 139, 0.18);
+  box-shadow: inset 28px 0 54px rgba(2, 1, 4, 0.22);
+}
 
-  .f2f-hero-title-block::before {
-    left: 0;
-    top: 1.4rem;
-    bottom: 1.4rem;
-    height: auto;
-  }
+.f2f-hero-title-block {
+  grid-column: 1;
+  grid-row: 1 / 4;
+  align-self: stretch;
+  justify-self: stretch;
+  width: auto;
+  max-width: none;
+  margin: 0;
+  padding: clamp(3.5rem, 6vw, 6.5rem) clamp(2.2rem, 5vw, 5rem);
+  display: flex;
+  align-items: center;
+  text-align: left;
+  border: 0;
+  border-radius: 0;
+  background:
+    radial-gradient(circle at 82% 16%, rgba(125, 43, 255, 0.22), transparent 48%),
+    linear-gradient(145deg, #090112 0%, #030105 72%, #000 100%);
+  box-shadow: inset -1px 0 rgba(240, 213, 139, 0.18);
+  backdrop-filter: none;
+}
 
-  .f2f-hero-title-block h1 {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    font-size: clamp(3.5rem, 5.2vw, 5.5rem);
-    line-height: 0.94;
-    text-align: left;
-  }
+.f2f-hero-title-block::before {
+  left: auto;
+  right: 0;
+  top: 14%;
+  bottom: 14%;
+  width: 2px;
+  height: auto;
+  background: linear-gradient(transparent, var(--gold-soft), #d7a2ff, transparent);
+  box-shadow: 0 0 22px rgba(212, 167, 76, 0.42);
+}
 
-  .f2f-hero-title-block h1 span {
-    font-size: 0.47em;
-    line-height: 1.05;
-  }
+.f2f-hero-title-block h1 {
+  width: min(100%, 8.8ch);
+  max-width: none;
+  margin: 0;
+  font-size: clamp(3.65rem, 6.1vw, 6rem);
+  line-height: 0.93;
+  text-align: left;
+}
 
-  .f2f-hero-title-block h1 strong {
-    margin-block: 0.08em 0.18em;
-    font-size: 1.08em;
-    line-height: 0.82;
-  }
+.f2f-hero-title-block h1::before {
+  content: "MOBILE BIKE REPAIR + COACHING";
+  display: block;
+  margin-bottom: 1.35rem;
+  color: var(--gold-soft);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 950;
+  line-height: 1.25;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  text-shadow: none;
+}
 
-  .hero-center-actions {
-    grid-column: 1;
-    grid-row: 2;
-    justify-self: start;
-    align-self: end;
-    width: min(100%, 430px);
-    padding: 1rem 0 0;
-    transform: none;
-    justify-content: flex-start;
-    gap: 0.75rem;
-  }
+.f2f-hero-title-block h1 span {
+  font-size: 0.48em;
+  line-height: 1;
+}
 
-  .hero-center-actions .button {
-    flex: 1 1 0;
-    min-width: 0;
-    min-height: 50px;
-    padding-inline: 1.25rem;
-  }
+.f2f-hero-title-block h1 strong {
+  margin-block: 0.06em 0.18em;
+  font-size: 1.1em;
+  line-height: 0.82;
+}
 
-  .f2f-hero-mission {
-    display: none;
-  }
+.f2f-hero-mission {
+  grid-column: 2;
+  grid-row: 2;
+  display: block;
+  align-self: stretch;
+  justify-self: stretch;
+  width: auto;
+  max-width: none;
+  margin: 0;
+  padding: 1.15rem clamp(1.5rem, 4vw, 4rem) 0.55rem;
+  transform: none;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(125, 43, 255, 0.16), transparent 70%),
+    linear-gradient(180deg, #07020d, #020104);
+}
+
+.f2f-hero-mission::after {
+  display: none;
+}
+
+.f2f-hero-mission h2 {
+  width: min(100%, 720px);
+  margin: 0 auto;
+  font-size: 0;
+  line-height: 0;
+  text-shadow: none;
+}
+
+.f2f-hero-mission h2::before {
+  content: "Turning rough rides into dialed machines and unsure riders into confident senders. Fixin 2 Flyin is a mobile bike repair, trail prep, and coaching brand built around real skill, sharp control, and the kind of riding that pushes people to not only ride their best, but live their best.";
+  display: block;
+  color: rgba(255, 248, 234, 0.9);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: clamp(0.94rem, 1.2vw, 1.08rem);
+  font-style: normal;
+  font-weight: 550;
+  line-height: 1.5;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.hero-center-actions {
+  grid-column: 2;
+  grid-row: 3;
+  align-self: stretch;
+  justify-self: stretch;
+  width: auto;
+  margin: 0;
+  padding: 0.5rem clamp(1.5rem, 4vw, 4rem) 1.4rem;
+  transform: none;
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  background: #020104;
+}
+
+.hero-center-actions .button {
+  flex: 0 1 190px;
+  min-width: 150px;
+  min-height: 50px;
+  padding: 0.84rem 1.2rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.07em;
+}
+
+.hero-center-actions .button.primary {
+  order: -1;
+  font-size: 0;
+}
+
+.hero-center-actions .button.primary::after {
+  content: "Request Service";
+  font-size: 0.82rem;
 }
 
 @media (max-width: 920px) {
   .hero {
-    min-height: clamp(560px, 78svh, 720px);
-    align-items: flex-end;
-    background-position: 64% center;
-  }
-
-  .hero::before {
-    background:
-      linear-gradient(180deg,
-        rgba(0, 0, 0, 0.12) 0%,
-        rgba(4, 0, 10, 0.24) 34%,
-        rgba(5, 0, 12, 0.92) 72%,
-        rgba(3, 0, 8, 0.98) 100%);
+    min-height: auto;
+    padding-top: 76px;
   }
 
   .f2f-hero-viewport {
-    display: grid;
+    width: min(100%, 760px);
+    min-height: 0;
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-    align-content: end;
-    gap: 0.9rem;
-    width: min(calc(100% - 1.5rem), 720px);
-    min-height: inherit;
-    padding: calc(76px + 1.25rem) 0 1.5rem;
+    grid-template-rows: auto auto auto auto;
   }
 
   .f2f-hero-title-block {
     grid-column: 1;
     grid-row: 1;
-    justify-self: start;
-    width: min(100%, 430px);
-    margin: 0;
-    padding: 1.35rem 1.35rem 1.25rem;
-    text-align: left;
-    border: 1px solid rgba(240, 213, 139, 0.32);
-    border-radius: 18px;
-    background: linear-gradient(145deg, rgba(11, 2, 20, 0.94), rgba(2, 1, 7, 0.88));
-    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.48);
-    backdrop-filter: blur(8px);
+    min-height: 300px;
+    padding: clamp(2.2rem, 8vw, 4rem) clamp(1.35rem, 6vw, 3rem);
   }
 
   .f2f-hero-title-block::before {
-    left: 0;
-    top: 1rem;
-    bottom: 1rem;
-    height: auto;
+    right: auto;
+    left: clamp(1.35rem, 6vw, 3rem);
+    top: auto;
+    bottom: 0;
+    width: min(42%, 180px);
+    height: 2px;
   }
 
   .f2f-hero-title-block h1 {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    font-size: clamp(2.75rem, 9vw, 4.25rem);
-    line-height: 0.94;
-    text-align: left;
+    width: min(100%, 8.8ch);
+    font-size: clamp(3rem, 11vw, 4.75rem);
   }
 
-  .f2f-hero-title-block h1 span {
-    font-size: 0.47em;
+  .f2f-hero-title-block h1::before {
+    margin-bottom: 1rem;
+    font-size: 0.66rem;
+    letter-spacing: 0.22em;
   }
 
-  .f2f-hero-title-block h1 strong {
-    margin-block: 0.08em 0.16em;
-    font-size: 1.08em;
+  .f2f-hero-viewport::after {
+    grid-column: 1;
+    grid-row: 2;
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+    background-position: 62% center;
+    border-left: 0;
+    border-top: 1px solid rgba(240, 213, 139, 0.2);
+  }
+
+  .f2f-hero-mission {
+    grid-column: 1;
+    grid-row: 3;
+    padding: 1.15rem 1.25rem 0.5rem;
+  }
+
+  .f2f-hero-mission h2::before {
+    font-size: 0.96rem;
+    line-height: 1.48;
   }
 
   .hero-center-actions {
     grid-column: 1;
-    grid-row: 2;
-    justify-self: start;
-    width: min(100%, 430px);
-    padding: 0;
+    grid-row: 4;
+    width: 100%;
+    padding: 0.45rem 1rem 1.25rem;
     transform: none;
-    justify-content: flex-start;
   }
 
   .hero-center-actions .button {
     flex: 1 1 0;
     min-width: 0;
-  }
-
-  .f2f-hero-mission {
-    display: none;
   }
 }
 
 @media (max-width: 520px) {
   .hero {
-    min-height: 610px;
-    background-position: 61% center;
-  }
-
-  .f2f-hero-viewport {
-    width: min(calc(100% - 1rem), 480px);
-    padding: calc(68px + 1rem) 0 1rem;
+    padding-top: 68px;
   }
 
   .f2f-hero-title-block {
-    width: 100%;
-    padding: 1.15rem 1.1rem 1rem;
-    border-radius: 15px;
+    min-height: 250px;
+    padding: 1.65rem 1.1rem 1.8rem;
+  }
+
+  .f2f-hero-title-block::before {
+    left: 1.1rem;
   }
 
   .f2f-hero-title-block h1 {
-    font-size: clamp(2.35rem, 12vw, 3.25rem);
+    font-size: clamp(2.55rem, 13vw, 3.55rem);
+  }
+
+  .f2f-hero-title-block h1::before {
+    max-width: 26ch;
+    font-size: 0.6rem;
+    line-height: 1.45;
+  }
+
+  .f2f-hero-viewport::after {
+    aspect-ratio: 4 / 3;
+    background-position: 61% center;
+  }
+
+  .f2f-hero-mission {
+    padding: 1rem 1rem 0.45rem;
+  }
+
+  .f2f-hero-mission h2::before {
+    font-size: 0.9rem;
+    line-height: 1.45;
   }
 
   .hero-center-actions {
-    width: 100%;
     gap: 0.55rem;
+    padding: 0.4rem 0.8rem 1rem;
+  }
+
+  .hero-center-actions .button,
+  .hero-center-actions .button.primary::after {
+    font-size: 0.72rem;
   }
 
   .hero-center-actions .button {
     min-height: 46px;
-    padding: 0.72rem 0.65rem;
-    font-size: 0.75rem;
+    padding: 0.7rem 0.6rem;
   }
 }
