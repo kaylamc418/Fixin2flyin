@@ -17,6 +17,76 @@
   <link rel="preload" as="image" href="assets/lumi-stick.jpg" />
   <link rel="preload" as="image" href="assets/dom-mama.jpg" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Cohesive gold/purple navigation wordmark. Navigation only. */
+    .brand-mark::before,
+    .brand-mark::after { content: none !important; }
+
+    .brand-logo-full { display: none !important; }
+
+    .brand-wordmark {
+      display: inline-flex;
+      align-items: baseline;
+      gap: .18em;
+      white-space: nowrap;
+      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+      font-size: clamp(1.7rem, 2.6vw, 3rem);
+      font-style: normal;
+      font-weight: 900;
+      line-height: .9;
+      letter-spacing: -.035em;
+      text-transform: uppercase;
+      filter: drop-shadow(0 5px 12px rgba(0,0,0,.55));
+    }
+
+    .brand-wordmark__gold {
+      color: transparent;
+      background: linear-gradient(180deg, #f5df9a 0%, #d4a74c 46%, #9c7028 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      text-shadow: 0 1px 0 rgba(255,255,255,.12);
+    }
+
+    .brand-wordmark__two {
+      position: relative;
+      display: inline-block;
+      margin-inline: .02em;
+      font-size: 1.22em;
+      color: transparent;
+      background: linear-gradient(180deg, #a96cff 0%, #6f32b8 52%, #39145e 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-stroke: 1px rgba(220,174,86,.68);
+      text-shadow: 0 0 16px rgba(125,43,255,.42);
+      transition: filter 280ms ease, transform 280ms ease;
+    }
+
+    .brand-mark:hover .brand-wordmark__two,
+    .brand-mark:focus-visible .brand-wordmark__two {
+      transform: translateY(-1px) scale(1.035);
+      filter: brightness(1.15) drop-shadow(0 0 10px rgba(125,43,255,.72));
+    }
+
+    .nav-menu a:nth-child(2),
+    .nav-menu a:nth-child(6),
+    .nav-menu a:nth-child(7) { display: none !important; }
+
+    .nav-menu a:nth-child(1) { order: 1; }
+    .nav-menu a:nth-child(5) { order: 2; }
+    .nav-menu a:nth-child(4) { order: 3; font-size: 0; }
+    .nav-menu a:nth-child(4)::before { content: "About"; font-size: .9rem; }
+    .nav-menu a:nth-child(3) { order: 4; }
+
+    @media (max-width: 980px) {
+      .brand-wordmark { font-size: clamp(1.3rem, 5.6vw, 2rem); }
+      .nav-menu a:nth-child(4)::before { font-size: .82rem; }
+    }
+
+    @media (max-width: 520px) {
+      .brand-wordmark { font-size: 1.08rem; }
+      .brand-wordmark__two { font-size: 1.2em; }
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -25,6 +95,11 @@
     <nav class="nav-shell" aria-label="Primary navigation">
       <a class="brand-mark" href="#top" aria-label="Fixin 2 Flyin home">
         <img class="brand-logo-full" src="assets/header-logo-full.png" alt="" aria-hidden="true" />
+        <span class="brand-wordmark" aria-hidden="true">
+          <span class="brand-wordmark__gold">Fixin’</span>
+          <span class="brand-wordmark__two">2</span>
+          <span class="brand-wordmark__gold">Flyin’</span>
+        </span>
       </a>
       <div class="nav-menu" id="nav-menu">
         <a href="#services">Services</a>
@@ -104,30 +179,12 @@
           <h2 id="services-title">Repair the bike. Build the rider.</h2>
           <p class="section-lede">Fixin’ 2 Flyin’ combines convenient mobile bicycle service with practical mountain bike coaching. Dom provides on-site repair, tune-ups, brake and gear adjustments, trail preparation, and personalized riding guidance without requiring riders to transport their bikes to a traditional shop.</p>
           <div class="service-list service-list-wide">
-            <article>
-              <h3>Mobile Bike Repair</h3>
-              <p>On-site tune-ups, adjustments, basic maintenance, and ride-readiness checks.</p>
-            </article>
-            <article>
-              <h3>Trail Prep</h3>
-              <p>Pre-ride inspections for mountain routes, trail days, longer rides, and first rides back.</p>
-            </article>
-            <article>
-              <h3>Flat Repair</h3>
-              <p>Tube and tire support, pressure checks, and simple troubleshooting before the next ride.</p>
-            </article>
-            <article>
-              <h3>Brake + Gear Adjustments</h3>
-              <p>Brake feel, shifting performance, cable tension, and control-point checks.</p>
-            </article>
-            <article>
-              <h3>Bike Coaching</h3>
-              <p>One-on-one help for body position, braking, climbing, cornering, handling, jumping, and control.</p>
-            </article>
-            <article>
-              <h3>Ride Support</h3>
-              <p>Ride planning, gear checks, route prep, confidence, and personal progression goals.</p>
-            </article>
+            <article><h3>Mobile Bike Repair</h3><p>On-site tune-ups, adjustments, basic maintenance, and ride-readiness checks.</p></article>
+            <article><h3>Trail Prep</h3><p>Pre-ride inspections for mountain routes, trail days, longer rides, and first rides back.</p></article>
+            <article><h3>Flat Repair</h3><p>Tube and tire support, pressure checks, and simple troubleshooting before the next ride.</p></article>
+            <article><h3>Brake + Gear Adjustments</h3><p>Brake feel, shifting performance, cable tension, and control-point checks.</p></article>
+            <article><h3>Bike Coaching</h3><p>One-on-one help for body position, braking, climbing, cornering, handling, jumping, and control.</p></article>
+            <article><h3>Ride Support</h3><p>Ride planning, gear checks, route prep, confidence, and personal progression goals.</p></article>
           </div>
         </div>
       </div>
@@ -141,26 +198,10 @@
           <p>Mobile support, trail knowledge, and coaching that stays grounded in what riders actually need to progress.</p>
         </div>
         <div class="code-grid">
-          <article class="code-card reveal">
-            <span>01</span>
-            <h3>Mobile convenience</h3>
-            <p>Repairs and adjustments come directly to the rider, reducing the time and difficulty involved in transporting a bicycle to a shop.</p>
-          </article>
-          <article class="code-card reveal">
-            <span>02</span>
-            <h3>Repair and coaching in one service</h3>
-            <p>Dom can address both the bike and the rider, helping improve mechanical readiness, riding control, confidence, and trail preparation.</p>
-          </article>
-          <article class="code-card reveal">
-            <span>03</span>
-            <h3>Individual attention</h3>
-            <p>One-on-one guidance allows the session to focus on the rider’s current experience, goals, and areas for improvement.</p>
-          </article>
-          <article class="code-card reveal">
-            <span>04</span>
-            <h3>Real-world trail focus</h3>
-            <p>Coaching can cover practical foundations such as body position, braking, cornering, line choice, momentum, and controlled progression.</p>
-          </article>
+          <article class="code-card reveal"><span>01</span><h3>Mobile convenience</h3><p>Repairs and adjustments come directly to the rider, reducing the time and difficulty involved in transporting a bicycle to a shop.</p></article>
+          <article class="code-card reveal"><span>02</span><h3>Repair and coaching in one service</h3><p>Dom can address both the bike and the rider, helping improve mechanical readiness, riding control, confidence, and trail preparation.</p></article>
+          <article class="code-card reveal"><span>03</span><h3>Individual attention</h3><p>One-on-one guidance allows the session to focus on the rider’s current experience, goals, and areas for improvement.</p></article>
+          <article class="code-card reveal"><span>04</span><h3>Real-world trail focus</h3><p>Coaching can cover practical foundations such as body position, braking, cornering, line choice, momentum, and controlled progression.</p></article>
         </div>
       </div>
     </section>
@@ -173,30 +214,12 @@
           <p>Short visual labels. Real images. No extra marketing copy inside the gallery.</p>
         </div>
         <div class="gallery-grid">
-          <figure class="gallery-large reveal">
-            <img class="pos-top" src="assets/trail-action.jpg" alt="Mountain biker riding a jump on a forest trail" loading="lazy" decoding="async" />
-            <figcaption>Bike Action</figcaption>
-          </figure>
-          <figure class="reveal">
-            <img class="pos-center" src="assets/tire-closeup.jpg" alt="Close view of a bike tire and rim" loading="lazy" decoding="async" />
-            <figcaption>Bike Prep</figcaption>
-          </figure>
-          <figure class="reveal">
-            <img class="pos-center" src="assets/air-jump.jpg" alt="Rider performing a big air jump" loading="lazy" decoding="async" />
-            <figcaption>Air Progression</figcaption>
-          </figure>
-          <figure class="reveal">
-            <img class="pos-center" src="assets/bike-detail-rocks.jpg" alt="Close detail of a blue bike near rocks" loading="lazy" decoding="async" />
-            <figcaption>Trail Views</figcaption>
-          </figure>
-          <figure class="reveal">
-            <img class="pos-center" src="assets/blue-bike.jpg" alt="Blue mountain bike build with purple components" loading="lazy" decoding="async" />
-            <figcaption>Ride Ready</figcaption>
-          </figure>
-          <figure class="reveal">
-            <img class="pos-center" src="assets/dom-lumi-gallery.jpeg" alt="Dom relaxing with Lumi" loading="lazy" decoding="async" />
-            <figcaption>Lumi</figcaption>
-          </figure>
+          <figure class="gallery-large reveal"><img class="pos-top" src="assets/trail-action.jpg" alt="Mountain biker riding a jump on a forest trail" loading="lazy" decoding="async" /><figcaption>Bike Action</figcaption></figure>
+          <figure class="reveal"><img class="pos-center" src="assets/tire-closeup.jpg" alt="Close view of a bike tire and rim" loading="lazy" decoding="async" /><figcaption>Bike Prep</figcaption></figure>
+          <figure class="reveal"><img class="pos-center" src="assets/air-jump.jpg" alt="Rider performing a big air jump" loading="lazy" decoding="async" /><figcaption>Air Progression</figcaption></figure>
+          <figure class="reveal"><img class="pos-center" src="assets/bike-detail-rocks.jpg" alt="Close detail of a blue bike near rocks" loading="lazy" decoding="async" /><figcaption>Trail Views</figcaption></figure>
+          <figure class="reveal"><img class="pos-center" src="assets/blue-bike.jpg" alt="Blue mountain bike build with purple components" loading="lazy" decoding="async" /><figcaption>Ride Ready</figcaption></figure>
+          <figure class="reveal"><img class="pos-center" src="assets/dom-lumi-gallery.jpeg" alt="Dom relaxing with Lumi" loading="lazy" decoding="async" /><figcaption>Lumi</figcaption></figure>
         </div>
       </div>
     </section>
@@ -207,36 +230,26 @@
           <p class="eyebrow">Dom + Lumi</p>
           <h2 id="story-title">The ride has a co-pilot.</h2>
           <p class="lumi-intro">Fixin 2 Flyin brings Dom’s world into one place: bikes, mountain air, hard rides, van-life basecamps, and Lumi alongside the journey.</p>
-          <div class="media-frame lumi-photo lumi-photo-mobile reveal">
-            <img src="assets/lumi-stick.jpg" alt="Lumi carrying a big stick outside near bikes" decoding="async" />
-          </div>
+          <div class="media-frame lumi-photo lumi-photo-mobile reveal"><img src="assets/lumi-stick.jpg" alt="Lumi carrying a big stick outside near bikes" decoding="async" /></div>
           <p class="lumi-body">Lumi is more than a trail companion. She is part of the everyday adventure, the road miles, basecamp stops, mountain air, and quiet moments between rides.</p>
           <p class="small-note lumi-closing">Loyalty. Courage. Pure joy.</p>
           <p class="small-note lumi-ending">That’s Lumi. That’s family.</p>
           <p class="lumi-follow-label">FOLLOW LUMI’S ADVENTURES</p>
           <a class="button secondary lumi-follow-button" href="https://www.instagram.com/" target="_blank" rel="noreferrer" hidden>Follow Lumi on Instagram</a>
         </div>
-        <div class="media-frame lumi-photo lumi-photo-desktop reveal">
-          <img src="assets/lumi-stick.jpg" alt="Lumi carrying a big stick outside near bikes" decoding="async" />
-        </div>
+        <div class="media-frame lumi-photo lumi-photo-desktop reveal"><img src="assets/lumi-stick.jpg" alt="Lumi carrying a big stick outside near bikes" decoding="async" /></div>
       </div>
     </section>
 
     <section class="tribute section-pad" id="tribute" aria-labelledby="tribute-title">
       <div class="container tribute-grid reveal">
-        <div class="tribute-image">
-          <img src="assets/dom-mama.jpg" alt="Dom smiling with his mama" decoding="async" />
-        </div>
+        <div class="tribute-image"><img src="assets/dom-mama.jpg" alt="Dom smiling with his mama" decoding="async" /></div>
         <div class="tribute-copy">
           <p class="eyebrow">For Dom's Mama</p>
           <h2 id="tribute-title">Love. Laughter. Strength.</h2>
           <p>A tribute to a beautiful woman whose fun-loving spirit, caring heart, and steady love helped shape the man Dom is today.</p>
           <p>May she live through his courage, his drive, the freedom he chases, and every mile he rides.</p>
-          <div class="tribute-motto">
-            <span class="motto-line" aria-hidden="true"></span>
-            <span>ALWAYS RIDING WITH US</span>
-            <span class="motto-line" aria-hidden="true"></span>
-          </div>
+          <div class="tribute-motto"><span class="motto-line" aria-hidden="true"></span><span>ALWAYS RIDING WITH US</span><span class="motto-line" aria-hidden="true"></span></div>
         </div>
       </div>
     </section>
@@ -263,17 +276,13 @@
 
     <section class="soundtrack-strip" id="soundtrack" aria-labelledby="soundtrack-title" hidden>
       <div class="container soundtrack-panel reveal">
-        <div class="soundtrack-graphic" aria-hidden="true">
-          <span></span><span></span><span></span><span></span><span></span>
-        </div>
+        <div class="soundtrack-graphic" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
         <div class="soundtrack-copy">
           <p class="eyebrow">Soundtrack for the Ride</p>
           <h2 id="soundtrack-title">Press play. Turn it up. Keep moving.</h2>
           <p class="fine-print">A music cue for the ride, not a Dom video. Add a licensed track or a true riding edit later if you want this section to change meaning.</p>
         </div>
-        <button class="soundtrack-button" id="soundtrack-toggle" type="button" aria-pressed="false">
-          <span class="soundtrack-label">Play</span>
-        </button>
+        <button class="soundtrack-button" id="soundtrack-toggle" type="button" aria-pressed="false"><span class="soundtrack-label">Play</span></button>
       </div>
     </section>
   </main>
@@ -287,22 +296,8 @@
         <p class="footer-desc">Mobile bike repair, trail prep, and coaching for riders who want a clearer, stronger ride.</p>
       </div>
       <div class="footer-nav-cols">
-        <nav aria-label="Experience">
-          <h4>EXPERIENCE</h4>
-          <ul>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#why-doms">Why Choose Dom</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-          </ul>
-        </nav>
-        <nav aria-label="Pro Clinics">
-          <h4>PRO CLINICS</h4>
-          <ul>
-            <li><a href="#tribute">Tribute</a></li>
-            <li hidden><a href="#soundtrack">Soundtrack</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
+        <nav aria-label="Experience"><h4>EXPERIENCE</h4><ul><li><a href="#services">Services</a></li><li><a href="#why-doms">Why Choose Dom</a></li><li><a href="#gallery">Gallery</a></li></ul></nav>
+        <nav aria-label="Pro Clinics"><h4>PRO CLINICS</h4><ul><li><a href="#tribute">Tribute</a></li><li hidden><a href="#soundtrack">Soundtrack</a></li><li><a href="#contact">Contact</a></li></ul></nav>
       </div>
       <div class="footer-contact">
         <h4>CONTACT</h4>
@@ -316,11 +311,7 @@
     </div>
     <div class="footer-bottom">
       <p class="copyright">© 2026 Fixin 2 Flyin. Built to last. Designed of golden energy.</p>
-      <div class="scroll-top" aria-label="Back to top">
-        <span aria-hidden="true">▲</span>
-        <span aria-hidden="true">▲</span>
-        <span aria-hidden="true">▲</span>
-      </div>
+      <div class="scroll-top" aria-label="Back to top"><span aria-hidden="true">▲</span><span aria-hidden="true">▲</span><span aria-hidden="true">▲</span></div>
       <p class="pwa-status"><span class="pwa-dot" aria-hidden="true"></span>Offline-capable client state</p>
     </div>
   </footer>
