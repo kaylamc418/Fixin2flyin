@@ -3,9 +3,6 @@ name: Deploy to Cloudflare
 on:
   push:
     branches: [main]
-  pull_request_target:
-    types: [opened, synchronize, reopened]
-    branches: [main]
   workflow_dispatch:
 
 concurrency:
@@ -15,19 +12,13 @@ concurrency:
 permissions:
   contents: read
 
-env:
-  DEPLOY_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
-
 jobs:
   deploy:
-    if: github.event_name != 'pull_request_target' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     name: Deploy and verify
     steps:
-      - name: Checkout approved source
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: ${{ env.DEPLOY_SHA }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -38,8 +29,24 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Check Cloudflare credentials
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        shell: bash
+        run: |
+          missing=""
+          [[ -z "$CLOUDFLARE_API_TOKEN" ]] && missing="CLOUDFLARE_API_TOKEN"
+          if [[ -z "$CLOUDFLARE_ACCOUNT_ID" ]]; then
+            [[ -n "$missing" ]] && missing="${missing}, CLOUDFLARE_ACCOUNT_ID" || missing="CLOUDFLARE_ACCOUNT_ID"
+          fi
+          if [[ -n "$missing" ]]; then
+            echo "Missing required GitHub Actions secret(s): $missing"
+            exit 1
+          fi
+
       - name: Add deployment marker
-        run: printf '%s' "$DEPLOY_SHA" > deploy-marker.txt
+        run: printf '%s' "$GITHUB_SHA" > deploy-marker.txt
 
       - name: Deploy to Cloudflare Workers
         env:
@@ -51,12 +58,12 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          marker_url="https://fixin2flyin.kayamc418.workers.dev/deploy-marker.txt?sha=${DEPLOY_SHA}"
+          marker_url="https://fixin2flyin.kayamc418.workers.dev/deploy-marker.txt?sha=${GITHUB_SHA}"
 
           for attempt in {1..12}; do
             deployed_sha="$(curl -fsSL --max-time 15 "$marker_url" || true)"
-            if [[ "$deployed_sha" == "$DEPLOY_SHA" ]]; then
-              echo "Verified deployment of $DEPLOY_SHA"
+            if [[ "$deployed_sha" == "$GITHUB_SHA" ]]; then
+              echo "Verified deployment of $GITHUB_SHA"
               exit 0
             fi
 
@@ -64,19 +71,16 @@ jobs:
             sleep 10
           done
 
-          echo "Deployment marker did not match $DEPLOY_SHA"
+          echo "Deployment marker did not match $GITHUB_SHA"
           exit 1
 
   visual-test:
-    if: github.event_name != 'pull_request_target' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     name: Responsive homepage audit
     needs: deploy
     steps:
-      - name: Checkout approved source
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: ${{ env.DEPLOY_SHA }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -87,10 +91,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install browser dependencies
+      - name: Install Chromium
         run: npx playwright install --with-deps chromium
 
-      - name: Run responsive homepage audit
+      - name: Run production audit
         env:
           BASE_URL: https://fixin2flyin.kayamc418.workers.dev
         run: npm run test:visual
