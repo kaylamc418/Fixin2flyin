@@ -1,0 +1,29 @@
+name: Diagnose production deployment
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  diagnose:
+    if: github.event.issue.title == 'Diagnose Fixin2flyin deployment'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Report credential availability
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          TOKEN_VALUE: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          ACCOUNT_VALUE: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        shell: bash
+        run: |
+          token_status="present"
+          account_status="present"
+          [[ -z "$TOKEN_VALUE" ]] && token_status="missing"
+          [[ -z "$ACCOUNT_VALUE" ]] && account_status="missing"
+          gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body "Cloudflare token: ${token_status}. Cloudflare account ID: ${account_status}. Workflow: ${RUN_URL}"
