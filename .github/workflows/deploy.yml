@@ -3,6 +3,8 @@ name: Deploy to Cloudflare
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 concurrency:
@@ -14,6 +16,7 @@ permissions:
 
 jobs:
   deploy:
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     name: Deploy and verify
     steps:
@@ -60,7 +63,7 @@ jobs:
 
   visual-test:
     runs-on: ubuntu-latest
-    name: Visual Overlap Audit
+    name: Responsive homepage audit
     needs: deploy
     steps:
       - name: Checkout
@@ -78,7 +81,7 @@ jobs:
       - name: Install browser dependencies
         run: npx playwright install --with-deps chromium
 
-      - name: Run visual overlap audit
+      - name: Run responsive homepage audit
         env:
           BASE_URL: https://fixin2flyin.kayamc418.workers.dev
         run: npm run test:visual
