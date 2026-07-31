@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test:visual": "playwright test tests/visual.spec.js"
+    "test:visual": "playwright test tests/final.spec.js"
   },
   "devDependencies": {
     "@playwright/test": "^1.55.0",
