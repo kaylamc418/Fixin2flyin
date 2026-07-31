@@ -1,43 +1,3 @@
-// Add Dom's real contact details here before publishing.
-const DOM_CONTACT = {
-  email: "fixin2flyin@dom.com",
-  phone: "",
-  instagram: ""
-};
-const LUMI_INSTAGRAM_URL = "";
-
-const statusEl = document.getElementById("contact-status");
-const emailLink = document.getElementById("email-link");
-const domInstagramLink = document.getElementById("dom-instagram-link");
-const lumiInstagramLink = document.getElementById("lumi-instagram-link");
-const lumiFooterLink = document.getElementById("lumi-footer-link");
-const bookingForm = document.getElementById("booking-form");
-const bookingSubmit = document.getElementById("booking-submit");
-const bookingService = document.getElementById("field-service");
-const servicePresetButtons = document.querySelectorAll("[data-service-preset]");
-
-if (emailLink && DOM_CONTACT.email) {
-  const subject = encodeURIComponent("Fixin 2 Flyin booking request");
-  const body = encodeURIComponent("Hi Dom,\n\nI'm interested in:\n\nBike type:\nIssue / coaching goal:\nPreferred day/time:\nLocation:\n\nThanks,");
-  emailLink.href = `mailto:${DOM_CONTACT.email}?subject=${subject}&body=${body}`;
-}
-
-function syncLumiLink(link) {
-  if (!link) return;
-  if (LUMI_INSTAGRAM_URL) {
-    link.href = LUMI_INSTAGRAM_URL;
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-    link.hidden = false;
-  } else {
-    link.hidden = true;
-  }
-}
-
-syncLumiLink(domInstagramLink);
-syncLumiLink(lumiInstagramLink);
-syncLumiLink(lumiFooterLink);
-
 const navToggle = document.querySelector(".nav-toggle");
 const navMenu = document.querySelector(".nav-menu");
 const siteHeader = document.querySelector(".site-header");
@@ -57,100 +17,154 @@ if (navToggle && navMenu) {
 }
 
 function updateHeaderState() {
-  if (!siteHeader) return;
-  siteHeader.classList.toggle("is-scrolled", window.scrollY > 18);
+  siteHeader?.classList.toggle("is-scrolled", window.scrollY > 18);
 }
 
 updateHeaderState();
 window.addEventListener("scroll", updateHeaderState, { passive: true });
 
-servicePresetButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    if (!bookingService) return;
-    bookingService.value = button.dataset.servicePreset || "";
-    bookingService.focus();
-  });
-});
-
-const revealItems = document.querySelectorAll(".reveal, .dom-code");
+const revealItems = document.querySelectorAll(".reveal");
 if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.14 });
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+
   revealItems.forEach((item) => observer.observe(item));
 } else {
   revealItems.forEach((item) => item.classList.add("is-visible"));
 }
 
+const lightbox = document.getElementById("gallery-lightbox");
+const lightboxImage = lightbox?.querySelector("img");
+const lightboxClose = lightbox?.querySelector(".lightbox-close");
 
-/* Ride Soundtrack
-   This uses a generated synth loop so the site can actually play music without
-   shipping a copyrighted track. To use a licensed file later, add it to assets/
-   and set RIDE_AUDIO_SRC below, for example:
-   const RIDE_AUDIO_SRC = "assets/ride-soundtrack.mp3";
-*/
-const RIDE_AUDIO_SRC = "";
+document.querySelectorAll(".gallery-item").forEach((item) => {
+  item.addEventListener("click", () => {
+    if (!lightbox || !lightboxImage) return;
+    const source = item.dataset.full || item.querySelector("img")?.src;
+    const alt = item.querySelector("img")?.alt || "Gallery preview";
+    lightboxImage.src = source;
+    lightboxImage.alt = alt;
+    lightbox.showModal();
+  });
+});
+
+lightboxClose?.addEventListener("click", () => lightbox?.close());
+lightbox?.addEventListener("click", (event) => {
+  if (event.target === lightbox) lightbox.close();
+});
+
+const serviceForm = document.getElementById("service-form");
+const formStatus = document.getElementById("form-status");
+const CONTACT_EMAIL = "kayamc418@gmail.com";
+
+serviceForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  if (!serviceForm.checkValidity()) {
+    serviceForm.reportValidity();
+    if (formStatus) {
+      formStatus.textContent = "Please complete the required fields.";
+      formStatus.className = "form-status is-error";
+    }
+    return;
+  }
+
+  const data = new FormData(serviceForm);
+  const subject = encodeURIComponent(`Fixin’ 2 Flyin’ request: ${data.get("service")}`);
+  const body = encodeURIComponent(
+    [
+      `Name: ${data.get("name")}`,
+      `Email: ${data.get("email")}`,
+      `Phone: ${data.get("phone") || "Not provided"}`,
+      `Location: ${data.get("location")}`,
+      `Service: ${data.get("service")}`,
+      `Bike type: ${data.get("bike") || "Not provided"}`,
+      `Preferred date: ${data.get("date") || "Not provided"}`,
+      "",
+      "Message:",
+      data.get("message"),
+    ].join("\n")
+  );
+
+  if (formStatus) {
+    formStatus.textContent = "Your email app is opening with the service request prepared.";
+    formStatus.className = "form-status is-success";
+  }
+
+  window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+});
+
+/* Dom's original Fixin’ 2 Flyin’ theme.
+   The track is generated in-browser with Web Audio and is never autoplayed. */
 const soundtrackToggle = document.getElementById("soundtrack-toggle");
 const soundtrackLabel = soundtrackToggle?.querySelector(".soundtrack-label");
-const soundtrackIcon = null;
+const soundtrackIcon = soundtrackToggle?.querySelector(".music-play-icon");
+const musicStatus = document.getElementById("music-status");
 
-let soundtrackAudio = null;
-let soundtrackContext = null;
-let soundtrackMasterGain = null;
-let soundtrackMusicTimer = null;
-let soundtrackPlaying = false;
-let soundtrackSectionIndex = 0;
-let soundtrackNextSectionStartTime = 0;
+let audioContext = null;
+let masterGain = null;
+let schedulerTimer = null;
+let playing = false;
+let nextSectionStart = 0;
+let sectionIndex = 0;
 
-const MUSIC_BPM = 96;
-const BEAT_SECONDS = 60 / MUSIC_BPM;
-const BAR_SECONDS = BEAT_SECONDS * 4;
+const BPM = 96;
+const BEAT = 60 / BPM;
+const BAR = BEAT * 4;
 const SECTION_BARS = 4;
-const SECTION_SECONDS = BAR_SECONDS * SECTION_BARS;
-
-function setSoundtrackUi(isPlaying) {
-  soundtrackPlaying = isPlaying;
-  document.body.classList.toggle("soundtrack-playing", isPlaying);
-  if (soundtrackToggle) soundtrackToggle.setAttribute("aria-pressed", String(isPlaying));
-  if (soundtrackLabel) soundtrackLabel.textContent = isPlaying ? "Pause" : "Play";
-  if (soundtrackToggle) soundtrackToggle.setAttribute("aria-label", isPlaying ? "Pause ride soundtrack" : "Play ride soundtrack");
-  if (soundtrackIcon) soundtrackIcon.textContent = isPlaying ? "||" : ">";
-}
-
-setSoundtrackUi(false);
+const SECTION = BAR * SECTION_BARS;
 
 function midiToFrequency(midi) {
   return 440 * Math.pow(2, (midi - 69) / 12);
 }
 
-function createNoiseBuffer() {
-  const buffer = soundtrackContext.createBuffer(1, soundtrackContext.sampleRate * 0.18, soundtrackContext.sampleRate);
-  const data = buffer.getChannelData(0);
+function setMusicUi(isPlaying) {
+  playing = isPlaying;
+  document.body.classList.toggle("soundtrack-playing", isPlaying);
+  soundtrackToggle?.setAttribute("aria-pressed", String(isPlaying));
+  soundtrackToggle?.setAttribute(
+    "aria-label",
+    isPlaying ? "Pause Dom’s original song" : "Play Dom’s original song"
+  );
 
-  for (let i = 0; i < data.length; i += 1) {
-    data[i] = Math.random() * 2 - 1;
+  if (soundtrackLabel) soundtrackLabel.textContent = isPlaying ? "Pause Song" : "Play Song";
+  if (soundtrackIcon) soundtrackIcon.textContent = isPlaying ? "Ⅱ" : "▶";
+  if (musicStatus) {
+    musicStatus.textContent = isPlaying
+      ? "Now playing: Original Fixin’ 2 Flyin’ theme"
+      : "Original Fixin’ 2 Flyin’ theme";
   }
-
-  return buffer;
 }
 
 function connectToMaster(node) {
-  if (soundtrackMasterGain) node.connect(soundtrackMasterGain);
+  node.connect(masterGain);
 }
 
-function playTone({ time, frequency, duration, type = "sine", gain = 0.2, detune = 0, filterFrequency = null }) {
-  const oscillator = soundtrackContext.createOscillator();
-  const amp = soundtrackContext.createGain();
-  const filter = filterFrequency ? soundtrackContext.createBiquadFilter() : null;
+function playTone({
+  time,
+  frequency,
+  duration,
+  type = "sine",
+  gain = 0.15,
+  detune = 0,
+  filterFrequency = null,
+}) {
+  const oscillator = audioContext.createOscillator();
+  const amp = audioContext.createGain();
+  const filter = filterFrequency ? audioContext.createBiquadFilter() : null;
 
   oscillator.type = type;
   oscillator.frequency.setValueAtTime(frequency, time);
-  if (detune) oscillator.detune.setValueAtTime(detune, time);
+  oscillator.detune.setValueAtTime(detune, time);
 
   amp.gain.setValueAtTime(0.0001, time);
   amp.gain.exponentialRampToValueAtTime(gain, time + 0.012);
@@ -167,292 +181,181 @@ function playTone({ time, frequency, duration, type = "sine", gain = 0.2, detune
 
   connectToMaster(amp);
   oscillator.start(time);
-  oscillator.stop(time + duration + 0.03);
+  oscillator.stop(time + duration + 0.04);
+}
+
+function createNoiseBuffer(duration = 0.18) {
+  const buffer = audioContext.createBuffer(
+    1,
+    Math.floor(audioContext.sampleRate * duration),
+    audioContext.sampleRate
+  );
+  const data = buffer.getChannelData(0);
+
+  for (let index = 0; index < data.length; index += 1) {
+    data[index] = Math.random() * 2 - 1;
+  }
+
+  return buffer;
 }
 
 function playKick(time) {
-  const oscillator = soundtrackContext.createOscillator();
-  const amp = soundtrackContext.createGain();
-  const filter = soundtrackContext.createBiquadFilter();
+  const oscillator = audioContext.createOscillator();
+  const amp = audioContext.createGain();
 
   oscillator.type = "sine";
   oscillator.frequency.setValueAtTime(140, time);
   oscillator.frequency.exponentialRampToValueAtTime(44, time + 0.16);
   amp.gain.setValueAtTime(0.0001, time);
-  amp.gain.exponentialRampToValueAtTime(0.95, time + 0.008);
+  amp.gain.exponentialRampToValueAtTime(0.85, time + 0.008);
   amp.gain.exponentialRampToValueAtTime(0.0001, time + 0.24);
-  filter.type = "lowpass";
-  filter.frequency.setValueAtTime(160, time);
 
-  oscillator.connect(filter);
-  filter.connect(amp);
+  oscillator.connect(amp);
   connectToMaster(amp);
   oscillator.start(time);
   oscillator.stop(time + 0.28);
 }
 
 function playSnare(time) {
-  const noise = soundtrackContext.createBufferSource();
-  const noiseFilter = soundtrackContext.createBiquadFilter();
-  const amp = soundtrackContext.createGain();
-  const body = soundtrackContext.createOscillator();
-  const bodyGain = soundtrackContext.createGain();
+  const noise = audioContext.createBufferSource();
+  const filter = audioContext.createBiquadFilter();
+  const amp = audioContext.createGain();
 
   noise.buffer = createNoiseBuffer();
-  noiseFilter.type = "highpass";
-  noiseFilter.frequency.setValueAtTime(1500, time);
+  filter.type = "highpass";
+  filter.frequency.setValueAtTime(1450, time);
   amp.gain.setValueAtTime(0.0001, time);
-  amp.gain.exponentialRampToValueAtTime(0.28, time + 0.01);
+  amp.gain.exponentialRampToValueAtTime(0.24, time + 0.01);
   amp.gain.exponentialRampToValueAtTime(0.0001, time + 0.18);
 
-  body.type = "triangle";
-  body.frequency.setValueAtTime(190, time);
-  body.frequency.exponentialRampToValueAtTime(110, time + 0.08);
-  bodyGain.gain.setValueAtTime(0.0001, time);
-  bodyGain.gain.exponentialRampToValueAtTime(0.12, time + 0.01);
-  bodyGain.gain.exponentialRampToValueAtTime(0.0001, time + 0.12);
-
-  noise.connect(noiseFilter);
-  noiseFilter.connect(amp);
-  body.connect(bodyGain);
-  bodyGain.connect(amp);
+  noise.connect(filter);
+  filter.connect(amp);
   connectToMaster(amp);
   noise.start(time);
   noise.stop(time + 0.22);
-  body.start(time);
-  body.stop(time + 0.14);
 }
 
 function playHat(time, open = false) {
-  const noise = soundtrackContext.createBufferSource();
-  const noiseFilter = soundtrackContext.createBiquadFilter();
-  const amp = soundtrackContext.createGain();
+  const noise = audioContext.createBufferSource();
+  const filter = audioContext.createBiquadFilter();
+  const amp = audioContext.createGain();
 
-  noise.buffer = createNoiseBuffer();
-  noiseFilter.type = "highpass";
-  noiseFilter.frequency.setValueAtTime(open ? 6200 : 7600, time);
+  noise.buffer = createNoiseBuffer(open ? 0.24 : 0.08);
+  filter.type = "highpass";
+  filter.frequency.setValueAtTime(open ? 6200 : 7600, time);
   amp.gain.setValueAtTime(0.0001, time);
-  amp.gain.exponentialRampToValueAtTime(open ? 0.09 : 0.045, time + 0.004);
+  amp.gain.exponentialRampToValueAtTime(open ? 0.08 : 0.04, time + 0.004);
   amp.gain.exponentialRampToValueAtTime(0.0001, time + (open ? 0.22 : 0.06));
 
-  noise.connect(noiseFilter);
-  noiseFilter.connect(amp);
+  noise.connect(filter);
+  filter.connect(amp);
   connectToMaster(amp);
   noise.start(time);
   noise.stop(time + (open ? 0.24 : 0.08));
 }
 
-function playBass(time, frequency, duration, gain = 0.16) {
-  playTone({
-    time,
-    frequency,
-    duration,
-    type: "sawtooth",
-    gain,
-    detune: -9,
-    filterFrequency: 280,
-  });
-  playTone({
-    time,
-    frequency,
-    duration,
-    type: "triangle",
-    gain: gain * 0.55,
-    detune: 7,
-    filterFrequency: 180,
-  });
+function playBass(time, frequency, duration, gain = 0.14) {
+  playTone({ time, frequency, duration, type: "sawtooth", gain, detune: -9, filterFrequency: 280 });
+  playTone({ time, frequency, duration, type: "triangle", gain: gain * 0.55, detune: 7, filterFrequency: 180 });
 }
 
-function playChord(time, frequencies, duration, gain = 0.08) {
+function playChord(time, frequencies, duration) {
   frequencies.forEach((frequency, index) => {
     playTone({
       time,
       frequency,
       duration,
       type: "sawtooth",
-      gain: gain / (index === 0 ? 1 : 1.35),
+      gain: index === 0 ? 0.07 : 0.052,
       detune: index === 1 ? 6 : -4,
       filterFrequency: 1400,
     });
-    playTone({
-      time,
-      frequency: frequency * (index === 0 ? 2 : 1),
-      duration,
-      type: "triangle",
-      gain: gain * 0.42,
-      detune: index === 2 ? 4 : 0,
-      filterFrequency: 1800,
-    });
   });
 }
 
-function playLead(time, frequency, duration, gain = 0.045) {
-  playTone({
-    time,
-    frequency,
-    duration,
-    type: "square",
-    gain,
-    detune: 2,
-    filterFrequency: 2600,
-  });
+function playLead(time, frequency, duration) {
+  playTone({ time, frequency, duration, type: "square", gain: 0.04, detune: 2, filterFrequency: 2600 });
 }
 
-function scheduleMusicSection(startTime, sectionIndex) {
-  if (!soundtrackContext || !soundtrackMasterGain) return;
+const musicalBars = [
+  { chord: [50, 53, 57], bass: 38, lead: [69, 72, 74, 72] },
+  { chord: [46, 50, 53], bass: 34, lead: [69, 74, 77, 74] },
+  { chord: [43, 48, 52], bass: 31, lead: [67, 69, 72, 69] },
+  { chord: [48, 52, 55], bass: 36, lead: [65, 67, 69, 67] },
+];
 
-  const bars = [
-    {
-      chord: [midiToFrequency(50), midiToFrequency(53), midiToFrequency(57)],
-      bass: midiToFrequency(38),
-      lead: [midiToFrequency(69), midiToFrequency(72), midiToFrequency(74), midiToFrequency(72)],
-    },
-    {
-      chord: [midiToFrequency(46), midiToFrequency(50), midiToFrequency(53)],
-      bass: midiToFrequency(34),
-      lead: [midiToFrequency(69), midiToFrequency(74), midiToFrequency(77), midiToFrequency(74)],
-    },
-    {
-      chord: [midiToFrequency(43), midiToFrequency(48), midiToFrequency(52)],
-      bass: midiToFrequency(31),
-      lead: [midiToFrequency(67), midiToFrequency(69), midiToFrequency(72), midiToFrequency(69)],
-    },
-    {
-      chord: [midiToFrequency(48), midiToFrequency(52), midiToFrequency(55)],
-      bass: midiToFrequency(36),
-      lead: [midiToFrequency(65), midiToFrequency(67), midiToFrequency(69), midiToFrequency(67)],
-    },
-  ];
-
+function scheduleSection(startTime) {
   for (let bar = 0; bar < SECTION_BARS; bar += 1) {
-    const barStart = startTime + bar * BAR_SECONDS;
-    const phrase = bars[(sectionIndex + bar) % bars.length];
+    const barStart = startTime + bar * BAR;
+    const phrase = musicalBars[(sectionIndex + bar) % musicalBars.length];
 
-    playChord(barStart + 0.02, phrase.chord, BAR_SECONDS * 0.96, 0.08);
-    playBass(barStart + 0.02, phrase.bass, BAR_SECONDS * 0.48, 0.16);
-    playBass(barStart + BEAT_SECONDS * 2, phrase.bass * 1.5, BAR_SECONDS * 0.24, 0.11);
+    playChord(barStart + 0.02, phrase.chord.map(midiToFrequency), BAR * 0.96);
+    playBass(barStart + 0.02, midiToFrequency(phrase.bass), BAR * 0.48);
+    playBass(barStart + BEAT * 2, midiToFrequency(phrase.bass) * 1.5, BAR * 0.24, 0.1);
 
     playKick(barStart);
-    playKick(barStart + BEAT_SECONDS * 2);
-    playSnare(barStart + BEAT_SECONDS);
-    playSnare(barStart + BEAT_SECONDS * 3);
+    playKick(barStart + BEAT * 2);
+    playSnare(barStart + BEAT);
+    playSnare(barStart + BEAT * 3);
 
-    playHat(barStart + 0.02);
-    playHat(barStart + BEAT_SECONDS * 0.5);
-    playHat(barStart + BEAT_SECONDS);
-    playHat(barStart + BEAT_SECONDS * 1.5);
-    playHat(barStart + BEAT_SECONDS * 2);
-    playHat(barStart + BEAT_SECONDS * 2.5);
-    playHat(barStart + BEAT_SECONDS * 3);
-    playHat(barStart + BEAT_SECONDS * 3.5, true);
-
-    const leadPattern = phrase.lead;
-    for (let i = 0; i < leadPattern.length; i += 1) {
-      playLead(barStart + (i * BEAT_SECONDS) / 2 + BEAT_SECONDS * 0.25, leadPattern[i], 0.18);
+    for (let halfBeat = 0; halfBeat < 8; halfBeat += 1) {
+      playHat(barStart + halfBeat * BEAT * 0.5, halfBeat === 7);
     }
+
+    phrase.lead.forEach((note, index) => {
+      playLead(barStart + (index * BEAT) / 2 + BEAT * 0.25, midiToFrequency(note), 0.18);
+    });
   }
+
+  sectionIndex = (sectionIndex + SECTION_BARS) % musicalBars.length;
 }
 
-function scheduleMusicLoop() {
-  if (!soundtrackContext || !soundtrackMasterGain) return;
-
-  scheduleMusicSection(soundtrackNextSectionStartTime, soundtrackSectionIndex);
-  soundtrackSectionIndex = (soundtrackSectionIndex + SECTION_BARS) % 4;
-  soundtrackNextSectionStartTime += SECTION_SECONDS;
+function scheduleLoop() {
+  scheduleSection(nextSectionStart);
+  nextSectionStart += SECTION;
 }
 
 async function startSoundtrack() {
-  if (RIDE_AUDIO_SRC) {
-    if (!soundtrackAudio) {
-      soundtrackAudio = new Audio(RIDE_AUDIO_SRC);
-      soundtrackAudio.loop = true;
-      soundtrackAudio.preload = "auto";
-      soundtrackAudio.volume = 0.55;
-    }
-    await soundtrackAudio.play();
-    setSoundtrackUi(true);
+  const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContextClass) {
+    if (musicStatus) musicStatus.textContent = "This browser cannot play the original theme.";
     return;
   }
 
-  const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-  if (!AudioContextClass) return;
-
-  if (!soundtrackContext) soundtrackContext = new AudioContextClass();
-  if (soundtrackContext.state === "suspended") await soundtrackContext.resume();
-
-  if (!soundtrackMasterGain) {
-    soundtrackMasterGain = soundtrackContext.createGain();
-    soundtrackMasterGain.gain.setValueAtTime(0.58, soundtrackContext.currentTime);
-    soundtrackMasterGain.connect(soundtrackContext.destination);
+  if (!audioContext) {
+    audioContext = new AudioContextClass();
+    masterGain = audioContext.createGain();
+    masterGain.gain.setValueAtTime(0.5, audioContext.currentTime);
+    masterGain.connect(audioContext.destination);
   }
 
-  clearInterval(soundtrackMusicTimer);
-  soundtrackSectionIndex = 0;
-  soundtrackNextSectionStartTime = soundtrackContext.currentTime + 0.12;
-  scheduleMusicLoop();
-  soundtrackMusicTimer = setInterval(scheduleMusicLoop, Math.max(1000, SECTION_SECONDS * 1000 - 150));
-  setSoundtrackUi(true);
+  await audioContext.resume();
+  clearInterval(schedulerTimer);
+  sectionIndex = 0;
+  nextSectionStart = audioContext.currentTime + 0.12;
+  scheduleLoop();
+  schedulerTimer = window.setInterval(scheduleLoop, Math.max(1000, SECTION * 1000 - 150));
+  setMusicUi(true);
 }
 
-function pauseSoundtrack() {
-  if (soundtrackAudio) soundtrackAudio.pause();
-  clearInterval(soundtrackMusicTimer);
-  soundtrackMusicTimer = null;
-  setSoundtrackUi(false);
+async function pauseSoundtrack() {
+  clearInterval(schedulerTimer);
+  schedulerTimer = null;
+  if (audioContext?.state === "running") await audioContext.suspend();
+  setMusicUi(false);
 }
 
 soundtrackToggle?.addEventListener("click", async () => {
-  if (soundtrackPlaying) {
-    pauseSoundtrack();
-    return;
-  }
-
   try {
-    await startSoundtrack();
-  } catch (error) {
-    setSoundtrackUi(false);
+    if (playing) {
+      await pauseSoundtrack();
+    } else {
+      await startSoundtrack();
+    }
+  } catch {
+    setMusicUi(false);
+    if (musicStatus) musicStatus.textContent = "The original theme could not start. Try again.";
   }
 });
 
-if (bookingForm) {
-  bookingForm.addEventListener("submit", async (event) => {
-    event.preventDefault();
-
-    if (bookingSubmit) {
-      bookingSubmit.disabled = false;
-      bookingSubmit.classList.remove("is-loading");
-    }
-
-    if (!bookingForm.checkValidity()) {
-      bookingForm.reportValidity();
-      if (statusEl) {
-        statusEl.textContent = "Please complete the required fields marked with *.";
-        statusEl.className = "contact-status is-error";
-      }
-      return;
-    }
-
-    const originalLabel = bookingSubmit?.textContent || "Send Message";
-    if (bookingSubmit) {
-      bookingSubmit.disabled = true;
-      bookingSubmit.classList.add("is-loading");
-      bookingSubmit.textContent = "Sending...";
-    }
-
-    const payload = new FormData(bookingForm);
-    void payload;
-
-    await new Promise((resolve) => window.setTimeout(resolve, 900));
-
-    bookingForm.reset();
-    if (bookingSubmit) {
-      bookingSubmit.disabled = false;
-      bookingSubmit.classList.remove("is-loading");
-      bookingSubmit.textContent = originalLabel;
-    }
-    if (statusEl) {
-      statusEl.textContent = "Message sent successfully. Dom will review it and follow up.";
-      statusEl.className = "contact-status is-success";
-    }
-  });
-}
+setMusicUi(false);
