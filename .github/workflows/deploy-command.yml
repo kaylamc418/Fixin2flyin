@@ -37,6 +37,24 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Check Cloudflare credentials
+        id: credentials
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        shell: bash
+        run: |
+          missing=""
+          [[ -z "$CLOUDFLARE_API_TOKEN" ]] && missing="CLOUDFLARE_API_TOKEN"
+          if [[ -z "$CLOUDFLARE_ACCOUNT_ID" ]]; then
+            [[ -n "$missing" ]] && missing="${missing}, CLOUDFLARE_ACCOUNT_ID" || missing="CLOUDFLARE_ACCOUNT_ID"
+          fi
+          echo "missing=$missing" >> "$GITHUB_OUTPUT"
+          if [[ -n "$missing" ]]; then
+            echo "Missing required GitHub Actions secret(s): $missing"
+            exit 1
+          fi
+
       - name: Add deployment marker
         env:
           DEPLOY_SHA: ${{ steps.source.outputs.sha }}
@@ -84,11 +102,15 @@ jobs:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           JOB_STATUS: ${{ job.status }}
           DEPLOY_SHA: ${{ steps.source.outputs.sha }}
+          MISSING_SECRETS: ${{ steps.credentials.outputs.missing }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         shell: bash
         run: |
-          if [[ "$JOB_STATUS" == "success" ]]; then
-            message="Production deployment completed and the responsive Playwright audit passed for commit ${DEPLOY_SHA}."
+          if [[ -n "$MISSING_SECRETS" ]]; then
+            message="Production deployment is blocked because these GitHub Actions secrets are missing: ${MISSING_SECRETS}. Workflow: ${RUN_URL}"
+          elif [[ "$JOB_STATUS" == "success" ]]; then
+            message="Production deployment completed and the responsive Playwright audit passed for commit ${DEPLOY_SHA}. Workflow: ${RUN_URL}"
           else
-            message="Production deployment or verification failed for commit ${DEPLOY_SHA}. Review the Production deploy command workflow logs."
+            message="Production deployment or verification failed for commit ${DEPLOY_SHA}. Workflow: ${RUN_URL}"
           fi
           gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body "$message"
