@@ -1,0 +1,94 @@
+name: Production deploy command
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: fixin2flyin-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    if: github.actor == 'kaylamc418' && github.event.issue.title == 'Deploy Fixin2flyin production'
+    runs-on: ubuntu-latest
+    name: Deploy and verify production
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Set deployment SHA
+        id: source
+        shell: bash
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Add deployment marker
+        env:
+          DEPLOY_SHA: ${{ steps.source.outputs.sha }}
+        run: printf '%s' "$DEPLOY_SHA" > deploy-marker.txt
+
+      - name: Deploy to Cloudflare Workers
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx wrangler deploy --config wrangler.jsonc
+
+      - name: Verify deployed commit
+        env:
+          DEPLOY_SHA: ${{ steps.source.outputs.sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          marker_url="https://fixin2flyin.kayamc418.workers.dev/deploy-marker.txt?sha=${DEPLOY_SHA}"
+
+          for attempt in {1..12}; do
+            deployed_sha="$(curl -fsSL --max-time 15 "$marker_url" || true)"
+            if [[ "$deployed_sha" == "$DEPLOY_SHA" ]]; then
+              echo "Verified deployment of $DEPLOY_SHA"
+              exit 0
+            fi
+            echo "Waiting for Cloudflare deployment (${attempt}/12)..."
+            sleep 10
+          done
+
+          echo "Deployment marker did not match $DEPLOY_SHA"
+          exit 1
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run production audit
+        env:
+          BASE_URL: https://fixin2flyin.kayamc418.workers.dev
+        run: npm run test:visual
+
+      - name: Report deployment result
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          JOB_STATUS: ${{ job.status }}
+          DEPLOY_SHA: ${{ steps.source.outputs.sha }}
+        shell: bash
+        run: |
+          if [[ "$JOB_STATUS" == "success" ]]; then
+            message="Production deployment completed and the responsive Playwright audit passed for commit ${DEPLOY_SHA}."
+          else
+            message="Production deployment or verification failed for commit ${DEPLOY_SHA}. Review the Production deploy command workflow logs."
+          fi
+          gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body "$message"
