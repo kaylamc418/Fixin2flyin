@@ -65,8 +65,8 @@ for (const viewport of viewports) {
     });
 
     expect(heroStyles.backgroundImage).toContain('DOMPROJ.jpg');
-    expect(heroStyles.backgroundSize).toBe('cover');
-    expect(heroStyles.backgroundRepeat).toBe('no-repeat');
+    expect(heroStyles.backgroundSize.split(',').every((value) => value.trim() === 'cover')).toBe(true);
+    expect(heroStyles.backgroundRepeat.split(',').every((value) => value.trim() === 'no-repeat')).toBe(true);
     expect(heroStyles.display).toBe('flex');
     expect(heroStyles.alignItems).toBe('center');
     expect(heroStyles.justifyContent).toBe('center');
