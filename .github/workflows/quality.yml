@@ -1,0 +1,32 @@
+name: Quality checks (build, lint, accessibility)
+on:
+  push:
+  pull_request:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+      - name: Run validation
+        run: npm run validate
+      - name: Start static server
+        run: npx http-server -p 8080 -a 127.0.0.1 &> /dev/null & disown
+      - name: Run Lighthouse (informational)
+        run: npm run test:lighthouse || true
+      - name: Upload Lighthouse artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse
+          path: ./
+      - name: Broken link check (lychee)
+        run: npx lychee --recursive http://127.0.0.1:8080/feature/story-first-homepage/index.html || true
+      - name: Accessibility scan (pa11y)
+        run: npm run test:a11y
