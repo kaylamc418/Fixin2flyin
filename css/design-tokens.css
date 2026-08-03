@@ -1,0 +1,37 @@
+/* Design tokens and motion system — Story First Edition
+   Tokens for colors, type, spacing, and motion helpers.
+*/
+:root{
+  /* Colors */
+  --matte-black: #0B0B0B;
+  --white: #F8F8F8;
+  --metallic-gold: #C8A23A;
+  --royal-purple: #5E2D91;
+  --mountain-turquoise: #2CB7B3;
+  --warm-gray: #BFB7B0;
+
+  /* Typography */
+  --type-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --type-display: Georgia, "Times New Roman", serif;
+
+  /* Motion */
+  --motion-fast: 160ms;
+  --motion-medium: 320ms;
+  --motion-slow: 680ms;
+
+  /* Elevation */
+  --elevation-1: 0 6px 20px rgba(0,0,0,0.35);
+}
+
+/* Motion helpers */
+.reveal-fade{opacity:0;transform:translateY(8px);transition:opacity var(--motion-medium) ease,transform var(--motion-medium) ease}
+.reveal-fade.is-visible{opacity:1;transform:none}
+
+.image-zoom{transition:transform var(--motion-slow) ease;will-change:transform}
+.image-zoom:hover{transform:scale(1.03)}
+
+.parallax-slow{transform:translateZ(0);will-change:transform}
+
+@media (prefers-reduced-motion:reduce){
+  .reveal-fade,.image-zoom{transition:none;transform:none}
+}
