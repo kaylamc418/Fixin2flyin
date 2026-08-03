@@ -5,14 +5,21 @@
   "scripts": {
     "images:generate": "node scripts/image-build.js",
     "lint:html": "html-validate",
-    "lint:css": "stylelint \"css/**/*.css\" || true"
+    "lint:css": "stylelint \"css/**/*.css\" || true",
+    "lint:js": "eslint js || true",
+    "lint": "npm run lint:html && npm run lint:css && npm run lint:js",
+    "test:a11y": "pa11y http://127.0.0.1:8080/feature/story-first-homepage/index.html --standard WCAG2AA",
+    "test:lighthouse": "lhci autorun --collect.url=http://127.0.0.1:8080/feature/story-first-homepage/index.html",
+    "validate": "npm run lint && npm run test:a11y || true"
   },
   "devDependencies": {
-    "sharp": "^0.32.0",
     "@lhci/cli": "^0.7.0",
     "pa11y": "^6.0.0",
     "html-validate": "^7.0.0",
+    "stylelint": "^15.0.0",
+    "sharp": "^0.32.0",
     "htmlhint": "^0.16.0",
-    "stylelint": "^15.0.0"
+    "lychee-action": "^0.0.0",
+    "eslint": "^8.0.0"
   }
 }
