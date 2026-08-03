@@ -11,3 +11,8 @@ test-results/
 
 # Archive masters & originals (do not deploy this folder)
 /media/originals/
+
+# Media pipeline artifacts
+/assets/generated/
+/assets/originals/
+/media/originals/
