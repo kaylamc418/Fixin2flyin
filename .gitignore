@@ -8,3 +8,6 @@
 # node/test output
 node_modules/
 test-results/
+
+# Archive masters & originals (do not deploy this folder)
+/media/originals/
