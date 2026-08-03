@@ -1,12 +1,19 @@
 {
   "name": "fixin2flyin",
+  "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
-    "test:visual": "playwright test tests/final.spec.js"
+    "images:generate": "node scripts/image-build.js",
+    "lint:html": "html-validate",
+    "lint:css": "stylelint \"css/**/*.css\" || true"
   },
   "devDependencies": {
-    "@playwright/test": "^1.55.0",
-    "wrangler": "^4.108.0"
+    "sharp": "^0.32.0",
+    "@lhci/cli": "^0.7.0",
+    "pa11y": "^6.0.0",
+    "html-validate": "^7.0.0",
+    "htmlhint": "^0.16.0",
+    "stylelint": "^15.0.0",
+    "lychee-action": "^0.0.0"
   }
 }
