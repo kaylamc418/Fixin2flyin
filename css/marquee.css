@@ -1,0 +1,17 @@
+/* Marquee styles
+   Smooth horizontal scroll using CSS animation and transform.
+*/
+.section--marquee{overflow:hidden;background:linear-gradient(90deg, rgba(11,11,11,0.98), rgba(11,11,11,0.96));padding:8px 0;border-top:1px solid rgba(255,255,255,0.02)}
+.marquee-wrap{display:block;white-space:nowrap;overflow:hidden}
+.marquee-track{display:inline-block;will-change:transform;animation:marquee-scroll 18s linear infinite}
+.marquee-track span{display:inline-block;padding:0 1.25rem;color:var(--white);font-weight:600;letter-spacing:0.02em}
+.marquee-track .marquee-highlight{color:var(--metallic-gold);text-shadow:0 6px 18px rgba(200,162,58,0.12);}
+
+@keyframes marquee-scroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(calc(var(--marquee-loop-width,100%) * -1))}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .marquee-track{animation:none}
+}
