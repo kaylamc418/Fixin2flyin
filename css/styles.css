@@ -1,0 +1,60 @@
+/* design tokens and small base styles for the player
+   This file contains a small set of tokens referenced by the player styles.
+   Later commits will introduce the full design-tokens.css and global styles.
+*/
+:root{
+  --matte-black:#0B0B0B;
+  --white:#F8F8F8;
+  --metallic-gold:#C8A23A;
+  --royal-purple:#5E2D91;
+  --mountain-turquoise:#2CB7B3;
+  --warm-gray:#BFB7B0;
+  --player-bg:rgba(11,11,11,0.92);
+  --player-accent:var(--mountain-turquoise);
+  --focus-ring: 3px solid rgba(44,183,179,0.15);
+}
+
+/* Minimal floating player styles */
+.f2f-player{
+  position:fixed;
+  right:1rem;
+  bottom:1rem;
+  width:320px;
+  max-width:calc(100% - 2rem);
+  background:var(--player-bg);
+  color:var(--white);
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.45);
+  display:flex;
+  gap:12px;
+  padding:12px;
+  align-items:center;
+  z-index:1200;
+  transform:translateY(6px);
+  transition:transform 320ms ease, opacity 320ms ease;
+}
+.f2f-player:focus-within{outline:none; box-shadow:0 12px 36px rgba(0,0,0,0.6);}
+.f2f-player__art{
+  width:72px;
+  height:72px;
+  flex:0 0 72px;
+  border-radius:8px;
+  background:linear-gradient(180deg,#222,#111);
+  overflow:hidden;
+}
+.f2f-player__art img{width:100%;height:100%;object-fit:cover;display:block}
+.f2f-player__meta{flex:1;min-width:0}
+.f2f-player__title{font-weight:700;margin:0 0 4px 0;font-size:14px}
+.f2f-player__subtitle{font-size:12px;color:var(--warm-gray);margin:0 0 8px 0}
+.f2f-player__controls{display:flex;gap:8px;align-items:center}
+.f2f-player button{background:transparent;border:0;color:var(--white);cursor:pointer;padding:6px;border-radius:6px}
+.f2f-player button:focus{outline:none;box-shadow:var(--focus-ring)}
+.f2f-player__play{font-size:18px;background:linear-gradient(90deg,var(--metallic-gold),var(--royal-purple));color:#fff;padding:8px 10px}
+.f2f-player__time{font-size:11px;color:var(--warm-gray)}
+.f2f-player__progress{height:6px;background:rgba(255,255,255,0.08);border-radius:6px;overflow:hidden;margin-top:8px}
+.f2f-player__progress > i{display:block;height:100%;background:linear-gradient(90deg,var(--mountain-turquoise),var(--metallic-gold));width:0%}
+.f2f-waveform{width:100%;height:36px;background:transparent}
+
+@media (prefers-reduced-motion:reduce){
+  .f2f-player{transition:none}
+}

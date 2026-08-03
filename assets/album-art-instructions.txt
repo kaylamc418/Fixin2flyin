@@ -1,0 +1,7 @@
+Album artwork placeholder instructions
+
+Add a square artwork image used by the floating player at:
+
+/assets/album-art.jpg
+
+Recommended: 1200x1200 jpg or png. Web optimized versions can be generated later.
