@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800" role="img" aria-labelledby="ph-portrait">
+  <title id="ph-portrait">Portrait placeholder</title>
+  <rect width="100%" height="100%" fill="#0B0B0B"/>
+  <circle cx="400" cy="320" r="140" fill="#1b1b1b" stroke="#2CB7B3" stroke-width="6"/>
+</svg>
