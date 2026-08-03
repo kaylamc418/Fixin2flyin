@@ -3,11 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Fixin' 2 Flyin' — Built to Fix. Ready to Fly.</title>
-  <meta name="description" content="Professional mobile bicycle repair, coaching, and trailside support delivered wherever adventure begins across Colorado and New Mexico.">
+  <title>Fixin’ 2 Flyin’ | Mobile Bike Repair & Mountain Bike Coaching | Colorado & New Mexico</title>
+  <meta name="description" content="Mobile bike repair, mountain bike coaching, trailside support, and adventure services across Colorado and New Mexico. Keeping Adventures Alive.">
   <link rel="icon" href="assets/favicon-horus-fullcolor.svg">
   <link rel="stylesheet" href="/css/design-tokens.css">
   <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/marquee.css">
+  <link rel="stylesheet" href="/css/sections.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -68,7 +70,7 @@
       </div>
     </section>
 
-    <!-- Soundtrack (floating player injected by JS) -->
+    <!-- Floating Soundtrack (player injected by JS) -->
     <section id="soundtrack" class="section--soundtrack" aria-label="Soundtrack">
       <div id="floating-player-root"></div>
     </section>
@@ -81,6 +83,11 @@
           <span>BUILT TO FIX • READY TO FLY • KEEPING ADVENTURES ALIVE • WE FIX BIKES • WE BUILD RIDERS • ROLLING WORKSHOP • ENDLESS ADVENTURE • COLORADO • NEW MEXICO • HELPING RIDERS GO FARTHER • COMMUNITY FIRST • WHEREVER ADVENTURE CALLS •</span>
         </div>
       </div>
+    </section>
+
+    <!-- Credibility strip -->
+    <section id="credibility-strip" class="credibility-strip" aria-hidden="false">
+      <div class="cred-inner">Mobile Repair • Mountain Bike Coaching • Colorado & New Mexico • Trailside Support • By Appointment</div>
     </section>
 
     <!-- Services -->
@@ -144,9 +151,22 @@
 
           <div class="coaching-ctas">
             <a class="btn btn-primary" href="#contact">Book Coaching</a>
-            <a class="btn btn-secondary" href="#coaching">Ride With Dom</a>
+            <a class="btn btn-secondary" href="#coaching-more">Learn More</a>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Who We Ride With -->
+    <section id="who-we-ride" class="section--who" aria-labelledby="who-title">
+      <h3 id="who-title">WHO WE RIDE WITH</h3>
+      <div class="who-grid">
+        <div class="who-card">New Riders</div>
+        <div class="who-card">Weekend Adventurers</div>
+        <div class="who-card">Mountain Bikers</div>
+        <div class="who-card">Families</div>
+        <div class="who-card">Racers</div>
+        <div class="who-card">Travelers</div>
       </div>
     </section>
 
@@ -160,6 +180,18 @@
         <img src="assets/workshop/van-02.jpg" alt="Van interior placeholder" loading="lazy">
         <img src="assets/workshop/van-03.jpg" alt="Van setup placeholder" loading="lazy">
       </div>
+      <div class="workshop-equip">
+        <h4>Equipment & Essentials</h4>
+        <ul>
+          <li>Professional repair stand</li>
+          <li>Complete tool kit</li>
+          <li>Suspension setup equipment</li>
+          <li>Tubeless repair supplies</li>
+          <li>Spare parts</li>
+          <li>Air compressor & inflation</li>
+          <li>Trail repair essentials</li>
+        </ul>
+      </div>
     </section>
 
     <!-- Adventure Journal -->
@@ -167,7 +199,7 @@
       <h2 id="journal-title">Adventure Journal</h2>
       <p class="lede">Every Repair Fuels Another Adventure — Ride Logs, Trail Stories, and Field Notes from the road.</p>
       <div class="journal-grid" id="journal-grid">
-        <!-- Sample entries will be populated by markdown content -->
+        <!-- Sample entries will be populated by markdown content. Each entry should include metadata: Trail, Location, Bike, Service/Coaching, Distance (optional) -->
       </div>
     </section>
 
@@ -234,6 +266,7 @@
           </label>
           <label><span>Bike Type</span><input name="bike" /></label>
           <label><span>Preferred Date</span><input type="date" name="date" /></label>
+          <label class="form-full"><span>Your riding goals (optional)</span><textarea name="goals" rows="4" placeholder="Tell us about your bike, experience level, or what you'd like help with."></textarea></label>
           <label class="form-full"><span>Message *</span><textarea name="message" rows="6" required></textarea></label>
         </div>
         <label class="consent"><input type="checkbox" name="consent" required /><span>I understand that submitting this form is a request for information and does not confirm an appointment.</span></label>
