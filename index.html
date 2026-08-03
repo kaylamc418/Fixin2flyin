@@ -25,10 +25,10 @@
         <ul>
           <li><a href="#soundtrack">Soundtrack</a></li>
           <li><a href="#services">Services</a></li>
+          <li><a href="#coaching">Coaching</a></li>
           <li><a href="#rolling-workshop">Rolling Workshop</a></li>
-          <li><a href="#about-dom">About Dom</a></li>
-          <li><a href="#tribute">Tribute</a></li>
           <li><a href="#adventure-journal">Adventure Journal</a></li>
+          <li><a href="#tribute">Tribute</a></li>
           <li><a href="#currently-rolling">Currently Rolling</a></li>
         </ul>
       </nav>
@@ -45,11 +45,10 @@
     <!-- Cinematic Hero -->
     <section id="hero" class="hero" role="region" aria-label="Hero">
       <div class="hero-media">
-        <!-- Poster/fallback image: Colorado flag jump -->
         <picture>
-          <source srcset="assets/hero-flag-jump.avif" type="image/avif">
-          <source srcset="assets/hero-flag-jump.webp" type="image/webp">
-          <img src="assets/hero-flag-jump.jpg" alt="Dom performing a Colorado flag jump at golden hour" class="hero-poster" loading="eager">
+          <source srcset="assets/hero/hero-colorado-jump.avif" type="image/avif">
+          <source srcset="assets/hero/hero-colorado-jump.webp" type="image/webp">
+          <img src="assets/hero/hero-colorado-jump.jpg" alt="Dom performing a Colorado flag jump at golden hour" class="hero-poster" loading="eager">
         </picture>
       </div>
 
@@ -64,6 +63,7 @@
         <div class="hero-ctas">
           <a class="btn btn-primary" href="#contact">Book Mobile Repair</a>
           <a class="btn btn-secondary" href="#services">Explore Adventures</a>
+          <a class="btn btn-tertiary" href="#soundtrack">Listen to the Soundtrack</a>
         </div>
       </div>
     </section>
@@ -86,67 +86,111 @@
     <!-- Services -->
     <section id="services" class="section--services" aria-labelledby="services-title">
       <h2 id="services-title">We Fix Bikes. We Build Riders.</h2>
+      <p class="lede">Ready to Ride — outcome-focused services that make adventures possible.</p>
       <div class="services-grid">
         <article class="service-card">
-          <img src="assets/services/service-1.jpg" alt="Mobile repair sample image" loading="lazy">
-          <h3>Mobile Repair</h3>
+          <img src="assets/services/repair-placeholder.jpg" alt="Mobile repair sample image" loading="lazy">
+          <h3>Mobile Bike Repair</h3>
+          <p class="service-outcome">Get back on the trail fast — on-site fixes that keep the ride going.</p>
         </article>
         <article class="service-card">
-          <img src="assets/services/service-2.jpg" alt="Coaching sample image" loading="lazy">
-          <h3>Coaching</h3>
+          <img src="assets/services/repair-placeholder.jpg" alt="Trailside repair sample image" loading="lazy">
+          <h3>Trailside Repair</h3>
+          <p class="service-outcome">Quick trail fixes to rescue the ride and keep the group moving.</p>
         </article>
         <article class="service-card">
-          <img src="assets/services/service-3.jpg" alt="Trailside support sample image" loading="lazy">
-          <h3>Trailside Support</h3>
+          <img src="assets/services/bike-detail.jpg" alt="Tune-up sample image" loading="lazy">
+          <h3>Bike Tune-Ups</h3>
+          <p class="service-outcome">Fine-tune your bike so it feels predictable and confident on technical trails.</p>
         </article>
         <article class="service-card">
-          <img src="assets/services/service-4.jpg" alt="Bike builds sample image" loading="lazy">
+          <img src="assets/services/transition-bike.jpg" alt="Bike build sample image" loading="lazy">
           <h3>Bike Builds</h3>
+          <p class="service-outcome">Custom builds and setups that unlock new lines and terrain for every rider.</p>
         </article>
         <article class="service-card">
-          <img src="assets/services/service-5.jpg" alt="Event support sample image" loading="lazy">
-          <h3>Event Service</h3>
+          <img src="assets/services/trail-session.jpg" alt="Ride preparation sample image" loading="lazy">
+          <h3>Ride Preparation</h3>
+          <p class="service-outcome">Prep for the big day — packing, setup, and checks that reduce surprises on remote rides.</p>
         </article>
         <article class="service-card">
-          <img src="assets/services/service-6.jpg" alt="Workshop sample image" loading="lazy">
-          <h3>Workshops</h3>
+          <img src="assets/services/repair-placeholder.jpg" alt="Adventure support sample image" loading="lazy">
+          <h3>Adventure Support</h3>
+          <p class="service-outcome">Logistics and trailside support so you can focus on the ride, not the details.</p>
         </article>
+      </div>
+    </section>
+
+    <!-- Coaching / Ride With Dom -->
+    <section id="coaching" class="section--coaching" aria-labelledby="coaching-title">
+      <h2 id="coaching-title">RIDE WITH DOM</h2>
+      <p class="eyebrow">More Than a Mechanic. A Riding Partner.</p>
+      <div class="coaching-grid">
+        <div class="coaching-media">
+          <img src="assets/about/dom-lumi.jpg" alt="Dom coaching a rider with Lumi nearby" loading="lazy" class="image-zoom">
+        </div>
+        <div class="coaching-copy">
+          <p>Every rider starts somewhere. Whether you’re learning your first trail or refining advanced skills, coaching is built around helping you ride farther, ride safer, and enjoy every mile with confidence.</p>
+          <ul class="coaching-list">
+            <li>Beginner Mountain Biking</li>
+            <li>Trail Confidence</li>
+            <li>Cornering & Line Choice</li>
+            <li>Climbing & Descending</li>
+            <li>Brake & Body Positioning</li>
+            <li>Bike Setup & Suspension</li>
+            <li>One-on-One & Small Group Coaching</li>
+            <li>Skills Progression Plans</li>
+          </ul>
+
+          <div class="coaching-ctas">
+            <a class="btn btn-primary" href="#contact">Book Coaching</a>
+            <a class="btn btn-secondary" href="#coaching">Ride With Dom</a>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- The Rolling Workshop -->
     <section id="rolling-workshop" class="section--rolling-workshop" aria-labelledby="rolling-title">
       <h2 id="rolling-title">The Rolling Workshop</h2>
-      <p class="lede">The workshop that never stays still. Temporary van images are in place — replace with originals when available.</p>
+      <p class="lede">The Workshop That Never Stays Still.</p>
+      <p class="lede-sub">This isn't a van — it's a mountain-bike basecamp that brings tools, expertise, and coaching to the trailhead.</p>
       <div class="rolling-gallery">
-        <img src="assets/van/van-exterior.jpg" alt="Van exterior placeholder" loading="lazy">
-        <img src="assets/van/van-interior.jpg" alt="Van interior placeholder" loading="lazy">
-      </div>
-    </section>
-
-    <!-- About Dom -->
-    <section id="about-dom" class="section--about" aria-labelledby="about-dom-title">
-      <h2 id="about-dom-title">About Dom</h2>
-      <div class="about-grid">
-        <img src="assets/dom/dom-lumi.jpg" alt="Dom and Lumi portrait" loading="lazy">
-        <div class="about-copy">
-          <p>Dom lives a life built around riding. His black adventure van is a mobile workshop, coaching headquarters, basecamp, and home. He meets riders wherever adventure begins.</p>
-        </div>
+        <img src="assets/workshop/van-01.jpg" alt="Van exterior placeholder" loading="lazy">
+        <img src="assets/workshop/van-02.jpg" alt="Van interior placeholder" loading="lazy">
+        <img src="assets/workshop/van-03.jpg" alt="Van setup placeholder" loading="lazy">
       </div>
     </section>
 
     <!-- Adventure Journal -->
     <section id="adventure-journal" class="section--journal" aria-labelledby="journal-title">
       <h2 id="journal-title">Adventure Journal</h2>
-      <p class="lede">Photo-led micro-stories from the trail.</p>
-      <div class="journal-grid" id="journal-grid"></div>
+      <p class="lede">Every Repair Fuels Another Adventure — Ride Logs, Trail Stories, and Field Notes from the road.</p>
+      <div class="journal-grid" id="journal-grid">
+        <!-- Sample entries will be populated by markdown content -->
+      </div>
+    </section>
+
+    <!-- DOM CODE manifesto -->
+    <section id="dom-code" class="section--dom-code" aria-labelledby="dom-code-title">
+      <div class="dom-code-hero">
+        <h2 id="dom-code-title">DOM CODE</h2>
+        <div class="dom-code-lines">
+          <p>Ride with respect.</p>
+          <p>Help the rider behind you.</p>
+          <p>Leave every trail better than you found it.</p>
+          <p>Every repair deserves craftsmanship.</p>
+          <p>Every adventure is earned.</p>
+        </div>
+      </div>
     </section>
 
     <!-- Tribute -->
     <section id="tribute" class="section--tribute" aria-labelledby="tribute-title">
       <h2 id="tribute-title">Tribute</h2>
+      <p class="lede">Keeping Adventures Alive.</p>
       <div class="tribute-hero">
-        <img src="assets/tribute/tribute-hero.jpg" alt="Tribute placeholder" loading="lazy">
+        <img src="assets/tribute/tribute-dom-mama.jpg" alt="Tribute image" loading="lazy">
         <p class="tribute-copy">Where Every Repair Begins Another Adventure.</p>
       </div>
     </section>
@@ -167,6 +211,36 @@
     <section id="contact" class="section--contact" aria-labelledby="contact-title">
       <h2 id="contact-title">Contact</h2>
       <p>Booking and contact details will be added here. Do not hard-code personal contact info.</p>
+
+      <form class="service-form" id="service-form">
+        <div class="form-grid">
+          <label><span>Name *</span><input name="name" autocomplete="name" required /></label>
+          <label><span>Email *</span><input type="email" name="email" autocomplete="email" required /></label>
+          <label><span>Phone</span><input type="tel" name="phone" autocomplete="tel" /></label>
+          <label><span>Location *</span><input name="location" autocomplete="address-level2" required /></label>
+          <label><span>Type of Service *</span>
+            <select name="service" required>
+              <option value="">Choose a service</option>
+              <option>Mobile Bike Repair</option>
+              <option>Emergency Trailside Repair</option>
+              <option>Bike Tune-Up</option>
+              <option>Bike Build</option>
+              <option>Mountain Bike Coaching</option>
+              <option>Group Coaching</option>
+              <option>Ride Preparation</option>
+              <option>Adventure Support</option>
+              <option>Other</option>
+            </select>
+          </label>
+          <label><span>Bike Type</span><input name="bike" /></label>
+          <label><span>Preferred Date</span><input type="date" name="date" /></label>
+          <label class="form-full"><span>Message *</span><textarea name="message" rows="6" required></textarea></label>
+        </div>
+        <label class="consent"><input type="checkbox" name="consent" required /><span>I understand that submitting this form is a request for information and does not confirm an appointment.</span></label>
+        <button class="button primary submit-button" type="submit">Send Service Request</button>
+        <p class="form-status" id="form-status" aria-live="polite"></p>
+      </form>
+
     </section>
 
   </main>
@@ -174,6 +248,7 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <p class="footer-signature">Where Every Repair Begins Another Adventure.</p>
+      <p class="footer-sub">Colorado • New Mexico • Wherever Adventure Calls</p>
       <nav class="footer-nav" aria-label="Footer">
         <a href="#">Instagram</a>
         <a href="#">YouTube</a>
