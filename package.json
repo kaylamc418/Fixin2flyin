@@ -19,7 +19,6 @@
     "stylelint": "^15.0.0",
     "sharp": "^0.32.0",
     "htmlhint": "^0.16.0",
-    "lychee-action": "^0.0.0",
     "eslint": "^8.0.0"
   }
 }
