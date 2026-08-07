@@ -64,7 +64,7 @@ lightbox?.addEventListener("click", (event) => {
 
 const serviceForm = document.getElementById("service-form");
 const formStatus = document.getElementById("form-status");
-const CONTACT_EMAIL = "kayamc418@gmail.com";
+const CONTACT_EMAIL = "dom@fixin2flyin.com";
 
 serviceForm?.addEventListener("submit", (event) => {
   event.preventDefault();
