@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fixin2flyin.kayamc418.workers.dev/sitemap.xml
