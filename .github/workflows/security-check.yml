@@ -1,0 +1,38 @@
+name: Production security check
+
+on:
+  workflow_run:
+    workflows: ["Deploy to Cloudflare"]
+    types: [completed]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Verify security headers and public surface
+        shell: bash
+        run: |
+          set -euo pipefail
+          base="https://fixin2flyin.kayamc418.workers.dev"
+          headers="$(curl -fsSI --max-time 20 "$base/")"
+
+          printf '%s\n' "$headers" | grep -Eiq '^x-content-type-options:[[:space:]]*nosniff'
+          printf '%s\n' "$headers" | grep -Eiq '^referrer-policy:[[:space:]]*strict-origin-when-cross-origin'
+          printf '%s\n' "$headers" | grep -Eiq '^x-frame-options:[[:space:]]*DENY'
+          printf '%s\n' "$headers" | grep -Eiq '^permissions-policy:.*camera=\(\).*microphone=\(\).*geolocation=\(\)'
+          printf '%s\n' "$headers" | grep -Eiq '^content-security-policy:.*default-src.*self.*object-src.*none.*frame-ancestors.*none'
+
+          for path in package.json package-lock.json wrangler.jsonc playwright.config.js .git/config .github/workflows/deploy.yml; do
+            code="$(curl -sS -o /dev/null -w '%{http_code}' --max-time 20 "$base/$path")"
+            if [[ "$code" == "200" ]]; then
+              echo "Sensitive development file is publicly reachable: $path"
+              exit 1
+            fi
+          done
+
+          echo "Production security headers and asset exclusions verified."
