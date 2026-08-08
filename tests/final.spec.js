@@ -3,6 +3,7 @@ import { test, expect } from '@playwright/test';
 const BASE_URL = process.env.BASE_URL || 'https://fixin2flyin.kayamc418.workers.dev';
 
 const viewports = [
+  { name: 'Mobile 355', width: 355, height: 768 },
   { name: 'Mobile 360', width: 360, height: 800 },
   { name: 'Mobile 390', width: 390, height: 844 },
   { name: 'Mobile 430', width: 430, height: 932 },
@@ -52,12 +53,10 @@ for (const viewport of viewports) {
     await expect(hero).toContainText(/trail prep/i);
     await expect(hero).toContainText(/coaching built for the ride ahead/i);
 
-    // Visible labels and accessible names intentionally match.
     await expect(hero.getByRole('link', { name: 'Fix My Rig', exact: true })).toBeVisible();
     await expect(hero.getByRole('link', { name: 'See the Action', exact: true })).toBeVisible();
     await expect(hero.getByRole('link', { name: 'Learn to Send', exact: true })).toBeVisible();
 
-    // The LCP candidate is a real HTML image, is eagerly discoverable, and is not lazy-loaded.
     await expect(hero.locator('picture')).toHaveCount(1);
     await expect(heroImage).toHaveAttribute('fetchpriority', 'high');
     const imageInfo = await heroImage.evaluate((img) => ({
@@ -73,7 +72,6 @@ for (const viewport of viewports) {
     expect(imageInfo.currentSrc).toMatch(/DOMPROJ\.jpg(?:\?.*)?$/i);
     expect(imageInfo.loading).toBeNull();
 
-    // The headline is structurally incapable of returning to the old three-row mobile failure.
     const titleLayout = await title.evaluate((element) => {
       const styles = getComputedStyle(element);
       return {
@@ -96,12 +94,32 @@ for (const viewport of viewports) {
     expect(rightBox).not.toBeNull();
     if (!heroBox || !leftBox || !rightBox) throw new Error('Hero geometry unavailable');
 
-    // Both phrases must share the same visual row and remain on opposite sides of the rider corridor.
     expect(Math.abs(leftBox.y - rightBox.y)).toBeLessThanOrEqual(24);
     expect(rightBox.x).toBeGreaterThan(leftBox.x + leftBox.width - 2);
 
-    // The hero may grow slightly for content, but never return to a multi-screen forced stack.
+    // Measure rendered word ranges, not just grid cells, so fallback fonts cannot clip off-screen.
+    const wordRects = await title.evaluate((element) => {
+      const rectFor = (node) => {
+        if (!node) return null;
+        const range = document.createRange();
+        range.selectNodeContents(node);
+        const rect = range.getBoundingClientRect();
+        return { left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom };
+      };
+      return {
+        built: rectFor(element.querySelector('.f2f-title-left > span')),
+        ready: rectFor(element.querySelector('.f2f-title-right > span')),
+      };
+    });
+
     if (viewport.width < 700) {
+      expect(wordRects.built).not.toBeNull();
+      expect(wordRects.ready).not.toBeNull();
+      if (!wordRects.built || !wordRects.ready) throw new Error('Headline word geometry unavailable');
+
+      const safeInset = 6;
+      expect(wordRects.built.left).toBeGreaterThanOrEqual(heroBox.x + safeInset);
+      expect(wordRects.ready.right).toBeLessThanOrEqual(heroBox.x + heroBox.width - safeInset);
       expect(heroBox.height).toBeLessThanOrEqual(viewport.height * 1.45);
     }
 
