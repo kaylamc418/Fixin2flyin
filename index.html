@@ -14,25 +14,45 @@
   <meta property="og:url" content="https://fixin2flyin.kayamc418.workers.dev/" />
   <meta property="og:site_name" content="Fixin’ 2 Flyin’" />
   <meta property="og:image" content="https://fixin2flyin.kayamc418.workers.dev/assets/DOMPROJ.jpg" />
+  <meta property="og:image:width" content="1440" />
+  <meta property="og:image:height" content="860" />
+  <meta property="og:image:alt" content="Fixin’ 2 Flyin’ mountain biker jumping above a Colorado flag in the mountains" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Mobile Bike Repair and Coaching | Fixin’ 2 Flyin’" />
   <meta name="twitter:description" content="Mobile bike repair, trail preparation, and one-on-one coaching built around the rider." />
   <meta name="twitter:image" content="https://fixin2flyin.kayamc418.workers.dev/assets/DOMPROJ.jpg" />
+  <meta name="twitter:image:alt" content="Fixin’ 2 Flyin’ mountain biker jumping above a Colorado flag in the mountains" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon-horus-fullcolor.svg" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-  <link rel="preload" as="image" href="assets/DOMPROJ.jpg" />
+  <link rel="preload" as="image" href="assets/DOMPROJ.jpg" fetchpriority="high" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="hero-refresh.css" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Fixin’ 2 Flyin’",
-    "url": "https://fixin2flyin.kayamc418.workers.dev/",
-    "image": "https://fixin2flyin.kayamc418.workers.dev/assets/DOMPROJ.jpg",
-    "email": "mailto:dom@fixin2flyin.com",
-    "description": "Mobile bicycle repair, tune-ups, trail preparation, bike coaching, and ride support.",
-    "serviceType": ["Mobile Bike Repair","Bicycle Tune-Up","Flat Repair","Brake Adjustment","Gear Adjustment","Trail Preparation","Bike Coaching","Ride Support"]
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://fixin2flyin.kayamc418.workers.dev/#business",
+        "name": "Fixin’ 2 Flyin’",
+        "url": "https://fixin2flyin.kayamc418.workers.dev/",
+        "image": "https://fixin2flyin.kayamc418.workers.dev/assets/DOMPROJ.jpg",
+        "email": "dom@fixin2flyin.com",
+        "description": "Mobile bicycle repair, trail preparation, and one-on-one bike coaching."
+      },
+      {
+        "@type": "Service",
+        "name": "Mobile Bike Repair",
+        "serviceType": "Mobile bicycle repair and tune-up",
+        "provider": { "@id": "https://fixin2flyin.kayamc418.workers.dev/#business" }
+      },
+      {
+        "@type": "Service",
+        "name": "Bike Coaching",
+        "serviceType": "One-on-one mountain bike coaching",
+        "provider": { "@id": "https://fixin2flyin.kayamc418.workers.dev/#business" }
+      }
+    ]
   }
   </script>
 </head>
@@ -61,19 +81,41 @@
 
   <main id="main">
     <section class="hero f2f-cinematic-hero" aria-labelledby="hero-title" data-testid="hero-section">
+      <div class="f2f-hero-media" aria-hidden="true">
+        <picture>
+          <img
+            src="assets/DOMPROJ.jpg"
+            width="1440"
+            height="860"
+            alt=""
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
+      </div>
+
       <div class="f2f-hero-viewport f2f-hero-inner">
         <p class="f2f-kicker">Blackout Repair. Gold-Standard Riding.</p>
-        <div class="f2f-title-grid hero-content" data-testid="hero-content">
-          <h1 id="hero-title" class="f2f-title f2f-title-left"><span>Built</span><small>to</small><strong>Fix</strong></h1>
-          <div class="f2f-rider-space" aria-hidden="true"></div>
-          <div class="f2f-title f2f-title-right" aria-hidden="true"><span>Ready</span><small>to</small><strong>Fly</strong></div>
-        </div>
+
+        <h1 id="hero-title" class="f2f-hero-title" data-testid="hero-title">
+          <span class="f2f-title-left">
+            <span>Built</span>
+            <small>to</small>
+            <strong>Fix</strong>
+          </span>
+          <span class="f2f-title-right">
+            <span>Ready</span>
+            <small>to</small>
+            <strong>Fly</strong>
+          </span>
+        </h1>
+
         <div class="f2f-hero-bottom">
-          <p class="f2f-hero-copy">Turning rough rides into dialed machines and unsure riders into confident senders. Fixin’ 2 Flyin’ is a mobile bike repair, trail preparation, and one-on-one coaching brand built around real skill, sharp control, and riding that pushes people to ride their best.</p>
+          <p class="f2f-hero-copy">Turning rough rides into dialed machines and unsure riders into confident senders. Mobile bike repair, trail prep, and coaching built for the ride ahead.</p>
           <div class="f2f-hero-actions hero-actions" data-testid="hero-actions">
-            <a class="f2f-hero-action f2f-action-gold" aria-label="Request Service" href="#contact">⚒ Fix My Rig</a>
-            <a class="f2f-hero-action f2f-action-cyan" href="#gallery">▶ See the Action</a>
-            <a class="f2f-hero-action f2f-action-purple" aria-label="Explore Coaching" href="#coaching">➤ Learn to Send</a>
+            <a class="f2f-hero-action f2f-action-gold" href="#contact"><span aria-hidden="true">⚒</span> Fix My Rig</a>
+            <a class="f2f-hero-action f2f-action-cyan" href="#gallery"><span aria-hidden="true">▶</span> See the Action</a>
+            <a class="f2f-hero-action f2f-action-purple" href="#coaching"><span aria-hidden="true">➤</span> Learn to Send</a>
           </div>
         </div>
       </div>
