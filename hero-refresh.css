@@ -295,34 +295,38 @@
 
   .f2f-hero-title{
     width:100%;
-    grid-template-columns:minmax(0,1fr) clamp(56px,17vw,76px) minmax(0,1fr);
+    grid-template-columns:minmax(0,1fr) clamp(48px,14vw,62px) minmax(0,1fr);
     grid-template-rows:1fr;
-    gap:.35rem;
+    gap:.22rem;
     min-height:235px;
-    padding:0 .1rem;
+    padding:0 .45rem;
     align-self:center;
-    font-size:clamp(2.05rem,10.2vw,2.75rem);
-    line-height:.76;
-    letter-spacing:-.055em;
+    font-family:Impact,Haettenschweiler,"Arial Narrow Bold","Arial Narrow",sans-serif;
+    font-size:clamp(1.72rem,8.4vw,2.3rem);
+    line-height:.78;
+    letter-spacing:-.025em;
   }
   .f2f-hero-title>.f2f-title-left{
     grid-column:1;
     grid-row:1;
     text-align:left;
     justify-self:start;
+    padding-left:.05rem;
   }
   .f2f-hero-title>.f2f-title-right{
     grid-column:3;
     grid-row:1;
     text-align:right;
     justify-self:end;
+    padding-right:.35rem;
   }
   .f2f-hero-title>.f2f-title-left,.f2f-hero-title>.f2f-title-right{
-    width:100%;
+    width:auto;
     max-width:100%;
+    white-space:nowrap;
   }
   .f2f-hero-title small{font-size:.58em;line-height:.9}
-  .f2f-hero-title strong{font-size:.76em;line-height:.9}
+  .f2f-hero-title strong{font-size:.78em;line-height:.9}
 
   .f2f-hero-bottom{width:100%;padding:0 .15rem}
   .f2f-hero-copy{
@@ -344,14 +348,25 @@
 }
 
 @media(max-width:390px){
-  .f2f-hero-inner{width:calc(100% - 2rem)}
+  .f2f-hero-inner{width:calc(100% - 1.7rem)}
   .f2f-hero-title{
-    grid-template-columns:minmax(0,1fr) clamp(52px,16vw,64px) minmax(0,1fr);
-    font-size:clamp(1.95rem,9.8vw,2.45rem);
-    gap:.25rem;
+    grid-template-columns:minmax(0,1fr) clamp(44px,13vw,54px) minmax(0,1fr);
+    font-size:clamp(1.58rem,7.8vw,2.02rem);
+    gap:.18rem;
+    padding-inline:.55rem;
   }
+  .f2f-hero-title>.f2f-title-right{padding-right:.45rem}
   .f2f-kicker{font-size:.52rem;letter-spacing:.14em}
   .f2f-hero-copy{font-size:.75rem}
+}
+
+@media(max-width:360px){
+  .f2f-hero-title{
+    grid-template-columns:minmax(0,1fr) 42px minmax(0,1fr);
+    font-size:1.5rem;
+    padding-inline:.6rem;
+  }
+  .f2f-hero-title>.f2f-title-right{padding-right:.55rem}
 }
 
 @media(orientation:landscape) and (max-height:560px){
