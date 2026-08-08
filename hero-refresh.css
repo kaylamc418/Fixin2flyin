@@ -27,7 +27,7 @@
   align-items:center;
   gap:.7rem;
   color:#e6ad39;
-  font-family:"Barlow Condensed","Arial Narrow",sans-serif;
+  font-family:"Barlow Condensed","Arial Narrow","Helvetica Neue",Arial,sans-serif;
   font-weight:900;
   letter-spacing:.04em;
   text-decoration:none;
@@ -81,7 +81,6 @@
   letter-spacing:.15em!important;
 }
 
-/* Layer 1: hero stacking context. */
 .f2f-cinematic-hero{
   position:relative;
   isolation:isolate;
@@ -90,7 +89,6 @@
   background:var(--hero-black);
 }
 
-/* Temporary same-origin fallback for the current markup while the HTML deploys. */
 .f2f-cinematic-hero::before{
   content:"";
   position:absolute;
@@ -102,7 +100,6 @@
   .f2f-cinematic-hero:has(.f2f-hero-media)::before{display:none}
 }
 
-/* Layer 2: real discoverable hero media. */
 .f2f-hero-media{
   position:absolute;
   inset:0;
@@ -119,7 +116,6 @@
   object-position:50% 50%;
 }
 
-/* Layer 3: blackout overlay. */
 .f2f-cinematic-hero::after{
   content:"";
   position:absolute;
@@ -131,7 +127,6 @@
     linear-gradient(90deg,rgba(0,0,0,.66) 0%,rgba(0,0,0,.08) 36%,rgba(0,0,0,.06) 64%,rgba(0,0,0,.66) 100%);
 }
 
-/* Layer 4: hero typography and controls. */
 .f2f-hero-inner{
   position:relative;
   z-index:2;
@@ -151,7 +146,6 @@
   text-transform:uppercase;
 }
 
-/* New semantic H1 layout. The protected center column is always preserved. */
 .f2f-hero-title{
   align-self:center;
   display:grid;
@@ -160,18 +154,29 @@
   align-items:center;
   gap:1rem;
   min-width:0;
+  width:100%;
   margin:0;
-  font-family:"Barlow Condensed","Arial Narrow",sans-serif;
+  font-family:"Barlow Condensed","Arial Narrow","Helvetica Neue",Arial,sans-serif;
   font-size:clamp(5.2rem,10.5vw,10rem);
   font-weight:900;
   line-height:.74;
   letter-spacing:-.035em;
   text-transform:uppercase;
 }
-.f2f-hero-title>.f2f-title-left{grid-column:1;grid-row:1;text-align:left}
-.f2f-hero-title>.f2f-title-right{grid-column:3;grid-row:1;text-align:right}
+.f2f-hero-title>.f2f-title-left{
+  grid-column:1;
+  grid-row:1;
+  text-align:left;
+}
+.f2f-hero-title>.f2f-title-right{
+  grid-column:3;
+  grid-row:1;
+  text-align:right;
+}
 .f2f-hero-title>.f2f-title-left,.f2f-hero-title>.f2f-title-right{
   min-width:0;
+  max-width:100%;
+  overflow:visible;
   text-shadow:0 12px 35px rgba(0,0,0,.68);
 }
 .f2f-hero-title span,.f2f-hero-title small,.f2f-hero-title strong{display:block}
@@ -180,36 +185,6 @@
 .f2f-hero-title strong{font-size:.78em;line-height:.92}
 .f2f-hero-title .f2f-title-left strong{color:var(--hero-gold)}
 .f2f-hero-title .f2f-title-right strong{color:var(--hero-purple)}
-
-/* Backward compatibility until the semantic H1 markup lands. */
-.f2f-title-grid{
-  align-self:center;
-  display:grid;
-  grid-template-columns:minmax(0,1fr) minmax(250px,32vw) minmax(0,1fr);
-  grid-template-rows:1fr;
-  align-items:center;
-  gap:1rem;
-  min-height:300px;
-}
-.f2f-title{
-  min-width:0;
-  margin:0;
-  font-family:"Barlow Condensed","Arial Narrow",sans-serif;
-  font-size:clamp(5.2rem,10.5vw,10rem);
-  font-style:normal;
-  font-weight:900;
-  line-height:.74;
-  letter-spacing:-.035em;
-  text-transform:uppercase;
-  text-shadow:0 12px 35px rgba(0,0,0,.68);
-}
-.f2f-title-left{text-align:left}.f2f-title-right{text-align:right}
-.f2f-title span,.f2f-title small,.f2f-title strong{display:block}
-.f2f-title small{font-size:.68em;line-height:.9;color:var(--hero-white)}
-.f2f-title strong{font-size:.78em;line-height:.92}
-.f2f-title-left strong{color:var(--hero-gold)}
-.f2f-title-right strong{color:var(--hero-purple)}
-.f2f-rider-space{min-height:1px}
 
 .f2f-hero-bottom{
   width:min(720px,92%);
@@ -283,17 +258,17 @@
     width:calc(100% - 2rem);
     min-height:calc(100svh - 78px);
   }
-  .f2f-hero-title,.f2f-title-grid{
+  .f2f-hero-title{
     grid-template-columns:minmax(0,1fr) clamp(160px,28vw,260px) minmax(0,1fr);
+    font-size:clamp(4rem,11vw,7rem);
   }
-  .f2f-hero-title,.f2f-title{font-size:clamp(4rem,11vw,7rem)}
 }
 
 @media(max-width:699px){
-  .f2f-cinematic-header .nav-shell,.f2f-hero-inner{width:calc(100% - 1.5rem)}
-  .f2f-cinematic-header .nav-shell{grid-template-columns:auto 1fr auto;min-height:78px}
+  .f2f-cinematic-header .nav-shell{width:calc(100% - 1.5rem);grid-template-columns:auto 1fr auto;min-height:78px}
   .f2f-cinematic-brand .f2f-wingmark{width:92px;height:50px;font-size:1.95rem}
   .f2f-brand-sub{font-size:.62rem}
+
   .f2f-cinematic-hero{
     min-height:calc(100svh - 78px);
     height:auto;
@@ -302,42 +277,58 @@
   .f2f-cinematic-hero::before{background-position:center 48%}
   .f2f-cinematic-hero::after{
     background:
-      linear-gradient(180deg,rgba(2,3,5,.24),rgba(2,3,5,.06) 32%,rgba(2,3,5,.28) 60%,rgba(2,3,5,.96)),
-      linear-gradient(90deg,rgba(0,0,0,.52),rgba(0,0,0,.04) 36%,rgba(0,0,0,.04) 64%,rgba(0,0,0,.52));
+      linear-gradient(180deg,rgba(2,3,5,.22),rgba(2,3,5,.05) 31%,rgba(2,3,5,.28) 61%,rgba(2,3,5,.96)),
+      linear-gradient(90deg,rgba(0,0,0,.50),rgba(0,0,0,.03) 34%,rgba(0,0,0,.03) 66%,rgba(0,0,0,.50));
   }
   .f2f-hero-inner{
+    width:calc(100% - 2.25rem);
     min-height:calc(100svh - 78px);
-    padding:1.4rem 0 1.25rem;
-    grid-template-rows:auto minmax(220px,1fr) auto;
+    padding:1.4rem 0 1.3rem;
+    grid-template-rows:auto minmax(235px,1fr) auto;
   }
   .f2f-kicker{
-    padding:0 .25rem;
-    font-size:.58rem;
+    padding:0 .15rem;
+    font-size:.56rem;
     line-height:1.35;
-    letter-spacing:.18em;
+    letter-spacing:.16em;
   }
-  .f2f-hero-title,.f2f-title-grid{
+
+  /* Mobile invariant: one visual row, protected rider corridor, safe side margins. */
+  .f2f-hero-title{
     width:100%;
-    grid-template-columns:minmax(0,1fr) clamp(72px,22vw,104px) minmax(0,1fr);
+    grid-template-columns:minmax(0,1fr) clamp(56px,17vw,76px) minmax(0,1fr);
     grid-template-rows:1fr;
-    gap:.2rem;
-    min-height:220px;
-    padding:0;
+    gap:.35rem;
+    min-height:235px;
+    padding:0 .1rem;
     align-self:center;
+    font-size:clamp(2.05rem,10.2vw,2.75rem);
+    line-height:.76;
+    letter-spacing:-.055em;
   }
-  .f2f-hero-title,.f2f-title{
-    font-size:clamp(2.5rem,13vw,3.8rem);
-    line-height:.74;
-    letter-spacing:-.04em;
+  .f2f-hero-title>.f2f-title-left{
+    grid-column:1;
+    grid-row:1;
+    text-align:left;
+    justify-self:start;
   }
-  .f2f-title-left{grid-column:1;grid-row:1;text-align:left!important}
-  .f2f-title-right{grid-column:3;grid-row:1;text-align:right!important}
-  .f2f-hero-title small,.f2f-title small{font-size:.58em;line-height:.9}
-  .f2f-hero-title strong,.f2f-title strong{font-size:.72em;line-height:.9}
+  .f2f-hero-title>.f2f-title-right{
+    grid-column:3;
+    grid-row:1;
+    text-align:right;
+    justify-self:end;
+  }
+  .f2f-hero-title>.f2f-title-left,.f2f-hero-title>.f2f-title-right{
+    width:100%;
+    max-width:100%;
+  }
+  .f2f-hero-title small{font-size:.58em;line-height:.9}
+  .f2f-hero-title strong{font-size:.76em;line-height:.9}
+
   .f2f-hero-bottom{width:100%;padding:0 .15rem}
   .f2f-hero-copy{
     margin-bottom:1rem;
-    padding:0 .3rem;
+    padding:0 .2rem;
     font-size:.78rem;
     line-height:1.48;
   }
@@ -348,21 +339,25 @@
   .f2f-action-gold{grid-column:1/-1}
   .f2f-hero-action{
     min-height:48px;
-    padding:.7rem .6rem;
-    font-size:.7rem;
+    padding:.7rem .55rem;
+    font-size:.68rem;
   }
 }
 
 @media(max-width:390px){
-  .f2f-hero-title,.f2f-title{font-size:clamp(2.35rem,12.8vw,3.35rem)}
-  .f2f-hero-title,.f2f-title-grid{grid-template-columns:minmax(0,1fr) clamp(68px,21vw,82px) minmax(0,1fr)}
-  .f2f-kicker{font-size:.54rem}
+  .f2f-hero-inner{width:calc(100% - 2rem)}
+  .f2f-hero-title{
+    grid-template-columns:minmax(0,1fr) clamp(52px,16vw,64px) minmax(0,1fr);
+    font-size:clamp(1.95rem,9.8vw,2.45rem);
+    gap:.25rem;
+  }
+  .f2f-kicker{font-size:.52rem;letter-spacing:.14em}
   .f2f-hero-copy{font-size:.75rem}
 }
 
 @media(orientation:landscape) and (max-height:560px){
   .f2f-hero-inner{padding:1rem 0 1.1rem;grid-template-rows:auto minmax(150px,1fr) auto}
-  .f2f-hero-title,.f2f-title{font-size:clamp(2.4rem,8vw,4.8rem)}
+  .f2f-hero-title{font-size:clamp(2.2rem,7.2vw,4.2rem)}
   .f2f-hero-copy{font-size:.74rem;line-height:1.35;margin-bottom:.7rem}
   .f2f-hero-action{min-height:44px}
 }
