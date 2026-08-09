@@ -341,6 +341,12 @@
     transform:translateX(-.15rem) scaleX(.84);
     transform-origin:right center;
   }
+  /* READY is wider than TO / FLY, so give only that first line extra room. */
+  .f2f-title-right>span:first-child{
+    transform:translateX(-.45rem) scaleX(.88);
+    transform-origin:right center;
+    padding-right:.25rem;
+  }
   .f2f-hero-title small{font-size:.58em;line-height:.9}
   .f2f-hero-title strong{font-size:.78em;line-height:.9}
 
@@ -362,6 +368,10 @@
     padding-right:1.15rem;
     transform:translateX(-.2rem) scaleX(.80);
   }
+  .f2f-title-right>span:first-child{
+    transform:translateX(-.55rem) scaleX(.84);
+    padding-right:.35rem;
+  }
   .f2f-kicker{font-size:.52rem;letter-spacing:.14em}
   .f2f-hero-copy{font-size:.75rem}
 }
@@ -375,6 +385,10 @@
   .f2f-title-right{
     padding-right:1.2rem;
     transform:translateX(-.22rem) scaleX(.78);
+  }
+  .f2f-title-right>span:first-child{
+    transform:translateX(-.6rem) scaleX(.82);
+    padding-right:.4rem;
   }
 }
 
