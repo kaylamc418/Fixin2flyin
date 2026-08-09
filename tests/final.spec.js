@@ -4,6 +4,7 @@ const BASE_URL = process.env.BASE_URL || 'https://fixin2flyin.kayamc418.workers.
 
 const viewports = [
   { name: 'Mobile 320', width: 320, height: 700 },
+  { name: 'Mobile 345', width: 345, height: 760 },
   { name: 'Mobile 355', width: 355, height: 768 },
   { name: 'Mobile 360', width: 360, height: 800 },
   { name: 'Mobile 375', width: 375, height: 812 },
@@ -78,13 +79,12 @@ for (const viewport of viewports) {
       const styles = getComputedStyle(element);
       return {
         display: styles.display,
+        position: styles.position,
         rows: styles.gridTemplateRows,
         columns: styles.gridTemplateColumns,
       };
     });
-    expect(titleLayout.display).toBe('grid');
-    expect(titleLayout.rows.trim().split(/\s+/)).toHaveLength(1);
-    expect(titleLayout.columns.trim().split(/\s+/).length).toBeGreaterThanOrEqual(3);
+    expect(['grid', 'block']).toContain(titleLayout.display);
 
     const [heroBox, leftBox, rightBox] = await Promise.all([
       hero.boundingBox(),
@@ -124,8 +124,8 @@ for (const viewport of viewports) {
         throw new Error('Headline word geometry unavailable');
       }
 
-      // Measure the actual rendered glyph ranges. This catches the exact iPhone failure where the Y in READY clipped.
-      const safeInset = 10;
+      // Measure actual rendered glyph ranges, not just containers. The READY word needs a visible safe area.
+      const safeInset = viewport.width <= 430 ? 22 : 14;
       const heroLeft = heroBox.x + safeInset;
       const heroRight = heroBox.x + heroBox.width - safeInset;
 
@@ -134,8 +134,13 @@ for (const viewport of viewports) {
       expect(wordRects.ready.right).toBeLessThanOrEqual(heroRight);
       expect(wordRects.fly.right).toBeLessThanOrEqual(heroRight);
       expect(wordRects.ready.width).toBeGreaterThan(0);
+      expect(wordRects.ready.left).toBeGreaterThan(wordRects.built.right + 24);
 
       expect(heroBox.height).toBeLessThanOrEqual(viewport.height * 1.5);
+    } else {
+      expect(titleLayout.display).toBe('grid');
+      expect(titleLayout.rows.trim().split(/\s+/)).toHaveLength(1);
+      expect(titleLayout.columns.trim().split(/\s+/).length).toBeGreaterThanOrEqual(3);
     }
 
     const noHorizontalOverflow = await page.evaluate(
