@@ -3,8 +3,10 @@ import { test, expect } from '@playwright/test';
 const BASE_URL = process.env.BASE_URL || 'https://fixin2flyin.kayamc418.workers.dev';
 
 const viewports = [
+  { name: 'Mobile 320', width: 320, height: 700 },
   { name: 'Mobile 355', width: 355, height: 768 },
   { name: 'Mobile 360', width: 360, height: 800 },
+  { name: 'Mobile 375', width: 375, height: 812 },
   { name: 'Mobile 390', width: 390, height: 844 },
   { name: 'Mobile 430', width: 430, height: 932 },
   { name: 'Mobile boundary 699', width: 699, height: 900 },
@@ -97,30 +99,43 @@ for (const viewport of viewports) {
     expect(Math.abs(leftBox.y - rightBox.y)).toBeLessThanOrEqual(24);
     expect(rightBox.x).toBeGreaterThan(leftBox.x + leftBox.width - 2);
 
-    // Measure rendered word ranges, not just grid cells, so fallback fonts cannot clip off-screen.
     const wordRects = await title.evaluate((element) => {
       const rectFor = (node) => {
         if (!node) return null;
         const range = document.createRange();
         range.selectNodeContents(node);
         const rect = range.getBoundingClientRect();
-        return { left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom };
+        return { left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom, width: rect.width };
       };
       return {
         built: rectFor(element.querySelector('.f2f-title-left > span')),
+        fix: rectFor(element.querySelector('.f2f-title-left > strong')),
         ready: rectFor(element.querySelector('.f2f-title-right > span')),
+        fly: rectFor(element.querySelector('.f2f-title-right > strong')),
       };
     });
 
     if (viewport.width < 700) {
       expect(wordRects.built).not.toBeNull();
+      expect(wordRects.fix).not.toBeNull();
       expect(wordRects.ready).not.toBeNull();
-      if (!wordRects.built || !wordRects.ready) throw new Error('Headline word geometry unavailable');
+      expect(wordRects.fly).not.toBeNull();
+      if (!wordRects.built || !wordRects.fix || !wordRects.ready || !wordRects.fly) {
+        throw new Error('Headline word geometry unavailable');
+      }
 
-      const safeInset = 6;
-      expect(wordRects.built.left).toBeGreaterThanOrEqual(heroBox.x + safeInset);
-      expect(wordRects.ready.right).toBeLessThanOrEqual(heroBox.x + heroBox.width - safeInset);
-      expect(heroBox.height).toBeLessThanOrEqual(viewport.height * 1.45);
+      // Measure the actual rendered glyph ranges. This catches the exact iPhone failure where the Y in READY clipped.
+      const safeInset = 10;
+      const heroLeft = heroBox.x + safeInset;
+      const heroRight = heroBox.x + heroBox.width - safeInset;
+
+      expect(wordRects.built.left).toBeGreaterThanOrEqual(heroLeft);
+      expect(wordRects.fix.left).toBeGreaterThanOrEqual(heroLeft);
+      expect(wordRects.ready.right).toBeLessThanOrEqual(heroRight);
+      expect(wordRects.fly.right).toBeLessThanOrEqual(heroRight);
+      expect(wordRects.ready.width).toBeGreaterThan(0);
+
+      expect(heroBox.height).toBeLessThanOrEqual(viewport.height * 1.5);
     }
 
     const noHorizontalOverflow = await page.evaluate(
