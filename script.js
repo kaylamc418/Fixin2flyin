@@ -108,15 +108,20 @@ const soundtrackToggle = document.getElementById("soundtrack-toggle");
 const soundtrackLabel = soundtrackToggle?.querySelector(".soundtrack-label");
 const soundtrackIcon = soundtrackToggle?.querySelector(".music-play-icon");
 const musicStatus = document.getElementById("music-status");
+const SOUNDTRACK_TITLE = "Peak Bound (Enhanced Industrial Remix)";
+const SOUNDTRACK_SRC = "Peak Bound (Enhanced Industrial Remix).m4a";
 
-const soundtrack = new Audio("Peak Bound (Enhanced Industrial Remix).m4a");
+const soundtrack = new Audio();
+soundtrack.src = SOUNDTRACK_SRC;
 soundtrack.preload = "metadata";
 soundtrack.loop = false;
 soundtrack.volume = 0.9;
+soundtrack.playsInline = true;
 
 let playing = false;
+let loading = false;
 
-function setMusicUi(isPlaying) {
+function setMusicUi(isPlaying, statusText = null) {
   playing = isPlaying;
   document.body.classList.toggle("soundtrack-playing", isPlaying);
   soundtrackToggle?.setAttribute("aria-pressed", String(isPlaying));
@@ -128,39 +133,61 @@ function setMusicUi(isPlaying) {
   if (soundtrackLabel) soundtrackLabel.textContent = isPlaying ? "Pause Song" : "Play Song";
   if (soundtrackIcon) soundtrackIcon.textContent = isPlaying ? "Ⅱ" : "▶";
   if (musicStatus) {
-    musicStatus.textContent = isPlaying
-      ? "Now playing: Peak Bound (Enhanced Industrial Remix)"
-      : "Peak Bound (Enhanced Industrial Remix)";
+    musicStatus.textContent = statusText || (isPlaying ? `Now playing: ${SOUNDTRACK_TITLE}` : SOUNDTRACK_TITLE);
   }
 }
 
-soundtrack.addEventListener("play", () => setMusicUi(true));
-soundtrack.addEventListener("pause", () => setMusicUi(false));
+function setLoadingUi(isLoading) {
+  loading = isLoading;
+  soundtrackToggle?.toggleAttribute("disabled", isLoading);
+  if (soundtrackLabel && isLoading) soundtrackLabel.textContent = "Loading…";
+  if (soundtrackIcon && isLoading) soundtrackIcon.textContent = "…";
+  if (musicStatus && isLoading) musicStatus.textContent = `Loading ${SOUNDTRACK_TITLE}…`;
+}
+
+soundtrack.addEventListener("loadstart", () => setLoadingUi(true));
+soundtrack.addEventListener("loadedmetadata", () => {
+  setLoadingUi(false);
+  setMusicUi(false, SOUNDTRACK_TITLE);
+});
+soundtrack.addEventListener("canplay", () => {
+  if (loading) setLoadingUi(false);
+});
+soundtrack.addEventListener("waiting", () => {
+  if (!soundtrack.paused) {
+    if (musicStatus) musicStatus.textContent = `Buffering ${SOUNDTRACK_TITLE}…`;
+  }
+});
+soundtrack.addEventListener("playing", () => setMusicUi(true));
+soundtrack.addEventListener("pause", () => {
+  if (!soundtrack.ended) setMusicUi(false);
+});
 soundtrack.addEventListener("ended", () => {
   soundtrack.currentTime = 0;
-  setMusicUi(false);
+  setMusicUi(false, `${SOUNDTRACK_TITLE} — finished`);
 });
-
 soundtrack.addEventListener("error", () => {
-  setMusicUi(false);
-  if (musicStatus) {
-    musicStatus.textContent = "Peak Bound could not load. Refresh and try again.";
-  }
+  setLoadingUi(false);
+  setMusicUi(false, "Peak Bound could not load. Refresh and try again.");
 });
 
 soundtrackToggle?.addEventListener("click", async () => {
+  if (loading) return;
+
   try {
     if (soundtrack.paused) {
+      if (soundtrack.readyState < 2) {
+        setLoadingUi(true);
+        soundtrack.load();
+      }
       await soundtrack.play();
     } else {
       soundtrack.pause();
     }
   } catch {
-    setMusicUi(false);
-    if (musicStatus) {
-      musicStatus.textContent = "Peak Bound could not start. Tap Play again.";
-    }
+    setLoadingUi(false);
+    setMusicUi(false, "Peak Bound could not start. Tap Play again.");
   }
 });
 
-setMusicUi(false);
+setMusicUi(false, SOUNDTRACK_TITLE);
