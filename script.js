@@ -109,7 +109,7 @@ const soundtrackLabel = soundtrackToggle?.querySelector(".soundtrack-label");
 const soundtrackIcon = soundtrackToggle?.querySelector(".music-play-icon");
 const musicStatus = document.getElementById("music-status");
 
-const soundtrack = new Audio("assets/peak-bound.mp3");
+const soundtrack = new Audio("Peak Bound (Enhanced Industrial Remix).m4a");
 soundtrack.preload = "metadata";
 soundtrack.loop = false;
 soundtrack.volume = 0.9;
