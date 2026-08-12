@@ -24,7 +24,9 @@
   <meta name="twitter:image:alt" content="Fixin’ 2 Flyin’ mountain biker jumping above a Colorado flag in the mountains" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon-horus-fullcolor.svg" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-  <link rel="preload" as="image" href="assets/DOMPROJ.jpg" fetchpriority="high" />
+  <link rel="preload" as="image" href="assets/hero-mobile.webp" type="image/webp" media="(max-width: 699px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="assets/hero-tablet.webp" type="image/webp" media="(min-width: 700px) and (max-width: 979px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="assets/hero-desktop.webp" type="image/webp" media="(min-width: 980px)" fetchpriority="high" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="hero-refresh.css" />
   <script type="application/ld+json">
@@ -83,6 +85,9 @@
     <section class="hero f2f-cinematic-hero" aria-labelledby="hero-title" data-testid="hero-section">
       <div class="f2f-hero-media" aria-hidden="true">
         <picture>
+          <source media="(max-width: 699px)" srcset="assets/hero-mobile.webp" type="image/webp" width="720" height="1080" />
+          <source media="(max-width: 979px)" srcset="assets/hero-tablet.webp" type="image/webp" width="960" height="720" />
+          <source srcset="assets/hero-desktop.webp" type="image/webp" width="1440" height="860" />
           <img
             src="assets/DOMPROJ.jpg"
             width="1440"
