@@ -87,8 +87,26 @@ jobs:
           done
 
           for asset in hero-mobile.webp hero-tablet.webp hero-desktop.webp; do
-            curl -fsSL --max-time 15 -o /dev/null "https://fixin2flyin.kayamc418.workers.dev/assets/${asset}?sha=${GITHUB_SHA}"
-            echo "Verified deployed asset: ${asset}"
+            asset_url="https://fixin2flyin.kayamc418.workers.dev/assets/${asset}?sha=${GITHUB_SHA}"
+            verified="false"
+
+            for attempt in {1..12}; do
+              if curl -fsSL --max-time 15 -o /dev/null "$asset_url"; then
+                echo "Verified deployed asset: ${asset}"
+                verified="true"
+                break
+              fi
+
+              if [[ "$attempt" != "12" ]]; then
+                echo "Waiting for asset propagation: ${asset} (${attempt}/12)..."
+                sleep 10
+              fi
+            done
+
+            if [[ "$verified" != "true" ]]; then
+              echo "Asset did not become available after retries: ${asset}"
+              exit 1
+            fi
           done
 
   visual-test:
