@@ -31,6 +31,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install WebP encoder
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y webp
+
+      - name: Build responsive hero assets
+        run: bash build-hero-assets.sh
+
       - name: Check Cloudflare credentials
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -66,15 +74,22 @@ jobs:
             deployed_sha="$(curl -fsSL --max-time 15 "$marker_url" || true)"
             if [[ "$deployed_sha" == "$GITHUB_SHA" ]]; then
               echo "Verified deployment of $GITHUB_SHA"
-              exit 0
+              break
+            fi
+
+            if [[ "$attempt" == "12" ]]; then
+              echo "Deployment marker did not match $GITHUB_SHA"
+              exit 1
             fi
 
             echo "Waiting for Cloudflare deployment (${attempt}/12)..."
             sleep 10
           done
 
-          echo "Deployment marker did not match $GITHUB_SHA"
-          exit 1
+          for asset in hero-mobile.webp hero-tablet.webp hero-desktop.webp; do
+            curl -fsSL --max-time 15 -o /dev/null "https://fixin2flyin.kayamc418.workers.dev/assets/${asset}?sha=${GITHUB_SHA}"
+            echo "Verified deployed asset: ${asset}"
+          done
 
   visual-test:
     runs-on: ubuntu-latest
