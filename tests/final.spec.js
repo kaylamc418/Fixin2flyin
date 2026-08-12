@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 const BASE_URL = process.env.BASE_URL || 'https://fixin2flyin.kayamc418.workers.dev';
+const COMPACT_NAV_MAX_WIDTH = 1040;
 
 const viewports = [
   { name: 'Mobile 320', width: 320, height: 700 },
@@ -15,6 +16,8 @@ const viewports = [
   { name: 'Tablet 768', width: 768, height: 1024 },
   { name: 'Tablet boundary 979', width: 979, height: 900 },
   { name: 'Desktop boundary 980', width: 980, height: 900 },
+  { name: 'Compact-nav boundary 1040', width: 1040, height: 900 },
+  { name: 'Full-nav boundary 1041', width: 1041, height: 900 },
   { name: 'Desktop', width: 1440, height: 900 },
 ];
 
@@ -131,7 +134,6 @@ for (const viewport of viewports) {
         throw new Error('Headline word geometry unavailable');
       }
 
-      // Measure actual rendered glyph ranges, not just containers. The READY word needs a visible safe area.
       const safeInset = viewport.width <= 430 ? 22 : 14;
       const heroLeft = heroBox.x + safeInset;
       const heroRight = heroBox.x + heroBox.width - safeInset;
@@ -158,10 +160,11 @@ for (const viewport of viewports) {
     await expect(music).toContainText("Dom’s Original Song");
     await expect(music.getByRole('button', { name: /play peak bound/i })).toBeVisible();
 
-    if (viewport.width >= 980) {
+    if (viewport.width > COMPACT_NAV_MAX_WIDTH) {
       for (const label of ['Soundtrack', 'Dom Code', 'Services', 'Tribute', 'Story', 'Gallery', 'Book Dom']) {
         await expect(header.getByRole('link', { name: label, exact: true })).toBeVisible();
       }
+      await expect(header.getByRole('button', { name: /open navigation/i })).toBeHidden();
     } else {
       await expect(header.getByRole('button', { name: /open navigation/i })).toBeVisible();
     }
