@@ -61,6 +61,7 @@ for (const viewport of viewports) {
     await expect(hero.getByRole('link', { name: 'Learn to Send', exact: true })).toBeVisible();
 
     await expect(hero.locator('picture')).toHaveCount(1);
+    await expect(hero.locator('picture source')).toHaveCount(3);
     await expect(heroImage).toHaveAttribute('fetchpriority', 'high');
     const imageInfo = await heroImage.evaluate((img) => ({
       currentSrc: img.currentSrc,
@@ -72,7 +73,13 @@ for (const viewport of viewports) {
     expect(imageInfo.complete).toBe(true);
     expect(imageInfo.naturalWidth).toBeGreaterThan(0);
     expect(imageInfo.naturalHeight).toBeGreaterThan(0);
-    expect(imageInfo.currentSrc).toMatch(/DOMPROJ\.jpg(?:\?.*)?$/i);
+
+    const expectedHeroAsset = viewport.width < 700
+      ? /hero-mobile\.webp(?:\?.*)?$/i
+      : viewport.width < 980
+        ? /hero-tablet\.webp(?:\?.*)?$/i
+        : /hero-desktop\.webp(?:\?.*)?$/i;
+    expect(imageInfo.currentSrc).toMatch(expectedHeroAsset);
     expect(imageInfo.loading).toBeNull();
 
     const titleLayout = await title.evaluate((element) => {
@@ -149,7 +156,7 @@ for (const viewport of viewports) {
     expect(noHorizontalOverflow).toBe(true);
 
     await expect(music).toContainText("Dom’s Original Song");
-    await expect(music.getByRole('button', { name: /play dom’s original song/i })).toBeVisible();
+    await expect(music.getByRole('button', { name: /play peak bound/i })).toBeVisible();
 
     if (viewport.width >= 980) {
       for (const label of ['Soundtrack', 'Dom Code', 'Services', 'Tribute', 'Story', 'Gallery', 'Book Dom']) {
