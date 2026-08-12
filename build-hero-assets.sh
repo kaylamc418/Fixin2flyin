@@ -14,7 +14,9 @@ if [[ ! -f "$SOURCE" ]]; then
 fi
 
 # Desktop: preserve the complete 1440x860 composition.
-cwebp -quiet -m 6 -q 84 "$SOURCE" -o assets/hero-desktop.webp
+# Quality 85 intentionally gives this asset a fresh content hash so Cloudflare
+# uploads the desktop path instead of reusing a stale missing asset reference.
+cwebp -quiet -m 6 -q 85 "$SOURCE" -o assets/hero-desktop.webp
 
 # Tablet: centered 4:3 art-directed crop, resized to 960x720.
 cwebp -quiet -m 6 -q 83 \
