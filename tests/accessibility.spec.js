@@ -33,7 +33,16 @@ test('homepage accessibility smoke checks', async ({ page }) => {
 
   await expect(page.getByRole('button', { name: /open navigation/i })).toHaveCount(1);
   await expect(page.getByRole('button', { name: /play peak bound/i })).toHaveCount(1);
-  await expect(page.getByRole('button', { name: /close image preview/i })).toHaveCount(1);
+
+  // The close control belongs to the modal lightbox, so verify it in the
+  // actual interaction state where the dialog is open.
+  const firstGalleryItem = page.locator('.gallery-item').first();
+  await expect(firstGalleryItem).toBeVisible();
+  await firstGalleryItem.click();
+  const closePreview = page.getByRole('button', { name: /close image preview/i });
+  await expect(closePreview).toBeVisible();
+  await closePreview.click();
+  await expect(closePreview).toBeHidden();
 
   expect(consoleErrors).toEqual([]);
 });
