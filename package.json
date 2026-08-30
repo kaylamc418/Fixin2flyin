@@ -7,7 +7,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.62.1",
-    "wrangler": "^4.123.0"
+    "wrangler": "^4.127.0"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1"
