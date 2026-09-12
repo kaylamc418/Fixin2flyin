@@ -1,3 +1,2 @@
-2026-07-31
-Final approved homepage flow: Navigation -> Dom's original song -> centered hero -> Services -> How It Works -> Dom + Lumi -> Tribute -> Gallery -> Contact
-Deploy through the final deployment pull request and run the Cloudflare and Playwright checks.
+2026-09-12
+Deployment approved by Kay. Deploy current reviewed main to Cloudflare Workers and run the configured production verification, responsive, and accessibility checks.
