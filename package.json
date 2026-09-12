@@ -6,7 +6,7 @@
     "test:visual": "playwright test tests/final.spec.js"
   },
   "devDependencies": {
-    "@playwright/test": "^1.62.1",
+    "@playwright/test": "^1.63.0",
     "wrangler": "^4.123.0"
   }
 }
