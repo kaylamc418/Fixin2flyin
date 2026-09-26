@@ -3,16 +3,33 @@ const navMenu = document.querySelector(".nav-menu");
 const siteHeader = document.querySelector(".site-header");
 
 if (navToggle && navMenu) {
-  navToggle.addEventListener("click", () => {
-    const isOpen = navMenu.classList.toggle("is-open");
+  const toggleLabel = navToggle.querySelector(".sr-only");
+
+  const setNavOpen = (isOpen) => {
+    navMenu.classList.toggle("is-open", isOpen);
     navToggle.setAttribute("aria-expanded", String(isOpen));
+    if (toggleLabel) toggleLabel.textContent = isOpen ? "Close navigation" : "Open navigation";
+  };
+
+  navToggle.addEventListener("click", () => {
+    setNavOpen(!navMenu.classList.contains("is-open"));
   });
 
   navMenu.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      navMenu.classList.remove("is-open");
-      navToggle.setAttribute("aria-expanded", "false");
-    });
+    link.addEventListener("click", () => setNavOpen(false));
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && navMenu.classList.contains("is-open")) {
+      setNavOpen(false);
+      navToggle.focus();
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!siteHeader?.contains(event.target) && navMenu.classList.contains("is-open")) {
+      setNavOpen(false);
+    }
   });
 }
 
@@ -46,11 +63,14 @@ const lightbox = document.getElementById("gallery-lightbox");
 const lightboxImage = lightbox?.querySelector("img");
 const lightboxClose = lightbox?.querySelector(".lightbox-close");
 
+let lastGalleryTrigger = null;
+
 document.querySelectorAll(".gallery-item").forEach((item) => {
   item.addEventListener("click", () => {
     if (!lightbox || !lightboxImage) return;
     const source = item.dataset.full || item.querySelector("img")?.src;
     const alt = item.querySelector("img")?.alt || "Gallery preview";
+    lastGalleryTrigger = item;
     lightboxImage.src = source;
     lightboxImage.alt = alt;
     lightbox.showModal();
@@ -60,6 +80,10 @@ document.querySelectorAll(".gallery-item").forEach((item) => {
 lightboxClose?.addEventListener("click", () => lightbox?.close());
 lightbox?.addEventListener("click", (event) => {
   if (event.target === lightbox) lightbox.close();
+});
+
+lightbox?.addEventListener("close", () => {
+  lastGalleryTrigger?.focus();
 });
 
 const serviceForm = document.getElementById("service-form");
@@ -191,3 +215,11 @@ soundtrackToggle?.addEventListener("click", async () => {
 });
 
 setMusicUi(false, SOUNDTRACK_TITLE);
+
+
+/* Progressive Web App support. Registration is silent so a cache failure never blocks the site. */
+if ("serviceWorker" in navigator && window.isSecureContext) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/service-worker.js").catch(() => {});
+  });
+}

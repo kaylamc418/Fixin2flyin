@@ -1,0 +1,19 @@
+{
+  "name": "Fixin’ 2 Flyin’",
+  "short_name": "Fixin 2 Flyin",
+  "description": "Mobile bike repair, trail preparation, bike coaching, and ride support.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#09090d",
+  "theme_color": "#09090d",
+  "icons": [
+    {
+      "src": "/assets/favicon-horus-fullcolor.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

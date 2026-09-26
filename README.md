@@ -34,3 +34,12 @@ Upload the contents of this folder into the repository root:
 - assets/
 
 Do not upload a second nested folder.
+
+
+## September 2026 refresh
+
+- restored installable PWA metadata
+- added a versioned service worker for faster repeat visits and limited offline access
+- improved compact-navigation keyboard and outside-click behavior
+- improved gallery lightbox focus restoration
+- refreshed sitemap and privacy disclosure for local static-file caching
