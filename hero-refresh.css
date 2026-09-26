@@ -341,3 +341,24 @@
     filter:saturate(1.02) contrast(1.02) brightness(1.02);
   }
 }
+
+
+/* Remove legacy duplicate hero background/overlay from styles.css. */
+.f2f-cinematic-hero .f2f-hero-viewport{
+  background:none;
+  background-image:none;
+  background-color:transparent;
+}
+@media(max-width:979px){
+  .f2f-hero-content{
+    width:min(600px,86vw);
+  }
+  .f2f-cinematic-hero .f2f-hero-actions{
+    flex-direction:row;
+  }
+}
+@media(max-width:699px){
+  .f2f-hero-content{
+    width:100%;
+  }
+}
