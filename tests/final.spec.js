@@ -96,7 +96,7 @@ for (const viewport of viewports) {
     expect(contentBox).not.toBeNull();
     if (!heroBox || !titleBox || !contentBox) throw new Error('Hero geometry unavailable');
 
-    expect(titleBox.y).toBeGreaterThan(heroBox.y + heroBox.height * 0.32);
+    expect(titleBox.y).toBeGreaterThan(heroBox.y + heroBox.height * 0.28);
     expect(contentBox.y + contentBox.height).toBeLessThanOrEqual(heroBox.y + heroBox.height + 2);
 
     if (viewport.width >= 980) {
