@@ -19,6 +19,6 @@ test('PWA metadata and offline assets are published', async ({ page, request }) 
   const serviceWorkerResponse = await request.get(`${BASE_URL}/service-worker.js`);
   expect(serviceWorkerResponse.ok()).toBe(true);
   const serviceWorker = await serviceWorkerResponse.text();
-  expect(serviceWorker).toContain('fixin2flyin-2026-09-26');
+  expect(serviceWorker).toContain('fixin2flyin-hero-v2-2026-09-26');
   expect(serviceWorker).toContain('self.addEventListener("fetch"');
 });
