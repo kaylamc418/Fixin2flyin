@@ -29,16 +29,16 @@ for (const viewport of viewports) {
     const header = page.locator('[data-testid="site-header"]');
     const hero = page.locator('[data-testid="hero-section"]');
     const title = page.locator('[data-testid="hero-title"]');
-    const left = title.locator('.f2f-title-left');
-    const right = title.locator('.f2f-title-right');
+    const titleLines = title.locator('.f2f-title-line');
     const heroImage = hero.locator('.f2f-hero-media img');
     const music = page.locator('[data-testid="music-section"]');
 
     await expect(header).toBeVisible();
     await expect(hero).toBeVisible();
     await expect(title).toBeVisible();
-    await expect(left).toBeVisible();
-    await expect(right).toBeVisible();
+    await expect(titleLines).toHaveCount(2);
+    await expect(titleLines.first()).toBeVisible();
+    await expect(titleLines.nth(1)).toBeVisible();
     await expect(heroImage).toBeVisible();
     await expect(music).toBeVisible();
 
@@ -57,11 +57,12 @@ for (const viewport of viewports) {
     await expect(title).toContainText(/built\s*to\s*fix\s*ready\s*to\s*fly/i);
     await expect(hero).toContainText(/mobile bike repair/i);
     await expect(hero).toContainText(/trail prep/i);
-    await expect(hero).toContainText(/coaching built for the ride ahead/i);
+    await expect(hero).toContainText(/one-on-one coaching/i);
+    await expect(hero).toContainText(/keep your bike dialed and your riding confident/i);
 
-    await expect(hero.getByRole('link', { name: 'Fix My Rig', exact: true })).toBeVisible();
-    await expect(hero.getByRole('link', { name: 'See the Action', exact: true })).toBeVisible();
-    await expect(hero.getByRole('link', { name: 'Learn to Send', exact: true })).toBeVisible();
+    await expect(hero.getByRole('link', { name: 'Request Service', exact: true })).toBeVisible();
+    await expect(hero.getByRole('link', { name: 'Explore Coaching', exact: true })).toBeVisible();
+    await expect(hero.locator('[data-testid="hero-actions"] a')).toHaveCount(2);
 
     await expect(hero.locator('picture')).toHaveCount(1);
     await expect(hero.locator('picture source')).toHaveCount(3);
@@ -85,71 +86,25 @@ for (const viewport of viewports) {
     expect(imageInfo.currentSrc).toMatch(expectedHeroAsset);
     expect(imageInfo.loading).toBeNull();
 
-    const titleLayout = await title.evaluate((element) => {
-      const styles = getComputedStyle(element);
-      return {
-        display: styles.display,
-        position: styles.position,
-        rows: styles.gridTemplateRows,
-        columns: styles.gridTemplateColumns,
-      };
-    });
-    expect(['grid', 'block']).toContain(titleLayout.display);
-
-    const [heroBox, leftBox, rightBox] = await Promise.all([
+    const [heroBox, titleBox, contentBox] = await Promise.all([
       hero.boundingBox(),
-      left.boundingBox(),
-      right.boundingBox(),
+      title.boundingBox(),
+      hero.locator('.f2f-hero-content').boundingBox(),
     ]);
     expect(heroBox).not.toBeNull();
-    expect(leftBox).not.toBeNull();
-    expect(rightBox).not.toBeNull();
-    if (!heroBox || !leftBox || !rightBox) throw new Error('Hero geometry unavailable');
+    expect(titleBox).not.toBeNull();
+    expect(contentBox).not.toBeNull();
+    if (!heroBox || !titleBox || !contentBox) throw new Error('Hero geometry unavailable');
 
-    expect(Math.abs(leftBox.y - rightBox.y)).toBeLessThanOrEqual(24);
-    expect(rightBox.x).toBeGreaterThan(leftBox.x + leftBox.width - 2);
+    expect(titleBox.y).toBeGreaterThan(heroBox.y + heroBox.height * 0.42);
+    expect(contentBox.y + contentBox.height).toBeLessThanOrEqual(heroBox.y + heroBox.height + 2);
 
-    const wordRects = await title.evaluate((element) => {
-      const rectFor = (node) => {
-        if (!node) return null;
-        const range = document.createRange();
-        range.selectNodeContents(node);
-        const rect = range.getBoundingClientRect();
-        return { left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom, width: rect.width };
-      };
-      return {
-        built: rectFor(element.querySelector('.f2f-title-left > span')),
-        fix: rectFor(element.querySelector('.f2f-title-left > strong')),
-        ready: rectFor(element.querySelector('.f2f-title-right > span')),
-        fly: rectFor(element.querySelector('.f2f-title-right > strong')),
-      };
-    });
-
-    if (viewport.width < 700) {
-      expect(wordRects.built).not.toBeNull();
-      expect(wordRects.fix).not.toBeNull();
-      expect(wordRects.ready).not.toBeNull();
-      expect(wordRects.fly).not.toBeNull();
-      if (!wordRects.built || !wordRects.fix || !wordRects.ready || !wordRects.fly) {
-        throw new Error('Headline word geometry unavailable');
-      }
-
-      const safeInset = viewport.width <= 430 ? 22 : 14;
-      const heroLeft = heroBox.x + safeInset;
-      const heroRight = heroBox.x + heroBox.width - safeInset;
-
-      expect(wordRects.built.left).toBeGreaterThanOrEqual(heroLeft);
-      expect(wordRects.fix.left).toBeGreaterThanOrEqual(heroLeft);
-      expect(wordRects.ready.right).toBeLessThanOrEqual(heroRight);
-      expect(wordRects.fly.right).toBeLessThanOrEqual(heroRight);
-      expect(wordRects.ready.width).toBeGreaterThan(0);
-      expect(wordRects.ready.left).toBeGreaterThan(wordRects.built.right + 24);
-
-      expect(heroBox.height).toBeLessThanOrEqual(viewport.height * 1.5);
+    if (viewport.width >= 700) {
+      expect(contentBox.x).toBeLessThan(heroBox.x + heroBox.width * 0.5);
+      expect(contentBox.width).toBeLessThan(heroBox.width * 0.72);
     } else {
-      expect(titleLayout.display).toBe('grid');
-      expect(titleLayout.rows.trim().split(/\s+/)).toHaveLength(1);
-      expect(titleLayout.columns.trim().split(/\s+/).length).toBeGreaterThanOrEqual(3);
+      expect(contentBox.width).toBeLessThanOrEqual(heroBox.width);
+      expect(heroBox.height).toBeLessThanOrEqual(viewport.height * 1.5);
     }
 
     const noHorizontalOverflow = await page.evaluate(
