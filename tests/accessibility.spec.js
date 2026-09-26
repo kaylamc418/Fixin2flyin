@@ -8,8 +8,6 @@ test('homepage accessibility smoke checks', async ({ page }) => {
     if (message.type() === 'error') consoleErrors.push(message.text());
   });
 
-  // Exercise the compact navigation state explicitly instead of relying on
-  // Playwright's default desktop viewport.
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto(BASE_URL, { waitUntil: 'networkidle' });
 
@@ -31,11 +29,16 @@ test('homepage accessibility smoke checks', async ({ page }) => {
     expect(labelText?.trim().length).toBeGreaterThan(0);
   }
 
-  await expect(page.getByRole('button', { name: /open navigation/i })).toHaveCount(1);
+  const navButton = page.getByRole('button', { name: /open navigation/i });
+  await expect(navButton).toHaveCount(1);
+  await navButton.click();
+  await expect(navButton).toHaveAttribute('aria-expanded', 'true');
+  await page.keyboard.press('Escape');
+  await expect(navButton).toHaveAttribute('aria-expanded', 'false');
+  await expect(navButton).toBeFocused();
+
   await expect(page.getByRole('button', { name: /play peak bound/i })).toHaveCount(1);
 
-  // The close control belongs to the modal lightbox, so verify it in the
-  // actual interaction state where the dialog is open.
   const firstGalleryItem = page.locator('.gallery-item').first();
   await expect(firstGalleryItem).toBeVisible();
   await firstGalleryItem.click();
@@ -43,6 +46,7 @@ test('homepage accessibility smoke checks', async ({ page }) => {
   await expect(closePreview).toBeVisible();
   await closePreview.click();
   await expect(closePreview).toBeHidden();
+  await expect(firstGalleryItem).toBeFocused();
 
   expect(consoleErrors).toEqual([]);
 });
