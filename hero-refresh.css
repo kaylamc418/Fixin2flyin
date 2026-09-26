@@ -330,3 +330,14 @@
     font-size:.73rem;
   }
 }
+
+
+/* Final hero visibility safeguards */
+@media(max-width:699px){
+  .f2f-title-line{
+    white-space:nowrap;
+  }
+  .f2f-cinematic-hero .f2f-hero-media img{
+    filter:saturate(1.02) contrast(1.02) brightness(1.02);
+  }
+}
