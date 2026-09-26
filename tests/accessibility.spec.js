@@ -29,12 +29,15 @@ test('homepage accessibility smoke checks', async ({ page }) => {
     expect(labelText?.trim().length).toBeGreaterThan(0);
   }
 
-  const navButton = page.getByRole('button', { name: /open navigation/i });
+  const navButton = page.locator('.nav-toggle');
   await expect(navButton).toHaveCount(1);
+  await expect(navButton).toHaveAccessibleName(/open navigation/i);
   await navButton.click();
   await expect(navButton).toHaveAttribute('aria-expanded', 'true');
+  await expect(navButton).toHaveAccessibleName(/close navigation/i);
   await page.keyboard.press('Escape');
   await expect(navButton).toHaveAttribute('aria-expanded', 'false');
+  await expect(navButton).toHaveAccessibleName(/open navigation/i);
   await expect(navButton).toBeFocused();
 
   await expect(page.getByRole('button', { name: /play peak bound/i })).toHaveCount(1);
