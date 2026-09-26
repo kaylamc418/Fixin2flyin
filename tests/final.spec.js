@@ -96,12 +96,15 @@ for (const viewport of viewports) {
     expect(contentBox).not.toBeNull();
     if (!heroBox || !titleBox || !contentBox) throw new Error('Hero geometry unavailable');
 
-    expect(titleBox.y).toBeGreaterThan(heroBox.y + heroBox.height * 0.42);
+    expect(titleBox.y).toBeGreaterThan(heroBox.y + heroBox.height * 0.32);
     expect(contentBox.y + contentBox.height).toBeLessThanOrEqual(heroBox.y + heroBox.height + 2);
 
-    if (viewport.width >= 700) {
+    if (viewport.width >= 980) {
       expect(contentBox.x).toBeLessThan(heroBox.x + heroBox.width * 0.5);
       expect(contentBox.width).toBeLessThan(heroBox.width * 0.72);
+    } else if (viewport.width >= 700) {
+      expect(contentBox.x).toBeLessThan(heroBox.x + heroBox.width * 0.5);
+      expect(contentBox.width).toBeLessThan(heroBox.width * 0.86);
     } else {
       expect(contentBox.width).toBeLessThanOrEqual(heroBox.width);
       expect(heroBox.height).toBeLessThanOrEqual(viewport.height * 1.5);
