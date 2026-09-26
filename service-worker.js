@@ -9,9 +9,7 @@ const CORE_ASSETS = [
   "/site.webmanifest",
   "/assets/favicon-horus-fullcolor.svg",
   "/assets/apple-touch-icon.png",
-  "/assets/hero-mobile.webp",
-  "/assets/hero-tablet.webp",
-  "/assets/hero-desktop.webp"
+  "/assets/DOMPROJ.jpg"
 ];
 
 self.addEventListener("install", (event) => {
