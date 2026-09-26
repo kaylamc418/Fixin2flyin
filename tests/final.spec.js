@@ -54,7 +54,7 @@ for (const viewport of viewports) {
     });
     expect(correctOrder).toBe(true);
 
-    await expect(title).toContainText(/built\s*to\s*fix\s*ready\s*to\s*fly/i);
+    await expect(title).toContainText(/built\s*to\s*fix\.\s*ready\s*to\s*fly\./i);
     await expect(hero).toContainText(/mobile bike repair/i);
     await expect(hero).toContainText(/trail prep/i);
     await expect(hero).toContainText(/one-on-one coaching/i);
