@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fixin' 2 Flyin' Hero Options</title>
+<style>
+:root{--gold:#e8aa37;--purple:#9d63ff;--cyan:#18cdf7;--ink:#08090c;--panel:#0d0f14;--white:#f7f4ef}
+*{box-sizing:border-box}html,body{margin:0;background:#050609;color:var(--white);font-family:Arial,Helvetica,sans-serif}
+.option{width:1440px;height:900px;position:relative;overflow:hidden;background:#090b10;border-bottom:8px solid #191b22}
+.header{height:88px;display:flex;align-items:center;gap:42px;padding:0 48px;background:rgba(4,5,8,.97);border-bottom:1px solid rgba(232,170,55,.3);position:absolute;inset:0 0 auto 0;z-index:8}
+.logo{height:58px;width:auto;object-fit:contain}.nav{margin-left:auto;display:flex;align-items:center;gap:30px;font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}.book{border:1px solid var(--gold);padding:16px 22px;color:var(--gold)}
+.eyebrow{font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:#e9e3da;margin:0 0 18px}
+h1{font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;font-size:86px;line-height:.88;letter-spacing:-.02em;text-transform:uppercase;margin:0 0 24px}
+.gold{color:var(--gold)}.purple{color:var(--purple)}
+.copy{font-size:20px;line-height:1.5;color:#e8e5df;max-width:620px;margin:0 0 26px}
+.actions{display:flex;gap:14px}.btn{padding:18px 24px;border:1px solid rgba(255,255,255,.25);font-size:13px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}.primary{background:var(--gold);color:#080808;border-color:var(--gold)}
+.tag{position:absolute;left:24px;top:108px;z-index:12;padding:8px 12px;background:#050609;border:1px solid rgba(255,255,255,.25);font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+/* 1 split */
+.o1{display:grid;grid-template-columns:56% 44%;padding-top:88px}.o1 .photo{position:relative;overflow:hidden}.o1 .photo img{width:100%;height:100%;object-fit:cover;object-position:52% 50%}.o1 .content{display:flex;flex-direction:column;justify-content:center;padding:70px 58px;background:radial-gradient(circle at 0 50%,rgba(118,80,255,.10),transparent 44%),linear-gradient(180deg,#0b0d12,#06070a)}.o1 h1{font-size:82px}
+/* 2 photo first */
+.o2{padding-top:88px;display:grid;grid-template-rows:560px 252px}.o2 .photo{position:relative}.o2 .photo img{width:100%;height:100%;object-fit:cover;object-position:50% 45%}.o2 .photo:after{content:"";position:absolute;inset:auto 0 0;height:100px;background:linear-gradient(transparent,#08090c)}.o2 .content{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;padding:28px 54px;background:#08090c}.o2 h1{font-size:64px;margin:0}.o2 .copy{font-size:18px;margin-bottom:18px}
+/* 3 forest */
+.o3{padding-top:88px;display:grid;grid-template-columns:46% 54%}.o3 .content{padding:80px 56px;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(135deg,#07080b 0%,#0d0f14 100%)}.o3 .photo{position:relative;overflow:hidden}.o3 .photo img{width:100%;height:100%;object-fit:cover;object-position:52% 34%}.o3 .photo:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(6,7,10,.35),transparent 22%)}.o3 h1{font-size:78px}
+/* 4 air */
+.o4{padding-top:88px;position:relative}.o4 .photo{position:absolute;inset:88px 0 0}.o4 .photo img{width:100%;height:100%;object-fit:cover;object-position:63% 40%}.o4 .photo:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,4,7,.96) 0%,rgba(3,4,7,.78) 33%,rgba(3,4,7,.18) 56%,rgba(3,4,7,0) 76%)}.o4 .content{position:relative;z-index:3;width:600px;padding:120px 0 0 58px}.o4 h1{font-size:86px}
+/* 5 clean editorial */
+.o5{padding-top:88px;display:grid;grid-template-columns:62% 38%}.o5 .photo{position:relative;background:#111}.o5 .photo img{width:100%;height:100%;object-fit:cover;object-position:52% 48%}.o5 .content{padding:70px 48px;display:flex;flex-direction:column;justify-content:flex-end;background:#0a0b0e;border-left:1px solid rgba(232,170,55,.35)}.o5 .eyebrow{color:var(--gold)}.o5 h1{font-size:72px}.o5 .rule{width:68px;height:3px;background:var(--cyan);margin:4px 0 22px}
+</style>
+</head>
+<body>
+
+<section class="option o1" id="option-1">
+  <div class="header"><img class="logo" src="assets/header-logo-full.png" alt=""><div class="nav"><span>Services</span><span>Coaching</span><span>About</span><span>Gallery</span><span>Contact</span><span class="book">Book Service</span></div></div>
+  <div class="tag">Option 1 · Split layout — Colorado jump</div>
+  <div class="photo"><img src="assets/DOMPROJ.jpg" alt=""></div><div class="content">
+    <div>
+      <p class="eyebrow">Mobile Bike Repair • Trail Prep • One-on-One Coaching</p>
+      <h1>Built to <span class="gold">Fix.</span><br>Ready to <span class="purple">Fly.</span></h1>
+      
+      <p class="copy">Mobile bike repair, trail prep, and one-on-one coaching—built to keep your bike dialed and your riding confident.</p>
+      <div class="actions"><span class="btn primary">Request Service</span><span class="btn">Explore Coaching</span></div>
+    </div>
+  </div>
+</section>
+<section class="option o2" id="option-2">
+  <div class="header"><img class="logo" src="assets/header-logo-full.png" alt=""><div class="nav"><span>Services</span><span>Coaching</span><span>About</span><span>Gallery</span><span>Contact</span><span class="book">Book Service</span></div></div>
+  <div class="tag">Option 2 · Photo-first — Colorado jump</div>
+  <div class="photo"><img src="assets/DOMPROJ.jpg" alt=""></div><div class="content"><div>
+    <div>
+      <p class="eyebrow">Mobile Bike Repair • Trail Prep • One-on-One Coaching</p>
+      <h1>Built to <span class="gold">Fix.</span><br>Ready to <span class="purple">Fly.</span></h1>
+      
+      <p class="copy">Mobile bike repair, trail prep, and one-on-one coaching—built to keep your bike dialed and your riding confident.</p>
+      <div class="actions"><span class="btn primary">Request Service</span><span class="btn">Explore Coaching</span></div>
+    </div>
+  </div><div></div></div>
+</section>
+<section class="option o3" id="option-3">
+  <div class="header"><img class="logo" src="assets/header-logo-full.png" alt=""><div class="nav"><span>Services</span><span>Coaching</span><span>About</span><span>Gallery</span><span>Contact</span><span class="book">Book Service</span></div></div>
+  <div class="tag">Option 3 · Split layout — Forest jump</div>
+  <div class="photo"><img src="assets/trail-action.jpg" alt=""></div><div class="content">
+    <div>
+      <p class="eyebrow">Mobile Bike Repair • Trail Prep • One-on-One Coaching</p>
+      <h1>Built to <span class="gold">Fix.</span><br>Ready to <span class="purple">Fly.</span></h1>
+      
+      <p class="copy">Mobile bike repair, trail prep, and one-on-one coaching—built to keep your bike dialed and your riding confident.</p>
+      <div class="actions"><span class="btn primary">Request Service</span><span class="btn">Explore Coaching</span></div>
+    </div>
+  </div>
+</section>
+<section class="option o4" id="option-4">
+  <div class="header"><img class="logo" src="assets/header-logo-full.png" alt=""><div class="nav"><span>Services</span><span>Coaching</span><span>About</span><span>Gallery</span><span>Contact</span><span class="book">Book Service</span></div></div>
+  <div class="tag">Option 4 · Text left — Big air jump</div>
+  <div class="photo"><img src="assets/air-jump.jpg" alt=""></div><div class="content">
+    <div>
+      <p class="eyebrow">Mobile Bike Repair • Trail Prep • One-on-One Coaching</p>
+      <h1>Built to <span class="gold">Fix.</span><br>Ready to <span class="purple">Fly.</span></h1>
+      
+      <p class="copy">Mobile bike repair, trail prep, and one-on-one coaching—built to keep your bike dialed and your riding confident.</p>
+      <div class="actions"><span class="btn primary">Request Service</span><span class="btn">Explore Coaching</span></div>
+    </div>
+  </div>
+</section>
+<section class="option o5" id="option-5">
+  <div class="header"><img class="logo" src="assets/header-logo-full.png" alt=""><div class="nav"><span>Services</span><span>Coaching</span><span>About</span><span>Gallery</span><span>Contact</span><span class="book">Book Service</span></div></div>
+  <div class="tag">Option 5 · Editorial split — Colorado jump</div>
+  <div class="photo"><img src="assets/DOMPROJ.jpg" alt=""></div><div class="content">
+    <div>
+      <p class="eyebrow">Mobile Bike Repair • Trail Prep • One-on-One Coaching</p>
+      <h1>Built to <span class="gold">Fix.</span><br>Ready to <span class="purple">Fly.</span></h1>
+      <div class="rule"></div>
+      <p class="copy">Mobile bike repair, trail prep, and one-on-one coaching—built to keep your bike dialed and your riding confident.</p>
+      <div class="actions"><span class="btn primary">Request Service</span><span class="btn">Explore Coaching</span></div>
+    </div>
+  </div>
+</section>
+</body>
+</html>
