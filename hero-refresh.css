@@ -355,8 +355,9 @@
   }
   .f2f-cinematic-hero .f2f-hero-title{
     margin-bottom:1.15rem;
-    font-size:clamp(2.95rem,14.2vw,4.25rem);
+    font-size:clamp(2.05rem,11.5vw,3.4rem);
     line-height:.87;
+    letter-spacing:-.03em;
   }
   .f2f-title-line{
     white-space:nowrap;
