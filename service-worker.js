@@ -1,4 +1,4 @@
-const CACHE_NAME = "fixin2flyin-hero-v2-2026-09-26";
+const CACHE_NAME = "fixin2flyin-split-hero-2026-09-29";
 const CORE_ASSETS = [
   "/",
   "/styles.css",
