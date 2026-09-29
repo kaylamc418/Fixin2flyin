@@ -132,6 +132,8 @@
   margin:0 auto;
 }
 .f2f-kicker{
+  position:relative;
+  top:-12px;
   margin:0 0 1.25rem;
   padding:0;
   border:0;
@@ -185,6 +187,8 @@
   text-shadow:none;
 }
 .f2f-cinematic-hero .f2f-hero-copy{
+  position:relative;
+  top:12px;
   max-width:560px;
   margin:0 0 1.55rem;
   color:#eeeae4;
@@ -195,6 +199,8 @@
   text-shadow:none;
 }
 .f2f-cinematic-hero .f2f-hero-actions{
+  position:relative;
+  top:12px;
   display:flex;
   flex-wrap:wrap;
   gap:.8rem;
