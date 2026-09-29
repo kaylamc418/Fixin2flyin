@@ -80,27 +80,30 @@ for (const viewport of viewports) {
     expect(imageInfo.currentSrc).toMatch(/DOMPROJ\.jpg(?:\?.*)?$/i);
     expect(imageInfo.loading).toBeNull();
 
-    const [heroBox, titleBox, contentBox] = await Promise.all([
+    const [heroBox, mediaBox, titleBox, contentBox] = await Promise.all([
       hero.boundingBox(),
+      hero.locator('.f2f-hero-media').boundingBox(),
       title.boundingBox(),
       hero.locator('.f2f-hero-content').boundingBox(),
     ]);
     expect(heroBox).not.toBeNull();
+    expect(mediaBox).not.toBeNull();
     expect(titleBox).not.toBeNull();
     expect(contentBox).not.toBeNull();
-    if (!heroBox || !titleBox || !contentBox) throw new Error('Hero geometry unavailable');
+    if (!heroBox || !mediaBox || !titleBox || !contentBox) throw new Error('Hero geometry unavailable');
 
-    expect(titleBox.y).toBeGreaterThan(heroBox.y + heroBox.height * 0.28);
-    expect(contentBox.y + contentBox.height).toBeLessThanOrEqual(heroBox.y + heroBox.height + 2);
-
-    if (viewport.width >= 980) {
-      expect(contentBox.x).toBeLessThan(heroBox.x + heroBox.width * 0.5);
-      expect(contentBox.width).toBeLessThan(heroBox.width * 0.72);
-    } else if (viewport.width >= 700) {
-      expect(contentBox.x).toBeLessThan(heroBox.x + heroBox.width * 0.5);
-      expect(contentBox.width).toBeLessThan(heroBox.width * 0.86);
+    if (viewport.width > 820) {
+      expect(mediaBox.x).toBeCloseTo(heroBox.x, 0);
+      expect(mediaBox.x + mediaBox.width).toBeLessThanOrEqual(contentBox.x + 1);
+      expect(contentBox.x + contentBox.width).toBeLessThanOrEqual(heroBox.x + heroBox.width + 1);
+      expect(mediaBox.height).toBeGreaterThanOrEqual(heroBox.height - 2);
+      expect(contentBox.height).toBeGreaterThanOrEqual(heroBox.height - 2);
     } else {
-      expect(contentBox.width).toBeLessThanOrEqual(heroBox.width);
+      expect(mediaBox.x).toBeCloseTo(heroBox.x, 0);
+      expect(contentBox.x).toBeCloseTo(heroBox.x, 0);
+      expect(mediaBox.y + mediaBox.height).toBeLessThanOrEqual(contentBox.y + 1);
+      expect(mediaBox.width).toBeLessThanOrEqual(heroBox.width + 1);
+      expect(contentBox.width).toBeLessThanOrEqual(heroBox.width + 1);
       expect(heroBox.height).toBeLessThanOrEqual(viewport.height * 1.5);
     }
 
@@ -113,7 +116,7 @@ for (const viewport of viewports) {
     await expect(music.getByRole('button', { name: /play peak bound/i })).toBeVisible();
 
     if (viewport.width > COMPACT_NAV_MAX_WIDTH) {
-      for (const label of ['Soundtrack', 'Dom Code', 'Services', 'Tribute', 'Story', 'Gallery', 'Book Dom']) {
+      for (const label of ['Services', 'Coaching', 'About', 'Gallery', 'Contact', 'Book Service']) {
         await expect(header.getByRole('link', { name: label, exact: true })).toBeVisible();
       }
       await expect(header.getByRole('button', { name: /open navigation/i })).toBeHidden();
