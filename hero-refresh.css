@@ -32,27 +32,16 @@
 .f2f-cinematic-brand{
   display:flex;
   align-items:center;
-  gap:.8rem;
-  width:auto;
+  width:132px;
   min-width:0;
   text-decoration:none;
 }
 .f2f-cinematic-brand img{
   display:block;
-  width:78px;
+  width:100%;
   height:58px;
   object-fit:contain;
   object-position:left center;
-}
-.f2f-brand-wordmark{
-  display:none;
-  color:#f7f4ef;
-  font-family:Impact,Haettenschweiler,"Arial Narrow Bold","Arial Narrow",sans-serif;
-  font-size:1.4rem;
-  line-height:1;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  white-space:nowrap;
 }
 .f2f-cinematic-header .nav-menu{
   justify-self:end;
@@ -145,7 +134,7 @@
 .f2f-kicker{
   position:relative;
   top:-12px;
-  margin:0 0 .72rem;
+  margin:0 0 1.25rem;
   padding:0;
   border:0;
   border-radius:0;
@@ -159,17 +148,10 @@
   -webkit-backdrop-filter:none;
   backdrop-filter:none;
 }
-.f2f-kicker-line{
+.f2f-kicker span{
   display:inline;
-  color:inherit;
-}
-.f2f-kicker-line + .f2f-kicker-line{
-  margin-left:.28em;
-}
-.f2f-kicker i{
-  margin:0 .18em;
+  margin:0 .28em;
   color:var(--hero-cyan);
-  font-style:normal;
   text-shadow:none;
 }
 .f2f-cinematic-hero .f2f-hero-title{
@@ -274,16 +256,10 @@
     gap:.75rem;
   }
   .f2f-cinematic-brand{
-    width:auto;
-    gap:.65rem;
+    width:108px;
   }
   .f2f-cinematic-brand img{
-    width:64px;
     height:50px;
-  }
-  .f2f-brand-wordmark{
-    display:inline;
-    font-size:1.15rem;
   }
   .f2f-cinematic-header .nav-toggle{
     display:block;
@@ -363,16 +339,10 @@
     width:calc(100% - 1rem);
   }
   .f2f-cinematic-brand{
-    width:auto;
-    gap:.55rem;
+    width:88px;
   }
   .f2f-cinematic-brand img{
-    width:54px;
     height:44px;
-  }
-  .f2f-brand-wordmark{
-    font-size:1rem;
-    letter-spacing:.07em;
   }
   .f2f-cinematic-header .f2f-book{
     display:none!important;
@@ -384,21 +354,10 @@
     padding:2rem 1.15rem 2.25rem;
   }
   .f2f-kicker{
-    max-width:19rem;
-    margin-bottom:.45rem;
-    font-size:.54rem;
+    margin-bottom:1rem;
+    font-size:.57rem;
     line-height:1.45;
-    letter-spacing:.105em;
-  }
-  .f2f-kicker-line{
-    display:block;
-  }
-  .f2f-kicker-line + .f2f-kicker-line{
-    margin-left:0;
-    margin-top:.08rem;
-  }
-  .f2f-kicker-line + .f2f-kicker-line i{
-    display:none;
+    letter-spacing:.12em;
   }
   .f2f-cinematic-hero .f2f-hero-title{
     margin-bottom:1.15rem;
