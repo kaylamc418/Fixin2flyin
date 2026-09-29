@@ -32,16 +32,26 @@
 .f2f-cinematic-brand{
   display:flex;
   align-items:center;
-  width:132px;
+  gap:.8rem;
+  width:auto;
   min-width:0;
   text-decoration:none;
 }
 .f2f-cinematic-brand img{
   display:block;
-  width:100%;
+  width:78px;
   height:58px;
   object-fit:contain;
   object-position:left center;
+}
+.f2f-brand-wordmark{
+  color:#f7f4ef;
+  font-family:Impact,Haettenschweiler,"Arial Narrow Bold","Arial Narrow",sans-serif;
+  font-size:1.4rem;
+  line-height:1;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  white-space:nowrap;
 }
 .f2f-cinematic-header .nav-menu{
   justify-self:end;
@@ -134,7 +144,7 @@
 .f2f-kicker{
   position:relative;
   top:-12px;
-  margin:0 0 1.25rem;
+  margin:0 0 .72rem;
   padding:0;
   border:0;
   border-radius:0;
@@ -256,10 +266,15 @@
     gap:.75rem;
   }
   .f2f-cinematic-brand{
-    width:108px;
+    width:auto;
+    gap:.65rem;
   }
   .f2f-cinematic-brand img{
+    width:64px;
     height:50px;
+  }
+  .f2f-brand-wordmark{
+    font-size:1.15rem;
   }
   .f2f-cinematic-header .nav-toggle{
     display:block;
@@ -339,10 +354,16 @@
     width:calc(100% - 1rem);
   }
   .f2f-cinematic-brand{
-    width:88px;
+    width:auto;
+    gap:.55rem;
   }
   .f2f-cinematic-brand img{
+    width:54px;
     height:44px;
+  }
+  .f2f-brand-wordmark{
+    font-size:1rem;
+    letter-spacing:.07em;
   }
   .f2f-cinematic-header .f2f-book{
     display:none!important;
@@ -354,10 +375,14 @@
     padding:2rem 1.15rem 2.25rem;
   }
   .f2f-kicker{
-    margin-bottom:1rem;
-    font-size:.57rem;
+    max-width:19rem;
+    margin-bottom:.45rem;
+    font-size:.54rem;
     line-height:1.45;
-    letter-spacing:.12em;
+    letter-spacing:.105em;
+  }
+  .f2f-kicker span{
+    margin:0 .18em;
   }
   .f2f-cinematic-hero .f2f-hero-title{
     margin-bottom:1.15rem;
