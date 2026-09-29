@@ -29,11 +29,7 @@
   <meta name="twitter:image:alt" content="Fixin’ 2 Flyin’ mountain biker jumping above a Colorado flag in the mountains" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon-horus-fullcolor.svg" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-  <link rel="manifest" href="/site.webmanifest" />
-  <link rel="preload" as="image" href="assets/hero-mobile.webp" type="image/webp" media="(max-width: 699px)" fetchpriority="high" />
-  <link rel="preload" as="image" href="assets/hero-tablet.webp" type="image/webp" media="(min-width: 700px) and (max-width: 979px)" fetchpriority="high" />
-  <link rel="preload" as="image" href="assets/hero-desktop.webp" type="image/webp" media="(min-width: 980px)" fetchpriority="high" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="/site.webmanifest" />  <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="hero-refresh.css" />
   <script type="application/ld+json">
   {
@@ -70,63 +66,50 @@
   <header class="site-header f2f-cinematic-header" id="top" data-testid="site-header">
     <nav class="nav-shell" aria-label="Primary navigation">
       <a class="f2f-cinematic-brand" href="#top" aria-label="Fixin’ 2 Flyin’ home">
-        <span><span class="f2f-wingmark">F2F</span><span class="f2f-brand-sub">Fixin 2 Flyin</span></span>
+        <img src="assets/header-logo-full.png" alt="" width="132" height="72" decoding="async" />
+        <span class="f2f-brand-wordmark">Fixin’ 2 Flyin’</span>
       </a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
         <span class="sr-only">Open navigation</span><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
       </button>
       <div class="nav-menu" id="nav-menu">
-        <a href="#music">Soundtrack</a>
-        <a href="#about">Dom Code</a>
         <a href="#services">Services</a>
-        <a href="#tribute">Tribute</a>
-        <a href="#how-it-works">Story</a>
+        <a href="#coaching">Coaching</a>
+        <a href="#about">About</a>
         <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
       </div>
-      <a class="nav-cta f2f-book" href="#contact">Book Dom</a>
+      <a class="nav-cta f2f-book" href="#contact">Book Service</a>
     </nav>
   </header>
 
   <main id="main">
     <section class="hero f2f-cinematic-hero" aria-labelledby="hero-title" data-testid="hero-section">
-      <div class="f2f-hero-media" aria-hidden="true">
-        <picture>
-          <source media="(max-width: 699px)" srcset="assets/hero-mobile.webp" type="image/webp" width="720" height="1080" />
-          <source media="(max-width: 979px)" srcset="assets/hero-tablet.webp" type="image/webp" width="960" height="720" />
-          <source srcset="assets/hero-desktop.webp" type="image/webp" width="1440" height="860" />
-          <img
-            src="assets/DOMPROJ.jpg"
-            width="1440"
-            height="860"
-            alt=""
-            fetchpriority="high"
-            decoding="async"
-          />
-        </picture>
+      <div class="f2f-hero-media">
+        <img
+          src="assets/DOMPROJ.jpg"
+          width="1440"
+          height="860"
+          alt="Mountain biker balancing above a Colorado flag with mountains behind him"
+          fetchpriority="high"
+          decoding="async"
+        />
       </div>
 
-      <div class="f2f-hero-viewport f2f-hero-inner">
-        <p class="f2f-kicker">Blackout Repair. Gold-Standard Riding.</p>
+      <div class="f2f-hero-content">
+        <div class="f2f-hero-copy-block">
+          <p class="f2f-kicker"><span class="f2f-kicker-line">Mobile Bike Repair <i aria-hidden="true">•</i> Trail Prep</span><span class="f2f-kicker-line"><i aria-hidden="true">•</i> One-on-One Coaching</span></p>
 
-        <h1 id="hero-title" class="f2f-hero-title" data-testid="hero-title">
-          <span class="f2f-title-left">
-            <span>Built</span>
-            <small>to</small>
-            <strong>Fix</strong>
-          </span>
-          <span class="f2f-title-right">
-            <span>Ready</span>
-            <small>to</small>
-            <strong>Fly</strong>
-          </span>
-        </h1>
+          <h1 id="hero-title" class="f2f-hero-title" data-testid="hero-title">
+            <span class="f2f-title-line">Built to <strong>Fix.</strong></span>
+            <span class="f2f-title-line">Ready to <em>Fly.</em></span>
+          </h1>
 
-        <div class="f2f-hero-bottom">
-          <p class="f2f-hero-copy">Turning rough rides into dialed machines and unsure riders into confident senders. Mobile bike repair, trail prep, and coaching built for the ride ahead.</p>
+          <p class="f2f-hero-copy">Mobile bike repair, trail prep, and one-on-one coaching—built to keep your bike dialed and your riding confident.</p>
+
           <div class="f2f-hero-actions hero-actions" data-testid="hero-actions">
-            <a class="f2f-hero-action f2f-action-gold" href="#contact"><span aria-hidden="true">⚒</span> Fix My Rig</a>
-            <a class="f2f-hero-action f2f-action-cyan" href="#gallery"><span aria-hidden="true">▶</span> See the Action</a>
-            <a class="f2f-hero-action f2f-action-purple" href="#coaching"><span aria-hidden="true">➤</span> Learn to Send</a>
+            <a class="f2f-hero-action f2f-action-gold" href="#contact">Request Service</a>
+            <a class="f2f-hero-action f2f-action-secondary" href="#coaching">Explore Coaching</a>
           </div>
         </div>
       </div>

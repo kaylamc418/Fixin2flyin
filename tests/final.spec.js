@@ -29,16 +29,16 @@ for (const viewport of viewports) {
     const header = page.locator('[data-testid="site-header"]');
     const hero = page.locator('[data-testid="hero-section"]');
     const title = page.locator('[data-testid="hero-title"]');
-    const left = title.locator('.f2f-title-left');
-    const right = title.locator('.f2f-title-right');
+    const titleLines = title.locator('.f2f-title-line');
     const heroImage = hero.locator('.f2f-hero-media img');
     const music = page.locator('[data-testid="music-section"]');
 
     await expect(header).toBeVisible();
     await expect(hero).toBeVisible();
     await expect(title).toBeVisible();
-    await expect(left).toBeVisible();
-    await expect(right).toBeVisible();
+    await expect(titleLines).toHaveCount(2);
+    await expect(titleLines.first()).toBeVisible();
+    await expect(titleLines.nth(1)).toBeVisible();
     await expect(heroImage).toBeVisible();
     await expect(music).toBeVisible();
 
@@ -54,17 +54,17 @@ for (const viewport of viewports) {
     });
     expect(correctOrder).toBe(true);
 
-    await expect(title).toContainText(/built\s*to\s*fix\s*ready\s*to\s*fly/i);
+    await expect(title).toContainText(/built\s*to\s*fix\.\s*ready\s*to\s*fly\./i);
     await expect(hero).toContainText(/mobile bike repair/i);
     await expect(hero).toContainText(/trail prep/i);
-    await expect(hero).toContainText(/coaching built for the ride ahead/i);
+    await expect(hero).toContainText(/one-on-one coaching/i);
+    await expect(hero).toContainText(/keep your bike dialed and your riding confident/i);
 
-    await expect(hero.getByRole('link', { name: 'Fix My Rig', exact: true })).toBeVisible();
-    await expect(hero.getByRole('link', { name: 'See the Action', exact: true })).toBeVisible();
-    await expect(hero.getByRole('link', { name: 'Learn to Send', exact: true })).toBeVisible();
+    await expect(hero.getByRole('link', { name: 'Request Service', exact: true })).toBeVisible();
+    await expect(hero.getByRole('link', { name: 'Explore Coaching', exact: true })).toBeVisible();
+    await expect(hero.locator('[data-testid="hero-actions"] a')).toHaveCount(2);
 
-    await expect(hero.locator('picture')).toHaveCount(1);
-    await expect(hero.locator('picture source')).toHaveCount(3);
+    await expect(hero.locator('picture')).toHaveCount(0);
     await expect(heroImage).toHaveAttribute('fetchpriority', 'high');
     const imageInfo = await heroImage.evaluate((img) => ({
       currentSrc: img.currentSrc,
@@ -77,79 +77,34 @@ for (const viewport of viewports) {
     expect(imageInfo.naturalWidth).toBeGreaterThan(0);
     expect(imageInfo.naturalHeight).toBeGreaterThan(0);
 
-    const expectedHeroAsset = viewport.width < 700
-      ? /hero-mobile\.webp(?:\?.*)?$/i
-      : viewport.width < 980
-        ? /hero-tablet\.webp(?:\?.*)?$/i
-        : /hero-desktop\.webp(?:\?.*)?$/i;
-    expect(imageInfo.currentSrc).toMatch(expectedHeroAsset);
+    expect(imageInfo.currentSrc).toMatch(/DOMPROJ\.jpg(?:\?.*)?$/i);
     expect(imageInfo.loading).toBeNull();
 
-    const titleLayout = await title.evaluate((element) => {
-      const styles = getComputedStyle(element);
-      return {
-        display: styles.display,
-        position: styles.position,
-        rows: styles.gridTemplateRows,
-        columns: styles.gridTemplateColumns,
-      };
-    });
-    expect(['grid', 'block']).toContain(titleLayout.display);
-
-    const [heroBox, leftBox, rightBox] = await Promise.all([
+    const [heroBox, mediaBox, titleBox, contentBox] = await Promise.all([
       hero.boundingBox(),
-      left.boundingBox(),
-      right.boundingBox(),
+      hero.locator('.f2f-hero-media').boundingBox(),
+      title.boundingBox(),
+      hero.locator('.f2f-hero-content').boundingBox(),
     ]);
     expect(heroBox).not.toBeNull();
-    expect(leftBox).not.toBeNull();
-    expect(rightBox).not.toBeNull();
-    if (!heroBox || !leftBox || !rightBox) throw new Error('Hero geometry unavailable');
+    expect(mediaBox).not.toBeNull();
+    expect(titleBox).not.toBeNull();
+    expect(contentBox).not.toBeNull();
+    if (!heroBox || !mediaBox || !titleBox || !contentBox) throw new Error('Hero geometry unavailable');
 
-    expect(Math.abs(leftBox.y - rightBox.y)).toBeLessThanOrEqual(24);
-    expect(rightBox.x).toBeGreaterThan(leftBox.x + leftBox.width - 2);
-
-    const wordRects = await title.evaluate((element) => {
-      const rectFor = (node) => {
-        if (!node) return null;
-        const range = document.createRange();
-        range.selectNodeContents(node);
-        const rect = range.getBoundingClientRect();
-        return { left: rect.left, right: rect.right, top: rect.top, bottom: rect.bottom, width: rect.width };
-      };
-      return {
-        built: rectFor(element.querySelector('.f2f-title-left > span')),
-        fix: rectFor(element.querySelector('.f2f-title-left > strong')),
-        ready: rectFor(element.querySelector('.f2f-title-right > span')),
-        fly: rectFor(element.querySelector('.f2f-title-right > strong')),
-      };
-    });
-
-    if (viewport.width < 700) {
-      expect(wordRects.built).not.toBeNull();
-      expect(wordRects.fix).not.toBeNull();
-      expect(wordRects.ready).not.toBeNull();
-      expect(wordRects.fly).not.toBeNull();
-      if (!wordRects.built || !wordRects.fix || !wordRects.ready || !wordRects.fly) {
-        throw new Error('Headline word geometry unavailable');
-      }
-
-      const safeInset = viewport.width <= 430 ? 22 : 14;
-      const heroLeft = heroBox.x + safeInset;
-      const heroRight = heroBox.x + heroBox.width - safeInset;
-
-      expect(wordRects.built.left).toBeGreaterThanOrEqual(heroLeft);
-      expect(wordRects.fix.left).toBeGreaterThanOrEqual(heroLeft);
-      expect(wordRects.ready.right).toBeLessThanOrEqual(heroRight);
-      expect(wordRects.fly.right).toBeLessThanOrEqual(heroRight);
-      expect(wordRects.ready.width).toBeGreaterThan(0);
-      expect(wordRects.ready.left).toBeGreaterThan(wordRects.built.right + 24);
-
-      expect(heroBox.height).toBeLessThanOrEqual(viewport.height * 1.5);
+    if (viewport.width > 820) {
+      expect(mediaBox.x).toBeCloseTo(heroBox.x, 0);
+      expect(mediaBox.x + mediaBox.width).toBeLessThanOrEqual(contentBox.x + 1);
+      expect(contentBox.x + contentBox.width).toBeLessThanOrEqual(heroBox.x + heroBox.width + 1);
+      expect(mediaBox.height).toBeGreaterThanOrEqual(heroBox.height - 2);
+      expect(contentBox.height).toBeGreaterThanOrEqual(heroBox.height - 2);
     } else {
-      expect(titleLayout.display).toBe('grid');
-      expect(titleLayout.rows.trim().split(/\s+/)).toHaveLength(1);
-      expect(titleLayout.columns.trim().split(/\s+/).length).toBeGreaterThanOrEqual(3);
+      expect(mediaBox.x).toBeCloseTo(heroBox.x, 0);
+      expect(contentBox.x).toBeCloseTo(heroBox.x, 0);
+      expect(mediaBox.y + mediaBox.height).toBeLessThanOrEqual(contentBox.y + 1);
+      expect(mediaBox.width).toBeLessThanOrEqual(heroBox.width + 1);
+      expect(contentBox.width).toBeLessThanOrEqual(heroBox.width + 1);
+      expect(heroBox.height).toBeLessThanOrEqual(viewport.height * 1.5);
     }
 
     const noHorizontalOverflow = await page.evaluate(
@@ -161,7 +116,7 @@ for (const viewport of viewports) {
     await expect(music.getByRole('button', { name: /play peak bound/i })).toBeVisible();
 
     if (viewport.width > COMPACT_NAV_MAX_WIDTH) {
-      for (const label of ['Soundtrack', 'Dom Code', 'Services', 'Tribute', 'Story', 'Gallery', 'Book Dom']) {
+      for (const label of ['Services', 'Coaching', 'About', 'Gallery', 'Contact', 'Book Service']) {
         await expect(header.getByRole('link', { name: label, exact: true })).toBeVisible();
       }
       await expect(header.getByRole('button', { name: /open navigation/i })).toBeHidden();

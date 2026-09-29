@@ -1,4 +1,4 @@
-const CACHE_NAME = "fixin2flyin-2026-09-26";
+const CACHE_NAME = "fixin2flyin-split-hero-2026-09-29";
 const CORE_ASSETS = [
   "/",
   "/styles.css",
@@ -9,9 +9,7 @@ const CORE_ASSETS = [
   "/site.webmanifest",
   "/assets/favicon-horus-fullcolor.svg",
   "/assets/apple-touch-icon.png",
-  "/assets/hero-mobile.webp",
-  "/assets/hero-tablet.webp",
-  "/assets/hero-desktop.webp"
+  "/assets/DOMPROJ.jpg"
 ];
 
 self.addEventListener("install", (event) => {
