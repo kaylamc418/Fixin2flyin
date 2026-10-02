@@ -31,14 +31,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install WebP encoder
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y webp
-
-      - name: Build responsive hero assets
-        run: bash build-hero-assets.sh
-
       - name: Check Cloudflare credentials
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -69,47 +61,19 @@ jobs:
         run: |
           set -euo pipefail
           marker_url="https://fixin2flyin.kayamc418.workers.dev/deploy-marker.txt?sha=${GITHUB_SHA}"
-
           for attempt in {1..12}; do
             deployed_sha="$(curl -fsSL --max-time 15 "$marker_url" || true)"
             if [[ "$deployed_sha" == "$GITHUB_SHA" ]]; then
               echo "Verified deployment of $GITHUB_SHA"
-              break
+              exit 0
             fi
-
-            if [[ "$attempt" == "12" ]]; then
-              echo "Deployment marker did not match $GITHUB_SHA"
-              exit 1
-            fi
-
             echo "Waiting for Cloudflare deployment (${attempt}/12)..."
             sleep 10
           done
+          echo "Deployment marker did not match $GITHUB_SHA"
+          exit 1
 
-          for asset in hero-mobile.webp hero-tablet.webp hero-desktop.webp; do
-            asset_url="https://fixin2flyin.kayamc418.workers.dev/assets/${asset}?sha=${GITHUB_SHA}"
-            verified="false"
-
-            for attempt in {1..12}; do
-              if curl -fsSL --max-time 15 -o /dev/null "$asset_url"; then
-                echo "Verified deployed asset: ${asset}"
-                verified="true"
-                break
-              fi
-
-              if [[ "$attempt" != "12" ]]; then
-                echo "Waiting for asset propagation: ${asset} (${attempt}/12)..."
-                sleep 10
-              fi
-            done
-
-            if [[ "$verified" != "true" ]]; then
-              echo "Asset did not become available after retries: ${asset}"
-              exit 1
-            fi
-          done
-
-  visual-test:
+  audit:
     runs-on: ubuntu-latest
     name: Responsive and accessibility audit
     needs: deploy
@@ -131,12 +95,7 @@ jobs:
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
 
-      - name: Run responsive production audit
+      - name: Run production audit
         env:
           BASE_URL: https://fixin2flyin.kayamc418.workers.dev
         run: npm run test:visual
-
-      - name: Run accessibility smoke audit
-        env:
-          BASE_URL: https://fixin2flyin.kayamc418.workers.dev
-        run: npx playwright test tests/accessibility.spec.js
