@@ -16,3 +16,11 @@ wrangler.jsonc
 .gitignore
 test-results
 test-results/**
+*.zip
+README*
+CHANGELOG*
+CSS-CHEATSHEET.md
+canvas-design
+canvas-design/**
+build-hero-assets.sh
+hero-refresh.css
