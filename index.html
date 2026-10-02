@@ -3,160 +3,203 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mobile Bike Repair and Coaching | Fixin’ 2 Flyin’</title>
-  <meta name="description" content="Fixin’ 2 Flyin’ provides mobile bicycle repair, tune-ups, trail preparation, bike coaching, and ride support for riders who want to ride safer, stronger, and more confidently." />
-  <meta name="theme-color" content="#09090d" />
+  <title>Fixin’ 2 Flyin’ | Mobile Bike Repair + Coaching</title>
+  <meta name="description" content="Mobile bicycle repair, trail preparation, and one-on-one bike coaching from Fixin’ 2 Flyin’. Built to keep your bike dialed and your riding confident." />
+  <meta name="theme-color" content="#050609" />
   <meta name="color-scheme" content="dark" />
-  <meta name="application-name" content="Fixin’ 2 Flyin’" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Fixin’ 2 Flyin’" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://fixin2flyin.kayamc418.workers.dev/" />
-  <meta property="og:title" content="Mobile Bike Repair and Coaching | Fixin’ 2 Flyin’" />
-  <meta property="og:description" content="Mobile bike repair, trail preparation, and one-on-one coaching built around the rider." />
+  <meta property="og:title" content="Fixin’ 2 Flyin’ | Mobile Bike Repair + Coaching" />
+  <meta property="og:description" content="Built to Fix. Ready to Fly. Mobile bike repair, trail prep, and one-on-one coaching." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://fixin2flyin.kayamc418.workers.dev/" />
-  <meta property="og:site_name" content="Fixin’ 2 Flyin’" />
   <meta property="og:image" content="https://fixin2flyin.kayamc418.workers.dev/assets/DOMPROJ.jpg" />
-  <meta property="og:image:width" content="1440" />
-  <meta property="og:image:height" content="860" />
-  <meta property="og:image:alt" content="Fixin’ 2 Flyin’ mountain biker jumping above a Colorado flag in the mountains" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Mobile Bike Repair and Coaching | Fixin’ 2 Flyin’" />
-  <meta name="twitter:description" content="Mobile bike repair, trail preparation, and one-on-one coaching built around the rider." />
-  <meta name="twitter:image" content="https://fixin2flyin.kayamc418.workers.dev/assets/DOMPROJ.jpg" />
-  <meta name="twitter:image:alt" content="Fixin’ 2 Flyin’ mountain biker jumping above a Colorado flag in the mountains" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon-horus-fullcolor.svg" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-  <link rel="manifest" href="/site.webmanifest" />  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="hero-refresh.css" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="stylesheet" href="styles.css?v=20261002" />
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://fixin2flyin.kayamc418.workers.dev/#business",
-        "name": "Fixin’ 2 Flyin’",
-        "url": "https://fixin2flyin.kayamc418.workers.dev/",
-        "image": "https://fixin2flyin.kayamc418.workers.dev/assets/DOMPROJ.jpg",
-        "email": "dom@fixin2flyin.com",
-        "description": "Mobile bicycle repair, trail preparation, and one-on-one bike coaching."
-      },
-      {
-        "@type": "Service",
-        "name": "Mobile Bike Repair",
-        "serviceType": "Mobile bicycle repair and tune-up",
-        "provider": { "@id": "https://fixin2flyin.kayamc418.workers.dev/#business" }
-      },
-      {
-        "@type": "Service",
-        "name": "Bike Coaching",
-        "serviceType": "One-on-one mountain bike coaching",
-        "provider": { "@id": "https://fixin2flyin.kayamc418.workers.dev/#business" }
-      }
-    ]
-  }
+  {"@context":"https://schema.org","@type":"Organization","name":"Fixin’ 2 Flyin’","url":"https://fixin2flyin.kayamc418.workers.dev/","email":"dom@fixin2flyin.com","description":"Mobile bicycle repair, trail preparation, and one-on-one bike coaching."}
   </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header f2f-cinematic-header" id="top" data-testid="site-header">
-    <nav class="nav-shell" aria-label="Primary navigation">
-      <a class="f2f-cinematic-brand" href="#top" aria-label="Fixin’ 2 Flyin’ home">
-        <img src="assets/header-logo-full.png" alt="" width="132" height="72" decoding="async" />
-        <span class="f2f-brand-wordmark">Fixin’ 2 Flyin’</span>
+  <header class="site-header" id="top" data-testid="site-header">
+    <div class="nav-shell">
+      <a class="brand" href="#top" aria-label="Fixin’ 2 Flyin’ home">
+        <img src="assets/header-logo-full.png" alt="" width="120" height="66" decoding="async" />
+        <span class="brand-name">Fixin’ 2 Flyin’</span>
       </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
-        <span class="sr-only">Open navigation</span><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+        <span class="sr-only">Open navigation</span>
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
       </button>
-      <div class="nav-menu" id="nav-menu">
+      <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
         <a href="#services">Services</a>
         <a href="#coaching">Coaching</a>
         <a href="#about">About</a>
         <a href="#gallery">Gallery</a>
         <a href="#contact">Contact</a>
-      </div>
-      <a class="nav-cta f2f-book" href="#contact">Book Service</a>
-    </nav>
+      </nav>
+      <a class="header-cta" href="#contact">Book Service</a>
+    </div>
   </header>
 
   <main id="main">
-    <section class="hero f2f-cinematic-hero" aria-labelledby="hero-title" data-testid="hero-section">
-      <div class="f2f-hero-media">
-        <img
-          src="assets/DOMPROJ.jpg"
-          width="1440"
-          height="860"
-          alt="Mountain biker balancing above a Colorado flag with mountains behind him"
-          fetchpriority="high"
-          decoding="async"
-        />
+    <section class="hero" aria-labelledby="hero-title" data-testid="hero-section">
+      <div class="hero-photo">
+        <img src="assets/DOMPROJ.jpg" width="1440" height="860" alt="Dom balancing on a mountain bike above a Colorado flag with mountains behind him" fetchpriority="high" decoding="async" />
       </div>
-
-      <div class="f2f-hero-content">
-        <div class="f2f-hero-copy-block">
-          <p class="f2f-kicker"><span class="f2f-kicker-line">Mobile Bike Repair <i aria-hidden="true">•</i> Trail Prep</span><span class="f2f-kicker-line"><i aria-hidden="true">•</i> One-on-One Coaching</span></p>
-
-          <h1 id="hero-title" class="f2f-hero-title" data-testid="hero-title">
-            <span class="f2f-title-line">Built to <strong>Fix.</strong></span>
-            <span class="f2f-title-line">Ready to <em>Fly.</em></span>
-          </h1>
-
-          <p class="f2f-hero-copy">Mobile bike repair, trail prep, and one-on-one coaching—built to keep your bike dialed and your riding confident.</p>
-
-          <div class="f2f-hero-actions hero-actions" data-testid="hero-actions">
-            <a class="f2f-hero-action f2f-action-gold" href="#contact">Request Service</a>
-            <a class="f2f-hero-action f2f-action-secondary" href="#coaching">Explore Coaching</a>
+      <div class="hero-panel">
+        <div class="hero-copy">
+          <p class="eyebrow">Mobile Bike Repair <span>•</span> Trail Prep <span>•</span> Coaching</p>
+          <h1 id="hero-title" data-testid="hero-title">Built to <strong>Fix.</strong><br />Ready to <em>Fly.</em></h1>
+          <p class="hero-intro">Mobile bike repair, trail prep, and one-on-one coaching—built to keep your bike dialed and your riding confident.</p>
+          <div class="hero-actions" data-testid="hero-actions">
+            <a class="button button-gold" href="#contact">Request Service</a>
+            <a class="button button-outline" href="#coaching">Explore Coaching</a>
           </div>
+          <div class="hero-proof" aria-label="Service highlights"><span>Mobile</span><span>Personal</span><span>Ride-focused</span></div>
         </div>
       </div>
     </section>
 
-    <section class="music-section" id="music" aria-labelledby="music-title" data-testid="music-section">
-      <div class="music-shell">
-        <div class="music-copy"><p class="eyebrow">Dom’s Original Song</p><h2 id="music-title">The sound behind Fixin’ 2 Flyin’.</h2><p>Press play before you enter the ride.</p></div>
-        <div class="music-player">
-          <button class="music-play" id="soundtrack-toggle" type="button" aria-pressed="false" aria-label="Play Dom’s original song"><span class="music-play-icon" aria-hidden="true">▶</span><span class="soundtrack-label">Play Song</span></button>
-          <div class="music-visualizer" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-          <p class="music-status" id="music-status" aria-live="polite">Original Fixin’ 2 Flyin’ theme</p>
+    <section class="service-strip" aria-label="Fixin’ 2 Flyin’ highlights">
+      <div class="strip-track"><span>Mobile Repair</span><i>▲</i><span>Tune-Ups</span><i>▲</i><span>Trail Prep</span><i>▲</i><span>Brake + Gear Adjustments</span><i>▲</i><span>One-on-One Coaching</span><i>▲</i><span>Ride Support</span></div>
+    </section>
+
+    <section class="section services" id="services" aria-labelledby="services-title">
+      <div class="section-head">
+        <p class="eyebrow">Services</p>
+        <h2 id="services-title">Bike care that comes to the rider.</h2>
+        <p>Repair, preparation, and practical coaching in one focused service. No oversized menu. No generic shop experience. Just the help you need to get back to riding.</p>
+      </div>
+      <div class="service-grid">
+        <article class="service-card service-featured"><span class="card-number">01</span><h3>Mobile Bike Repair</h3><p>On-site fixes, tune-ups, adjustments, and basic maintenance without hauling the bike across town.</p><a href="#contact">Request repair <span aria-hidden="true">→</span></a></article>
+        <article class="service-card"><span class="card-number">02</span><h3>Trail Prep</h3><p>Pre-ride safety checks and practical preparation for local rides, mountain days, and longer adventures.</p></article>
+        <article class="service-card"><span class="card-number">03</span><h3>Brake + Gear Adjustments</h3><p>Basic brake tuning, shifting adjustments, drivetrain checks, and overall ride-condition reviews.</p></article>
+        <article class="service-card" id="coaching"><span class="card-number">04</span><h3>One-on-One Coaching</h3><p>Practical riding guidance focused on control, confidence, handling, balance, and trail skills.</p><a href="#contact">Ask about coaching <span aria-hidden="true">→</span></a></article>
+        <article class="service-card"><span class="card-number">05</span><h3>Flat Repair</h3><p>Tire and tube inspection, repair, replacement support, and help getting the bike ride-ready again.</p></article>
+        <article class="service-card"><span class="card-number">06</span><h3>Ride Support</h3><p>Personalized preparation for longer rides, mountain routes, bike adventures, and progression goals.</p></article>
+      </div>
+    </section>
+
+    <section class="section process" id="how-it-works" aria-labelledby="process-title">
+      <div class="process-intro"><p class="eyebrow">How it works</p><h2 id="process-title">Tell Dom what the ride needs. Get it dialed. Go ride.</h2></div>
+      <ol class="process-list">
+        <li><span>01</span><div><h3>Send the details</h3><p>Tell Dom what is happening with the bike, what you are riding, and the kind of help you need.</p></div></li>
+        <li><span>02</span><div><h3>Get a plan</h3><p>Repair, trail preparation, or coaching is matched to the bike and the rider instead of a one-size-fits-all checklist.</p></div></li>
+        <li><span>03</span><div><h3>Get ride-ready</h3><p>Leave with a more reliable bike, clearer next steps, and more confidence for the ride ahead.</p></div></li>
+      </ol>
+    </section>
+
+    <section class="lifestyle" aria-labelledby="lifestyle-title">
+      <div class="section-head section-head-wide"><p class="eyebrow cyan">The Lifestyle</p><h2 id="lifestyle-title">What Dom’s world is built around.</h2></div>
+      <div class="lifestyle-grid">
+        <article class="lifestyle-card lifestyle-wide"><img src="assets/trail-action.jpg" alt="Dom riding a mountain bike on a forest jump" loading="lazy" decoding="async" /><div class="card-shade"></div><div class="lifestyle-copy"><span class="card-icon">△</span><h3>Epic Rides</h3><p>Chasing the best dirt, bigger lines, and the kind of days that make the work worth it.</p></div></article>
+        <article class="lifestyle-card"><img src="assets/air-jump.jpg" alt="Dom airborne on a mountain bike" loading="lazy" decoding="async" /><div class="card-shade"></div><div class="lifestyle-copy"><span class="card-icon">◇</span><h3>Progression</h3><p>Skill grows one committed attempt at a time.</p></div></article>
+        <article class="lifestyle-card"><img src="assets/lumi-stick.jpg" alt="Lumi outdoors carrying a large stick" loading="lazy" decoding="async" /><div class="card-shade"></div><div class="lifestyle-copy"><span class="card-icon">◆</span><h3>Lumi</h3><p>Trail companion, road partner, and part of the heart behind the brand.</p></div></article>
+      </div>
+    </section>
+
+    <section class="section coaching-feature" aria-labelledby="coaching-title">
+      <div class="feature-photo"><img src="assets/air-jump.jpg" alt="Mountain biker practicing a large air jump" loading="lazy" decoding="async" /></div>
+      <div class="feature-copy">
+        <p class="eyebrow">Coaching</p>
+        <h2 id="coaching-title">Progression without the pressure.</h2>
+        <p>Coaching is built around the rider in front of Dom—their experience, confidence, goals, and the terrain they actually want to ride.</p>
+        <ul class="check-list"><li>Control and body position</li><li>Balance and bike handling</li><li>Trail confidence</li><li>Practical progression</li></ul>
+        <a class="text-link" href="#contact">Talk to Dom about coaching <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="section tech" aria-labelledby="tech-title">
+      <div class="tech-copy">
+        <p class="eyebrow cyan">Thursday Technical Treat</p>
+        <h2 id="tech-title">Your brakes should feel predictable.</h2>
+        <p>Glazed pads, weak stopping power, squealing, vibration, or a lever that just does not feel right are signs worth checking before the next ride.</p>
+        <div class="tech-tags"><span>Pad inspection</span><span>Rotor check</span><span>Lever feel</span><span>Ride-ready check</span></div>
+        <a class="button button-gold" href="#contact">Ask About a Brake Check</a>
+      </div>
+      <div class="tech-photo"><img src="assets/bike-detail-rocks.jpg" alt="Close detail of a mountain bike" loading="lazy" decoding="async" /></div>
+    </section>
+
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="about-photo"><img src="assets/dom-lumi-gallery.jpeg" alt="Dom relaxing outdoors with Lumi" loading="lazy" decoding="async" /></div>
+      <div class="about-copy">
+        <p class="eyebrow">Dom + Lumi</p>
+        <h2 id="about-title">More than a bike service.</h2>
+        <p>Fixin’ 2 Flyin’ is built around Dom’s experience riding, repairing bikes, preparing for the trail, and helping other riders move forward with more confidence.</p>
+        <p>Lumi is part of the journey too—showing up in the trails, basecamps, quiet moments, and adventures that make the brand about more than the bike itself.</p>
+        <p class="accent-copy">Movement. Loyalty. Exploration. Freedom outdoors.</p>
+      </div>
+    </section>
+
+    <section class="tribute" aria-labelledby="tribute-title">
+      <div class="tribute-photo"><img src="assets/dom-mama.jpg" alt="Dom smiling beside his mama" loading="lazy" decoding="async" /></div>
+      <div class="tribute-copy"><p class="eyebrow gold-soft">For Dom’s Mama</p><h2 id="tribute-title">Always part of the ride.</h2><p>Fixin’ 2 Flyin’ also carries the strength, encouragement, and lasting influence of Dom’s mama. Her support helped shape the determination to keep moving forward, take on difficult climbs, and help others along the way.</p><strong>Always remembered. Always part of the ride.</strong></div>
+    </section>
+
+    <section class="section soundtrack" id="soundtrack" aria-labelledby="soundtrack-title" data-testid="music-section">
+      <div class="soundtrack-copy"><p class="eyebrow purple">Dom’s Original Soundtrack</p><h2 id="soundtrack-title">Peak Bound.</h2><p>The soundtrack belongs deeper in the story—after you know what Fixin’ 2 Flyin’ is and what Dom does.</p></div>
+      <div class="player-card">
+        <button class="play-button" id="soundtrack-toggle" type="button" aria-pressed="false" aria-label="Play Peak Bound"><span class="play-icon" aria-hidden="true">▶</span><span class="play-label">Play Peak Bound</span></button>
+        <div class="equalizer" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <p id="music-status" aria-live="polite">Enhanced Industrial Remix</p>
+      </div>
+    </section>
+
+    <section class="section gallery" id="gallery" aria-labelledby="gallery-title">
+      <div class="section-head"><p class="eyebrow">Gallery</p><h2 id="gallery-title">Repairs, rides, progression, and the life around them.</h2></div>
+      <div class="gallery-grid">
+        <button class="gallery-item gallery-large" type="button" aria-haspopup="dialog" data-full="assets/trail-action.jpg"><img src="assets/trail-action.jpg" alt="Mountain biker riding a forest jump" loading="lazy" decoding="async" /><span>Trail Action</span></button>
+        <button class="gallery-item" type="button" aria-haspopup="dialog" data-full="assets/blue-bike.jpg"><img src="assets/blue-bike.jpg" alt="Blue mountain bike ready to ride" loading="lazy" decoding="async" /><span>Ride Ready</span></button>
+        <button class="gallery-item" type="button" aria-haspopup="dialog" data-full="assets/tire-closeup.jpg"><img src="assets/tire-closeup.jpg" alt="Close view of a mountain bike wheel and tire" loading="lazy" decoding="async" /><span>Bike Detail</span></button>
+        <button class="gallery-item gallery-tall" type="button" aria-haspopup="dialog" data-full="assets/air-jump.jpg"><img src="assets/air-jump.jpg" alt="Mountain biker airborne over a jump" loading="lazy" decoding="async" /><span>Progression</span></button>
+        <button class="gallery-item gallery-wide" type="button" aria-haspopup="dialog" data-full="assets/dom-lumi-gallery.jpeg"><img src="assets/dom-lumi-gallery.jpeg" alt="Dom and Lumi outdoors" loading="lazy" decoding="async" /><span>Dom + Lumi</span></button>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="contact-intro">
+        <p class="eyebrow cyan">Request Service</p>
+        <h2 id="contact-title">Tell Dom what your bike or your riding needs.</h2>
+        <p>Send the details and your email app will open with a complete request ready to send.</p>
+        <div class="direct-contact"><span>Email</span><a href="mailto:dom@fixin2flyin.com">dom@fixin2flyin.com</a></div>
+      </div>
+      <form class="service-form" id="service-form">
+        <div class="form-grid">
+          <label><span>Name *</span><input name="name" autocomplete="name" required /></label>
+          <label><span>Email *</span><input type="email" name="email" autocomplete="email" required /></label>
+          <label><span>Phone</span><input type="tel" name="phone" autocomplete="tel" /></label>
+          <label><span>Location *</span><input name="location" autocomplete="address-level2" required /></label>
+          <label><span>Type of Service *</span><select name="service" required><option value="">Choose a service</option><option>Mobile Bike Repair</option><option>Tune-Up</option><option>Flat Repair</option><option>Brake or Gear Adjustment</option><option>Trail Preparation</option><option>Bike Coaching</option><option>Ride Support</option><option>Other</option></select></label>
+          <label><span>Bike Type</span><input name="bike" /></label>
+          <label class="form-full"><span>Message *</span><textarea name="message" rows="5" required></textarea></label>
         </div>
-      </div>
+        <label class="consent"><input type="checkbox" required /><span>I understand this sends a request and does not confirm an appointment.</span></label>
+        <button class="button button-gold submit-button" type="submit">Prepare Service Request</button>
+        <p class="form-status" id="form-status" aria-live="polite"></p>
+      </form>
     </section>
-
-    <section class="keyword-ticker" aria-label="Fixin’ 2 Flyin’ service highlights"><div class="keyword-ticker-track"><div class="keyword-ticker-group"><span>Dialed Bikes</span><i>▲</i><span>Confident Riders</span><i>▲</i><span>Mobile Repair</span><i>▲</i><span>Trail Prep</span><i>▲</i><span>One-on-One Coaching</span><i>▲</i><span>Control + Confidence</span><i>▲</i></div><div class="keyword-ticker-group" aria-hidden="true"><span>Dialed Bikes</span><i>▲</i><span>Confident Riders</span><i>▲</i><span>Mobile Repair</span><i>▲</i><span>Trail Prep</span><i>▲</i><span>One-on-One Coaching</span><i>▲</i><span>Control + Confidence</span><i>▲</i></div></div></section>
-
-    <section class="section-pad services-section" id="services" aria-labelledby="services-title">
-      <div class="container section-heading reveal"><p class="eyebrow">Services</p><h2 id="services-title">Mobile Bike Repair + Coaching</h2><p>Fixin’ 2 Flyin’ brings bicycle repair, tune-ups, trail preparation, and practical riding guidance directly to the rider. Dom helps keep bikes running smoothly, riders progressing confidently, and every ride ready to go.</p></div>
-      <div class="container service-grid">
-        <article class="service-card reveal"><span class="service-number">01</span><h3>Mobile Bike Repair</h3><p>On-site bicycle fixes, tune-ups, adjustments, and basic maintenance without the hassle of transporting the bike to a shop.</p></article>
-        <article class="service-card reveal"><span class="service-number">02</span><h3>Trail Preparation</h3><p>Pre-ride safety checks and practical preparation for local rides, mountain trips, trail days, and longer adventures.</p></article>
-        <article class="service-card reveal"><span class="service-number">03</span><h3>Flat Repair</h3><p>Tire and tube inspection, repair, replacement support, and help getting the bike ride-ready again.</p></article>
-        <article class="service-card reveal"><span class="service-number">04</span><h3>Brake + Gear Adjustments</h3><p>Basic brake tuning, shifting adjustments, drivetrain checks, and overall ride-condition reviews.</p></article>
-        <article class="service-card reveal" id="coaching"><span class="service-number">05</span><h3>Bike Coaching</h3><p>One-on-one riding guidance focused on confidence, climbing, handling, balance, control, and trail skills.</p></article>
-        <article class="service-card reveal"><span class="service-number">06</span><h3>Ride Support</h3><p>Personalized preparation for longer rides, mountain routes, bike adventures, and individual progression goals.</p></article>
-      </div>
-      <div class="container riding-callout reveal"><div><p class="eyebrow">Built Around Riding</p><h3>Keep the bike dialed and the rider moving forward.</h3><p>From long climbs and fast descents to bike preparation and skill progression, Fixin’ 2 Flyin’ is built around the full riding experience.</p></div><a class="button primary" href="#contact">Ask About Repair or Coaching</a></div>
-    </section>
-
-    <section class="section-pad how-section" id="how-it-works" aria-labelledby="how-title">
-      <div class="container section-heading reveal"><p class="eyebrow">How It Works</p><h2 id="how-title">A practical process for the bike and rider.</h2><p>A clear four-step approach built around the bike, the rider, and the ride ahead.</p></div>
-      <div class="container process-grid"><article class="process-card reveal"><span>01</span><h3>Dial It</h3><p>Inspect the bike, identify needed adjustments, and prepare it for the ride ahead.</p></article><article class="process-card reveal"><span>02</span><h3>Read It</h3><p>Understand the rider’s experience, goals, trail conditions, and confidence level.</p></article><article class="process-card reveal"><span>03</span><h3>Commit</h3><p>Work through the repair, preparation, or coaching plan with practical guidance.</p></article><article class="process-card reveal"><span>04</span><h3>Fly</h3><p>Leave with a more reliable bike, stronger skills, and greater confidence on the trail.</p></article></div>
-    </section>
-
-    <section class="section-pad about-section" id="about" aria-labelledby="about-title"><div class="container split-layout"><div class="image-frame reveal"><img src="assets/lumi-stick.jpg" alt="Lumi carrying a large stick outdoors near mountain bikes" loading="lazy" decoding="async" /></div><div class="content-stack reveal"><p class="eyebrow">Dom + Lumi</p><h2 id="about-title">The rider, the builder, and the trail companion.</h2><p>Fixin’ 2 Flyin’ is built around Dom’s experience riding, repairing bikes, preparing for the trail, and helping other riders move forward with greater confidence. His approach is practical, personal, and grounded in real riding experience.</p><p>Lumi is part of the journey too—showing up in the trails, basecamps, quiet moments, and adventures that make Fixin’ 2 Flyin’ about more than the bike itself.</p><p>Together, Dom and Lumi represent the personal side of the brand: movement, loyalty, exploration, and the freedom found outdoors.</p></div></div></section>
-
-    <section class="section-pad tribute-section" id="tribute" aria-labelledby="tribute-title"><div class="container tribute-layout"><div class="tribute-image reveal"><img src="assets/dom-mama.jpg" alt="Dom smiling beside his mama" loading="lazy" decoding="async" /></div><div class="tribute-copy reveal"><p class="eyebrow">For Dom’s Mama</p><h2 id="tribute-title">For the woman who helped shape the ride.</h2><p>Fixin’ 2 Flyin’ carries more than a love of bikes, trails, and adventure. It also carries the strength, encouragement, and lasting influence of Dom’s mama.</p><p>Her support helped shape the person Dom became—the determination to keep moving forward, the courage to take on difficult climbs, and the heart to help others along the way. Those lessons remain part of every repair, every ride, and every rider Dom encourages.</p><p>This website is also a place to honor her life, her love, and the impact she continues to have. Her memory is carried forward in the work, the adventures, and the moments that make the journey meaningful.</p><strong class="tribute-ending">Always remembered. Always part of the ride.</strong></div></div></section>
-
-    <section class="section-pad gallery-section" id="gallery" aria-labelledby="gallery-title"><div class="container section-heading reveal"><p class="eyebrow">Gallery</p><h2 id="gallery-title">Repairs, Rides, and Progression</h2><p>A look at the repairs, coaching, trails, basecamps, views, and moments behind Fixin’ 2 Flyin’.</p></div><div class="container gallery-grid"><button aria-haspopup="dialog" class="gallery-item gallery-wide reveal" type="button" data-full="assets/trail-action.jpg" aria-label="Open Trail Action image"><img src="assets/trail-action.jpg" alt="Mountain biker riding a forest trail jump" loading="lazy" decoding="async" /><span>Trail Action</span></button><button aria-haspopup="dialog" class="gallery-item reveal" type="button" data-full="assets/tire-closeup.jpg" aria-label="Open Bike Prep image"><img src="assets/tire-closeup.jpg" alt="Close view of a mountain-bike tire and wheel" loading="lazy" decoding="async" /><span>Bike Prep</span></button><button aria-haspopup="dialog" class="gallery-item gallery-tall reveal" type="button" data-full="assets/air-jump.jpg" aria-label="Open Coaching Progression image"><img src="assets/air-jump.jpg" alt="Mountain biker progressing through a large air jump" loading="lazy" decoding="async" /><span>Coaching Progression</span></button><button aria-haspopup="dialog" class="gallery-item reveal" type="button" data-full="assets/bike-detail-rocks.jpg" aria-label="Open Bike Details image"><img src="assets/bike-detail-rocks.jpg" alt="Detailed view of a blue mountain bike near rocks" loading="lazy" decoding="async" /><span>Bike Details</span></button><button aria-haspopup="dialog" class="gallery-item reveal" type="button" data-full="assets/blue-bike.jpg" aria-label="Open Ride Ready image"><img src="assets/blue-bike.jpg" alt="Blue mountain bike prepared and ready to ride" loading="lazy" decoding="async" /><span>Ride Ready</span></button><button aria-haspopup="dialog" class="gallery-item gallery-wide reveal" type="button" data-full="assets/dom-lumi-gallery.jpeg" aria-label="Open Lumi image"><img src="assets/dom-lumi-gallery.jpeg" alt="Dom relaxing with Lumi during an outdoor adventure" loading="lazy" decoding="async" /><span>Lumi</span></button></div></section>
-
-    <section class="section-pad contact-section" id="contact" aria-labelledby="contact-title"><div class="container contact-layout"><div class="contact-intro reveal"><p class="eyebrow">Request Service</p><h2 id="contact-title">Get your bike and your ride ready.</h2><p>Contact Dom about mobile repairs, tune-ups, trail preparation, coaching, or ride support. Include a few details about your bike, location, and the type of help you need.</p><div class="contact-direct"><span>Email</span><a href="mailto:dom@fixin2flyin.com">dom@fixin2flyin.com</a></div></div><form class="service-form reveal" id="service-form"><div class="form-grid"><label><span>Name *</span><input name="name" autocomplete="name" required /></label><label><span>Email *</span><input type="email" name="email" autocomplete="email" required /></label><label><span>Phone</span><input type="tel" name="phone" autocomplete="tel" /></label><label><span>Location *</span><input name="location" autocomplete="address-level2" required /></label><label><span>Type of Service *</span><select name="service" required><option value="">Choose a service</option><option>Mobile Bike Repair</option><option>Tune-Up</option><option>Flat Repair</option><option>Brake Adjustment</option><option>Gear Adjustment</option><option>Trail Preparation</option><option>Bike Coaching</option><option>Ride Support</option><option>Other</option></select></label><label><span>Bike Type</span><input name="bike" /></label><label><span>Preferred Date</span><input type="date" name="date" /></label><label class="form-full"><span>Message *</span><textarea name="message" rows="6" required></textarea></label></div><label class="consent"><input type="checkbox" name="consent" required /><span>I understand that submitting this form is a request for information and does not confirm an appointment.</span></label><button class="button primary submit-button" type="submit">Send Service Request</button><p class="form-status" id="form-status" aria-live="polite"></p></form></div></section>
   </main>
 
-  <dialog class="lightbox" id="gallery-lightbox" aria-label="Gallery image preview"><button class="lightbox-close" type="button" aria-label="Close image preview">×</button><img src="" alt="" /></dialog>
-  <footer class="site-footer"><div class="container footer-grid"><div><strong class="footer-brand">Fixin’ 2 Flyin’</strong><p>Mobile bike repair, trail preparation, and one-on-one riding coaching.</p><strong class="footer-tagline">Built to Fix. Ready to Fly.</strong></div><nav aria-label="Footer navigation"><a href="#services">Services</a><a href="#how-it-works">How It Works</a><a href="#about">About</a><a href="#tribute">Tribute</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav><div class="footer-contact"><span>Contact</span><a href="mailto:dom@fixin2flyin.com">dom@fixin2flyin.com</a></div></div><div class="footer-bottom"><p>© 2026 Fixin’ 2 Flyin’. All rights reserved. <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></p><a href="#top">Back to top ↑</a></div></footer>
-  <script src="script.js"></script>
+  <dialog class="lightbox" id="gallery-lightbox" aria-label="Gallery image preview">
+    <button class="lightbox-close" type="button" aria-label="Close image preview">×</button>
+    <img src="" alt="" />
+  </dialog>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-brand"><img src="assets/favicon-horus-fullcolor.svg" alt="" /><div><strong>Fixin’ 2 Flyin’</strong><span>Built to Fix. Ready to Fly.</span></div></div>
+      <nav aria-label="Footer navigation"><a href="#services">Services</a><a href="#coaching">Coaching</a><a href="#about">About</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav>
+      <a class="footer-email" href="mailto:dom@fixin2flyin.com">dom@fixin2flyin.com</a>
+    </div>
+    <div class="footer-bottom"><span>© <span id="year">2026</span> Fixin’ 2 Flyin’</span><a href="#top">Back to top ↑</a></div>
+  </footer>
+
+  <script src="script.js?v=20261002"></script>
 </body>
 </html>

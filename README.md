@@ -1,45 +1,29 @@
-# Fixin 2 Flyin
+# Fixin’ 2 Flyin’
 
-This is Dom's Fixin 2 Flyin website — mobile bike repair, trail prep, and coaching.
+Static website for Dom’s mobile bike repair, trail preparation, coaching, and ride-support brand.
 
-## Direction
+## October 2026 clean rebuild
 
-- blacked-out luxury background
-- strong purple throughout
-- gold accents
-- Egyptian-inspired premium flare
-- high-performance mountain biking energy
-- more cinematic, action-filled, and badass
-- still heartfelt through Dom's Mama tribute and Lumi
+This rebuild intentionally replaces the previous layered hero/PWA experiments with one maintainable HTML/CSS/JS system.
 
-## Added Interest
+### Design direction
+- black editorial base
+- gold primary action color
+- purple and cyan supporting accents
+- real Dom/Lumi photography
+- split-screen Colorado hero
+- business/service content before lifestyle and soundtrack
+- large condensed typography without text covering the rider
 
-- stronger cinematic hero copy
-- gold/purple grid overlays
-- moving hero bottom strip
-- Dom Code section
-- mission cards for repair, coaching, and ride support
-- richer hover/photo treatments
-- stronger final pre-footer banner
+### Technical direction
+- single production stylesheet
+- no service worker or cache-first CSS
+- versioned CSS/JS URLs during transition
+- legacy Fixin’ 2 Flyin’ cache cleanup in script.js
+- responsive navigation with keyboard Escape support
+- accessible gallery dialog/focus return
+- service-request form prepares an email to dom@fixin2flyin.com
+- automated Playwright responsive and accessibility checks
+- Cloudflare Workers deployment from main
 
-## Repo Structure
-
-Upload the contents of this folder into the repository root:
-
-- index.html
-- styles.css
-- script.js
-- README.md
-- CHANGELOG.md
-- assets/
-
-Do not upload a second nested folder.
-
-
-## September 2026 refresh
-
-- restored installable PWA metadata
-- added a versioned service worker for faster repeat visits and limited offline access
-- improved compact-navigation keyboard and outside-click behavior
-- improved gallery lightbox focus restoration
-- refreshed sitemap and privacy disclosure for local static-file caching
+Production should only be updated after the rebuild preview has been reviewed and approved.
