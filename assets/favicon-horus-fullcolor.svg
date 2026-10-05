@@ -1,10 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-label="Fixin 2 Flyin favicon">
-  <circle cx="90" cy="90" r="82" fill="#070910" />
-  <path d="M28 90C43 66 64 54 90 54C116 54 137 66 152 90C137 114 116 126 90 126C64 126 43 114 28 90Z" fill="none" stroke="#d6b15a" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M54 111C43 114 33 121 24 133" fill="none" stroke="#d6b15a" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M24 133L24 147" fill="none" stroke="#d6b15a" stroke-width="8" stroke-linecap="round"/>
-  <circle cx="90" cy="90" r="19" fill="none" stroke="#68dff8" stroke-width="7"/>
-  <circle cx="90" cy="90" r="5.5" fill="#68dff8"/>
-  <path d="M90 71L90 79M106 79L101 85M106 101L101 95M90 109L90 101M74 101L79 95M74 79L79 85" fill="none" stroke="#68dff8" stroke-width="3" stroke-linecap="round"/>
-  <path d="M112 66L124 58" fill="none" stroke="#8f67ff" stroke-width="5" stroke-linecap="round"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><image width="32" height="32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAB5ElEQVR4nO3WTWsTQRjA8f8zm80mxNpN0xjFgi9USAviS2oOesih4EkQv4lfo0c/RI9+gIKHeihqpEpMjWIKVgqWpsZNk5CYTXbGw+Zk2nozHnbmMDAwz/ObeWBmxI4nDVNsaprJI0AEiAARIAL8F4DYnxNZ1+HesguAIICB8aiUkD5nk0rEeLHdoLiUptn22f7c4tH9i8Qs6PQCOv0RIoIx4VpD+N69rbU4ag3OBmhtuHntPKIgCAwigpJwvnR3nuaxz9aHn6wWsuSvzCBiKN2eZ3EhRbnmkZkVtB4HEzDGYFmC0fBmx5s4gYkSNNs+a+t1hiODHVME2mAMaGDgB9iWsHx1hlcfPZ4+q4II3d6IpKPIzMZJxC3MuAc6jDEcGdbW6zTb/t9LIAJKCc83v1O6lSGZUIAQaEO3H7C6ksW2FDtfOzx+kKO628a2FSv5OQr5OTZeH7JVbWKpsGw/PM3LShPLEvR4M2cCjAmPe++gx50bLtcvpxgMNQbIpR02yg0q9WOelC5xwXV498WjuJRm832Dcq1FPKbIug5aG5KORaXeZu+ghwgTyQHktB/RSQsKeZeGN2D/sM/iQoqHxRy//IDd/S5HrQGfvnVPCnVq8jMB/6pN/R6IABEgAkSACDB1wG9mZsDKt2P8ZgAAAABJRU5ErkJggg=="/></svg>
