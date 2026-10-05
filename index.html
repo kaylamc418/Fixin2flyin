@@ -20,7 +20,7 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
   <link rel="stylesheet" href="styles.css?v=20261005" />
-  <link rel="stylesheet" href="final-direction.css?v=20261005" />
+  <link rel="stylesheet" href="final-direction.css?v=20261005b" />
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Organization","name":"Fixin’ 2 Flyin’","url":"https://fixin2flyin.kayamc418.workers.dev/","email":"dom@fixin2flyin.com","description":"Mobile bike repair, trail preparation, bike coaching, and ride support."}
   </script>
@@ -68,8 +68,15 @@
       </div>
     </section>
 
-    <section class="service-strip" aria-label="Fixin’ 2 Flyin’ highlights">
-      <div class="strip-track"><span>Mobile Repair</span><i>▲</i><span>Bike Tune-Ups</span><i>▲</i><span>Trail Prep</span><i>▲</i><span>Brake + Gear Adjustments</span><i>▲</i><span>Bike Coaching</span><i>▲</i><span>Ride Support</span></div>
+    <section class="service-strip brand-marquee" aria-label="Fixin’ 2 Flyin’ highlights">
+      <div class="strip-track">
+        <div class="brand-marquee-group">
+          <span>△ Mobile Repair</span><span>◇ Bike Coaching</span><span>△ Trail Ready</span><span>◇ Big Air</span><span>△ Precision</span><span>◇ Van Life</span><span>△ Dom + Lumi</span><span>◇ Fix. Ride. Fly.</span>
+        </div>
+        <div class="brand-marquee-group" aria-hidden="true">
+          <span>△ Mobile Repair</span><span>◇ Bike Coaching</span><span>△ Trail Ready</span><span>◇ Big Air</span><span>△ Precision</span><span>◇ Van Life</span><span>△ Dom + Lumi</span><span>◇ Fix. Ride. Fly.</span>
+        </div>
+      </div>
     </section>
 
     <section class="section services" id="services" aria-labelledby="services-title">
@@ -107,13 +114,15 @@
     </section>
 
     <section class="section van-life" id="van-life" aria-labelledby="van-life-title">
-      <div class="van-visual" aria-hidden="true">
-        <div class="van-roof"></div><div class="van-body"><img src="assets/f2f-wingmark-gold.png" alt="" /><span>FIXIN’ 2 FLYIN’</span></div><div class="van-wheel van-wheel-left"></div><div class="van-wheel van-wheel-right"></div>
-      </div>
       <div class="van-copy">
-        <p class="eyebrow gold-soft">Van Life</p>
+        <p class="eyebrow gold-soft">VAN LIFE</p>
         <h2 id="van-life-title">The road is part of the setup.</h2>
         <p>The van is the basecamp, gear hauler, shelter, and freedom machine for the next route.</p>
+      </div>
+      <div class="van-visual" aria-hidden="true">
+        <span class="van-geometry van-geometry-one">△</span>
+        <span class="van-geometry van-geometry-two">◇</span>
+        <div class="van-roof"></div><div class="van-body"><img src="assets/f2f-wingmark-gold.png" alt="" /><span>FIXIN’ 2 FLYIN’</span></div><div class="van-wheel van-wheel-left"></div><div class="van-wheel van-wheel-right"></div>
       </div>
     </section>
 
@@ -175,7 +184,12 @@
     </section>
 
     <section class="section soundtrack" id="soundtrack" aria-labelledby="soundtrack-title" data-testid="music-section">
-      <div class="soundtrack-copy"><p class="eyebrow purple">Dom’s Original Soundtrack</p><h2 id="soundtrack-title">Peak Bound.</h2><p>A piece of the Fixin’ 2 Flyin’ story—kept lower on the page so service and booking come first.</p></div>
+      <div class="soundtrack-copy">
+        <p class="eyebrow purple">DOM’S ORIGINAL SONG</p>
+        <h2 id="soundtrack-title">Peak Bound</h2>
+        <p class="track-subtitle">Enhanced Industrial Remix</p>
+        <p>A personality and lifestyle piece from the Fixin’ 2 Flyin’ world, placed after booking so the service journey stays first.</p>
+      </div>
       <div class="player-card">
         <button class="play-button" id="soundtrack-toggle" type="button" aria-pressed="false" aria-label="Play Peak Bound"><span class="play-icon" aria-hidden="true">▶</span><span class="play-label">Play Peak Bound</span></button>
         <div class="equalizer" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
