@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
+  <title id="title">Fixin’ 2 Flyin’ pharaoh mountain bike secondary mark</title>
+  <desc id="desc">A simple black pharaoh helmet integrated with a mountain bike symbol on a gold field.</desc>
+  <rect width="240" height="240" rx="48" fill="#efaf32"/>
+  <g fill="none" stroke="#050609" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="62" cy="165" r="33"/>
+    <circle cx="178" cy="165" r="33"/>
+    <path d="M62 165l40-54 32 54H62zm40-54 45 0 31 54m-44 0 13-54"/>
+    <path d="M92 83c11-18 26-27 45-27 17 0 31 6 43 19l-17 16c-9-9-18-13-28-13-12 0-23 6-31 18z"/>
+    <path d="M108 97c10 7 19 10 29 10 11 0 21-4 31-12"/>
+    <path d="M113 72l-18-16m34 19-8-29m28 36 12-27m-56 44 7 28m47-36-8 31"/>
+  </g>
+  <circle cx="145" cy="76" r="5" fill="#050609"/>
+</svg>
