@@ -63,16 +63,16 @@ serviceForm?.addEventListener('submit', (event) => {
     `Service: ${data.get('service')}`,
     `Preferred date: ${data.get('date')}`,
     `Preferred time: ${data.get('time')}`,
-    `Name: ${data.get('name')}`,
+    `Full name: ${data.get('name')}`,
     `Phone: ${data.get('phone')}`,
     `Email: ${data.get('email')}`,
     `Service location: ${data.get('location')}`,
     `Bike type: ${data.get('bike') || 'Not provided'}`,
     '',
-    'Details:',
+    'Details / what the customer needs help with:',
     data.get('message'),
     '',
-    'This is a request, not a confirmed appointment.'
+    'I understand this is a booking request and the appointment is not confirmed until Dom responds.'
   ].join('\n'));
 
   if (formStatus) formStatus.textContent = 'Opening your email app with the Book Dom request prepared…';
