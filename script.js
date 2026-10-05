@@ -56,24 +56,30 @@ serviceForm?.addEventListener('submit', (event) => {
     if (formStatus) formStatus.textContent = 'Please complete the required fields.';
     return;
   }
+
   const data = new FormData(serviceForm);
-  const subject = encodeURIComponent(`Fixin’ 2 Flyin’ request: ${data.get('service')}`);
+  const subject = encodeURIComponent(`Fixin’ 2 Flyin’ Book Dom request: ${data.get('service')}`);
   const body = encodeURIComponent([
-    `Name: ${data.get('name')}`,
-    `Email: ${data.get('email')}`,
-    `Phone: ${data.get('phone') || 'Not provided'}`,
-    `Location: ${data.get('location')}`,
     `Service: ${data.get('service')}`,
+    `Preferred date: ${data.get('date')}`,
+    `Preferred time: ${data.get('time')}`,
+    `Name: ${data.get('name')}`,
+    `Phone: ${data.get('phone')}`,
+    `Email: ${data.get('email')}`,
+    `Service location: ${data.get('location')}`,
     `Bike type: ${data.get('bike') || 'Not provided'}`,
     '',
-    'Message:',
-    data.get('message')
+    'Details:',
+    data.get('message'),
+    '',
+    'This is a request, not a confirmed appointment.'
   ].join('\n'));
-  if (formStatus) formStatus.textContent = 'Opening your email app with the request prepared…';
+
+  if (formStatus) formStatus.textContent = 'Opening your email app with the Book Dom request prepared…';
   window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
 });
 
-/* Peak Bound soundtrack. Keep a styled button plus a native audio control as a reliable fallback. */
+/* Peak Bound soundtrack. User-initiated only; native controls remain available as a reliable fallback. */
 const soundtrackToggle = document.getElementById('soundtrack-toggle');
 const playIcon = soundtrackToggle?.querySelector('.play-icon');
 const playLabel = soundtrackToggle?.querySelector('.play-label');
