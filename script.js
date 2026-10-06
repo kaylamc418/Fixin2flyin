@@ -85,6 +85,7 @@ const playIcon = soundtrackToggle?.querySelector('.play-icon');
 const playLabel = soundtrackToggle?.querySelector('.play-label');
 const musicStatus = document.getElementById('music-status');
 const playerCard = soundtrackToggle?.closest('.player-card');
+const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
 const soundtrack = document.createElement('audio');
 soundtrack.id = 'peak-bound-audio';
 soundtrack.controls = true;
@@ -92,12 +93,14 @@ soundtrack.preload = 'metadata';
 soundtrack.src = './Peak%20Bound%20(Enhanced%20Industrial%20Remix).m4a';
 soundtrack.setAttribute('aria-label', 'Peak Bound — Enhanced Industrial Remix');
 soundtrack.style.width = '100%';
+soundtrack.style.minWidth = '0';
+soundtrack.style.gridColumn = '1 / -1';
 soundtrack.style.marginTop = '1rem';
 playerCard?.appendChild(soundtrack);
 soundtrack.volume = 0.9;
 
 function setPlayer(playing, message) {
-  document.body.classList.toggle('soundtrack-playing', playing);
+  document.body.classList.toggle('soundtrack-playing', playing && !reduceMotion);
   soundtrackToggle?.setAttribute('aria-pressed', String(playing));
   soundtrackToggle?.setAttribute('aria-label', playing ? 'Pause Peak Bound' : 'Play Peak Bound');
   if (playIcon) playIcon.textContent = playing ? 'Ⅱ' : '▶';
