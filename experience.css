@@ -1,0 +1,136 @@
+/* Final visual polish loaded separately to avoid stale mobile stylesheet caches. */
+.brand-marquee{
+  min-height:64px;
+  display:block;
+  position:relative;
+  overflow:hidden;
+  border-top:1px solid rgba(239,175,50,.8);
+  border-bottom:1px solid rgba(239,175,50,.8);
+  background:linear-gradient(90deg,#050609,#0b0910 45%,#050609);
+  box-shadow:inset 0 1px 0 rgba(154,87,255,.14),inset 0 -1px 0 rgba(154,87,255,.1);
+}
+.brand-marquee .strip-track{
+  display:flex;
+  align-items:center;
+  width:max-content;
+  min-width:max-content;
+  max-width:none;
+  gap:0;
+  margin:0;
+  padding:0;
+}
+.brand-marquee-group{
+  display:flex;
+  align-items:center;
+  flex:none;
+  gap:clamp(2rem,4vw,4.5rem);
+  padding:1.15rem 2.1rem;
+}
+.brand-marquee-group span{
+  flex:none;
+  white-space:nowrap;
+  font-weight:900;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  font-size:clamp(.78rem,1.15vw,1rem);
+}
+.brand-marquee-group span:nth-child(odd){color:#f4efe6}
+.brand-marquee-group span:nth-child(2n){color:#efaf32}
+.brand-marquee-group span:nth-child(3n){color:#b57bff}
+
+/* Dom + Mom / Mama Tribute: warmer, intimate, still inside the black-purple-gold system. */
+.tribute{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 78% 35%,rgba(239,175,50,.08),transparent 34%),
+    radial-gradient(circle at 12% 72%,rgba(154,87,255,.08),transparent 30%),
+    #0b0c11;
+}
+.tribute::before,.tribute::after{
+  content:"△";
+  position:absolute;
+  pointer-events:none;
+  line-height:1;
+  z-index:0;
+}
+.tribute::before{right:3%;top:5%;font-size:clamp(7rem,16vw,15rem);color:rgba(239,175,50,.055)}
+.tribute::after{left:45%;bottom:-9%;font-size:clamp(5rem,12vw,11rem);color:rgba(154,87,255,.05);transform:rotate(180deg)}
+.tribute-photo,.tribute-copy{position:relative;z-index:1}
+.tribute-photo{border-right:1px solid rgba(239,175,50,.22)}
+.tribute-photo img{filter:saturate(.8) contrast(1.03)}
+.tribute-copy::before{
+  content:"DOM + MOM";
+  display:inline-flex;
+  margin-bottom:1rem;
+  color:#f4efe6;
+  font-size:.7rem;
+  font-weight:900;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  padding:.5rem .75rem;
+  border:1px solid rgba(239,175,50,.32);
+}
+
+/* Upcoming Events */
+.events-section{
+  position:relative;
+  width:var(--container);
+  margin:auto;
+  padding:clamp(5rem,8vw,8rem) 0;
+}
+.events-section::before{
+  content:"◇";
+  position:absolute;
+  right:1%;
+  top:4%;
+  font-size:clamp(8rem,18vw,17rem);
+  color:rgba(154,87,255,.045);
+  pointer-events:none;
+}
+.events-head{position:relative;z-index:1;max-width:780px;margin-bottom:2.5rem}
+.events-head h2{
+  margin:0;
+  font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;
+  font-size:clamp(3.25rem,6.2vw,6rem);
+  line-height:.92;
+  text-transform:uppercase;
+}
+.events-head>p:last-child{max-width:660px;color:var(--muted);font-size:1.02rem}
+.events-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.event-card{
+  position:relative;
+  min-width:0;
+  min-height:320px;
+  padding:1.5rem;
+  display:flex;
+  flex-direction:column;
+  border:1px solid rgba(239,175,50,.28);
+  border-radius:22px;
+  background:linear-gradient(145deg,rgba(154,87,255,.08),rgba(9,10,15,.98) 42%);
+  overflow:hidden;
+}
+.event-card::after{content:"△";position:absolute;right:-.35rem;bottom:-1.15rem;font-size:7rem;color:rgba(239,175,50,.055);pointer-events:none}
+.event-date{display:inline-flex;align-self:flex-start;padding:.5rem .7rem;border:1px solid rgba(239,175,50,.42);color:var(--gold);font-weight:900;letter-spacing:.12em;text-transform:uppercase;font-size:.72rem}
+.event-type{margin:.9rem 0 .35rem;color:#b57bff;font-size:.7rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+.event-card h3{margin:.35rem 0 .75rem;font-size:1.45rem;line-height:1.15}
+.event-meta,.event-card p{margin:.25rem 0;color:var(--muted)}
+.event-link{margin-top:auto;padding-top:1.3rem;color:var(--gold);font-size:.74rem;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
+.events-empty{
+  position:relative;
+  z-index:1;
+  padding:2.25rem;
+  border:1px solid rgba(239,175,50,.25);
+  border-radius:22px;
+  background:linear-gradient(135deg,rgba(154,87,255,.06),rgba(9,10,15,.98));
+}
+.events-empty strong{display:block;margin-bottom:.5rem;color:var(--gold);font-size:1rem;letter-spacing:.12em;text-transform:uppercase}
+.events-empty p{margin:0;color:var(--muted)}
+
+@media (max-width:900px){.events-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){
+  .brand-marquee{min-height:60px}
+  .brand-marquee-group{padding:1rem 1.25rem;gap:1.8rem}
+  .events-grid{grid-template-columns:1fr}
+  .tribute-copy::before{margin-bottom:.75rem}
+}
