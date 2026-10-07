@@ -2,6 +2,15 @@ const header = document.querySelector('.site-header');
 const menuToggle = document.querySelector('.menu-toggle');
 const primaryNav = document.querySelector('.primary-nav');
 
+/* Load the newest visual layer from a separate cache-busted stylesheet. */
+if (!document.querySelector('link[data-f2f-experience]')) {
+  const experienceStyles = document.createElement('link');
+  experienceStyles.rel = 'stylesheet';
+  experienceStyles.href = 'experience.css?v=20261007c';
+  experienceStyles.dataset.f2fExperience = 'true';
+  document.head.appendChild(experienceStyles);
+}
+
 if (menuToggle && primaryNav) {
   const label = menuToggle.querySelector('.sr-only');
   const setOpen = (open) => {
@@ -26,27 +35,137 @@ if (menuToggle && primaryNav) {
 const year = document.getElementById('year');
 if (year) year.textContent = new Date().getFullYear();
 
-/* Reinforce the moving brand strip with Web Animations so it remains visibly animated on iOS/Safari and stale-CSS previews. */
-const marqueeTrack = document.querySelector('.brand-marquee .strip-track');
-if (marqueeTrack && typeof marqueeTrack.animate === 'function') {
-  try {
-    marqueeTrack.getAnimations().forEach((animation) => animation.cancel());
-    const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
-    marqueeTrack.animate(
-      [
-        { transform: 'translate3d(0, 0, 0)' },
-        { transform: 'translate3d(-50%, 0, 0)' }
-      ],
-      {
-        duration: prefersReducedMotion ? 60000 : 16000,
-        iterations: Infinity,
-        easing: 'linear'
+/*
+  Upcoming Events data.
+  Add future events here without changing the section markup.
+  Supported fields: name, date, time, location, type, note, url, linkLabel.
+*/
+const UPCOMING_EVENTS = [];
+
+function renderEvents() {
+  const tribute = document.getElementById('mama-tribute');
+  const gallery = document.getElementById('gallery');
+  if (!tribute || !gallery || document.getElementById('events')) return;
+
+  const section = document.createElement('section');
+  section.className = 'events-section';
+  section.id = 'events';
+  section.setAttribute('aria-labelledby', 'events-title');
+
+  const head = document.createElement('div');
+  head.className = 'events-head';
+  head.innerHTML = '<p class="eyebrow gold-soft">UPCOMING EVENTS</p><h2 id="events-title">Catch Dom out in the wild.</h2><p>See where Dom will be riding, wrenching, supporting events, or showing up with Fixin’ 2 Flyin’.</p>';
+  section.appendChild(head);
+
+  if (UPCOMING_EVENTS.length === 0) {
+    const empty = document.createElement('div');
+    empty.className = 'events-empty';
+    empty.innerHTML = '<strong>NO UPCOMING EVENTS POSTED YET</strong><p>Check back soon for Dom’s next ride, event, or meetup.</p>';
+    section.appendChild(empty);
+  } else {
+    const grid = document.createElement('div');
+    grid.className = 'events-grid';
+
+    UPCOMING_EVENTS.forEach((event) => {
+      const card = document.createElement('article');
+      card.className = 'event-card';
+
+      const date = document.createElement('span');
+      date.className = 'event-date';
+      date.textContent = event.date || 'Date TBA';
+      card.appendChild(date);
+
+      const type = document.createElement('p');
+      type.className = 'event-type';
+      type.textContent = event.type || 'Community';
+      card.appendChild(type);
+
+      const title = document.createElement('h3');
+      title.textContent = event.name || 'Fixin’ 2 Flyin’ Event';
+      card.appendChild(title);
+
+      if (event.time || event.location) {
+        const meta = document.createElement('p');
+        meta.className = 'event-meta';
+        meta.textContent = [event.time, event.location].filter(Boolean).join(' • ');
+        card.appendChild(meta);
       }
-    );
-  } catch {
-    /* CSS animation remains the fallback. */
+
+      if (event.note) {
+        const note = document.createElement('p');
+        note.textContent = event.note;
+        card.appendChild(note);
+      }
+
+      if (event.url) {
+        const link = document.createElement('a');
+        link.className = 'event-link';
+        link.href = event.url;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = event.linkLabel || 'Event Details →';
+        card.appendChild(link);
+      }
+
+      grid.appendChild(card);
+    });
+
+    section.appendChild(grid);
+  }
+
+  gallery.before(section);
+
+  if (primaryNav && !primaryNav.querySelector('a[href="#events"]')) {
+    const eventsLink = document.createElement('a');
+    eventsLink.href = '#events';
+    eventsLink.textContent = 'Events';
+    const galleryLink = primaryNav.querySelector('a[href="#gallery"]');
+    if (galleryLink) primaryNav.insertBefore(eventsLink, galleryLink);
+    else primaryNav.appendChild(eventsLink);
+    eventsLink.addEventListener('click', () => {
+      primaryNav.classList.remove('is-open');
+      menuToggle?.setAttribute('aria-expanded', 'false');
+    });
   }
 }
+
+renderEvents();
+
+/*
+  Make the brand rail unmistakably move right-to-left.
+  Web Animations is independent of the cached CSS keyframe, while the CSS animation remains a fallback.
+*/
+function startBrandMarquee() {
+  const track = document.querySelector('.brand-marquee .strip-track');
+  const firstGroup = track?.querySelector('.brand-marquee-group');
+  if (!track || !firstGroup || typeof track.animate !== 'function') return;
+
+  requestAnimationFrame(() => {
+    const loopWidth = firstGroup.getBoundingClientRect().width;
+    if (!loopWidth) return;
+
+    try {
+      track.getAnimations().forEach((animation) => animation.cancel());
+      const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+      track.animate(
+        [
+          { transform: 'translate3d(0, 0, 0)' },
+          { transform: `translate3d(-${loopWidth}px, 0, 0)` }
+        ],
+        {
+          duration: prefersReducedMotion ? 60000 : 14500,
+          iterations: Infinity,
+          easing: 'linear'
+        }
+      );
+    } catch {
+      /* CSS animation remains the fallback. */
+    }
+  });
+}
+
+startBrandMarquee();
+window.addEventListener('load', startBrandMarquee, { once: true });
 
 const lightbox = document.getElementById('gallery-lightbox');
 const lightboxImage = lightbox?.querySelector('img');
@@ -110,14 +229,11 @@ const playerCard = soundtrackToggle?.closest('.player-card');
 const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
 const soundtrack = document.createElement('audio');
 soundtrack.id = 'peak-bound-audio';
+soundtrack.className = 'peak-bound-audio';
 soundtrack.controls = true;
 soundtrack.preload = 'metadata';
 soundtrack.src = './Peak%20Bound%20(Enhanced%20Industrial%20Remix).m4a';
 soundtrack.setAttribute('aria-label', 'Peak Bound — Enhanced Industrial Remix');
-soundtrack.style.width = '100%';
-soundtrack.style.minWidth = '0';
-soundtrack.style.gridColumn = '1 / -1';
-soundtrack.style.marginTop = '1rem';
 playerCard?.appendChild(soundtrack);
 soundtrack.volume = 0.9;
 
