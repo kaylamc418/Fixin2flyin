@@ -1,13 +1,9 @@
 .brand-marquee{
   position:relative;
   overflow:hidden;
-  border-top:1px solid rgba(239,175,50,.72);
-  border-bottom:1px solid rgba(239,175,50,.72);
-  background:
-    radial-gradient(circle at 18% 50%,rgba(154,87,255,.10),transparent 23%),
-    radial-gradient(circle at 82% 50%,rgba(239,175,50,.08),transparent 20%),
-    #050609;
-  box-shadow:inset 0 1px rgba(255,255,255,.02),inset 0 -1px rgba(255,255,255,.02);
+  border-top:1px solid rgba(239,175,50,.65);
+  border-bottom:1px solid rgba(239,175,50,.65);
+  background:#050609;
 }
 .brand-marquee::before,.brand-marquee::after{
   content:"";
@@ -21,9 +17,17 @@
 .brand-marquee::after{right:0;background:linear-gradient(270deg,#050609,transparent)}
 .brand-marquee .strip-track{
   display:flex;
+  justify-content:flex-start;
+  gap:0;
+  margin:0;
   width:max-content;
   min-width:max-content;
-  animation:f2f-marquee 34s linear infinite;
+  max-width:none;
+  transform:translate3d(0,0,0);
+  animation-name:f2f-marquee;
+  animation-duration:22s;
+  animation-timing-function:linear;
+  animation-iteration-count:infinite;
   will-change:transform;
 }
 .brand-marquee-group{
@@ -34,7 +38,6 @@
   padding:1rem clamp(1.5rem,3vw,3rem);
 }
 .brand-marquee-group span{
-  position:relative;
   flex:none;
   color:#f4efe6;
   font-size:clamp(.78rem,1.1vw,.96rem);
@@ -42,96 +45,13 @@
   letter-spacing:.14em;
   text-transform:uppercase;
   white-space:nowrap;
-  text-shadow:0 0 18px rgba(255,255,255,.03);
 }
 .brand-marquee-group span:nth-child(2n){color:var(--gold)}
 .brand-marquee-group span:nth-child(3n){color:#b57bff}
-.brand-marquee-group span:nth-child(4n)::after,
-.brand-marquee-group span:nth-child(6n)::after{
-  content:"";
-  position:absolute;
-  top:50%;
-  right:calc(-2.4rem - 10px);
-  width:9px;
-  height:9px;
-  border:1px solid rgba(239,175,50,.65);
-  transform:translateY(-50%) rotate(45deg);
-}
-.brand-marquee-group span:nth-child(6n)::after{border-radius:50%;transform:translateY(-50%)}
 @keyframes f2f-marquee{
-  from{transform:translateX(0)}
-  to{transform:translateX(-50%)}
+  0%{transform:translate3d(0,0,0)}
+  100%{transform:translate3d(-50%,0,0)}
 }
-
-/* Extra visual rhythm: subtle technical/Egyptian geometry without overpowering photography. */
-.services,.lifestyle,.gallery,.about,.tribute,.contact,.soundtrack{position:relative}
-.services::before,.gallery::before,.about::before,.soundtrack::before{
-  content:"△";
-  position:absolute;
-  z-index:0;
-  pointer-events:none;
-  color:rgba(239,175,50,.055);
-  font-size:clamp(7rem,13vw,13rem);
-  line-height:1;
-}
-.services::before{right:2%;top:2rem}
-.gallery::before{left:1%;top:3rem;transform:rotate(180deg)}
-.about::before{right:2%;bottom:1rem;color:rgba(154,87,255,.05)}
-.soundtrack::before{left:2%;bottom:1rem;color:rgba(154,87,255,.05);transform:rotate(90deg)}
-.services>.section-head,.services>.service-grid,.gallery>.section-head,.gallery>.gallery-grid,.about>* ,.soundtrack>*{position:relative;z-index:1}
-
-.service-card{position:relative;overflow:hidden}
-.service-card::after{
-  content:"";
-  position:absolute;
-  right:18px;
-  bottom:18px;
-  width:26px;
-  height:26px;
-  border-right:1px solid rgba(239,175,50,.28);
-  border-bottom:1px solid rgba(154,87,255,.28);
-  clip-path:polygon(0 100%,100% 100%,100% 0);
-  pointer-events:none;
-}
-.service-card:nth-child(2n)::after{transform:rotate(90deg)}
-.service-card:nth-child(3n)::after{transform:rotate(180deg)}
-
-.lifestyle::before,.lifestyle::after{
-  content:"";
-  position:absolute;
-  pointer-events:none;
-  z-index:0;
-}
-.lifestyle::before{
-  left:0;right:0;top:0;height:1px;
-  background:linear-gradient(90deg,transparent,var(--gold),transparent);
-  opacity:.32;
-}
-.lifestyle::after{
-  right:4%;top:8%;width:110px;height:110px;
-  border:1px solid rgba(154,87,255,.12);
-  transform:rotate(45deg);
-}
-.lifestyle>.section-head,.lifestyle>.lifestyle-grid{position:relative;z-index:1}
-
-.gallery-item::after{
-  content:"◇";
-  position:absolute;
-  right:14px;
-  top:12px;
-  display:grid;
-  place-items:center;
-  width:32px;
-  height:32px;
-  border:1px solid rgba(239,175,50,.35);
-  border-radius:50%;
-  background:rgba(5,6,9,.58);
-  color:var(--gold);
-  font-size:.8rem;
-  backdrop-filter:blur(6px);
-}
-.gallery-item:nth-child(2n)::after{content:"△";color:#b57bff;border-color:rgba(154,87,255,.38)}
-.gallery-item:nth-child(3n)::after{content:"◉"}
 
 .van-life{
   position:relative;
@@ -346,10 +266,10 @@
   .van-body img{width:48%}
   .prefooter-brand{padding:2rem 1.25rem}
   .prefooter-brand h2{font-size:clamp(3rem,14vw,4.5rem)}
+  .brand-marquee .strip-track{animation-duration:16s}
   .brand-marquee-group{gap:2rem;padding:.9rem 1.2rem}
 }
 @media (prefers-reduced-motion:reduce){
-  .brand-marquee .strip-track{animation:none;transform:none}
-  .brand-marquee-group[aria-hidden="true"]{display:none}
-  .soundtrack-playing .equalizer span{animation:none!important}
+  .brand-marquee .strip-track{animation-duration:80s}
+  .soundtrack-playing .equalizer span{animation:none}
 }
