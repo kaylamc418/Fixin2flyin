@@ -26,6 +26,28 @@ if (menuToggle && primaryNav) {
 const year = document.getElementById('year');
 if (year) year.textContent = new Date().getFullYear();
 
+/* Reinforce the moving brand strip with Web Animations so it remains visibly animated on iOS/Safari and stale-CSS previews. */
+const marqueeTrack = document.querySelector('.brand-marquee .strip-track');
+if (marqueeTrack && typeof marqueeTrack.animate === 'function') {
+  try {
+    marqueeTrack.getAnimations().forEach((animation) => animation.cancel());
+    const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+    marqueeTrack.animate(
+      [
+        { transform: 'translate3d(0, 0, 0)' },
+        { transform: 'translate3d(-50%, 0, 0)' }
+      ],
+      {
+        duration: prefersReducedMotion ? 60000 : 16000,
+        iterations: Infinity,
+        easing: 'linear'
+      }
+    );
+  } catch {
+    /* CSS animation remains the fallback. */
+  }
+}
+
 const lightbox = document.getElementById('gallery-lightbox');
 const lightboxImage = lightbox?.querySelector('img');
 const lightboxClose = lightbox?.querySelector('.lightbox-close');
