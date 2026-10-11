@@ -469,3 +469,63 @@ Avoid any flashing pattern that could create seizure or photosensitivity concern
 ### Locked Principle
 
 Fixin’ 2 Flyin’ motion should feel controlled and cinematic, never chaotic, distracting, or physically uncomfortable.
+
+## 14.8 Keyboard Accessibility — Locked Standard
+
+For Fixin’ 2 Flyin’, all important website functions must be usable without a mouse.
+
+Users must be able to reach and operate with a keyboard:
+
+- main navigation
+- mobile menu
+- Book Dom form
+- service selectors
+- date and time controls
+- buttons
+- soundtrack playback
+- gallery controls, if interactive
+- event links or controls
+- contact links
+
+### Keyboard Order
+
+Tab order should follow the visual and reading order of the page.
+
+Avoid:
+
+- unexpected jumps
+- focus moving into hidden content
+- controls receiving focus in a confusing sequence
+- decorative elements becoming keyboard stops
+
+### Interactive Elements
+
+Use proper semantic elements:
+
+- real `<button>` elements for actions
+- real `<a>` elements for navigation
+- native form controls whenever practical
+
+Do not make a clickable `<div>` behave like a button unless there is a strong reason and full keyboard behavior is added.
+
+### Keyboard Operation
+
+Users should be able to:
+
+- open and close the mobile menu
+- activate buttons with Enter or Space where appropriate
+- move through form fields logically
+- operate audio controls
+- open gallery controls
+- follow links
+- submit the booking request
+
+Focus must not become trapped unless intentionally contained in something such as an open modal, and users must always have a clear way to exit.
+
+### Skip Navigation
+
+For longer pages, include a visible-on-focus `Skip to main content` link so keyboard and screen-reader users can bypass repeated navigation.
+
+### Locked Principle
+
+Anything a visitor can do with a mouse should also be possible with a keyboard.
