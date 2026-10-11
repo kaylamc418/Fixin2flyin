@@ -31,106 +31,39 @@ This should be the default for:
 
 ### Gold
 
-Use gold primarily for:
+Use gold primarily for headings, short labels, larger display text, icons, borders, dividers, geometric accents, and selected buttons or badges.
 
-- headings
-- short labels
-- larger display text
-- icons
-- borders
-- dividers
-- geometric accents
-- selected buttons or badges
-
-Gold may be used for smaller text only when the exact foreground/background combination has been measured and reaches the required contrast ratio.
-
-A metallic appearance does not automatically mean the color has sufficient contrast.
+Gold may be used for smaller text only when the exact foreground/background combination has been measured and reaches the required contrast ratio. A metallic appearance does not automatically mean the color has sufficient contrast.
 
 ### Purple
 
-Use deep purple primarily as:
+Use deep purple primarily as an accent, glow, decorative line, selected heading treatment, geometric detail, hover/focus support, or background treatment.
 
-- an accent
-- glow
-- decorative line
-- selected heading treatment
-- geometric detail
-- hover/focus support
-- background treatment
-
-Do not use dark purple for important small text on black unless the exact shade passes the required contrast test.
-
-If additional contrast is needed, use a lighter accessible purple specifically for digital text and interface applications while retaining the deeper purple elsewhere in the identity.
+Do not use dark purple for important small text on black unless the exact shade passes the required contrast test. If additional contrast is needed, use a lighter accessible purple specifically for digital text and interface applications while retaining the deeper purple elsewhere in the identity.
 
 ### Gold Backgrounds
 
-Black or another sufficiently dark color may be used over a light gold background for:
-
-- CTA buttons
-- badges
-- labels
-- selected interface elements
-
-The exact combination must still be tested.
+Black or another sufficiently dark color may be used over a light gold background for CTA buttons, badges, labels, and selected interface elements. The exact combination must still be tested.
 
 ### Brand Rule
 
-Never sacrifice readability simply to preserve an exact brand color.
-
-If a preferred gold or purple fails contrast in a specific application:
-
-1. Adjust the shade.
-2. Change the background.
-3. Use warm off-white instead.
-4. Reserve the original color for decoration.
+Never sacrifice readability simply to preserve an exact brand color. If a preferred gold or purple fails contrast in a specific application: adjust the shade, change the background, use warm off-white instead, or reserve the original color for decoration.
 
 ### Final Brand Package
 
-Document the exact approved digital palette with:
-
-- HEX values
-- RGB values
-- foreground/background pairings
-- measured contrast ratios
-- approved uses
-- restricted uses
-
-Create a simple contrast matrix showing which combinations are approved for:
-
-Body Text | Large Text | UI Elements | Decorative Use Only
+Document the exact approved digital palette with HEX values, RGB values, foreground/background pairings, measured contrast ratios, approved uses, and restricted uses. Create a simple contrast matrix showing which combinations are approved for Body Text | Large Text | UI Elements | Decorative Use Only.
 
 ### Locked Default
 
-Warm off-white on black/charcoal is the primary body-text standard for Fixin’ 2 Flyin’.
-
-Gold and purple remain core brand colors, but they are primarily emphasis and accent colors unless their exact digital combinations independently meet the required contrast standard.
+Warm off-white on black/charcoal is the primary body-text standard for Fixin’ 2 Flyin’. Gold and purple remain core brand colors, but they are primarily emphasis and accent colors unless their exact digital combinations independently meet the required contrast standard.
 
 ## 14.2 Do Not Communicate by Color Alone — Locked Standard
 
 For Fixin’ 2 Flyin’, color may reinforce meaning, but it must never be the only signal.
 
-Never rely only on gold, purple, red, green, or any other color to communicate:
+Never rely only on gold, purple, red, green, or any other color to communicate selected or active states, errors, required fields, booking status, navigation state, links, service categories, warnings, or success messages.
 
-- selected or active states
-- errors
-- required fields
-- booking status
-- navigation state
-- links
-- service categories
-- warnings
-- success messages
-
-Every important state should use at least one additional cue such as:
-
-- text
-- icon
-- border
-- underline
-- label
-- shape change
-- checkmark
-- status message
+Every important state should use at least one additional cue such as text, icon, border, underline, label, shape change, checkmark, or status message.
 
 ### Examples
 
@@ -154,32 +87,11 @@ If a user could lose the meaning by viewing the page in grayscale, the design ne
 
 For Fixin’ 2 Flyin’, typography should feel bold, premium, technical, and energetic without reducing readability.
 
-Use condensed or high-impact display type mainly for:
+Use condensed or high-impact display type mainly for hero headlines, section headings, short labels, badges, marquee phrases, and event titles.
 
-- hero headlines
-- section headings
-- short labels
-- badges
-- marquee phrases
-- event titles
+Use a highly readable sans-serif for body copy, service descriptions, booking instructions, form labels, longer informational text, and accessibility-critical content.
 
-Use a highly readable sans-serif for:
-
-- body copy
-- service descriptions
-- booking instructions
-- form labels
-- longer informational text
-- accessibility-critical content
-
-Avoid:
-
-- excessively condensed fonts for paragraphs
-- decorative Egyptian-inspired fonts for important information
-- long passages in all caps
-- very tight letter spacing
-- overly small text
-- text baked into images when HTML text can be used instead
+Avoid excessively condensed fonts for paragraphs, decorative Egyptian-inspired fonts for important information, long passages in all caps, very tight letter spacing, overly small text, and text baked into images when HTML text can be used instead.
 
 ### Readability Requirements
 
@@ -209,41 +121,17 @@ For Fixin’ 2 Flyin’, the logo system must stay recognizable across desktop, 
 
 ### Primary Logo
 
-The gold F2F wingmark remains the primary brand mark.
-
-Use it for:
-
-- website header
-- mobile header
-- footer
-- major brand placements
-- social/profile graphics
-- key merchandise placements
-
-The mark must remain recognizable when reduced and should not depend on extremely thin gold lines or tiny internal details.
+The gold F2F wingmark remains the primary brand mark. Use it for the website header, mobile header, footer, major brand placements, social/profile graphics, and key merchandise placements. The mark must remain recognizable when reduced and should not depend on extremely thin gold lines or tiny internal details.
 
 ### Secondary Accent Mark
 
-The Egyptian-inspired secondary mark should be used only where there is enough space for it to remain clear.
-
-Use it for:
-
-- pre-footer branding
-- section dividers
-- watermarks
-- merch/sticker applications
-- van graphics
-- event-card accents
-- secondary identity treatments
-
-Do not force it into favicon-scale use if its details collapse.
+The Egyptian-inspired secondary mark should be used only where there is enough space for it to remain clear. Use it for pre-footer branding, section dividers, watermarks, merch/sticker applications, van graphics, event-card accents, and secondary identity treatments. Do not force it into favicon-scale use if its details collapse.
 
 ### Favicon + Small Icons
 
 The favicon should use the simplest version of the F2F wingmark.
 
 Required checks:
-
 - recognizable at 16 × 16 px
 - clear at 32 × 32 px
 - readable on both dark and light browser chrome where possible
@@ -254,24 +142,11 @@ Required checks:
 
 ### Minimum Digital Size
 
-The final brand package should define:
-
-- minimum width for the full primary logo
-- minimum width for the wingmark alone
-- minimum width for the secondary accent mark
-- minimum icon size for favicon/app use
+The final brand package should define minimum width for the full primary logo, wingmark alone, secondary accent mark, and minimum icon size for favicon/app use.
 
 ### One-Color Versions
 
-Provide:
-
-- gold on black
-- black on gold
-- warm off-white on black
-- solid black
-- solid white/off-white
-
-Each version should remain recognizable without gradients, shadows, or metallic effects.
+Provide gold on black, black on gold, warm off-white on black, solid black, and solid white/off-white. Each version should remain recognizable without gradients, shadows, or metallic effects.
 
 ### Visual Sophistication + Image Use
 
@@ -298,72 +173,35 @@ For Fixin’ 2 Flyin’, alternative text should describe the purpose or meaning
 
 ### Decorative Images
 
-Use empty alternative text for purely decorative graphics:
+Use empty alternative text for purely decorative graphics: `alt=""`.
 
-`alt=""`
-
-This applies to:
-
-- decorative triangles
-- pyramid-line accents
-- abstract wings
-- background geometry
-- nonessential glow effects
-- purely decorative dividers
-- ornamental Egyptian-inspired symbols that add no meaning
-
-These elements should also be hidden from assistive technology when appropriate.
+This applies to decorative triangles, pyramid-line accents, abstract wings, background geometry, nonessential glow effects, purely decorative dividers, and ornamental Egyptian-inspired symbols that add no meaning. These elements should also be hidden from assistive technology when appropriate.
 
 ### Logo Alt Text
 
-Use short, useful descriptions.
+Use short, useful descriptions. Recommended: `Fixin’ 2 Flyin’ logo — Mobile Bike Repair + Bike Coaching`.
 
-Recommended:
-
-`Fixin’ 2 Flyin’ logo — Mobile Bike Repair + Bike Coaching`
-
-For a small logo used as a home link, the accessible name can simply be:
-
-`Fixin’ 2 Flyin’`
+For a small logo used as a home link, the accessible name can simply be `Fixin’ 2 Flyin’`.
 
 Avoid descriptions such as `Gold Egyptian winged F2F logo with black background and purple accents` unless those visual details are genuinely important to understanding the image.
 
 ### Photography
 
-For meaningful photographs, describe what matters in context rather than every visible detail.
-
-Examples:
-
-- `Dom repairing a mountain bike`
-- `Dom riding a mountain bike on a technical trail`
-- `Dom and his mom together`
-- `Fixin’ 2 Flyin’ mobile repair van`
+For meaningful photographs, describe what matters in context rather than every visible detail. Examples: `Dom repairing a mountain bike`, `Dom riding a mountain bike on a technical trail`, `Dom and his mom together`, and `Fixin’ 2 Flyin’ mobile repair van`.
 
 For the Mama Tribute image, the description should remain respectful and concise rather than overly detailed.
 
 ### Gallery Images
 
-Gallery images should receive individual alt text when the image itself carries meaningful content.
-
-Avoid:
-
-- `Bike image`
-- `Photo`
-- `Image 1`
-- keyword stuffing
-- repeating nearby captions word-for-word when that creates unnecessary duplication
+Gallery images should receive individual alt text when the image itself carries meaningful content. Avoid `Bike image`, `Photo`, `Image 1`, keyword stuffing, and unnecessary repetition of nearby captions.
 
 ### Event Images
 
-If an event poster contains important information that is not already available as HTML text, that information must be provided elsewhere on the page or in accessible text.
-
-Do not rely on users being able to read text embedded inside an event poster.
+If an event poster contains important information that is not already available as HTML text, that information must be provided elsewhere on the page or in accessible text. Do not rely on users being able to read text embedded inside an event poster.
 
 ### Images Containing Text
 
-Essential information should be real HTML text whenever possible.
-
-If a graphic includes decorative lettering, the nearby HTML should still contain the actual important message.
+Essential information should be real HTML text whenever possible. If a graphic includes decorative lettering, the nearby HTML should still contain the actual important message.
 
 ### Locked Principle
 
@@ -373,12 +211,9 @@ Describe the purpose of the image, not every decorative detail. If an image is p
 
 For Fixin’ 2 Flyin’, motion can add energy and personality, but it must never be required to understand or use the site.
 
-The website must support:
-
-`prefers-reduced-motion: reduce`
+The website must support `prefers-reduced-motion: reduce`.
 
 When reduced motion is enabled:
-
 - Stop the continuous moving brand strip.
 - Present the marquee words in a readable static layout.
 - Stop unnecessary decorative movement.
@@ -389,36 +224,15 @@ When reduced motion is enabled:
 
 ### Moving Brand Strip
 
-The brand strip may animate from right to left during normal use, but:
-
-- movement should be smooth and readable
-- text should never move so quickly that it becomes difficult to read
-- the strip should not require interaction to pause in order to understand it
-- the same words must remain available when animation is disabled
-- reduced-motion mode should show a static arrangement rather than a slower continuous marquee
+The brand strip may animate from right to left during normal use, but movement should be smooth and readable; text should never move so quickly that it becomes difficult to read; the strip should not require interaction to pause in order to understand it; the same words must remain available when animation is disabled; and reduced-motion mode should show a static arrangement rather than a slower continuous marquee.
 
 ### Interactive Motion
 
-Hover, focus, and button animations should be subtle.
-
-Recommended:
-
-- small opacity changes
-- restrained underline movement
-- short border transitions
-- slight glow changes
-
-Avoid large position shifts that make controls feel unstable.
+Hover, focus, and button animations should be subtle. Recommended treatments include small opacity changes, restrained underline movement, short border transitions, and slight glow changes. Avoid large position shifts that make controls feel unstable.
 
 ### Content Stability
 
-Animation must not:
-
-- move important controls away from the user
-- cause unexpected layout shifts
-- obscure text
-- interfere with keyboard focus
-- make forms harder to complete
+Animation must not move important controls away from the user, cause unexpected layout shifts, obscure text, interfere with keyboard focus, or make forms harder to complete.
 
 ### Locked Principle
 
@@ -428,43 +242,19 @@ Motion should enhance the Fixin’ 2 Flyin’ experience, never control it. Ever
 
 Fixin’ 2 Flyin’ can use motion and animation for energy, but animation must remain safe, restrained, and easy to follow.
 
-Do not use:
-
-- rapid flashing
-- strobing
-- aggressive pulsing
-- continuous spinning symbols
-- bouncing text
-- fast parallax
-- jerky movement
-- animation that makes text difficult to read
-- repeated high-contrast flashes
-
-Avoid any flashing pattern that could create seizure or photosensitivity concerns.
+Do not use rapid flashing, strobing, aggressive pulsing, continuous spinning symbols, bouncing text, fast parallax, jerky movement, animation that makes text difficult to read, or repeated high-contrast flashes. Avoid any flashing pattern that could create seizure or photosensitivity concerns.
 
 ### Decorative Motion
 
-- Keep transitions smooth.
-- Use slower, subtle movement.
-- Avoid sudden direction changes.
-- Do not animate multiple large elements at once.
-- Avoid placing moving elements behind important text.
-- Keep text readable while motion is active.
+Keep transitions smooth; use slower, subtle movement; avoid sudden direction changes; do not animate multiple large elements at once; avoid placing moving elements behind important text; and keep text readable while motion is active.
 
 ### Buttons + Controls
 
-- Use short, subtle transitions.
-- Avoid bouncing or shaking controls unless there is a specific accessibility-safe reason.
-- Do not require users to chase a moving control.
-- Keep focus and hover states stable.
+Use short, subtle transitions. Avoid bouncing or shaking controls unless there is a specific accessibility-safe reason. Do not require users to chase a moving control. Keep focus and hover states stable.
 
 ### Moving Brand Strip
 
-- Use one-direction motion only.
-- Do not use flashing separators.
-- Do not introduce sudden speed changes.
-- Do not reverse direction unexpectedly.
-- Stop movement when reduced-motion mode is enabled.
+Use one-direction motion only. Do not use flashing separators, sudden speed changes, or unexpected direction reversal. Stop movement when reduced-motion mode is enabled.
 
 ### Locked Principle
 
@@ -474,51 +264,19 @@ Fixin’ 2 Flyin’ motion should feel controlled and cinematic, never chaotic, 
 
 For Fixin’ 2 Flyin’, all important website functions must be usable without a mouse.
 
-Users must be able to reach and operate with a keyboard:
-
-- main navigation
-- mobile menu
-- Book Dom form
-- service selectors
-- date and time controls
-- buttons
-- soundtrack playback
-- gallery controls, if interactive
-- event links or controls
-- contact links
+Users must be able to reach and operate with a keyboard: main navigation, mobile menu, Book Dom form, service selectors, date and time controls, buttons, soundtrack playback, gallery controls if interactive, event links or controls, and contact links.
 
 ### Keyboard Order
 
-Tab order should follow the visual and reading order of the page.
-
-Avoid:
-
-- unexpected jumps
-- focus moving into hidden content
-- controls receiving focus in a confusing sequence
-- decorative elements becoming keyboard stops
+Tab order should follow the visual and reading order of the page. Avoid unexpected jumps, focus moving into hidden content, controls receiving focus in a confusing sequence, and decorative elements becoming keyboard stops.
 
 ### Interactive Elements
 
-Use proper semantic elements:
-
-- real `<button>` elements for actions
-- real `<a>` elements for navigation
-- native form controls whenever practical
-
-Do not make a clickable `<div>` behave like a button unless there is a strong reason and full keyboard behavior is added.
+Use proper semantic elements: real `<button>` elements for actions, real `<a>` elements for navigation, and native form controls whenever practical. Do not make a clickable `<div>` behave like a button unless there is a strong reason and full keyboard behavior is added.
 
 ### Keyboard Operation
 
-Users should be able to:
-
-- open and close the mobile menu
-- activate buttons with Enter or Space where appropriate
-- move through form fields logically
-- operate audio controls
-- open gallery controls
-- follow links
-- submit the booking request
+Users should be able to open and close the mobile menu, activate buttons with Enter or Space where appropriate, move through form fields logically, operate audio controls, open gallery controls, follow links, and submit the booking request.
 
 Focus must not become trapped unless intentionally contained in something such as an open modal, and users must always have a clear way to exit.
 
@@ -529,3 +287,28 @@ For longer pages, include a visible-on-focus `Skip to main content` link so keyb
 ### Locked Principle
 
 Anything a visitor can do with a mouse should also be possible with a keyboard.
+
+## 14.9 Focus Styling — Locked Standard
+
+Keyboard focus must always be clearly visible while still fitting the Fixin’ 2 Flyin’ visual identity.
+
+### Recommended Brand Treatment
+
+- Use a strong gold or warm off-white outline.
+- An optional subtle purple outer glow may support the outline.
+- Maintain sufficient separation from black and charcoal backgrounds.
+- Use a consistent treatment across links, buttons, form fields, navigation, audio controls, and interactive gallery elements.
+- Focus indicators must not be hidden behind other elements or clipped.
+
+### Do Not
+
+- Remove the browser’s focus indicator without providing a better replacement.
+- Rely on a subtle color shift alone.
+- Use a faint purple glow as the only focus indication.
+- Make hover and keyboard-focus states indistinguishable if that reduces clarity.
+
+Use `:focus-visible` where appropriate so keyboard users receive a strong indicator without unnecessarily applying the same treatment to every pointer interaction.
+
+### Locked Principle
+
+Focus should look intentional and premium, but it must be immediately obvious which control currently has keyboard focus.
