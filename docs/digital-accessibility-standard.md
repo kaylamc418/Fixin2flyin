@@ -423,3 +423,49 @@ Animation must not:
 ### Locked Principle
 
 Motion should enhance the Fixin’ 2 Flyin’ experience, never control it. Everything must remain understandable and usable when motion is turned off.
+
+## 14.7 Animation Safety — Locked Standard
+
+Fixin’ 2 Flyin’ can use motion and animation for energy, but animation must remain safe, restrained, and easy to follow.
+
+Do not use:
+
+- rapid flashing
+- strobing
+- aggressive pulsing
+- continuous spinning symbols
+- bouncing text
+- fast parallax
+- jerky movement
+- animation that makes text difficult to read
+- repeated high-contrast flashes
+
+Avoid any flashing pattern that could create seizure or photosensitivity concerns.
+
+### Decorative Motion
+
+- Keep transitions smooth.
+- Use slower, subtle movement.
+- Avoid sudden direction changes.
+- Do not animate multiple large elements at once.
+- Avoid placing moving elements behind important text.
+- Keep text readable while motion is active.
+
+### Buttons + Controls
+
+- Use short, subtle transitions.
+- Avoid bouncing or shaking controls unless there is a specific accessibility-safe reason.
+- Do not require users to chase a moving control.
+- Keep focus and hover states stable.
+
+### Moving Brand Strip
+
+- Use one-direction motion only.
+- Do not use flashing separators.
+- Do not introduce sudden speed changes.
+- Do not reverse direction unexpectedly.
+- Stop movement when reduced-motion mode is enabled.
+
+### Locked Principle
+
+Fixin’ 2 Flyin’ motion should feel controlled and cinematic, never chaotic, distracting, or physically uncomfortable.
