@@ -21,13 +21,7 @@ Do not assume a color combination passes simply because it appears bright or vis
 
 Use warm off-white on black or charcoal as the preferred body-text combination across the website and other digital materials.
 
-This should be the default for:
-
-- paragraphs
-- service descriptions
-- booking instructions
-- longer informational copy
-- accessibility-critical text
+This should be the default for paragraphs, service descriptions, booking instructions, longer informational copy, and accessibility-critical text.
 
 ### Gold
 
@@ -312,3 +306,29 @@ Use `:focus-visible` where appropriate so keyboard users receive a strong indica
 ### Locked Principle
 
 Focus should look intentional and premium, but it must be immediately obvious which control currently has keyboard focus.
+
+## 14.10 Touch Targets — Locked Standard
+
+All interactive elements should be comfortably usable on phones and tablets, including by users with limited dexterity.
+
+Target approximately **44 × 44 CSS pixels or larger** for:
+
+- navigation controls
+- mobile menu button
+- Book Dom controls
+- submit/request buttons
+- soundtrack controls
+- gallery controls
+- event links/buttons
+- contact buttons
+- icon-only controls
+
+Small visual icons may remain smaller than 44 px, but their clickable or tappable area should meet the target whenever practical.
+
+Controls should also have enough spacing that users do not accidentally activate a neighboring control.
+
+For the Fixin’ 2 Flyin’ design, larger touch areas should be incorporated into the premium styling rather than looking oversized or clumsy—using padding, clean spacing, strong button shapes, and intentional negative space.
+
+### Locked Principle
+
+A control can look compact while still providing a generous, forgiving touch area.
