@@ -1,29 +1,39 @@
 # Fixin’ 2 Flyin’
 
-Static website for Dom’s mobile bike repair, trail preparation, coaching, and ride-support brand.
+October 2026 clean rebuild for the Fixin’ 2 Flyin’ mobile bike repair + bike coaching website.
 
-## October 2026 clean rebuild
+## Final direction
 
-This rebuild intentionally replaces the previous layered hero/PWA experiments with one maintainable HTML/CSS/JS system.
+- Main brand: Fixin’ 2 Flyin’
+- Subtitle: Mobile Bike Repair + Bike Coaching
+- Visual system: blackout luxury — black, charcoal, deep purple, gold
+- Customer flow: Hero → Services → Built Around Motion → Van Life → Dom + Lumi → Mama Tribute → Gallery → Book Dom → Soundtrack → Closing brand statement
+- Primary logo: gold F2F wingmark
+- Secondary mark: simple pharaoh/MTB icon used selectively
+- Closing line: Built to Fix. Ready to Fly.
+- Supporting line: From fixin’ 2 ride-ready.
 
-### Design direction
-- black editorial base
-- gold primary action color
-- purple and cyan supporting accents
-- real Dom/Lumi photography
-- split-screen Colorado hero
-- business/service content before lifestyle and soundtrack
-- large condensed typography without text covering the rider
+## Technical notes
 
-### Technical direction
-- single production stylesheet
-- no service worker or cache-first CSS
-- versioned CSS/JS URLs during transition
-- legacy Fixin’ 2 Flyin’ cache cleanup in script.js
-- responsive navigation with keyboard Escape support
-- accessible gallery dialog/focus return
-- service-request form prepares an email to dom@fixin2flyin.com
-- automated Playwright responsive and accessibility checks
-- Cloudflare Workers deployment from main
+- Static HTML/CSS/JavaScript
+- No service worker; legacy workers/caches are cleaned up client-side
+- Responsive navigation and accessibility checks
+- Book Dom form prepares a complete request in the visitor’s email app
+- Peak Bound soundtrack is user-initiated and includes native audio controls as a fallback
+- Production deployment is handled through Cloudflare Workers from `main`
 
-Production should only be updated after the rebuild preview has been reviewed and approved.
+## QA requirements
+
+Before production deployment, verify:
+
+- no climbing / climbs / long climbs wording
+- no “Ride Hard. Live Free.” wording
+- Book Dom includes preferred date and preferred time
+- Van Life is visible
+- Mama Tribute uses final approved wording
+- primary navigation stays customer-focused
+- soundtrack remains lower in the page flow
+- main brand stays Fixin’ 2 Flyin’
+- subtitle stays Mobile Bike Repair + Bike Coaching
+- mobile layout and booking form remain usable
+- no broken links, duplicate sections, or placeholder contact details
