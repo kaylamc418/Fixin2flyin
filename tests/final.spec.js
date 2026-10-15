@@ -40,8 +40,8 @@ for (const viewport of viewports) {
 
     await expect(title).toContainText(/built to fix\.\s*ready to fly\./i);
     await expect(hero).toContainText(/mobile bike repair/i);
-    await expect(hero.getByRole('link', { name: 'Request Service', exact: true })).toBeVisible();
-    await expect(hero.getByRole('link', { name: 'Explore Coaching', exact: true })).toBeVisible();
+    await expect(hero.getByRole('link', { name: 'Book Dom', exact: true })).toBeVisible();
+    await expect(hero.getByRole('link', { name: 'Explore Services', exact: true })).toBeVisible();
     await expect(hero.locator('[data-testid="hero-actions"] a')).toHaveCount(2);
 
     const imageInfo = await heroImage.evaluate((img) => ({
@@ -93,7 +93,7 @@ for (const viewport of viewports) {
     expect(noHorizontalOverflow).toBe(true);
 
     if (viewport.width > COMPACT_NAV_MAX_WIDTH) {
-      for (const label of ['Services', 'Coaching', 'About', 'Gallery', 'Contact', 'Book Service']) {
+      for (const label of ['Services', 'Van Life', 'Dom + Lumi', 'Mama Tribute', 'Events', 'Gallery', 'Book Dom']) {
         await expect(header.getByRole('link', { name: label, exact: true })).toBeVisible();
       }
       await expect(header.getByRole('button', { name: /open navigation/i })).toBeHidden();
