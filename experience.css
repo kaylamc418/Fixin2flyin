@@ -38,6 +38,25 @@
 .brand-marquee-group span:nth-child(2n){color:#efaf32}
 .brand-marquee-group span:nth-child(3n){color:#b57bff}
 
+/* Locked accessibility standards: visible focus, forgiving touch targets, readable forms. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:not([tabindex="-1"]):focus-visible{
+  outline:3px solid #f4efe6;
+  outline-offset:4px;
+  box-shadow:0 0 0 2px #050609,0 0 0 5px rgba(181,123,255,.72);
+}
+.primary-nav a:focus-visible,.event-link:focus-visible,.text-link:focus-visible{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.35em}
+.menu-toggle,.header-cta,.button,.play-button,.gallery-item,.lightbox-close,.event-link{min-width:44px;min-height:44px}
+.service-form input:not([type="checkbox"]),.service-form select{min-height:44px}
+.service-form textarea{min-height:132px}
+.service-form input,.service-form select,.service-form textarea{font-size:max(1rem,16px)}
+.consent{min-height:44px;align-items:flex-start}
+.consent input{width:22px;height:22px;flex:0 0 22px}
+
 /* Dom + Mom / Mama Tribute: warmer, intimate, still inside the black-purple-gold system. */
 .tribute{
   position:relative;
@@ -135,4 +154,29 @@
   .brand-marquee-group{padding:1rem 1.25rem;gap:1.8rem}
   .events-grid{grid-template-columns:1fr}
   .tribute-copy::before{margin-bottom:.75rem}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}
+  .brand-marquee{overflow:visible}
+  .brand-marquee .strip-track{
+    animation:none!important;
+    transform:none!important;
+    width:100%;
+    min-width:0;
+    max-width:100%;
+    justify-content:center;
+    will-change:auto;
+  }
+  .brand-marquee-group{
+    width:100%;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:.75rem 1.4rem;
+    padding:1rem 1.25rem;
+  }
+  .brand-marquee-group[aria-hidden="true"]{display:none}
+  .soundtrack-playing .equalizer span{animation:none!important}
+  .lifestyle-card img,.button{transform:none!important}
 }
