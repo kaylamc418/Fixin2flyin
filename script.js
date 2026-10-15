@@ -6,7 +6,7 @@ const primaryNav = document.querySelector('.primary-nav');
 if (!document.querySelector('link[data-f2f-experience]')) {
   const experienceStyles = document.createElement('link');
   experienceStyles.rel = 'stylesheet';
-  experienceStyles.href = 'experience.css?v=20261007c';
+  experienceStyles.href = 'experience.css?v=20261015a';
   experienceStyles.dataset.f2fExperience = 'true';
   document.head.appendChild(experienceStyles);
 }
@@ -132,40 +132,53 @@ function renderEvents() {
 renderEvents();
 
 /*
-  Make the brand rail unmistakably move right-to-left.
-  Web Animations is independent of the cached CSS keyframe, while the CSS animation remains a fallback.
+  Make the brand rail move right-to-left during normal use.
+  Reduced-motion users receive the same content as a static readable layout.
 */
+let brandMarqueeAnimation = null;
+const motionPreference = window.matchMedia?.('(prefers-reduced-motion: reduce)');
+
 function startBrandMarquee() {
   const track = document.querySelector('.brand-marquee .strip-track');
   const firstGroup = track?.querySelector('.brand-marquee-group');
-  if (!track || !firstGroup || typeof track.animate !== 'function') return;
+  if (!track || !firstGroup) return;
+
+  brandMarqueeAnimation?.cancel();
+  brandMarqueeAnimation = null;
+  track.getAnimations?.().forEach((animation) => animation.cancel());
+
+  if (motionPreference?.matches) {
+    track.style.transform = 'none';
+    return;
+  }
+
+  if (typeof track.animate !== 'function') return;
 
   requestAnimationFrame(() => {
     const loopWidth = firstGroup.getBoundingClientRect().width;
-    if (!loopWidth) return;
+    if (!loopWidth || motionPreference?.matches) return;
 
     try {
-      track.getAnimations().forEach((animation) => animation.cancel());
-      const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
-      track.animate(
+      brandMarqueeAnimation = track.animate(
         [
           { transform: 'translate3d(0, 0, 0)' },
           { transform: `translate3d(-${loopWidth}px, 0, 0)` }
         ],
         {
-          duration: prefersReducedMotion ? 60000 : 14500,
+          duration: 14500,
           iterations: Infinity,
           easing: 'linear'
         }
       );
     } catch {
-      /* CSS animation remains the fallback. */
+      /* CSS animation remains the fallback for normal-motion users. */
     }
   });
 }
 
 startBrandMarquee();
 window.addEventListener('load', startBrandMarquee, { once: true });
+motionPreference?.addEventListener?.('change', startBrandMarquee);
 
 const lightbox = document.getElementById('gallery-lightbox');
 const lightboxImage = lightbox?.querySelector('img');
@@ -216,7 +229,7 @@ serviceForm?.addEventListener('submit', (event) => {
     'I understand this is a booking request and the appointment is not confirmed until Dom responds.'
   ].join('\n'));
 
-  if (formStatus) formStatus.textContent = 'Opening your email app with the Book Dom request prepared…';
+  if (formStatus) formStatus.textContent = 'Opening your email app with the Book Dom request prepared. Your appointment is not confirmed until Dom responds.';
   window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
 });
 
