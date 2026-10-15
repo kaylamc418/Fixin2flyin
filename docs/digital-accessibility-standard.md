@@ -332,3 +332,51 @@ For the Fixin’ 2 Flyin’ design, larger touch areas should be incorporated in
 ### Locked Principle
 
 A control can look compact while still providing a generous, forgiving touch area.
+
+## 14.11 Booking Form Accessibility — Locked Standard
+
+The **Book Dom** form must be easy to understand and complete with touch, mouse, keyboard, and assistive technology.
+
+Every field must have:
+
+- a visible label
+- a programmatically associated label
+- clear required/optional status
+- sufficient contrast
+- visible keyboard focus
+
+Required fields must not be identified by color alone. If an asterisk is used, explain what it means.
+
+Instructions must not exist only as placeholder text. Placeholder text can provide an example, but it cannot replace the field label.
+
+### Errors
+
+- Clearly identify what went wrong.
+- Associate the error with the affected field.
+- Explain how to correct it.
+- Do not rely only on a red border.
+- Preserve entered information whenever possible.
+
+### Successful Submission or Request Preparation
+
+- Provide a clear confirmation message.
+- Make the confirmation accessible to screen readers.
+- Explain the next step, including that the appointment is **not confirmed until Dom responds**.
+
+### Form Requirements
+
+The form must maintain:
+
+- logical tab order
+- accessible service selection
+- mobile-friendly date/time controls
+- properly labeled confirmation checkbox
+- usable controls at increased text size and zoom
+
+The required acknowledgment remains:
+
+**“I understand this is a booking request and the appointment is not confirmed until Dom responds.”**
+
+### Locked Principle
+
+The booking form should never make a customer guess what information is required, what went wrong, or what happens next.
