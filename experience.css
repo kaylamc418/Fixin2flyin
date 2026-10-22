@@ -79,16 +79,18 @@ textarea:focus-visible,
     linear-gradient(0deg,rgba(5,6,9,.24),transparent 35%);
 }
 .hero-photo::after{
-  content:"△";
+  content:"";
   position:absolute;
   left:clamp(1rem,3vw,3rem);
   bottom:clamp(1rem,3vw,2.5rem);
   z-index:2;
-  color:rgba(239,175,50,.24);
-  font-size:clamp(5rem,10vw,10rem);
-  line-height:.75;
+  width:clamp(5rem,10vw,10rem);
+  aspect-ratio:1;
+  border-left:2px solid rgba(239,175,50,.24);
+  border-bottom:2px solid rgba(239,175,50,.24);
+  transform:rotate(-45deg);
   pointer-events:none;
-  text-shadow:0 0 40px rgba(154,87,255,.12);
+  filter:drop-shadow(0 0 22px rgba(154,87,255,.12));
 }
 .hero-photo img{
   filter:saturate(.88) contrast(1.06) brightness(.92);
@@ -102,13 +104,14 @@ textarea:focus-visible,
     linear-gradient(160deg,#0b0c12 0%,#06070a 62%,#050609 100%);
 }
 .hero-panel::before{
-  content:"◇";
+  content:"";
   position:absolute;
-  right:-.08em;
-  top:-.12em;
-  color:rgba(181,123,255,.055);
-  font-size:clamp(12rem,23vw,25rem);
-  line-height:1;
+  right:clamp(-8rem,-7vw,-4rem);
+  top:clamp(-8rem,-7vw,-4rem);
+  width:clamp(12rem,23vw,25rem);
+  aspect-ratio:1;
+  border:1px solid rgba(181,123,255,.08);
+  transform:rotate(45deg);
   pointer-events:none;
 }
 .hero-panel::after{
@@ -258,7 +261,7 @@ textarea:focus-visible,
 @media (max-width:820px){
   .hero-photo{border-right:0;border-bottom:1px solid rgba(239,175,50,.22)}
   .hero-photo::before{background:linear-gradient(0deg,rgba(5,6,9,.7),transparent 38%)}
-  .hero-photo::after{font-size:clamp(4rem,18vw,8rem)}
+  .hero-photo::after{width:clamp(4rem,18vw,8rem)}
   .hero-panel::after{left:1.25rem;right:1.25rem}
   .hero h1{max-width:9ch}
 }
