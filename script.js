@@ -6,7 +6,7 @@ const primaryNav = document.querySelector('.primary-nav');
 if (!document.querySelector('link[data-f2f-experience]')) {
   const experienceStyles = document.createElement('link');
   experienceStyles.rel = 'stylesheet';
-  experienceStyles.href = 'experience.css?v=20261015a';
+  experienceStyles.href = 'experience.css?v=20261031';
   experienceStyles.dataset.f2fExperience = 'true';
   document.head.appendChild(experienceStyles);
 }
