@@ -266,7 +266,7 @@
   .van-body img{width:48%}
   .prefooter-brand{padding:2rem 1.25rem}
   .prefooter-brand h2{font-size:clamp(3rem,14vw,4.5rem)}
-  .brand-marquee .strip-track{animation-duration:16s}
+  .brand-marquee .strip-track{animation-duration:24s}
   .brand-marquee-group{gap:2rem;padding:.9rem 1.2rem}
 }
 @media (prefers-reduced-motion:reduce){
