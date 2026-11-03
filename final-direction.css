@@ -273,3 +273,46 @@
   .brand-marquee .strip-track{animation-duration:80s}
   .soundtrack-playing .equalizer span{animation:none}
 }
+
+
+/* Production final-direction overrides — 2026-11-03 */
+.van-visual{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+.van-visual .black-van-asset{
+  position:relative;
+  z-index:2;
+  width:100%;
+  max-width:760px;
+  height:auto;
+  object-fit:contain;
+  border-radius:22px;
+  filter:drop-shadow(0 26px 42px rgba(0,0,0,.42));
+}
+@media (max-width:620px){
+  .service-strip.brand-marquee{
+    display:block;
+    overflow:hidden;
+  }
+  .brand-marquee .strip-track{
+    min-width:max-content;
+  }
+  .van-visual .black-van-asset{
+    border-radius:16px;
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  .brand-marquee .strip-track{
+    animation:none!important;
+    transform:none!important;
+    display:flex;
+    flex-wrap:wrap;
+    min-width:0;
+  }
+  .brand-marquee-group[aria-hidden="true"]{
+    display:none;
+  }
+}
