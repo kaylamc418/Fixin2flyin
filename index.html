@@ -44,8 +44,9 @@
         <a href="#about">Dom + Lumi</a>
         <a href="#mama-tribute">Mama Tribute</a>
         <a href="#gallery">Gallery</a>
+        <a href="#book-dom">Book Dom</a>
       </nav>
-      <a class="header-cta" href="#contact">Book Dom</a>
+      <a class="header-cta" href="#book-dom">Book Dom</a>
     </div>
   </header>
 
@@ -60,11 +61,25 @@
           <h1 id="hero-title" data-testid="hero-title">Built to <strong>Fix.</strong><br />Ready to <em>Fly.</em></h1>
           <p class="hero-intro">Mobile bike repair, trail prep, and one-on-one bike coaching—built to keep your bike dialed and your riding confident.</p>
           <div class="hero-actions" data-testid="hero-actions">
-            <a class="button button-gold" href="#contact">Request Service</a>
+            <a class="button button-gold" href="#book-dom">Request Service</a>
             <a class="button button-outline" href="#services">Explore Coaching</a>
           </div>
           <div class="hero-proof" aria-label="Service highlights"><span>Mobile</span><span>Personal</span><span>Ride-focused</span></div>
         </div>
+      </div>
+    </section>
+
+    <section class="section soundtrack" id="soundtrack" aria-labelledby="soundtrack-title" data-testid="music-section">
+      <div class="soundtrack-copy">
+        <p class="eyebrow purple">DOM’S ORIGINAL SONG</p>
+        <h2 id="soundtrack-title">Peak Bound</h2>
+        <p class="track-subtitle">Enhanced Industrial Remix</p>
+        <p>Dom’s original soundtrack sets the tone for the Fixin’ 2 Flyin’ world before the service journey begins.</p>
+      </div>
+      <div class="player-card">
+        <button class="play-button" id="soundtrack-toggle" type="button" aria-pressed="false" aria-label="Play Peak Bound"><span class="play-icon" aria-hidden="true">▶</span><span class="play-text">Play</span></button>
+        <div class="equalizer" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <p id="music-status" aria-live="polite">Enhanced Industrial Remix</p>
       </div>
     </section>
 
@@ -86,12 +101,12 @@
         <p>Repair, preparation, and practical coaching in one focused service. No oversized menu. No generic shop experience. Just the help you need to get back to riding.</p>
       </div>
       <div class="service-grid">
-        <article class="service-card service-featured"><span class="card-number">01</span><h3>Mobile Bike Repair</h3><p>On-site fixes, tune-ups, adjustments, and basic maintenance without hauling the bike across town.</p><a href="#contact">Request repair <span aria-hidden="true">→</span></a></article>
+        <article class="service-card service-featured"><span class="card-number">01</span><h3>Mobile Bike Repair</h3><p>On-site fixes, tune-ups, adjustments, and basic maintenance without hauling the bike across town.</p><a href="#book-dom">Request repair <span aria-hidden="true">→</span></a></article>
         <article class="service-card"><span class="card-number">02</span><h3>Trail Prep</h3><p>Pre-ride safety checks and practical preparation for local rides, mountain days, remote trails, and longer adventures.</p></article>
         <article class="service-card"><span class="card-number">03</span><h3>Brake + Gear Adjustments</h3><p>Basic brake tuning, shifting adjustments, drivetrain checks, and overall ride-condition reviews.</p></article>
-        <article class="service-card" id="coaching"><span class="card-number">04</span><h3>Bike Coaching</h3><p>One-on-one riding help for confidence, bike control, handling, jumping, trail awareness, and skill progression.</p><a href="#contact">Start coaching <span aria-hidden="true">→</span></a></article>
+        <article class="service-card" id="coaching"><span class="card-number">04</span><h3>Bike Coaching</h3><p>One-on-one riding help for confidence, bike control, handling, jumping, trail awareness, and skill progression.</p><a href="#book-dom">Start coaching <span aria-hidden="true">→</span></a></article>
         <article class="service-card"><span class="card-number">05</span><h3>Flat Repair</h3><p>Tire and tube inspection, repair, replacement support, and help getting the bike ride-ready again.</p></article>
-        <article class="service-card"><span class="card-number">06</span><h3>Ride Support</h3><p>Need help preparing for a short ride, a long ride, a mountain route, or simply a bike adventure? Dom can help you get moving with confidence.</p></article>
+        <article class="service-card"><span class="card-number">06</span><h3>Ride Support</h3><p>Need help preparing for a short ride, a long ride, a mountain route, or simply a bike adventure? Dom helps riders get set up, ride-ready, and confident before they roll out.</p></article>
       </div>
     </section>
 
@@ -119,10 +134,10 @@
         <h2 id="van-life-title">The road is part of the setup.</h2>
         <p>The van is the basecamp, gear hauler, shelter, and freedom machine for the next route.</p>
       </div>
-      <div class="van-visual" aria-hidden="true">
-        <span class="van-geometry van-geometry-one">△</span>
-        <span class="van-geometry van-geometry-two">◇</span>
-        <div class="van-roof"></div><div class="van-body"><img src="assets/f2f-wingmark-gold.png" alt="" /><span>FIXIN’ 2 FLYIN’</span></div><div class="van-wheel van-wheel-left"></div><div class="van-wheel van-wheel-right"></div>
+      <div class="van-visual">
+        <span class="van-geometry van-geometry-one" aria-hidden="true">△</span>
+        <span class="van-geometry van-geometry-two" aria-hidden="true">◇</span>
+        <img class="black-van-asset" src="assets/black-van-mockup.svg" alt="Black adventure van with purple and gold Fixin’ 2 Flyin’ styling" loading="lazy" decoding="async" />
       </div>
     </section>
 
@@ -158,7 +173,7 @@
       </div>
     </section>
 
-    <section class="contact" id="contact" aria-labelledby="contact-title">
+    <section class="contact" id="book-dom" aria-labelledby="contact-title">
       <div class="contact-intro">
         <p class="eyebrow cyan">Book Dom</p>
         <h2 id="contact-title">Request repair, coaching, or ride support.</h2>
@@ -167,7 +182,7 @@
       </div>
       <form class="service-form" id="service-form">
         <div class="form-grid">
-          <label><span>Service *</span><select name="service" required><option value="">Choose a service</option><option>Mobile Bike Repair</option><option>Bike Tune-Up</option><option>Flat Repair</option><option>Ride Support</option><option>Bike Coaching</option></select></label>
+          <label><span>Service *</span><select name="service" required><option value="">Choose a service</option><option>Mobile Bike Repair</option><option>Bike Tune-Up</option><option>Flat Repair</option><option>Brake + Gear Adjustment</option><option>Trail Prep / Safety Check</option><option>Bike Coaching</option><option>Ride Support</option><option>Not Sure — Help Me Choose</option></select></label>
           <label><span>Preferred date *</span><input type="date" name="date" required /></label>
           <label><span>Preferred time *</span><input type="time" name="time" required /></label>
           <label><span>Full name *</span><input name="name" autocomplete="name" required /></label>
@@ -183,19 +198,6 @@
       </form>
     </section>
 
-    <section class="section soundtrack" id="soundtrack" aria-labelledby="soundtrack-title" data-testid="music-section">
-      <div class="soundtrack-copy">
-        <p class="eyebrow purple">DOM’S ORIGINAL SONG</p>
-        <h2 id="soundtrack-title">Peak Bound</h2>
-        <p class="track-subtitle">Enhanced Industrial Remix</p>
-        <p>A personality and lifestyle piece from the Fixin’ 2 Flyin’ world, placed after booking so the service journey stays first.</p>
-      </div>
-      <div class="player-card">
-        <button class="play-button" id="soundtrack-toggle" type="button" aria-pressed="false" aria-label="Play Peak Bound"><span class="play-icon" aria-hidden="true">▶</span><span class="play-text">Play</span></button>
-        <div class="equalizer" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
-        <p id="music-status" aria-live="polite">Enhanced Industrial Remix</p>
-      </div>
-    </section>
 
     <section class="prefooter-brand" aria-labelledby="prefooter-title">
       <div class="secondary-mark-wrap"><img src="assets/pharaoh-mtb-secondary.svg" alt="" class="secondary-mark" /></div>
