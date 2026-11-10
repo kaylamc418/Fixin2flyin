@@ -1,11 +1,11 @@
 # Fixin’ 2 Flyin’
 
-October 2026 clean rebuild for the Fixin’ 2 Flyin’ mobile bike repair + bike coaching website.
+October 2026 clean rebuild for the Fixin’ 2 Flyin’ bike fixing services + bike coaching website.
 
 ## Final direction
 
 - Main brand: Fixin’ 2 Flyin’
-- Subtitle: Mobile Bike Repair + Bike Coaching
+- Subtitle: Bike Fixing Services + Bike Coaching
 - Visual system: blackout luxury — black, charcoal, deep purple, gold
 - Customer flow: Hero → Services → Built Around Motion → Van Life → Dom + Lumi → Mama Tribute → Gallery → Book Dom → Soundtrack → Closing brand statement
 - Primary logo: gold F2F wingmark
@@ -34,6 +34,6 @@ Before production deployment, verify:
 - primary navigation stays customer-focused
 - soundtrack remains lower in the page flow
 - main brand stays Fixin’ 2 Flyin’
-- subtitle stays Mobile Bike Repair + Bike Coaching
+- subtitle stays Bike Fixing Services + Bike Coaching
 - mobile layout and booking form remain usable
 - no broken links, duplicate sections, or placeholder contact details
