@@ -222,8 +222,9 @@ serviceForm?.addEventListener('submit', (event) => {
     `Email: ${data.get('email')}`,
     `Service location: ${data.get('location')}`,
     `Bike type: ${data.get('bike') || 'Not provided'}`,
+    `Parts already on hand: ${data.get('parts') || 'Not provided'}`,
     '',
-    'Details / what the customer needs help with:',
+    'Details / what the customer wants to fix or learn:',
     data.get('message'),
     '',
     'I understand this is a booking request and the appointment is not confirmed until Dom responds.'
