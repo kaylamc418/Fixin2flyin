@@ -173,7 +173,7 @@ This applies to decorative triangles, pyramid-line accents, abstract wings, back
 
 ### Logo Alt Text
 
-Use short, useful descriptions. Recommended: `Fixin’ 2 Flyin’ logo — Mobile Bike Repair + Bike Coaching`.
+Use short, useful descriptions. Recommended: `Fixin’ 2 Flyin’ logo — Bike Fixing Services + Bike Coaching`.
 
 For a small logo used as a home link, the accessible name can simply be `Fixin’ 2 Flyin’`.
 
