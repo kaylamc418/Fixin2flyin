@@ -39,7 +39,7 @@ for (const viewport of viewports) {
     await expect(soundtrack).toBeVisible();
 
     await expect(title).toContainText(/built to fix\.\s*ready to fly\./i);
-    await expect(hero).toContainText(/mobile bike repair/i);
+    await expect(hero).toContainText(/bike fixing services/i);
     await expect(hero.getByRole('link', { name: 'Book Dom', exact: true })).toBeVisible();
     await expect(hero.getByRole('link', { name: 'Explore Services', exact: true })).toBeVisible();
     await expect(hero.locator('[data-testid="hero-actions"] a')).toHaveCount(2);
