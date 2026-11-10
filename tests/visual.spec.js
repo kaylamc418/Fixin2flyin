@@ -78,9 +78,9 @@ for (const viewport of viewports) {
 
     const heroHeading = hero.getByRole('heading', { level: 1 });
     await expect(heroHeading).toContainText(/built to fix\.\s*ready to fly\./i);
-    await expect(hero).toContainText(/mobile bike repair/i);
-    await expect(hero).toContainText(/trail preparation/i);
-    await expect(hero).toContainText(/one-on-one coaching/i);
+    await expect(hero).toContainText(/bike fixing services/i);
+    await expect(hero).toContainText(/trail prep/i);
+    await expect(hero).toContainText(/one-on-one riding coaching/i);
 
     await expect(
       hero.getByRole('link', {
@@ -242,7 +242,7 @@ for (const viewport of viewports) {
 
     expect(hasHorizontalOverflow).toBe(false);
 
-    await expect(page.getByRole('heading', { name: 'Mobile Bike Repair + Coaching' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Bike Fixing Services + Bike Coaching' })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'A practical process for the bike and rider.' })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'The rider, the builder, and the trail companion.' })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'For the woman who helped shape the ride.' })).toBeVisible();
