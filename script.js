@@ -6,7 +6,7 @@ const primaryNav = document.querySelector('.primary-nav');
 if (!document.querySelector('link[data-f2f-experience]')) {
   const experienceStyles = document.createElement('link');
   experienceStyles.rel = 'stylesheet';
-  experienceStyles.href = 'experience.css?v=20261031';
+  experienceStyles.href = 'experience.css?v=20261111';
   experienceStyles.dataset.f2fExperience = 'true';
   document.head.appendChild(experienceStyles);
 }
@@ -202,8 +202,15 @@ lightbox?.addEventListener('close', () => lastGalleryTrigger?.focus());
 const serviceForm = document.getElementById('service-form');
 const formStatus = document.getElementById('form-status');
 const CONTACT_EMAIL = 'dom@fixin2flyin.com';
+const bookingDate = serviceForm?.querySelector('input[name="date"]');
+const localToday = () => {
+  const now = new Date();
+  return [now.getFullYear(), String(now.getMonth()+1).padStart(2, '0'), String(now.getDate()).padStart(2, '0')].join('-');
+};
+if (bookingDate) bookingDate.min = localToday();
 
 serviceForm?.addEventListener('submit', (event) => {
+  if (bookingDate) bookingDate.min = localToday();
   event.preventDefault();
   if (!serviceForm.checkValidity()) {
     serviceForm.reportValidity();
@@ -230,14 +237,14 @@ serviceForm?.addEventListener('submit', (event) => {
     'I understand this is a booking request and the appointment is not confirmed until Dom responds.'
   ].join('\n'));
 
-  if (formStatus) formStatus.textContent = 'Opening your email app with the Book Dom request prepared. Your appointment is not confirmed until Dom responds.';
+  if (formStatus) formStatus.textContent = 'Your email app is opening. Tap Send there to deliver the request to Dom. This form has not sent or confirmed an appointment.';
   window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
 });
 
 /* Peak Bound soundtrack. User-initiated only; native controls remain available as a reliable fallback. */
 const soundtrackToggle = document.getElementById('soundtrack-toggle');
 const playIcon = soundtrackToggle?.querySelector('.play-icon');
-const playLabel = soundtrackToggle?.querySelector('.play-label');
+const playLabel = soundtrackToggle?.querySelector('.play-text');
 const musicStatus = document.getElementById('music-status');
 const playerCard = soundtrackToggle?.closest('.player-card');
 const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
