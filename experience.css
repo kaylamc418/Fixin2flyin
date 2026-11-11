@@ -299,3 +299,27 @@ textarea:focus-visible,
   .soundtrack-playing .equalizer span{animation:none!important}
   .lifestyle-card img,.button{transform:none!important}
 }
+
+
+/* Session-first brand refinements — 2026-11-11 */
+:root { --purple:#a568ff; }
+.brand picture { display:block; flex:0 0 auto; }
+.brand .brand-name { display:none; }
+.epic-copy { max-width:740px; margin:1.2rem 0 0; color:var(--muted); font-size:clamp(1rem,1.4vw,1.14rem); line-height:1.65; }
+.eyebrow span { color:var(--gold); }
+.form-status { color:var(--gold-soft); }
+.field-hint { display:block; margin:.3rem 0 0; color:var(--muted); font-size:.78rem; line-height:1.45; }
+.footer-bottom nav { display:flex; flex-wrap:wrap; gap:.75rem 1.5rem; }
+.footer-bottom nav a { color:#ddd9d2; }
+.footer-bottom nav a:hover, .footer-bottom nav a:focus-visible { color:var(--gold); text-decoration:underline; text-underline-offset:.22em; }
+@media (min-width:1041px) {
+  .nav-shell { grid-template-columns:auto 1fr; }
+  .brand img { width:clamp(150px,13vw,190px); }
+}
+@media (max-width:1040px) { .nav-shell { grid-template-columns:1fr auto; } }
+@media (max-width:600px) {
+  .brand { gap:.65rem; }
+  .brand img { width:80px; }
+  .brand .brand-name { display:block; font-size:clamp(1rem,4vw,1.25rem); letter-spacing:.04em; }
+  .footer-bottom { align-items:flex-start; }
+}
