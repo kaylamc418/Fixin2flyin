@@ -5,7 +5,10 @@ for(const [name,width,height] of [['Mobile',390,844],['Tablet',768,1024],['Deskt
    await page.setViewportSize({width,height});
    await page.goto(BASE_URL,{waitUntil:'networkidle'});
    await expect(page.getByRole('heading',{name:'LOVE. LAUGHTER. STRENGTH.'})).toBeVisible();
-   await expect(page.locator('#van-life .black-van-asset')).toBeVisible();
+   await page.locator('#van-life').scrollIntoViewIfNeeded();
+   const van=page.locator('#van-life .black-van-asset');
+   await expect(van).toBeVisible();
+   await expect.poll(()=>van.evaluate(img=>img.complete && img.naturalWidth>0)).toBe(true);
    await expect(page.locator('#book-dom select[name="service"]')).toContainText('Bike Fixing Services');
    await expect(page.locator('.brand-marquee')).toContainText('Bike Fixing Services');
    await expect(page.getByRole('link',{name:'Privacy'})).toHaveAttribute('href','/privacy.html');
