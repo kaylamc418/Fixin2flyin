@@ -19,8 +19,8 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
-  <link rel="stylesheet" href="styles.css?v=20261031" />
-  <link rel="stylesheet" href="final-direction.css?v=20261031" />
+  <link rel="stylesheet" href="styles.css?v=20261111" />
+  <link rel="stylesheet" href="final-direction.css?v=20261111" />
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Organization","name":"Fixin’ 2 Flyin’","url":"https://fixin2flyin.com/","email":"dom@fixin2flyin.com","description":"Bike fixing services, hands-on maintenance instruction, bike coaching, and ride support from Fixin’ 2 Flyin’."}
   </script>
@@ -31,8 +31,11 @@
   <header class="site-header" id="top" data-testid="site-header">
     <div class="nav-shell">
       <a class="brand" href="#top" aria-label="Fixin’ 2 Flyin’ home">
-        <img src="assets/fixin2flyin-primary-logo.jpg" alt="Fixin’ 2 Flyin’ main logo" width="420" height="236" decoding="async" />
-        <span class="brand-name sr-only">Fixin’ 2 Flyin’</span>
+        <picture>
+          <source media="(max-width: 600px)" srcset="assets/f2f-wingmark-gold.png" />
+          <img src="assets/fixin2flyin-primary-logo.jpg" alt="" width="420" height="236" decoding="async" />
+        </picture>
+        <span class="brand-name">Fixin’ 2 Flyin’</span>
       </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
         <span class="sr-only">Open navigation</span>
@@ -40,13 +43,10 @@
       </button>
       <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
         <a href="#services">Services</a>
-        <a href="#van-life">Van Life</a>
-        <a href="#about">Dom + Lumi</a>
-        <a href="#mama-tribute">Mama Tribute</a>
+        <a href="#about">About Dom</a>
         <a href="#gallery">Gallery</a>
-        <a href="#book-dom">Book Dom</a>
+        <a href="#book-dom">Request a Session</a>
       </nav>
-      <a class="header-cta" href="#book-dom">Book Dom</a>
     </div>
   </header>
 
@@ -59,10 +59,10 @@
         <div class="hero-copy">
           <p class="eyebrow">Bike Fixing Services <span>+</span> Bike Coaching</p>
           <h1 id="hero-title" data-testid="hero-title">Built to <strong>Fix.</strong><br />Ready to <em>Fly.</em></h1>
-          <p class="hero-intro">Learn to troubleshoot, fix, and maintain your own bike with Dom’s hands-on guidance—plus one-on-one riding coaching and trail prep.</p>
+          <p class="hero-intro">Learn to maintain your bike and build confidence on the trail with Dom’s hands-on bike fixing lessons and one-on-one riding coaching.</p>
           <div class="hero-actions" data-testid="hero-actions">
-            <a class="button button-gold" href="#book-dom">Request Service</a>
-            <a class="button button-outline" href="#services">Explore Coaching</a>
+            <a class="button button-gold" href="#book-dom">Request a Session</a>
+            <a class="button button-outline" href="#services">Explore Services</a>
           </div>
           <div class="hero-proof" aria-label="Service highlights"><span>Mobile</span><span>Personal</span><span>Ride-focused</span></div>
         </div>
@@ -120,7 +120,7 @@
     </section>
 
     <section class="lifestyle" aria-labelledby="lifestyle-title">
-      <div class="section-head section-head-wide"><p class="eyebrow cyan">Built Around Motion</p><h2 id="lifestyle-title">What Dom’s world is built around.</h2></div>
+      <div class="section-head section-head-wide"><p class="eyebrow gold-soft">Built Around Motion</p><h2 id="lifestyle-title">What Dom’s world is built around.</h2><p class="epic-copy">Fast descents, remote trails, big air, and rides that test the body, clear the mind, and bring a huge sense of relief.</p></div>
       <div class="lifestyle-grid">
         <article class="lifestyle-card lifestyle-wide"><img src="assets/trail-action.jpg" alt="Dom riding a mountain bike on a forest jump" loading="lazy" decoding="async" /><div class="card-shade"></div><div class="lifestyle-copy"><p>Trail flow</p><h3>Ride-ready energy.</h3></div></article>
         <article class="lifestyle-card"><img src="assets/air-jump.jpg" alt="Dom airborne on a mountain bike" loading="lazy" decoding="async" /><div class="card-shade"></div><div class="lifestyle-copy"><p>Confidence</p><h3>Build speed and control.</h3></div></article>
@@ -175,15 +175,15 @@
 
     <section class="contact" id="book-dom" aria-labelledby="contact-title">
       <div class="contact-intro">
-        <p class="eyebrow cyan">Book Dom</p>
+        <p class="eyebrow gold-soft">Book Dom</p>
         <h2 id="contact-title">Request bike fixing help, coaching, or ride support.</h2>
-        <p>Tell Dom what you want to fix or learn. Your email app will open with the request ready to send; parts and appointment details are confirmed before a session.</p>
+        <p>Tell Dom what you want to fix or learn. This form prepares an email in your email app. <strong>You must tap Send in your email app</strong> for Dom to receive it; no appointment is confirmed until he responds.</p>
         <div class="direct-contact"><span>Email</span><a href="mailto:dom@fixin2flyin.com">dom@fixin2flyin.com</a></div>
       </div>
       <form class="service-form" id="service-form">
         <div class="form-grid">
           <label><span>Service *</span><select name="service" required><option value="">Choose a service</option><option>Bike Fixing Services</option><option>Bike Tune-Up / Maintenance Lesson</option><option>Flat Fixing Lesson</option><option>Brake + Gear Guidance</option><option>Trail Prep / Safety Check</option><option>Bike Coaching</option><option>Ride Support</option><option>Not Sure — Help Me Choose</option></select></label>
-          <label><span>Preferred date *</span><input type="date" name="date" required /></label>
+          <label><span>Preferred date *</span><input type="date" name="date" required aria-describedby="date-help" /><small class="field-hint" id="date-help">Choose today or a future date.</small></label>
           <label><span>Preferred time *</span><input type="time" name="time" required /></label>
           <label><span>Full name *</span><input name="name" autocomplete="name" required /></label>
           <label><span>Phone *</span><input type="tel" name="phone" autocomplete="tel" required /></label>
@@ -217,9 +217,9 @@
       <nav aria-label="Footer navigation"><a href="#services">Services</a><a href="#van-life">Van Life</a><a href="#about">Dom + Lumi</a><a href="#mama-tribute">Mama Tribute</a><a href="#gallery">Gallery</a></nav>
       <a class="footer-email" href="mailto:dom@fixin2flyin.com">dom@fixin2flyin.com</a>
     </div>
-    <div class="footer-bottom"><span>© <span id="year">2026</span> Fixin’ 2 Flyin’</span><a href="#top">Back to top ↑</a></div>
+    <div class="footer-bottom"><span>© <span id="year">2026</span> Fixin’ 2 Flyin’</span><nav aria-label="Legal and site information"><a href="/privacy.html">Privacy</a><a href="/terms.html">Service Notes</a><a href="#top">Back to top ↑</a></nav></div>
   </footer>
 
-  <script src="script.js?v=20261031"></script>
+  <script src="script.js?v=20261111"></script>
 </body>
 </html>
