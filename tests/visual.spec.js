@@ -13,7 +13,7 @@ for(const [name,width,height] of [['Mobile',390,844],['Tablet',768,1024],['Deskt
    await expect(page.locator('.brand-marquee')).toContainText('Bike Fixing Services');
    await expect(page.getByRole('link',{name:'Privacy'})).toHaveAttribute('href','/privacy.html');
    await expect(page.getByRole('link',{name:'Service Notes'})).toHaveAttribute('href','/terms.html');
-   const missing=await page.locator('img').evaluateAll(imgs=>imgs.filter(img=>img.complete && img.src && !img.naturalWidth).map(img=>img.src));
+   const missing=await page.locator('img').evaluateAll(imgs=>imgs.filter(img=>img.getAttribute('src') && img.complete && !img.naturalWidth).map(img=>img.getAttribute('src')));
    expect(missing).toEqual([]);
  });
 }
