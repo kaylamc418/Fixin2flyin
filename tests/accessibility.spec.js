@@ -49,3 +49,18 @@ test('rebuilt homepage accessibility smoke checks', async ({ page }) => {
 
   expect(consoleErrors).toEqual([]);
 });
+test('Booking date and soundtrack state checks',async({page})=>{
+  await page.setViewportSize({width:390,height:844});
+  await page.goto(BASE_URL,{waitUntil:'networkidle'});
+  const date=page.locator('#book-dom input[name="date"]');
+  await expect(date).toHaveAttribute('min',/^\d{4}-\d{2}-\d{2}$/);
+  await expect(page.locator('#book-dom select[name="service"]')).toContainText('Bike Fixing Services');
+  const play=page.locator('#soundtrack-toggle');
+  const audio=page.locator('#peak-bound-audio');
+  await audio.evaluate(el=>el.dispatchEvent(new Event('playing')));
+  await expect(play).toHaveAttribute('aria-label','Pause Peak Bound');
+  await expect(play.locator('.play-text')).toHaveText('Pause Peak Bound');
+  await audio.evaluate(el=>el.dispatchEvent(new Event('pause')));
+  await expect(play).toHaveAttribute('aria-label','Play Peak Bound');
+  await expect(play.locator('.play-text')).toHaveText('Play Peak Bound');
+});
